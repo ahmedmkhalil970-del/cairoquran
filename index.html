@@ -3,20 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>إذاعة القرآن الكريم</title>
-<meta name="description" content="إذاعة القرآن الكريم من القاهرة بث مباشر على مدار الساعة، مع مواقيت الصلاة لمدينتك وصور من مصر. مجاني لوجه الله.">
+<title>Cairo Quran · قرآن وأذان وأذكار</title>
+<meta name="description" content="Cairo Quran: إذاعة القرآن الكريم من القاهرة وإذاعات كبار القرّاء، مع مواقيت الصلاة وتنبيه بموعدها وأذكار الصباح والمساء. مجاني لوجه الله.">
 <meta name="theme-color" content="#050816">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="إذاعة القرآن">
+<meta name="apple-mobile-web-app-title" content="Cairo Quran">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://cairoquran.com/">
-<meta property="og:title" content="إذاعة القرآن الكريم من القاهرة">
-<meta property="og:description" content="بث مباشر على مدار الساعة، مع مواقيت الصلاة لمدينتك. مجاني لوجه الله.">
+<meta property="og:title" content="Cairo Quran · قرآن وأذان وأذكار">
+<meta property="og:description" content="إذاعة القرآن الكريم وإذاعات كبار القرّاء، مع مواقيت الصلاة لمدينتك وتنبيه بموعدها وأذكار الصباح والمساء. مجاني لوجه الله.">
 <meta property="og:image" content="https://cairoquran.com/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -130,6 +130,29 @@ body.idle{cursor:none}
 .stop-btn svg{width:1.05vw;height:1.05vw;fill:currentColor}
 .stop-btn:hover,.stop-btn:focus-visible{background:rgba(232,194,122,.34);transform:scale(1.04)}
 @media (max-width:700px){.status-row{gap:2vw}.stop-btn{font-size:3.4vw;padding:.8vh 3.4vw;gap:1.6vw}.stop-btn svg{width:3.2vw;height:3.2vw}}
+/* identity: brand + now playing */
+.station h1.brand{font-family:"Amiri",serif;direction:ltr;unicode-bidi:isolate;text-align:right;letter-spacing:.02em;font-weight:700}
+.station h1.brand span{color:var(--gold)}
+.now{all:unset;pointer-events:auto;cursor:pointer;display:inline-flex;align-items:baseline;gap:.6vw;margin-top:1.2vh;max-width:36vw;
+  padding:.6vh 1.1vw;border-radius:.9vw;background:var(--glass);border:1px solid var(--edge);backdrop-filter:blur(6px);font-size:1.15vw;color:var(--ink-soft)}
+.now b{color:var(--ink);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.now i{font-style:normal;font-size:.9vw;color:var(--ink-faint);white-space:nowrap}
+.now-k{color:var(--gold);font-size:.95vw}
+.now:hover i,.now:focus-visible i{color:var(--gold)}
+.now:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.picker-groups.wide .pg-list{grid-template-columns:repeat(4,1fr)}
+.dates .occasion{color:var(--ink);opacity:.9}
+.verse.mid p{font-size:2.9vw;line-height:1.85}
+.verse.long p{font-size:2.15vw;line-height:1.95}
+.verse.long{max-width:78vw}
+.adhan-ov{position:fixed;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;background:rgba(3,5,14,.78);backdrop-filter:blur(4px)}
+.adhan-card{display:flex;flex-direction:column;align-items:center;gap:1.6vh;text-align:center}
+.adhan-k{font-size:1.6vw;color:var(--ink-soft)}
+.adhan-card b{font-family:var(--f-title);font-size:5vw;color:var(--gold);text-shadow:0 .3vw 2vw rgba(0,0,0,.6)}
+.adhan-card small{font-size:1.1vw;color:var(--ink-faint)}
+@media (max-width:700px){.now{max-width:none;font-size:3.2vw;gap:1.6vw;padding:.8vh 3vw;border-radius:2.4vw}.now i,.now-k{font-size:2.6vw}
+  .picker-groups.wide .pg-list{grid-template-columns:repeat(2,1fr)}.verse.mid p{font-size:5.4vw}.verse.long p{font-size:4.3vw}.verse.long{max-width:94vw}
+  .adhan-k{font-size:4vw}.adhan-card b{font-size:11vw}.adhan-card small{font-size:3.2vw}}
 /* update notice (TV app) */
 .update{position:fixed;top:2.6vh;left:50%;transform:translateX(-50%);z-index:15;width:34vw;display:flex;flex-direction:column;align-items:center;gap:1vh;
   padding:1.4vh 1.6vw;border-radius:1.2vw;background:rgba(10,13,30,.95);border:1px solid rgba(232,194,122,.7);
@@ -234,8 +257,9 @@ body.idle{cursor:none}
 <main class="frame">
   <header class="top">
     <div class="station">
-      <h1>إذاعة القرآن الكريم</h1>
-      <div class="from">من القاهرة</div>
+      <h1 class="brand"><span>Cairo</span> Quran</h1>
+      <div class="from">قرآن · أذان · أذكار</div>
+      <button class="now" id="nowBtn" type="button"><span class="now-k">الآن</span><b id="nowName">إذاعة القرآن الكريم · القاهرة</b><i>تغيير ▾</i></button>
       <div class="status-row">
   <div class="status" id="status" data-s="idle"><span class="dot"></span><span id="statusText">جاهز للتشغيل</span></div>
         <button class="stop-btn" id="stopBtn" type="button" hidden aria-label="إيقاف البث"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>إيقاف</button>
@@ -244,7 +268,7 @@ body.idle{cursor:none}
     </div>
     <div class="clock">
       <div class="time" id="time">--:--</div>
-      <div class="dates"><div id="greg"></div><div class="hijri" id="hijri"></div></div>
+      <div class="dates"><div id="greg"></div><div class="hijri" id="hijri"></div><div class="occasion" id="occasion" hidden></div></div>
     </div>
   </header>
 
@@ -253,14 +277,14 @@ body.idle{cursor:none}
   <footer class="prayers" id="prayers">
     <div class="p-head"><button class="city" id="cityBtn" type="button"><b id="cityLabel">مواقيت الصلاة · الكويت</b><i>تغيير المدينة ▾</i></button><span id="countdown"></span></div>
   </footer>
-  <div class="sig"><span>By-<b>Ahmed Khalil</b></span><span class="vsep" id="visitsDot" hidden>·</span><span class="visits" id="visits" hidden></span><span class="vsep share-sep" id="shareSep">·</span><button class="share-btn" id="shareBtn" type="button" aria-label="شارك الإذاعة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>شارك الإذاعة</button></div>
+  <div class="sig"><span>By-<b>Ahmed Khalil</b></span><span class="vsep" id="visitsDot" hidden>·</span><span class="visits" id="visits" hidden></span><span class="vsep share-sep" id="shareSep">·</span><button class="share-btn" id="shareBtn" type="button" aria-label="شارك Cairo Quran"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>شارك مع أحبابك</button></div>
 </main>
 
 <div class="picker" id="picker" hidden role="dialog" aria-modal="true" aria-labelledby="pickerTitle">
   <div class="picker-card">
-    <div class="picker-top"><h2 id="pickerTitle">اختر مدينتك</h2><span>تُحسب المواقيت بالطريقة الرسمية لكل دولة</span></div>
+    <div class="picker-top"><h2 id="pickerTitle">اختر مدينتك</h2><span id="pickerSub">تُحسب المواقيت بالطريقة الرسمية لكل دولة</span></div>
     <div class="picker-groups" id="pickerGroups"></div>
-    <div class="picker-hint">استخدم الأسهم للتنقل، و OK للاختيار، و Back للإغلاق</div>
+    <div class="picker-hint">استخدم الأسهم للتنقل، و OK للاختيار، و Back للإغلاق · ▲ للمحطات · ▼ للمدينة</div>
   </div>
 </div>
 
@@ -271,7 +295,7 @@ body.idle{cursor:none}
 </div>
 <div class="share" id="share" hidden role="dialog" aria-modal="true" aria-labelledby="shareTitle">
   <div class="share-card">
-    <h2 id="shareTitle">شارك الإذاعة</h2>
+    <h2 id="shareTitle">شارك Cairo Quran</h2>
     <p>انشر الخير، والدال على الخير كفاعله</p>
     <div class="share-grid">
       <button class="sbtn" type="button" data-net="whatsapp"><i style="background:#25D366"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.5 4c1.7.7 2.4.8 3.2.6a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></i>واتساب</button>
@@ -286,6 +310,9 @@ body.idle{cursor:none}
   </div>
 </div>
 
+<div class="adhan-ov" id="adhanOv" hidden role="alert">
+  <div class="adhan-card"><span class="adhan-k">حان الآن موعد</span><b id="adhanName">صلاة الظهر</b><small id="adhanHint">اضغط OK للإخفاء</small></div>
+</div>
 <div class="gate" id="gate">
   <div class="gate-card">
     <div class="gate-title" id="gateTitle">بسم الله الرحمن الرحيم</div>
@@ -293,7 +320,7 @@ body.idle{cursor:none}
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg>
     </button>
     <div class="gate-hint" id="gateHint">اضغط زر OK في جهاز التحكم لبدء البث</div>
-    <button class="share-btn gate-share" id="gateShare" type="button">شارك الإذاعة مع أحبابك</button>
+    <button class="share-btn gate-share" id="gateShare" type="button">شارك Cairo Quran مع أحبابك</button>
   </div>
 </div>
 
@@ -323,6 +350,108 @@ body.idle{cursor:none}
     ['وَقُل رَّبِّ زِدْنِي عِلْمًا', 'طه · ١١٤']
   ];
 
+  // Stations: Cairo's Quran Radio plus 24-hour reciter stations published by MP3Quran.net
+  const STATION_GROUPS = [
+    { title: 'إذاعات مباشرة', items: [
+      { id: 'cairo', name: 'إذاعة القرآن الكريم · القاهرة', urls: STREAMS },
+      { id: 'saudi', name: 'إذاعة القرآن الكريم · السعودية', urls: ['https://stream.radiojar.com/0tpy1h0kxtzuv'] },
+      { id: 'mix', name: 'تلاوات متنوعة لكبار القرّاء', urls: ['https://backup.qurango.net/radio/mix'] }
+    ] },
+    { title: 'قرّاء مصر', items: [
+      { id: 'abdulbasit', name: 'عبد الباسط عبد الصمد · مرتّل', urls: ['https://backup.qurango.net/radio/abdulbasit_abdulsamad'] },
+      { id: 'abdulbasit_m', name: 'عبد الباسط عبد الصمد · مجوّد', urls: ['https://backup.qurango.net/radio/abdulbasit_abdulsamad_mojawwad'] },
+      { id: 'minshawi', name: 'محمد صديق المنشاوي · مرتّل', urls: ['https://backup.qurango.net/radio/mohammed_siddiq_alminshawi'] },
+      { id: 'minshawi_m', name: 'محمد صديق المنشاوي · مجوّد', urls: ['https://backup.qurango.net/radio/mohammed_siddiq_alminshawi_mojawwad'] },
+      { id: 'husary', name: 'محمود خليل الحصري · مرتّل', urls: ['https://backup.qurango.net/radio/mahmoud_khalil_alhussary'] },
+      { id: 'husary_m', name: 'محمود خليل الحصري · مجوّد', urls: ['https://backup.qurango.net/radio/mahmoud_khalil_alhussary_mojawwad'] },
+      { id: 'banna', name: 'محمود علي البنا', urls: ['https://backup.qurango.net/radio/mahmoud_ali__albanna'] },
+      { id: 'mustafa', name: 'مصطفى إسماعيل', urls: ['https://backup.qurango.net/radio/mustafa_ismail'] },
+      { id: 'tablawi', name: 'محمد محمود الطبلاوي', urls: ['https://backup.qurango.net/radio/mohammad_altablaway'] },
+      { id: 'naina', name: 'أحمد نعينع', urls: ['https://backup.qurango.net/radio/ahmad_nauina'] }
+    ] },
+    { title: 'قرّاء الحرمين والخليج', items: [
+      { id: 'maher', name: 'ماهر المعيقلي', urls: ['https://backup.qurango.net/radio/maher'] },
+      { id: 'sudais', name: 'عبد الرحمن السديس', urls: ['https://backup.qurango.net/radio/abdulrahman_alsudaes'] },
+      { id: 'shuraim', name: 'سعود الشريم', urls: ['https://backup.qurango.net/radio/saud_alshuraim'] },
+      { id: 'ghamdi', name: 'سعد الغامدي', urls: ['https://backup.qurango.net/radio/saad_alghamdi'] },
+      { id: 'afasy', name: 'مشاري العفاسي', urls: ['https://backup.qurango.net/radio/mishary_alafasi'] },
+      { id: 'dosari', name: 'ياسر الدوسري', urls: ['https://backup.qurango.net/radio/yasser_aldosari'] },
+      { id: 'qatami', name: 'ناصر القطامي', urls: ['https://backup.qurango.net/radio/nasser_alqatami'] },
+      { id: 'ajmy', name: 'أحمد العجمي', urls: ['https://backup.qurango.net/radio/ahmad_alajmy'] },
+      { id: 'abbad', name: 'فارس عباد', urls: ['https://backup.qurango.net/radio/fares_abbad'] },
+      { id: 'ayyub', name: 'محمد أيوب', urls: ['https://backup.qurango.net/radio/mohammed_ayyub'] },
+      { id: 'jaber', name: 'علي جابر', urls: ['https://backup.qurango.net/radio/ali_jaber'] },
+      { id: 'abkr', name: 'إدريس أبكر', urls: ['https://backup.qurango.net/radio/idrees_abkr'] },
+      { id: 'basfer', name: 'عبد الله بصفر', urls: ['https://backup.qurango.net/radio/abdullah_basfer'] },
+      { id: 'jibreel', name: 'محمد جبريل', urls: ['https://backup.qurango.net/radio/mohammed_jibreel'] }
+    ] },
+    { title: 'برامج وتلاوات', items: [
+      { id: 'salma', name: 'تلاوات خاشعة', urls: ['https://backup.qurango.net/radio/salma'] },
+      { id: 'sakeenah', name: 'آيات السكينة', urls: ['https://backup.qurango.net/radio/sakeenah'] },
+      { id: 'baqarah', name: 'سورة البقرة', urls: ['https://backup.qurango.net/radio/albaqarah'] },
+      { id: 'mulk', name: 'سورة الملك', urls: ['https://backup.qurango.net/radio/Surah_Al-Mulk'] },
+      { id: 'tafsir', name: 'المختصر في تفسير القرآن', urls: ['https://backup.qurango.net/radio/mukhtasartafsir'] },
+      { id: 'anbiya', name: 'قصص الأنبياء', urls: ['https://backup.qurango.net/radio/alanbiya'] },
+      { id: 'siyra', name: 'المختصر في السيرة النبوية', urls: ['https://backup.qurango.net/radio/almukhtasar_fi_alsiyra'] },
+      { id: 'athkar_sabah', name: 'أذكار الصباح · صوتي', urls: ['https://backup.qurango.net/radio/athkar_sabah'] },
+      { id: 'athkar_masa', name: 'أذكار المساء · صوتي', urls: ['https://backup.qurango.net/radio/athkar_masa'] }
+    ] }
+  ];
+  const STATION_LIST = [].concat(...STATION_GROUPS.map(g => g.items));
+  // Morning and evening adhkar, text as in Hisn al-Muslim (hisnmuslim.com, chapter 27)
+  const ADHKAR = {
+  morning: [
+    ['أَعُوذُ بِاللَّهِ مِنَ الشَّيطَانِ الرَّجِيمِ ﴿اللَّهُ لاَ إِلَهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ لاَ تَأْخُذُهُ سِنَةٌ وَلاَ نَوْمٌ لَّهُ مَا فِي السَّمَوَاتِ وَمَا فِي الأَرْضِ مَن ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلاَّ بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلاَ يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلاَّ بِمَا شَاء وَسِعَ كُرْسِيُّهُ السَّمَوَاتِ وَالْأَرْضَ وَلاَ يَؤُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ﴾', 'آية الكرسي · مرة واحدة'],
+    ['بسم الله الرحمن الرحيم ﴿قُلْ هُوَ اللَّهُ أَحَدٌ ۝ اللَّهُ الصَّمَدُ ۝ لَمْ يَلِدْ وَلَمْ يُولَدْ ۝ وَلَمْ يَكُن لَّهُ كُفُواً أَحَدٌ﴾', 'سورة الإخلاص · ثلاث مرات'],
+    ['بسم الله الرحمن الرحيم ﴿قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ ۝ مِن شَرِّ مَا خَلَقَ ۝ وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ ۝ وَمِن شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ ۝ وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ﴾', 'سورة الفلق · ثلاث مرات'],
+    ['بسم الله الرحمن الرحيم ﴿قُلْ أَعُوذُ بِرَبِّ النَّاسِ ۝ مَلِكِ النَّاسِ ۝ إِلَهِ النَّاسِ ۝ مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ ۝ الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ ۝ مِنَ الْجِنَّةِ وَ النَّاسِ﴾', 'سورة الناس · ثلاث مرات'],
+    ['أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ ، وَالْحَمْدُ لِلَّهِ، لاَ إِلَهَ إلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذَا الْيَوْمِ وَخَيرَ مَا بَعْدَهُ ، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هَذَا الْيَوْمِ وَشَرِّ مَا بَعْدَهُ، رَبِّ أَعُوذُ بِكَ مِنَ الْكَسَلِ وَسُوءِ الْكِبَرِ، رَبِّ أَعُوذُ بِكَ مِنْ عَذَابٍ فِي النَّارِ وَعَذَابٍ فِي الْقَبْرِ', 'مرة واحدة'],
+    ['اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا ، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ وَإِلَيْكَ النُّشُورُ', 'مرة واحدة'],
+    ['اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلاَّ أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ بِذَنْبِي فَاغْفِرْ لِي فَإِنَّهُ لاَ يَغْفِرُ الذُّنوبَ إِلاَّ أَنْتَ', 'سيد الاستغفار · مرة واحدة'],
+    ['اللَّهُمَّ إِنِّي أَصْبَحْتُ أُشْهِدُكَ، وَأُشْهِدُ حَمَلَةَ عَرْشِكَ، وَمَلاَئِكَتِكَ، وَجَمِيعَ خَلْقِكَ، أَنَّكَ أَنْتَ اللَّهُ لَا إِلَهَ إِلاَّ أَنْتَ وَحْدَكَ لاَ شَرِيكَ لَكَ، وَأَنَّ مُحَمَّداً عَبْدُكَ وَرَسُولُكَ', 'أربع مرات'],
+    ['اللَّهُمَّ مَا أَصْبَحَ بِي مِنْ نِعْمَةٍ أَوْ بِأَحَدٍ مِنْ خَلْقِكَ فَمِنْكَ وَحْدَكَ لاَ شَرِيكَ لَكَ، فَلَكَ الْحَمْدُ وَلَكَ الشُّكْرُ', 'مرة واحدة'],
+    ['اللَّهُمَّ عَافِنِي فِي بَدَنِي، اللَّهُمَّ عَافِنِي فِي سَمْعِي، اللَّهُمَّ عَافِنِي فِي بَصَرِي، لاَ إِلَهَ إِلاَّ أَنْتَ. اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْكُفْرِ، وَالفَقْرِ، وَأَعُوذُ بِكَ مِنْ عَذَابِ القَبْرِ، لاَ إِلَهَ إِلاَّ أَنْتَ', 'ثلاث مرات'],
+    ['حَسْبِيَ اللَّهُ لاَ إِلَهَ إِلاَّ هُوَ عَلَيهِ تَوَكَّلتُ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ', 'سبع مرات'],
+    ['اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَالآخِرَةِ، اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ: فِي دِينِي وَدُنْيَايَ وَأَهْلِي، وَمَالِي، اللَّهُمَّ اسْتُرْ عَوْرَاتِي، وَآمِنْ رَوْعَاتِي، اللَّهُمَّ احْفَظْنِي مِنْ بَينِ يَدَيَّ، وَمِنْ خَلْفِي، وَعَنْ يَمِينِي، وَعَنْ شِمَالِي، وَمِنْ فَوْقِي، وَأَعُوذُ بِعَظَمَتِكَ أَنْ أُغْتَالَ مِنْ تَحْتِي', 'مرة واحدة'],
+    ['اللَّهُمَّ عَالِمَ الغَيْبِ وَالشَّهَادَةِ فَاطِرَ السَّمَوَاتِ وَالْأَرْضِ، رَبَّ كُلِّ شَيْءٍ وَمَلِيكَهُ، أَشْهَدُ أَنْ لاَ إِلَهَ إِلاَّ أَنْتَ، أَعُوذُ بِكَ مِنْ شَرِّ نَفْسِي، وَمِنْ شَرِّ الشَّيْطانِ وَشَرَكِهِ، وَأَنْ أَقْتَرِفَ عَلَى نَفْسِي سُوءاً، أَوْ أَجُرَّهُ إِلَى مُسْلِمٍ', 'مرة واحدة'],
+    ['بِسْمِ اللَّهِ الَّذِي لاَ يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلاَ فِي السّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ', 'ثلاث مرات'],
+    ['رَضِيتُ بِاللَّهِ رَبَّاً، وَبِالْإِسْلاَمِ دِيناً، وَبِمُحَمَّدٍ صلى الله عليه وسلم نَبِيّاً', 'ثلاث مرات'],
+    ['يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغيثُ أَصْلِحْ لِي شَأْنِيَ كُلَّهُ وَلاَ تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ', 'مرة واحدة'],
+    ['أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ رَبِّ الْعَالَمِينَ، اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ هَذَا الْيَوْمِ: فَتْحَهُ، وَنَصْرَهُ، وَنورَهُ، وَبَرَكَتَهُ، وَهُدَاهُ، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِيهِ وَشَرِّ مَا بَعْدَهُ', 'مرة واحدة'],
+    ['أَصْبَحْنا عَلَى فِطْرَةِ الْإِسْلاَمِ، وَعَلَى كَلِمَةِ الْإِخْلاَصِ، وَعَلَى دِينِ نَبِيِّنَا مُحَمَّدٍ صلى الله عليه وسلم، وَعَلَى مِلَّةِ أَبِينَا إِبْرَاهِيمَ، حَنِيفاً مُسْلِماً وَمَا كَانَ مِنَ الْمُشرِكِينَ', 'مرة واحدة'],
+    ['سُبْحَانَ اللَّهِ وَبِحَمْدِهِ', 'مائة مرة'],
+    ['لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ', 'عشر مرات'],
+    ['سُبْحَانَ اللَّهِ وَبِحَمْدِهِ: عَدَدَ خَلْقِهِ، وَرِضَا نَفْسِهِ، وَزِنَةَ عَرْشِهِ، وَمِدَادَ كَلِمَاتِهِ', 'ثلاث مرات'],
+    ['اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْماً نَافِعاً، وَرِزْقاً طَيِّباً، وَعَمَلاً مُتَقَبَّلاً', 'مرة واحدة'],
+    ['أَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ', 'مائة مرة في اليوم'],
+    ['اللَّهُمَّ صَلِّ وَسَلِّمْ عَلَى نَبَيِّنَا مُحَمَّدٍ', 'عشر مرات']
+  ],
+  evening: [
+    ['أَعُوذُ بِاللَّهِ مِنَ الشَّيطَانِ الرَّجِيمِ ﴿اللَّهُ لاَ إِلَهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ لاَ تَأْخُذُهُ سِنَةٌ وَلاَ نَوْمٌ لَّهُ مَا فِي السَّمَوَاتِ وَمَا فِي الأَرْضِ مَن ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلاَّ بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلاَ يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلاَّ بِمَا شَاء وَسِعَ كُرْسِيُّهُ السَّمَوَاتِ وَالْأَرْضَ وَلاَ يَؤُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ﴾', 'آية الكرسي · مرة واحدة'],
+    ['بسم الله الرحمن الرحيم ﴿قُلْ هُوَ اللَّهُ أَحَدٌ ۝ اللَّهُ الصَّمَدُ ۝ لَمْ يَلِدْ وَلَمْ يُولَدْ ۝ وَلَمْ يَكُن لَّهُ كُفُواً أَحَدٌ﴾', 'سورة الإخلاص · ثلاث مرات'],
+    ['بسم الله الرحمن الرحيم ﴿قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ ۝ مِن شَرِّ مَا خَلَقَ ۝ وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ ۝ وَمِن شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ ۝ وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ﴾', 'سورة الفلق · ثلاث مرات'],
+    ['بسم الله الرحمن الرحيم ﴿قُلْ أَعُوذُ بِرَبِّ النَّاسِ ۝ مَلِكِ النَّاسِ ۝ إِلَهِ النَّاسِ ۝ مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ ۝ الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ ۝ مِنَ الْجِنَّةِ وَ النَّاسِ﴾', 'سورة الناس · ثلاث مرات'],
+    ['أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لاَ إِلَهَ إلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذِهِ اللَّيْلَةِ وَخَيْرَ مَا بَعْدَهَا، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هَذِهِ اللَّيْلَةِ وَشَرِّ مَا بَعْدَهَا، رَبِّ أَعُوذُ بِكَ مِنَ الْكَسَلِ وَسُوءِ الْكِبَرِ، رَبِّ أَعُوذُ بِكَ مِنْ عَذَابٍ فِي النَّارِ وَعَذَابٍ فِي الْقَبْرِ', 'مرة واحدة'],
+    ['اللَّهُمَّ بِكَ أَمْسَيْنَا، وَبِكَ أَصْبَحْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ الْمَصِيرُ', 'مرة واحدة'],
+    ['اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلاَّ أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ بِذَنْبِي فَاغْفِرْ لِي فَإِنَّهُ لاَ يَغْفِرُ الذُّنوبَ إِلاَّ أَنْتَ', 'سيد الاستغفار · مرة واحدة'],
+    ['اللَّهُمَّ إِنِّي أَمْسَيْتُ أُشْهِدُكَ، وَأُشْهِدُ حَمَلَةَ عَرْشِكَ، وَمَلاَئِكَتِكَ، وَجَمِيعَ خَلْقِكَ، أَنَّكَ أَنْتَ اللَّهُ لَا إِلَهَ إِلاَّ أَنْتَ وَحْدَكَ لاَ شَرِيكَ لَكَ، وَأَنَّ مُحَمَّداً عَبْدُكَ وَرَسُولُكَ', 'أربع مرات'],
+    ['اللَّهُمَّ مَا أَمْسَى بِي مِنْ نِعْمَةٍ أَوْ بِأَحَدٍ مِنْ خَلْقِكَ فَمِنْكَ وَحْدَكَ لاَ شَرِيكَ لَكَ، فَلَكَ الْحَمْدُ وَلَكَ الشُّكْرُ', 'مرة واحدة'],
+    ['اللَّهُمَّ عَافِنِي فِي بَدَنِي، اللَّهُمَّ عَافِنِي فِي سَمْعِي، اللَّهُمَّ عَافِنِي فِي بَصَرِي، لاَ إِلَهَ إِلاَّ أَنْتَ. اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْكُفْرِ، وَالفَقْرِ، وَأَعُوذُ بِكَ مِنْ عَذَابِ القَبْرِ، لاَ إِلَهَ إِلاَّ أَنْتَ', 'ثلاث مرات'],
+    ['حَسْبِيَ اللَّهُ لاَ إِلَهَ إِلاَّ هُوَ عَلَيهِ تَوَكَّلتُ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ', 'سبع مرات'],
+    ['اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَالآخِرَةِ، اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ: فِي دِينِي وَدُنْيَايَ وَأَهْلِي، وَمَالِي، اللَّهُمَّ اسْتُرْ عَوْرَاتِي، وَآمِنْ رَوْعَاتِي، اللَّهُمَّ احْفَظْنِي مِنْ بَينِ يَدَيَّ، وَمِنْ خَلْفِي، وَعَنْ يَمِينِي، وَعَنْ شِمَالِي، وَمِنْ فَوْقِي، وَأَعُوذُ بِعَظَمَتِكَ أَنْ أُغْتَالَ مِنْ تَحْتِي', 'مرة واحدة'],
+    ['اللَّهُمَّ عَالِمَ الغَيْبِ وَالشَّهَادَةِ فَاطِرَ السَّمَوَاتِ وَالْأَرْضِ، رَبَّ كُلِّ شَيْءٍ وَمَلِيكَهُ، أَشْهَدُ أَنْ لاَ إِلَهَ إِلاَّ أَنْتَ، أَعُوذُ بِكَ مِنْ شَرِّ نَفْسِي، وَمِنْ شَرِّ الشَّيْطانِ وَشَرَكِهِ، وَأَنْ أَقْتَرِفَ عَلَى نَفْسِي سُوءاً، أَوْ أَجُرَّهُ إِلَى مُسْلِمٍ', 'مرة واحدة'],
+    ['بِسْمِ اللَّهِ الَّذِي لاَ يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلاَ فِي السّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ', 'ثلاث مرات'],
+    ['رَضِيتُ بِاللَّهِ رَبَّاً، وَبِالْإِسْلاَمِ دِيناً، وَبِمُحَمَّدٍ صلى الله عليه وسلم نَبِيّاً', 'ثلاث مرات'],
+    ['يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغيثُ أَصْلِحْ لِي شَأْنِيَ كُلَّهُ وَلاَ تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ', 'مرة واحدة'],
+    ['أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ رَبِّ الْعَالَمِينَ، اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ هَذِهِ اللَّيْلَةِ: فَتْحَهَا، وَنَصْرَهَا، وَنُورَهَا، وَبَرَكَتَهَا، وَهُدَاهَا، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِيهَا وَشَرِّ مَا بَعْدَهَا', 'مرة واحدة'],
+    ['أَمْسَيْنَا عَلَى فِطْرَةِ الْإِسْلاَمِ، وَعَلَى كَلِمَةِ الْإِخْلاَصِ، وَعَلَى دِينِ نَبِيِّنَا مُحَمَّدٍ صلى الله عليه وسلم، وَعَلَى مِلَّةِ أَبِينَا إِبْرَاهِيمَ، حَنِيفاً مُسْلِماً وَمَا كَانَ مِنَ الْمُشرِكِينَ', 'مرة واحدة'],
+    ['سُبْحَانَ اللَّهِ وَبِحَمْدِهِ', 'مائة مرة'],
+    ['لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ', 'عشر مرات'],
+    ['أَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ', 'مائة مرة في اليوم'],
+    ['أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ', 'ثلاث مرات'],
+    ['اللَّهُمَّ صَلِّ وَسَلِّمْ عَلَى نَبَيِّنَا مُحَمَّدٍ', 'عشر مرات']
+  ]
+  };
   const $ = id => document.getElementById(id);
   const ar = (n, pad) => Number(n).toLocaleString('ar-EG', { minimumIntegerDigits: pad || 1, useGrouping: false });
 
@@ -464,38 +593,119 @@ body.idle{cursor:none}
     const p = period(h * 60 + m);
     if (p !== currentPeriod) { currentPeriod = p; showScene(); }
     $('photos').classList.toggle('dim', p === 'night');
+
+    // morning adhkar from Fajr until a while after sunrise; evening adhkar from Asr until Maghrib
+    const am = nowMin >= times.fajr && nowMin < times.sunrise + 90 ? 'morning' : (nowMin >= times.asr && nowMin < times.maghrib ? 'evening' : '');
+    if (am !== adhkarMode) setAdhkarMode(am);
+    showOccasion(now, n, nowMin);
+    if (typeof checkAdhan === 'function') checkAdhan(nowMin);
   }
 
-  /* ---------- City picker (mouse, touch, keyboard and TV remote) ---------- */
-  let pickerOpen = false, pickerFocus = 0;
-  const cityButtons = [];
-  (function buildPicker() {
-    const groups = $('pickerGroups');
+  /* ---------- Hijri occasions and Ramadan ---------- */
+  let hijriNumFmt = null;
+  try { hijriNumFmt = new Intl.DateTimeFormat('en-u-ca-islamic-umalqura-nu-latn', { day: 'numeric', month: 'numeric', timeZone: 'UTC' }); } catch (e) {}
+  function hijriMD(y, mo, d) {
+    if (!hijriNumFmt) return null;
+    try {
+      const parts = hijriNumFmt.formatToParts(new Date(Date.UTC(y, mo - 1, d, 12)));
+      const get = t => parseInt((parts.find(x => x.type === t) || {}).value, 10);
+      return { m: get('month'), d: get('day') };
+    } catch (e) { return null; }
+  }
+  const OCCASIONS = [
+    { m: 9, d: 1, name: 'رمضان' }, { m: 10, d: 1, name: 'عيد الفطر' }, { m: 12, d: 9, name: 'يوم عرفة' },
+    { m: 12, d: 10, name: 'عيد الأضحى' }, { m: 1, d: 1, name: 'رأس السنة الهجرية' }, { m: 1, d: 10, name: 'يوم عاشوراء' }
+  ];
+  function daysWord(n) {
+    if (n === 1) return 'يوم واحد';
+    if (n === 2) return 'يومان';
+    if (n <= 10) return ar(n) + ' أيام';
+    return ar(n) + ' يومًا';
+  }
+  let occKey = '', occText = '', occIsRamadan = false;
+  function computeOccasion(n) {
+    const today = hijriMD(n.y, n.mo, n.d);
+    occIsRamadan = !!today && today.m === 9;
+    if (!today) return '';
+    if (today.m === 9) return 'رمضان كريم 🌙 · اليوم ' + ar(today.d) + ' من رمضان';
+    if (today.m === 10 && today.d <= 3) return 'عيد فطر مبارك 🌙';
+    if (today.m === 12 && today.d === 9) return 'يوم عرفة · خير الدعاء دعاء يوم عرفة';
+    if (today.m === 12 && today.d >= 10 && today.d <= 13) return 'عيد أضحى مبارك 🌙';
+    if (today.m === 1 && today.d === 1) return 'كل عام وأنتم بخير · سنة هجرية مباركة';
+    if (today.m === 1 && today.d === 10) return 'يوم عاشوراء';
+    for (let i = 1; i <= 60; i++) {                           // the next occasion within two months
+      const dt = new Date(Date.UTC(n.y, n.mo - 1, n.d + i));
+      const h = hijriMD(dt.getUTCFullYear(), dt.getUTCMonth() + 1, dt.getUTCDate());
+      if (!h) break;
+      const o = OCCASIONS.find(x => x.m === h.m && x.d === h.d);
+      if (o) return 'باقٍ ' + daysWord(i) + ' على ' + o.name + ' تقريبًا';
+    }
+    return '';
+  }
+  function showOccasion(now, n, nowMin) {
+    const k = dayKey(n);
+    if (k !== occKey) { occKey = k; occText = computeOccasion(n); }
+    let text = occText;
+    if (occIsRamadan && times) {
+      const imsak = times.fajr - 10;
+      if (nowMin < times.fajr) text += ' · الإمساك ' + fmt12(imsak);
+      else if (nowMin < times.maghrib) { const left = Math.ceil(times.maghrib - nowMin); text += ' · الإفطار بعد ' + ar(Math.floor(left / 60)) + ':' + ar(left % 60, 2); }
+    }
+    const el = $('occasion');
+    if (el.textContent !== text) el.textContent = text;
+    el.hidden = !text;
+  }
+
+  /* ---------- Picker: cities, stations and settings (mouse, touch, keyboard and TV remote) ---------- */
+  let pickerOpen = false, pickerFocus = 0, pickerMode = 'city', pickerButtons = [];
+  function citySections() {
     const countries = [];
     CITIES.forEach(c => { if (countries.indexOf(c.country) < 0) countries.push(c.country); });
-    countries.forEach(country => {
+    const out = countries.map(country => ({ title: country, items: CITIES.filter(c => c.country === country).map(c => ({
+      id: c.id, label: c.name, cur: c.id === CITY.id, choose: () => chooseCity(c.id) })) }));
+    out.push({ title: 'الإعدادات', items: [{ id: 'adhan', label: adhanLabel(), cur: false, keep: true,
+      choose: b => { toggleAdhan(); b.textContent = adhanLabel(); } }] });
+    return out;
+  }
+  function stationSections() {
+    return STATION_GROUPS.map(g => ({ title: g.title, items: g.items.map(st => ({
+      id: st.id, label: st.name, cur: st.id === STATION.id, choose: () => chooseStation(st.id) })) }));
+  }
+  function buildPicker(mode) {
+    pickerMode = mode;
+    const groups = $('pickerGroups');
+    groups.innerHTML = ''; pickerButtons = [];
+    groups.classList.toggle('wide', mode === 'station');
+    $('pickerTitle').textContent = mode === 'station' ? 'ماذا تحب أن تسمع؟' : 'اختر مدينتك';
+    $('pickerSub').textContent = mode === 'station'
+      ? 'البث من مصادره: إذاعة القرآن الكريم، وإذاعات MP3Quran.net'
+      : 'تُحسب المواقيت بالطريقة الرسمية لكل دولة';
+    (mode === 'station' ? stationSections() : citySections()).forEach(sec => {
       const g = document.createElement('section'); g.className = 'pg';
-      g.innerHTML = '<h3>' + country + '</h3><div class="pg-list"></div>';
+      g.innerHTML = '<h3></h3><div class="pg-list"></div>';
+      g.querySelector('h3').textContent = sec.title;
       const list = g.querySelector('.pg-list');
-      CITIES.filter(c => c.country === country).forEach(c => {
-        const b = document.createElement('button'); b.type = 'button'; b.className = 'cbtn'; b.textContent = c.name; b.dataset.id = c.id;
-        b.addEventListener('click', () => chooseCity(c.id));
-        list.appendChild(b); cityButtons.push(b);
+      sec.items.forEach(it => {
+        const b = document.createElement('button'); b.type = 'button'; b.className = 'cbtn' + (it.cur ? ' cur' : '');
+        b.textContent = it.label; b.dataset.id = it.id;
+        b.addEventListener('click', () => it.choose(b));
+        list.appendChild(b); pickerButtons.push(b);
       });
       groups.appendChild(g);
     });
-  })();
-  function focusCity(i) {
-    pickerFocus = Math.max(0, Math.min(cityButtons.length - 1, i));
-    cityButtons.forEach((b, k) => b.classList.toggle('focus', k === pickerFocus));
-    const b = cityButtons[pickerFocus]; b.focus({ preventScroll: true }); b.scrollIntoView({ block: 'nearest' });
   }
-  function openPicker() {
+  function focusItem(i) {
+    pickerFocus = Math.max(0, Math.min(pickerButtons.length - 1, i));
+    pickerButtons.forEach((b, k) => b.classList.toggle('focus', k === pickerFocus));
+    const b = pickerButtons[pickerFocus]; b.focus({ preventScroll: true }); b.scrollIntoView({ block: 'nearest' });
+  }
+  function openPicker(mode) {
+    buildPicker(mode || 'city');
     pickerOpen = true; $('picker').hidden = false;
-    cityButtons.forEach(b => b.classList.toggle('cur', b.dataset.id === CITY.id));
-    focusCity(Math.max(0, cityButtons.findIndex(b => b.dataset.id === CITY.id)));
+    focusItem(Math.max(0, pickerButtons.findIndex(b => b.classList.contains('cur'))));
   }
-  function closePicker() { pickerOpen = false; $('picker').hidden = true; cityButtons.forEach(b => b.classList.remove('focus')); }
+  function closePicker() { pickerOpen = false; $('picker').hidden = true; pickerButtons.forEach(b => b.classList.remove('focus')); }
+  function choosePickerItem() { const b = pickerButtons[pickerFocus]; if (b) b.click(); }
   function chooseCity(id) {
     const c = byId(id); if (!c) return;
     CITY = c;
@@ -505,10 +715,10 @@ body.idle{cursor:none}
   }
   // move focus on the grid: rows follow the visual layout (right-to-left)
   function moveFocus(key) {
-    const cur = cityButtons[pickerFocus].getBoundingClientRect();
+    const cur = pickerButtons[pickerFocus].getBoundingClientRect();
     const cx = cur.left + cur.width / 2, cy = cur.top + cur.height / 2;
     let best = -1, bestScore = Infinity;
-    cityButtons.forEach((b, i) => {
+    pickerButtons.forEach((b, i) => {
       if (i === pickerFocus) return;
       const r = b.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
       const dx = x - cx, dy = y - cy;
@@ -519,21 +729,50 @@ body.idle{cursor:none}
       const score = (key === 'ArrowUp' || key === 'ArrowDown') ? Math.abs(dy) * 3 + Math.abs(dx) : Math.abs(dx);
       if (score < bestScore) { bestScore = score; best = i; }
     });
-    if (best >= 0) focusCity(best);
+    if (best >= 0) focusItem(best);
   }
-  $('cityBtn').addEventListener('click', openPicker);
+  $('cityBtn').addEventListener('click', () => openPicker('city'));
+  $('nowBtn').addEventListener('click', () => openPicker('station'));
   $('picker').addEventListener('click', e => { if (e.target === $('picker')) closePicker(); });
   // hooks used by the TV app's remote keys
-  window.__qtvOk = () => { if (typeof updOpen !== 'undefined' && updOpen && $('update').contains(document.activeElement)) { document.activeElement.click(); return true; } if (pickerOpen) { chooseCity(cityButtons[pickerFocus].dataset.id); return true; } const b = $('play'); if (b) b.click(); return true; };
-  window.__qtvBack = () => { if (pickerOpen) { closePicker(); return true; } if (typeof updOpen !== 'undefined' && updOpen) { if (!updBusy) closeUpdate(); return true; } return false; };
-  window.__qtvMenu = () => { pickerOpen ? closePicker() : openPicker(); return true; };
+  window.__qtvOk = () => {
+    if (typeof adhanActive !== 'undefined' && adhanActive) { endAdhan(); return true; }
+    if (typeof updOpen !== 'undefined' && updOpen && $('update').contains(document.activeElement)) { document.activeElement.click(); return true; }
+    if (pickerOpen) { choosePickerItem(); return true; }
+    const b = $('play'); if (b) b.click(); return true;
+  };
+  window.__qtvBack = () => {
+    if (typeof adhanActive !== 'undefined' && adhanActive) { endAdhan(); return true; }
+    if (pickerOpen) { closePicker(); return true; }
+    if (typeof updOpen !== 'undefined' && updOpen) { if (!updBusy) closeUpdate(); return true; }
+    return false;
+  };
+  window.__qtvMenu = () => { pickerOpen ? closePicker() : openPicker('station'); return true; };
 
   /* ---------- Verses ---------- */
   let vi = Math.floor(Math.random() * VERSES.length);
-  function setVerse() { $('verseText').textContent = VERSES[vi][0]; $('verseRef').textContent = VERSES[vi][1]; }
+  let adhkarMode = '', ai = 0;
+  function setVerse() {
+    const v = $('verse');
+    let text, ref;
+    if (adhkarMode) {
+      const list = ADHKAR[adhkarMode], x = list[ai % list.length];
+      text = x[0]; ref = (adhkarMode === 'morning' ? 'أذكار الصباح' : 'أذكار المساء') + ' · ' + x[1];
+    } else { text = VERSES[vi][0]; ref = VERSES[vi][1]; }
+    v.classList.toggle('long', text.length > 220);
+    v.classList.toggle('mid', text.length > 110 && text.length <= 220);
+    $('verseText').textContent = text; $('verseRef').textContent = ref;
+  }
   function nextVerse() {
     const v = $('verse'); v.classList.add('out');
-    setTimeout(() => { vi = (vi + 1) % VERSES.length; setVerse(); v.classList.remove('out'); }, 2600);
+    setTimeout(() => { if (adhkarMode) ai++; else vi = (vi + 1) % VERSES.length; setVerse(); v.classList.remove('out'); }, 2600);
+  }
+  function setAdhkarMode(mode) {
+    adhkarMode = mode; ai = 0;
+    if (typeof startVersePhase !== 'function') { setVerse(); return; }
+    if (mode) startVersePhase();            // adhkar stay on screen for the whole period (no photos)
+    else if (phase === 'verses') startPhotoPhase();
+    setVerse();
   }
 
   /* ---------- Scenes ---------- */
@@ -821,6 +1060,7 @@ body.idle{cursor:none}
   }
   function startPhotoPhase() {
     clearTimeout(photoTimer);
+    if (adhkarMode) { startVersePhase(); return; }
     phase = 'photos';
     shownInSegment = 0; photoFails = 0;
     $('verse').classList.add('off');
@@ -832,7 +1072,7 @@ body.idle{cursor:none}
     setPhotoMode(false);
     showScene();
     $('verse').classList.remove('off');
-    photoTimer = setTimeout(startPhotoPhase, VERSE_PHASE_MS);
+    if (!adhkarMode) photoTimer = setTimeout(startPhotoPhase, VERSE_PHASE_MS);
   }
   function nextPhoto() {
     clearTimeout(photoTimer);
@@ -882,7 +1122,8 @@ body.idle{cursor:none}
   function connect() {
     clearTimeout(retryTimer);
     setStatus('wait', 'جارٍ الاتصال بالبث…');
-    const url = STREAMS[si % STREAMS.length];
+    const urls = STATION.urls;
+    const url = urls[si % urls.length];
     lastProgress = Date.now();
     if (NATIVE) {
       clearTimeout(nativeTimer);
@@ -944,7 +1185,84 @@ body.idle{cursor:none}
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && wantPlay) keepAwake(); });
 
   if ('mediaSession' in navigator) {
-    try { navigator.mediaSession.metadata = new MediaMetadata({ title: 'إذاعة القرآن الكريم', artist: 'من القاهرة · بث مباشر' }); } catch (e) {}
+    /* metadata follows the chosen station: see showStation() */
+  }
+
+  /* ---------- Station ---------- */
+  let STATION = STATION_LIST[0];
+  try { const saved = localStorage.getItem('qtv-station'); const f = STATION_LIST.find(x => x.id === saved); if (f) STATION = f; } catch (e) {}
+  function showStation() {
+    $('nowName').textContent = STATION.name;
+    if ('mediaSession' in navigator) {
+      try { navigator.mediaSession.metadata = new MediaMetadata({ title: STATION.name, artist: 'Cairo Quran · بث مباشر' }); } catch (e) {}
+    }
+  }
+  function chooseStation(id) {
+    const f = STATION_LIST.find(x => x.id === id); if (!f) return;
+    STATION = f;
+    try { localStorage.setItem('qtv-station', id); } catch (e) {}
+    showStation(); closePicker();
+    si = 0; retryDelay = 3000; errCount = 0;
+    if (chimePlaying) { resumeAfterAdhan = true; return; }     // switch after the chime
+    if (wantPlay) connect(); else start();
+  }
+  showStation();
+
+  /* ---------- Prayer-time alert (a short chime, then the radio resumes) ---------- */
+  const ADHAN_SRC = 'prayer-chime.mp3';
+  const ALERT_MS = 40000;                      // how long the notice stays on screen
+  let ADHAN_ON = true;
+  try { ADHAN_ON = localStorage.getItem('qtv-adhan') !== '0'; } catch (e) {}
+  function adhanLabel() { return ADHAN_ON ? 'تنبيه الصلاة: مفعّل ✓' : 'تنبيه الصلاة: متوقف'; }
+  function toggleAdhan() { ADHAN_ON = !ADHAN_ON; try { localStorage.setItem('qtv-adhan', ADHAN_ON ? '1' : '0'); } catch (e) {} if (!ADHAN_ON && adhanActive) endAdhan(); }
+  const adhanAudio = new Audio(); adhanAudio.preload = 'auto';
+  let adhanActive = false, chimePlaying = false, resumeAfterAdhan = false, adhanFailsafe = 0, chimeFailsafe = 0, adhanDone = '', adhanReturn = null;
+  function quietStop() {                       // stop the stream for the chime without showing the start screen
+    wantPlay = false; clearTimeout(retryTimer); clearTimeout(nativeTimer);
+    if (NATIVE) { try { NATIVE.stop(); } catch (e) {} }
+    else { audio.pause(); audio.removeAttribute('src'); audio.load(); }
+    $('stopBtn').hidden = true;
+  }
+  function chimeDone() {                       // the chime finished: bring the radio back, keep the notice
+    if (!chimePlaying) return;
+    chimePlaying = false; clearTimeout(chimeFailsafe);
+    try { adhanAudio.pause(); } catch (e) {}
+    if (resumeAfterAdhan) { resumeAfterAdhan = false; start(); }
+  }
+  function startAdhan(k) {
+    if (adhanActive) return;
+    adhanActive = true; chimePlaying = true; adhanReturn = document.activeElement;
+    resumeAfterAdhan = wantPlay;
+    if (wantPlay) quietStop();
+    setStatus('idle', 'موعد صلاة ' + NAMES[k]);
+    $('adhanName').textContent = 'صلاة ' + NAMES[k];
+    $('adhanHint').textContent = NATIVE ? 'اضغط OK للإخفاء' : 'اضغط في أي مكان للإخفاء';
+    $('adhanOv').hidden = false;
+    clearTimeout(adhanFailsafe); adhanFailsafe = setTimeout(endAdhan, ALERT_MS);
+    clearTimeout(chimeFailsafe); chimeFailsafe = setTimeout(chimeDone, 15000);   // never keep the radio silent long
+    adhanAudio.onended = chimeDone; adhanAudio.onerror = chimeDone;
+    try { adhanAudio.currentTime = 0; } catch (e) {}
+    adhanAudio.src = ADHAN_SRC;
+    const p = adhanAudio.play();
+    if (p && p.catch) p.catch(chimeDone);      // sound blocked: resume at once, the notice still shows
+  }
+  function endAdhan() {
+    if (!adhanActive) return;
+    if (chimePlaying) chimeDone();
+    adhanActive = false; clearTimeout(adhanFailsafe);
+    $('adhanOv').hidden = true;
+    if (!wantPlay) setStatus('idle', $('gate').classList.contains('hide') ? 'متوقف مؤقتًا' : 'جاهز للتشغيل');
+    if (adhanReturn && adhanReturn.focus) adhanReturn.focus();
+  }
+  $('adhanOv').addEventListener('click', endAdhan);
+  function checkAdhan(nowMin) {
+    for (const k of ['fajr', 'dhuhr', 'asr', 'maghrib', 'isha']) {
+      const key = todayKey + k;
+      if (nowMin >= times[k] && nowMin < times[k] + 1) {
+        if (adhanDone !== key) { adhanDone = key; if (ADHAN_ON) startAdhan(k); }
+        return;
+      }
+    }
   }
 
   function start() {
@@ -983,15 +1301,20 @@ body.idle{cursor:none}
     if (typeof updKey === 'function' && updKey(k)) { e.preventDefault(); return; }
     if (typeof updOpen !== 'undefined' && updOpen && $('update').contains(document.activeElement) && (k === 'Enter' || k === ' ')) return;
     if (document.activeElement && (document.activeElement.id === 'shareBtn' || document.activeElement.id === 'gateShare') && (k === 'Enter' || k === ' ')) return;
+    if (adhanActive) {
+      if (k === 'Enter' || k === ' ' || k === 'Escape' || k === 'Backspace' || k === 'GoBack' || k.indexOf('Media') === 0) { e.preventDefault(); endAdhan(); }
+      return;
+    }
     if (pickerOpen) {
       if (k === 'ArrowUp' || k === 'ArrowDown' || k === 'ArrowLeft' || k === 'ArrowRight') { e.preventDefault(); moveFocus(k); }
-      else if (k === 'Enter' || k === ' ') { e.preventDefault(); chooseCity(cityButtons[pickerFocus].dataset.id); }
+      else if (k === 'Enter' || k === ' ') { e.preventDefault(); choosePickerItem(); }
       else if (k === 'Escape' || k === 'Backspace' || k === 'GoBack') { e.preventDefault(); closePicker(); }
       return;
     }
-    if (k === 'ArrowUp' || k === 'ArrowDown' || k === 'ContextMenu') { e.preventDefault(); openPicker(); return; }
+    if (k === 'ArrowUp' || k === 'ContextMenu') { e.preventDefault(); openPicker('station'); return; }
+    if (k === 'ArrowDown') { e.preventDefault(); openPicker('city'); return; }
     if (k === 'Enter' || k === ' ' || k === 'MediaPlayPause' || k === 'MediaPlay' || k === 'MediaPause') {
-      if (document.activeElement === $('cityBtn')) return;    // let the button open the picker
+      if (document.activeElement === $('cityBtn') || document.activeElement === $('nowBtn')) return;    // let the button open the picker
       e.preventDefault(); wantPlay ? pause() : start();
     }
   });
@@ -1036,7 +1359,7 @@ body.idle{cursor:none}
 
   /* ---------- Share ---------- */
   const SHARE_URL = 'https://cairoquran.com/';
-  const SHARE_TEXT = 'إذاعة القرآن الكريم من القاهرة 📻 بث مباشر على مدار الساعة، مع مواقيت الصلاة لمدينتك. مجاني لوجه الله.';
+  const SHARE_TEXT = 'Cairo Quran 📻 إذاعة القرآن الكريم وإذاعات كبار القرّاء، مع مواقيت الصلاة لمدينتك وتنبيه بموعدها وأذكار الصباح والمساء. مجاني لوجه الله.';
   let shareOpen = false, shareReturn = null;
   function trackShare(net) {
     try { new Image().src = GC + '/count?p=' + encodeURIComponent('share-' + net) + '&t=' + encodeURIComponent('مشاركة: ' + net) + '&e=true&rnd=' + Math.random().toString(36).slice(2); } catch (e) {}
@@ -1068,11 +1391,11 @@ body.idle{cursor:none}
       facebook: 'https://www.facebook.com/sharer/sharer.php?u=' + u,
       telegram: 'https://t.me/share/url?url=' + u + '&text=' + t,
       x: 'https://twitter.com/intent/tweet?text=' + t + '&url=' + u,
-      email: 'mailto:?subject=' + encodeURIComponent('إذاعة القرآن الكريم من القاهرة') + '&body=' + encodeURIComponent(SHARE_TEXT + '\n\n' + SHARE_URL)
+      email: 'mailto:?subject=' + encodeURIComponent('Cairo Quran') + '&body=' + encodeURIComponent(SHARE_TEXT + '\n\n' + SHARE_URL)
     };
     trackShare(net);
     if (net === 'more') {
-      if (navigator.share) navigator.share({ title: 'إذاعة القرآن الكريم', text: SHARE_TEXT, url: SHARE_URL }).catch(() => {});
+      if (navigator.share) navigator.share({ title: 'Cairo Quran', text: SHARE_TEXT, url: SHARE_URL }).catch(() => {});
       return;
     }
     if (net === 'email') { location.href = links.email; return; }
@@ -1162,7 +1485,7 @@ body.idle{cursor:none}
   setInterval(nextVerse, 50000);
   setInterval(() => { if (!photoMode) showScene(); }, 180000);
   startPhotoPhase();
-  if (!startCity.chosen) setTimeout(() => { if (!pickerOpen) openPicker(); }, 1500);
+  if (!startCity.chosen) setTimeout(() => { if (!pickerOpen) openPicker('city'); }, 1500);
   countVisit(); showVisits(); setInterval(showVisits, 30 * 60000);
   setTimeout(checkUpdate, 20000); setInterval(checkUpdate, 6 * 3600000);
   let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { drawScene(front, PAL[currentPeriod], variant * 7919); }, 300); });
