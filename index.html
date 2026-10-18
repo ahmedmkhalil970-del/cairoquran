@@ -122,6 +122,14 @@ body.idle{cursor:none}
   .p-head b,.p-head span{font-size:3.4vw}.p .n{font-size:3vw}.p .t{font-size:4.4vw}
   .gate-title{font-size:6vw}.gate-hint{font-size:3.4vw}.sig{font-size:3vw}
 }
+/* stop button */
+.status-row{display:flex;align-items:center;gap:.8vw;flex-wrap:wrap}
+.status-row .status{margin-top:0}
+.stop-btn{all:unset;pointer-events:auto;cursor:pointer;display:inline-flex;align-items:center;gap:.6vw;padding:.6vh 1.2vw;border-radius:999px;
+  font-size:1.15vw;color:var(--ink);background:rgba(232,194,122,.18);border:1px solid rgba(232,194,122,.55);backdrop-filter:blur(6px);transition:background .2s,transform .2s}
+.stop-btn svg{width:1.05vw;height:1.05vw;fill:currentColor}
+.stop-btn:hover,.stop-btn:focus-visible{background:rgba(232,194,122,.34);transform:scale(1.04)}
+@media (max-width:700px){.status-row{gap:2vw}.stop-btn{font-size:3.4vw;padding:.8vh 3.4vw;gap:1.6vw}.stop-btn svg{width:3.2vw;height:3.2vw}}
 /* share */
 .share-btn{all:unset;pointer-events:auto;cursor:pointer;display:inline-flex;align-items:center;gap:.5vw;direction:rtl;
   letter-spacing:0;font-size:1.05vw;padding:.4vh .9vw;border-radius:999px;color:var(--ink-soft);
@@ -212,7 +220,10 @@ body.idle{cursor:none}
     <div class="station">
       <h1>إذاعة القرآن الكريم</h1>
       <div class="from">من القاهرة</div>
-      <div class="status" id="status" data-s="idle"><span class="dot"></span><span id="statusText">جاهز للتشغيل</span></div>
+      <div class="status-row">
+  <div class="status" id="status" data-s="idle"><span class="dot"></span><span id="statusText">جاهز للتشغيل</span></div>
+        <button class="stop-btn" id="stopBtn" type="button" hidden aria-label="إيقاف البث"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>إيقاف</button>
+      </div>
       <div class="dbg" id="dbg" hidden></div>
     </div>
     <div class="clock">
@@ -866,6 +877,7 @@ body.idle{cursor:none}
       if (err && err.name === 'NotAllowedError') { // browser blocked sound until a key press
         wantPlay = false;
         setStatus('idle', 'جاهز للتشغيل');
+        $('stopBtn').hidden = true;
         $('gateTitle').textContent = 'بسم الله الرحمن الرحيم';
         $('gateHint').textContent = TOUCH ? 'اضغط زر التشغيل لبدء البث' : 'اضغط OK لبدء البث';
         $('gate').classList.remove('hide'); $('play').focus();
@@ -917,11 +929,13 @@ body.idle{cursor:none}
   function start() {
     wantPlay = true;
     $('gate').classList.add('hide');
+    if (!NATIVE) $('stopBtn').hidden = false;
     keepAwake();
     connect();
   }
   function pause() {
     wantPlay = false; clearTimeout(retryTimer); clearTimeout(nativeTimer);
+    $('stopBtn').hidden = true;
     if (NATIVE) { try { NATIVE.stop(); } catch (e) {} }
     else { audio.pause(); audio.removeAttribute('src'); audio.load(); }
     setStatus('idle', 'متوقف مؤقتًا');
@@ -931,6 +945,14 @@ body.idle{cursor:none}
     $('play').focus();
   }
   $('play').addEventListener('click', () => (wantPlay ? pause() : start()));
+  $('stopBtn').addEventListener('click', () => { if (wantPlay) pause(); });
+  if ('mediaSession' in navigator && !NATIVE) {     // lock-screen / headset buttons
+    try {
+      navigator.mediaSession.setActionHandler('play', () => { if (!wantPlay) start(); });
+      navigator.mediaSession.setActionHandler('pause', () => { if (wantPlay) pause(); });
+      navigator.mediaSession.setActionHandler('stop', () => { if (wantPlay) pause(); });
+    } catch (e) {}
+  }
   document.addEventListener('keydown', e => {
     const k = e.key;
     if (typeof shareOpen !== 'undefined' && shareOpen) {
