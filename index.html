@@ -130,6 +130,13 @@ body.idle{cursor:none}
 .stop-btn svg{width:1.05vw;height:1.05vw;fill:currentColor}
 .stop-btn:hover,.stop-btn:focus-visible{background:rgba(232,194,122,.34);transform:scale(1.04)}
 @media (max-width:700px){.status-row{gap:2vw}.stop-btn{font-size:3.4vw;padding:.8vh 3.4vw;gap:1.6vw}.stop-btn svg{width:3.2vw;height:3.2vw}}
+/* update notice (TV app) */
+.update{position:fixed;top:2.6vh;left:50%;transform:translateX(-50%);z-index:15;max-width:33vw;display:flex;flex-wrap:wrap;
+  justify-content:center;align-items:baseline;column-gap:.6vw;row-gap:.3vh;text-align:center;
+  padding:1vh 1.6vw;border-radius:1.2vw;background:rgba(10,13,30,.92);border:1px solid rgba(232,194,122,.7);
+  box-shadow:0 .6vh 3vh rgba(0,0,0,.5);font-size:1.1vw;line-height:1.5;color:var(--ink)}
+.update b{color:var(--gold);font-weight:600}
+.update .code{font-variant-numeric:tabular-nums;letter-spacing:.06em;color:var(--gold);font-weight:700;font-size:1.5vw}
 /* share */
 .share-btn{all:unset;pointer-events:auto;cursor:pointer;display:inline-flex;align-items:center;gap:.5vw;direction:rtl;
   letter-spacing:0;font-size:1.05vw;padding:.4vh .9vw;border-radius:999px;color:var(--ink-soft);
@@ -248,6 +255,7 @@ body.idle{cursor:none}
   </div>
 </div>
 
+<div class="update" id="update" hidden role="status"><span>🔔 يتوفر إصدار جديد من التطبيق <b id="updVer"></b></span><span>للتحديث: افتح تطبيق Downloader واكتب <span class="code" id="updCode"></span></span></div>
 <div class="share" id="share" hidden role="dialog" aria-modal="true" aria-labelledby="shareTitle">
   <div class="share-card">
     <h2 id="shareTitle">شارك الإذاعة</h2>
@@ -1066,6 +1074,20 @@ body.idle{cursor:none}
     document.querySelectorAll('.sbtn').forEach(b => b.addEventListener('click', () => shareTo(b.dataset.net)));
   }
 
+  /* ---------- New-version notice (TV app only) ---------- */
+  const APP_CODE = (NATIVE && NATIVE.versionCode) ? Number(NATIVE.versionCode()) || 0 : 0;
+  let updHideT = 0;
+  window.__qtvUpdateInfo = text => {
+    let v = null; try { v = JSON.parse(text); } catch (e) { return; }
+    if (!v || !(Number(v.versionCode) > APP_CODE)) { $('update').hidden = true; return; }
+    $('updVer').textContent = v.versionName ? '(' + v.versionName + ')' : '';
+    $('updCode').textContent = v.code || '';
+    $('update').hidden = false;
+    clearTimeout(updHideT);
+    updHideT = setTimeout(() => { $('update').hidden = true; }, 3 * 60000);   // show for 3 minutes, then again at the next check
+  };
+  function checkUpdate() { if (APP_CODE && NATIVE.checkUpdate) { try { NATIVE.checkUpdate(); } catch (e) {} } }
+
   /* ---------- Boot ---------- */
   buildPrayers(); setVerse(); tick();
   setInterval(tick, 1000);
@@ -1074,6 +1096,7 @@ body.idle{cursor:none}
   startPhotoPhase();
   if (!startCity.chosen) setTimeout(() => { if (!pickerOpen) openPicker(); }, 1500);
   countVisit(); showVisits(); setInterval(showVisits, 30 * 60000);
+  setTimeout(checkUpdate, 20000); setInterval(checkUpdate, 6 * 3600000);
   let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { drawScene(front, PAL[currentPeriod], variant * 7919); }, 300); });
   $('play').focus();
 })();
