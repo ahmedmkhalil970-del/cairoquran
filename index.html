@@ -131,12 +131,21 @@ body.idle{cursor:none}
 .stop-btn:hover,.stop-btn:focus-visible{background:rgba(232,194,122,.34);transform:scale(1.04)}
 @media (max-width:700px){.status-row{gap:2vw}.stop-btn{font-size:3.4vw;padding:.8vh 3.4vw;gap:1.6vw}.stop-btn svg{width:3.2vw;height:3.2vw}}
 /* update notice (TV app) */
-.update{position:fixed;top:2.6vh;left:50%;transform:translateX(-50%);z-index:15;max-width:33vw;display:flex;flex-wrap:wrap;
-  justify-content:center;align-items:baseline;column-gap:.6vw;row-gap:.3vh;text-align:center;
-  padding:1vh 1.6vw;border-radius:1.2vw;background:rgba(10,13,30,.92);border:1px solid rgba(232,194,122,.7);
-  box-shadow:0 .6vh 3vh rgba(0,0,0,.5);font-size:1.1vw;line-height:1.5;color:var(--ink)}
+.update{position:fixed;top:2.6vh;left:50%;transform:translateX(-50%);z-index:15;width:34vw;display:flex;flex-direction:column;align-items:center;gap:1vh;
+  padding:1.4vh 1.6vw;border-radius:1.2vw;background:rgba(10,13,30,.95);border:1px solid rgba(232,194,122,.7);
+  box-shadow:0 .6vh 3vh rgba(0,0,0,.55);font-size:1.1vw;line-height:1.5;color:var(--ink);text-align:center}
 .update b{color:var(--gold);font-weight:600}
-.update .code{font-variant-numeric:tabular-nums;letter-spacing:.06em;color:var(--gold);font-weight:700;font-size:1.5vw}
+.upd-text{display:flex;flex-direction:column;gap:.2vh}
+.upd-msg{color:var(--ink-soft)}
+.upd-msg:empty{display:none}
+.upd-msg .code{color:var(--gold);font-weight:700;letter-spacing:.06em}
+.upd-actions{display:flex;gap:.8vw}
+.ubtn{all:unset;cursor:pointer;padding:.8vh 1.6vw;border-radius:999px;font-size:1.1vw;color:var(--ink);background:rgba(253,246,233,.08);border:1px solid var(--edge);transition:transform .15s,background .15s}
+.ubtn.primary{background:var(--gold);color:#1a1405;font-weight:600;border-color:var(--gold)}
+.ubtn:focus,.ubtn:focus-visible{outline:none;transform:scale(1.08);box-shadow:0 0 0 .3vw rgba(253,246,233,.85)}
+.ubtn[disabled]{opacity:.45;pointer-events:none}
+.upd-bar{width:100%;height:.6vh;border-radius:999px;background:rgba(253,246,233,.12);overflow:hidden}
+.upd-bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .4s}
 /* share */
 .share-btn{all:unset;pointer-events:auto;cursor:pointer;display:inline-flex;align-items:center;gap:.5vw;direction:rtl;
   letter-spacing:0;font-size:1.05vw;padding:.4vh .9vw;border-radius:999px;color:var(--ink-soft);
@@ -255,7 +264,11 @@ body.idle{cursor:none}
   </div>
 </div>
 
-<div class="update" id="update" hidden role="status"><span>🔔 يتوفر إصدار جديد من التطبيق <b id="updVer"></b></span><span>للتحديث: افتح تطبيق Downloader واكتب <span class="code" id="updCode"></span></span></div>
+<div class="update" id="update" hidden role="dialog" aria-labelledby="updTitle">
+  <div class="upd-text"><span id="updTitle">🔔 يتوفر إصدار جديد من التطبيق <b id="updVer"></b></span><span class="upd-msg" id="updMsg"></span></div>
+  <div class="upd-actions"><button class="ubtn primary" id="updNow" type="button">تحديث الآن</button><button class="ubtn" id="updLater" type="button">لاحقًا</button></div>
+  <div class="upd-bar" id="updBar" hidden><i id="updFill"></i></div>
+</div>
 <div class="share" id="share" hidden role="dialog" aria-modal="true" aria-labelledby="shareTitle">
   <div class="share-card">
     <h2 id="shareTitle">شارك الإذاعة</h2>
@@ -511,8 +524,8 @@ body.idle{cursor:none}
   $('cityBtn').addEventListener('click', openPicker);
   $('picker').addEventListener('click', e => { if (e.target === $('picker')) closePicker(); });
   // hooks used by the TV app's remote keys
-  window.__qtvOk = () => { if (pickerOpen) { chooseCity(cityButtons[pickerFocus].dataset.id); return true; } const b = $('play'); if (b) b.click(); return true; };
-  window.__qtvBack = () => { if (pickerOpen) { closePicker(); return true; } return false; };
+  window.__qtvOk = () => { if (typeof updOpen !== 'undefined' && updOpen && $('update').contains(document.activeElement)) { document.activeElement.click(); return true; } if (pickerOpen) { chooseCity(cityButtons[pickerFocus].dataset.id); return true; } const b = $('play'); if (b) b.click(); return true; };
+  window.__qtvBack = () => { if (pickerOpen) { closePicker(); return true; } if (typeof updOpen !== 'undefined' && updOpen) { if (!updBusy) closeUpdate(); return true; } return false; };
   window.__qtvMenu = () => { pickerOpen ? closePicker() : openPicker(); return true; };
 
   /* ---------- Verses ---------- */
@@ -967,6 +980,8 @@ body.idle{cursor:none}
       if (k === 'Escape' || k === 'Backspace' || k === 'GoBack') { e.preventDefault(); closeShare(); }
       return;                                   // buttons inside the share panel handle Enter themselves
     }
+    if (typeof updKey === 'function' && updKey(k)) { e.preventDefault(); return; }
+    if (typeof updOpen !== 'undefined' && updOpen && $('update').contains(document.activeElement) && (k === 'Enter' || k === ' ')) return;
     if (document.activeElement && (document.activeElement.id === 'shareBtn' || document.activeElement.id === 'gateShare') && (k === 'Enter' || k === ' ')) return;
     if (pickerOpen) {
       if (k === 'ArrowUp' || k === 'ArrowDown' || k === 'ArrowLeft' || k === 'ArrowRight') { e.preventDefault(); moveFocus(k); }
@@ -1074,19 +1089,72 @@ body.idle{cursor:none}
     document.querySelectorAll('.sbtn').forEach(b => b.addEventListener('click', () => shareTo(b.dataset.net)));
   }
 
-  /* ---------- New-version notice (TV app only) ---------- */
+  /* ---------- New-version notice + one-press update (TV app only) ---------- */
   const APP_CODE = (NATIVE && NATIVE.versionCode) ? Number(NATIVE.versionCode()) || 0 : 0;
-  let updHideT = 0;
+  const CAN_SELF_UPDATE = !!(NATIVE && NATIVE.startUpdate);
+  let updInfo = null, updOpen = false, updReturn = null, updHideT = 0, updBusy = false;
+  function updFocusables() { return [$('updNow'), $('updLater')].filter(b => !b.disabled && !b.hidden); }
+  function updMsg(html) { $('updMsg').innerHTML = html || ''; }
+  function codeHint(alt) { return updInfo && updInfo.code ? (alt ? 'أو ' : 'للتحديث: ') + 'افتح تطبيق Downloader واكتب <span class="code">' + updInfo.code + '</span>' : ''; }
+  function openUpdate() {
+    if (updOpen) return;
+    updReturn = document.activeElement;
+    updOpen = true; $('update').hidden = false;
+    $('updNow').hidden = !CAN_SELF_UPDATE;
+    updMsg(CAN_SELF_UPDATE ? '' : codeHint());
+    const f = updFocusables()[0]; if (f) f.focus();
+    clearTimeout(updHideT);
+    updHideT = setTimeout(() => { if (!updBusy) closeUpdate(); }, 10 * 60000);   // step aside after 10 minutes; it comes back at the next check
+  }
+  function closeUpdate() {
+    if (!updOpen) return;
+    updOpen = false; $('update').hidden = true; clearTimeout(updHideT);
+    if (updReturn && updReturn.focus) updReturn.focus(); else $('play').focus();
+  }
   window.__qtvUpdateInfo = text => {
     let v = null; try { v = JSON.parse(text); } catch (e) { return; }
-    if (!v || !(Number(v.versionCode) > APP_CODE)) { $('update').hidden = true; return; }
+    if (!v || !(Number(v.versionCode) > APP_CODE)) { if (!updBusy) closeUpdate(); return; }
+    updInfo = v;
     $('updVer').textContent = v.versionName ? '(' + v.versionName + ')' : '';
-    $('updCode').textContent = v.code || '';
-    $('update').hidden = false;
-    clearTimeout(updHideT);
-    updHideT = setTimeout(() => { $('update').hidden = true; }, 3 * 60000);   // show for 3 minutes, then again at the next check
+    openUpdate();
   };
-  function checkUpdate() { if (APP_CODE && NATIVE.checkUpdate) { try { NATIVE.checkUpdate(); } catch (e) {} } }
+  window.__qtvUpd = state => {             // progress from the app while it downloads and installs
+    const st = String(state);
+    if (st.indexOf('progress:') === 0) {
+      const pct = Math.max(0, Math.min(100, parseInt(st.slice(9), 10) || 0));
+      $('updBar').hidden = false; $('updFill').style.width = pct + '%';
+      updMsg('جارٍ تحميل التحديث… ' + arNum(pct) + '٪');
+    } else if (st === 'ready') {
+      $('updFill').style.width = '100%'; updMsg('اكتمل التحميل، جارٍ فتح شاشة التثبيت…');
+    } else if (st === 'permission') {
+      updMsg('مرة واحدة فقط: فعّل السماح لهذا التطبيق بالتثبيت، ثم اضغط رجوع');
+    } else if (st === 'installing') {
+      updMsg('اضغط «تثبيت» في الشاشة التالية');
+    } else if (st.indexOf('error') === 0) {
+      updBusy = false; $('updNow').disabled = false; $('updLater').disabled = false; $('updBar').hidden = true;
+      updMsg('تعذّر التحديث الآن. حاول مرة أخرى، ' + codeHint(true));
+      $('updNow').textContent = 'حاول مرة أخرى'; $('updNow').focus();
+    }
+  };
+  function startUpdate() {
+    if (!CAN_SELF_UPDATE || updBusy) return;
+    updBusy = true; $('updNow').disabled = true; $('updLater').disabled = true;
+    $('updBar').hidden = false; $('updFill').style.width = '0%';
+    updMsg('جارٍ تحميل التحديث…');
+    try { NATIVE.startUpdate((updInfo && updInfo.url) || 'https://cairoquran.com/quran.apk'); } catch (e) { window.__qtvUpd('error:bridge'); }
+  }
+  $('updNow').addEventListener('click', startUpdate);
+  $('updLater').addEventListener('click', closeUpdate);
+  function updKey(k) {                       // remote keys while the notice has focus
+    if (!updOpen || !$('update').contains(document.activeElement)) return false;
+    if (k === 'ArrowLeft' || k === 'ArrowRight') {
+      const f = updFocusables(); if (f.length > 1) { const i = f.indexOf(document.activeElement); f[(i + 1) % f.length].focus(); }
+      return true;
+    }
+    if (k === 'ArrowUp' || k === 'ArrowDown') return true;
+    return false;
+  }
+  function checkUpdate() { if (APP_CODE && NATIVE.checkUpdate && !updBusy) { try { NATIVE.checkUpdate(); } catch (e) {} } }
 
   /* ---------- Boot ---------- */
   buildPrayers(); setVerse(); tick();
