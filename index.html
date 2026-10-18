@@ -170,6 +170,7 @@ body.has-adhkar .place{bottom:27vh}
 .adhan-card b{font-family:var(--f-title);font-size:5vw;color:var(--gold);text-shadow:0 .3vw 2vw rgba(0,0,0,.6)}
 .adhan-card small{font-size:1.1vw;color:var(--ink-faint)}
 @media (max-width:700px){.now{max-width:none;font-size:3.2vw;gap:1.6vw;padding:.8vh 3vw;border-radius:2.4vw}.now-k{font-size:2.6vw}.now i.chip,.city i.chip{font-size:2.8vw;padding:.3vh 2.2vw}.new-badge{font-size:2.4vw;padding:.1vh 1.6vw}.city-row{gap:1.4vw}
+  .sig .vsep{display:none!important}.sig{column-gap:2.4vw}
   .adhkar-bar{min-height:5vh;border-radius:2.4vw}.ab-k{font-size:3vw;padding:0 2.6vw}.ab-text{font-size:4.2vw;padding:0 3vw}.ab-text small{font-size:2.6vw}body.has-adhkar .place{bottom:42vh}
   .top{min-width:0}.top .station{min-width:0;flex:1 1 auto}.chip-x{display:none}.top .clock{flex-shrink:0}.now{max-width:100%;box-sizing:border-box}.now b{min-width:0}.now-k{display:none}
   .picker-groups.wide .pg-list{grid-template-columns:repeat(2,1fr)}.verse.mid p{font-size:5.4vw}.verse.long p{font-size:4.3vw}.verse.long{max-width:94vw}
@@ -213,6 +214,15 @@ body.has-adhkar .place{bottom:27vh}
 .share-close{all:unset;cursor:pointer;margin-top:14px;font-size:14px;color:var(--ink-faint);padding:6px 14px;border-radius:8px}
 .share-close:hover,.share-close:focus-visible{color:var(--ink)}
 @media (max-width:700px){.gate-share{font-size:3.6vw;padding:1vh 4vw}.share-btn{font-size:3.2vw;padding:.6vh 2.6vw;gap:1.4vw}.share-btn svg{width:3.2vw;height:3.2vw}}
+.steps{margin:0;padding:0 1.4em 0 0;text-align:right;display:flex;flex-direction:column;gap:10px;font-size:15px;line-height:1.7;color:var(--ink)}
+.steps b{white-space:nowrap}
+.steps li::marker{color:var(--gold);font-weight:600}
+.dl-code{display:block;width:max-content;margin:6px auto 2px;padding:6px 18px;border-radius:10px;direction:ltr;font-size:30px;font-weight:600;letter-spacing:.14em;color:var(--gold);background:rgba(232,194,122,.12);border:1px solid rgba(232,194,122,.5)}
+.info .note{margin-top:16px;padding:10px 12px;border-radius:12px;font-size:14px;color:var(--ink-soft);background:rgba(253,246,233,.06);border:1px solid var(--edge)}
+.mail-go{display:block;margin-top:12px;padding:11px;border-radius:12px;font-size:16px;font-weight:600;text-decoration:none;color:#1a1405;background:var(--gold)}
+.mail-go:hover,.mail-go:focus-visible{filter:brightness(1.08)}
+.sig-mail{letter-spacing:.04em}
+.sig{flex-wrap:wrap;justify-content:center;row-gap:.6vh}
 [hidden]{display:none!important}
 #nl-badge-frame{display:none!important}
 /* city button + picker */
@@ -304,7 +314,7 @@ body.has-adhkar .place{bottom:27vh}
     <div class="p-head"><button class="city" id="cityBtn" type="button"><b id="cityLabel">مواقيت الصلاة · الكويت</b><span class="city-row"><i class="chip" id="cityChip">تغيير المدينة ▾</i><em class="new-badge" id="cityNew" hidden>جديد</em></span></button><span id="countdown"></span></div>
   </footer>
   </div>
-  <div class="sig"><span>By-<b>Ahmed Khalil</b></span><span class="vsep" id="visitsDot" hidden>·</span><span class="visits" id="visits" hidden></span><span class="vsep share-sep" id="shareSep">·</span><button class="share-btn" id="shareBtn" type="button" aria-label="شارك Cairo Quran"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>شارك مع أحبابك</button></div>
+  <div class="sig"><span>By-<b>Ahmed Khalil</b></span><span class="vsep" id="visitsDot" hidden>·</span><span class="visits" id="visits" hidden></span><span class="vsep share-sep" id="shareSep">·</span><button class="share-btn" id="shareBtn" type="button" aria-label="شارك Cairo Quran"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>شارك مع أحبابك</button><span class="vsep web-x">·</span><button class="share-btn web-x" id="tvBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>على التليفزيون</button><span class="vsep web-x">·</span><button class="share-btn web-x" id="contactBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>تواصل معنا</button><span class="vsep" id="sigMailSep" hidden>·</span><span class="sig-mail" id="sigMail" hidden></span></div>
 </main>
 
 <div class="picker" id="picker" hidden role="dialog" aria-modal="true" aria-labelledby="pickerTitle">
@@ -320,6 +330,32 @@ body.has-adhkar .place{bottom:27vh}
   <div class="upd-actions"><button class="ubtn primary" id="updNow" type="button">تحديث الآن</button><button class="ubtn" id="updLater" type="button">لاحقًا</button></div>
   <div class="upd-bar" id="updBar" hidden><i id="updFill"></i></div>
 </div>
+<div class="share info" id="tvPanel" hidden role="dialog" aria-modal="true" aria-labelledby="tvTitle">
+  <div class="share-card">
+    <h2 id="tvTitle">Cairo Quran على التليفزيون</h2>
+    <p>لأجهزة Android TV وGoogle TV · مجانًا</p>
+    <ol class="steps">
+      <li>نزّل تطبيق <b>Downloader</b> من متجر التطبيقات في التليفزيون.</li>
+      <li>افتحه، واكتب الكود ده واضغط <b>Go</b>:<span class="dl-code">5229519</span></li>
+      <li>اضغط <b>Install</b>. لو طلب إذن «تثبيت التطبيقات غير المعروفة» فعّله وارجع.</li>
+      <li>لو ظهرت رسالة Play Protect اختار <b>Install anyway</b>؛ الرسالة دي بتظهر لأي تطبيق متنزّل من برّه المتجر.</li>
+      <li>افتح Cairo Quran واستمتع. التحديثات الجاية بتوصلك من جوه التطبيق.</li>
+    </ol>
+    <div class="note">تليفزيون سامسونج أو إل جي؟ افتح <b>cairoquran.com</b> من متصفح التليفزيون مباشرة.</div>
+    <button class="share-close" type="button" data-close>إغلاق</button>
+  </div>
+</div>
+
+<div class="share info" id="contactPanel" hidden role="dialog" aria-modal="true" aria-labelledby="contactTitle">
+  <div class="share-card">
+    <h2 id="contactTitle">تواصل معنا</h2>
+    <p>لاقتراح قارئ أو مدينة، أو لو واجهتك أي مشكلة، يسعدنا نسمع منك.</p>
+    <div class="share-link"><span id="contactAddr"></span><button type="button" id="contactCopy">نسخ</button></div>
+    <a class="mail-go" id="contactSend" href="#">أرسل رسالة</a>
+    <button class="share-close" type="button" data-close>إغلاق</button>
+  </div>
+</div>
+
 <div class="share" id="share" hidden role="dialog" aria-modal="true" aria-labelledby="shareTitle">
   <div class="share-card">
     <h2 id="shareTitle">شارك Cairo Quran</h2>
@@ -1363,13 +1399,17 @@ body.has-adhkar .place{bottom:27vh}
   }
   document.addEventListener('keydown', e => {
     const k = e.key;
+    if (typeof infoOpen !== 'undefined' && infoOpen) {
+      if (k === 'Escape' || k === 'Backspace' || k === 'GoBack') { e.preventDefault(); closeInfo(); }
+      return;
+    }
     if (typeof shareOpen !== 'undefined' && shareOpen) {
       if (k === 'Escape' || k === 'Backspace' || k === 'GoBack') { e.preventDefault(); closeShare(); }
       return;                                   // buttons inside the share panel handle Enter themselves
     }
     if (typeof updKey === 'function' && updKey(k)) { e.preventDefault(); return; }
     if (typeof updOpen !== 'undefined' && updOpen && $('update').contains(document.activeElement) && (k === 'Enter' || k === ' ')) return;
-    if (document.activeElement && (document.activeElement.id === 'shareBtn' || document.activeElement.id === 'gateShare') && (k === 'Enter' || k === ' ')) return;
+    if (document.activeElement && ['shareBtn', 'gateShare', 'tvBtn', 'contactBtn'].indexOf(document.activeElement.id) >= 0 && (k === 'Enter' || k === ' ')) return;
     if (adhanActive) {
       if (k === 'Enter' || k === ' ' || k === 'Escape' || k === 'Backspace' || k === 'GoBack' || k.indexOf('Media') === 0) { e.preventDefault(); endAdhan(); }
       return;
@@ -1470,6 +1510,43 @@ body.has-adhkar .place{bottom:27vh}
     if (net === 'email') { location.href = links.email; return; }
     window.open(links[net], '_blank', 'noopener');
   }
+  /* ---------- TV install guide and contact ---------- */
+  const MAIL = ['contact', 'cairoquran.com'].join('@');          // assembled here so address harvesters miss it
+  let infoOpen = null, infoReturn = null;
+  function trackEvent(name, title) {
+    try { new Image().src = GC + '/count?p=' + encodeURIComponent(name) + '&t=' + encodeURIComponent(title) + '&e=true&rnd=' + Math.random().toString(36).slice(2); } catch (e) {}
+  }
+  function openInfo(id) {
+    infoReturn = document.activeElement; infoOpen = $(id); infoOpen.hidden = false;
+    const f = infoOpen.querySelector('[data-close]'); if (f) f.focus();
+    trackEvent(id === 'tvPanel' ? 'tv-guide' : 'contact', id === 'tvPanel' ? 'طريقة التنزيل على التليفزيون' : 'تواصل معنا');
+  }
+  function closeInfo() {
+    if (!infoOpen) return;
+    infoOpen.hidden = true; infoOpen = null;
+    if (infoReturn && infoReturn.focus) infoReturn.focus();
+  }
+  $('contactAddr').textContent = MAIL;
+  $('contactSend').href = 'mailto:' + MAIL + '?subject=' + encodeURIComponent('Cairo Quran');
+  document.querySelectorAll('.info').forEach(el => {
+    el.addEventListener('click', e => { if (e.target === el || e.target.hasAttribute('data-close')) closeInfo(); });
+  });
+  $('tvBtn').addEventListener('click', () => openInfo('tvPanel'));
+  $('contactBtn').addEventListener('click', () => openInfo('contactPanel'));
+  $('contactCopy').addEventListener('click', async () => {
+    let ok = false;
+    try { await navigator.clipboard.writeText(MAIL); ok = true; } catch (e) {
+      try { const t = document.createElement('textarea'); t.value = MAIL; t.style.position = 'fixed'; t.style.opacity = '0';
+        document.body.appendChild(t); t.select(); ok = document.execCommand('copy'); t.remove(); } catch (e2) {}
+    }
+    const b = $('contactCopy'); b.textContent = ok ? 'تم ✓' : 'انسخه يدويًا';
+    setTimeout(() => { b.textContent = 'نسخ'; }, 2200);
+  });
+  if (NATIVE) {                       // inside the TV app: no guide, no mail client; just show the address
+    document.querySelectorAll('.web-x').forEach(el => { el.hidden = true; });
+    $('sigMail').textContent = MAIL; $('sigMail').hidden = false; $('sigMailSep').hidden = false;
+  }
+
   if (NATIVE) {                       // the TV app has no use for sharing
     $('shareBtn').hidden = true; $('shareSep').hidden = true; $('gateShare').hidden = true;
   } else {
