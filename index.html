@@ -141,6 +141,16 @@ body.idle{cursor:none}
 .now:hover i,.now:focus-visible i{color:var(--gold)}
 .now:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .picker-groups.wide .pg-list{grid-template-columns:repeat(4,1fr)}
+/* adhkar ticker above the prayer bar */
+.bottom{display:flex;flex-direction:column;gap:1.2vh;min-width:0}
+.adhkar-bar{display:flex;align-items:stretch;min-height:6vh;background:var(--glass);border:1px solid var(--edge);border-radius:1vw;overflow:hidden;backdrop-filter:blur(8px)}
+.adhkar-bar[hidden]{display:none}
+.ab-k{flex:none;display:flex;align-items:center;padding:0 1.3vw;background:rgba(232,194,122,.92);color:#1b1206;font-weight:600;font-size:1.2vw;white-space:nowrap}
+.ab-view{flex:1;min-width:0;overflow:hidden;display:flex;align-items:center;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 4%,#000 98.5%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 4%,#000 98.5%,transparent 100%)}
+.ab-text{white-space:nowrap;padding:0 1.6vw;font-family:var(--f-verse);font-size:1.75vw;line-height:1.9;color:var(--ink);will-change:transform,opacity;transition:opacity .6s ease}
+.ab-text.out{opacity:0}
+.ab-text small{font-family:var(--f-ui);font-size:1vw;color:var(--gold);margin-inline-start:1.2vw}
+body.has-adhkar .place{bottom:27vh}
 /* make the two menus obvious: gold chips + a "new" badge until each menu is opened once */
 .now{align-items:center}
 .now i.chip,.city i.chip{font-style:normal;white-space:nowrap;color:var(--gold);background:rgba(232,194,122,.14);border:1px solid rgba(232,194,122,.6);
@@ -160,6 +170,7 @@ body.idle{cursor:none}
 .adhan-card b{font-family:var(--f-title);font-size:5vw;color:var(--gold);text-shadow:0 .3vw 2vw rgba(0,0,0,.6)}
 .adhan-card small{font-size:1.1vw;color:var(--ink-faint)}
 @media (max-width:700px){.now{max-width:none;font-size:3.2vw;gap:1.6vw;padding:.8vh 3vw;border-radius:2.4vw}.now-k{font-size:2.6vw}.now i.chip,.city i.chip{font-size:2.8vw;padding:.3vh 2.2vw}.new-badge{font-size:2.4vw;padding:.1vh 1.6vw}.city-row{gap:1.4vw}
+  .adhkar-bar{min-height:5vh;border-radius:2.4vw}.ab-k{font-size:3vw;padding:0 2.6vw}.ab-text{font-size:4.2vw;padding:0 3vw}.ab-text small{font-size:2.6vw}body.has-adhkar .place{bottom:42vh}
   .top{min-width:0}.top .station{min-width:0;flex:1 1 auto}.chip-x{display:none}.top .clock{flex-shrink:0}.now{max-width:100%;box-sizing:border-box}.now b{min-width:0}.now-k{display:none}
   .picker-groups.wide .pg-list{grid-template-columns:repeat(2,1fr)}.verse.mid p{font-size:5.4vw}.verse.long p{font-size:4.3vw}.verse.long{max-width:94vw}
   .adhan-k{font-size:4vw}.adhan-card b{font-size:11vw}.adhan-card small{font-size:3.2vw}}
@@ -284,9 +295,15 @@ body.idle{cursor:none}
 
   <section class="verse" id="verse"><p id="verseText"></p><cite id="verseRef"></cite></section>
 
+  <div class="bottom">
+  <div class="adhkar-bar" id="adhkarBar" hidden aria-live="polite">
+    <span class="ab-k" id="abLabel">أذكار الصباح</span>
+    <div class="ab-view" id="abView"><div class="ab-text" id="abText"><span id="abDhikr"></span><small id="abCount"></small></div></div>
+  </div>
   <footer class="prayers" id="prayers">
     <div class="p-head"><button class="city" id="cityBtn" type="button"><b id="cityLabel">مواقيت الصلاة · الكويت</b><span class="city-row"><i class="chip" id="cityChip">تغيير المدينة ▾</i><em class="new-badge" id="cityNew" hidden>جديد</em></span></button><span id="countdown"></span></div>
   </footer>
+  </div>
   <div class="sig"><span>By-<b>Ahmed Khalil</b></span><span class="vsep" id="visitsDot" hidden>·</span><span class="visits" id="visits" hidden></span><span class="vsep share-sep" id="shareSep">·</span><button class="share-btn" id="shareBtn" type="button" aria-label="شارك Cairo Quran"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>شارك مع أحبابك</button></div>
 </main>
 
@@ -604,8 +621,8 @@ body.idle{cursor:none}
     if (p !== currentPeriod) { currentPeriod = p; showScene(); }
     $('photos').classList.toggle('dim', p === 'night');
 
-    // morning adhkar from Fajr until a while after sunrise; evening adhkar from Asr until Maghrib
-    const am = nowMin >= times.fajr && nowMin < times.sunrise + 90 ? 'morning' : (nowMin >= times.asr && nowMin < times.maghrib ? 'evening' : '');
+    // adhkar ticker: morning from Fajr until Dhuhr, evening from Asr until Isha
+    const am = nowMin >= times.fajr && nowMin < times.dhuhr ? 'morning' : (nowMin >= times.asr && nowMin < times.isha ? 'evening' : '');
     if (am !== adhkarMode) setAdhkarMode(am);
     showOccasion(now, n, nowMin);
     if (typeof checkAdhan === 'function') checkAdhan(nowMin);
@@ -674,7 +691,9 @@ body.idle{cursor:none}
     const out = countries.map(country => ({ title: country, items: CITIES.filter(c => c.country === country).map(c => ({
       id: c.id, label: c.name, cur: c.id === CITY.id, choose: () => chooseCity(c.id) })) }));
     out.push({ title: 'الإعدادات', items: [{ id: 'adhan', label: adhanLabel(), cur: false, keep: true,
-      choose: b => { toggleAdhan(); b.textContent = adhanLabel(); } }] });
+      choose: b => { toggleAdhan(); b.textContent = adhanLabel(); } },
+      { id: 'adhkar', label: adhkarLabel(), cur: false, keep: true,
+      choose: b => { toggleAdhkar(); b.textContent = adhkarLabel(); } }] });
     return out;
   }
   function stationSections() {
@@ -774,10 +793,7 @@ body.idle{cursor:none}
   function setVerse() {
     const v = $('verse');
     let text, ref;
-    if (adhkarMode) {
-      const list = ADHKAR[adhkarMode], x = list[ai % list.length];
-      text = x[0]; ref = (adhkarMode === 'morning' ? 'أذكار الصباح' : 'أذكار المساء') + ' · ' + x[1];
-    } else { text = VERSES[vi][0]; ref = VERSES[vi][1]; }
+    text = VERSES[vi][0]; ref = VERSES[vi][1];
     v.classList.toggle('long', text.length > 220);
     v.classList.toggle('mid', text.length > 110 && text.length <= 220);
     $('verseText').textContent = text; $('verseRef').textContent = ref;
@@ -786,13 +802,48 @@ body.idle{cursor:none}
     const v = $('verse');
     if (v.classList.contains('off')) return;   // hidden behind the photos: keep the adhkar where they were
     v.classList.add('out');
-    setTimeout(() => { if (adhkarMode) ai++; else vi = (vi + 1) % VERSES.length; setVerse(); v.classList.remove('out'); }, 2600);
+    setTimeout(() => { vi = (vi + 1) % VERSES.length; setVerse(); v.classList.remove('out'); }, 2600);
+  }
+  /* ---------- Adhkar ticker: each dhikr stays 10 s; a long one glides slowly to its end ---------- */
+  const DHIKR_MS = 10000, HOLD_MS = 2500;
+  let ADHKAR_ON = true, adhkarTimer = 0;
+  try { ADHKAR_ON = localStorage.getItem('qtv-adhkar') !== '0'; } catch (e) {}
+  function adhkarLabel() { return ADHKAR_ON ? 'شريط الأذكار: ظاهر ✓' : 'شريط الأذكار: مخفي'; }
+  function toggleAdhkar() {
+    ADHKAR_ON = !ADHKAR_ON; try { localStorage.setItem('qtv-adhkar', ADHKAR_ON ? '1' : '0'); } catch (e) {}
+    const m = adhkarMode; adhkarMode = null; setAdhkarMode(m);
   }
   function setAdhkarMode(mode) {
-    adhkarMode = mode; ai = 0;
-    if (typeof startVersePhase !== 'function') { setVerse(); return; }
-    setVerse();                             // adhkar take the verses' place; Egypt photos keep their schedule
+    if (mode === adhkarMode) return;
+    adhkarMode = mode; ai = 0; clearTimeout(adhkarTimer);
+    const on = !!mode && ADHKAR_ON;
+    $('adhkarBar').hidden = !on; document.body.classList.toggle('has-adhkar', on);
+    if (!on) return;
+    $('abLabel').textContent = mode === 'morning' ? 'أذكار الصباح' : 'أذكار المساء';
+    showDhikr(true);
   }
+  function showDhikr(first) {
+    clearTimeout(adhkarTimer);
+    const t = $('abText');
+    t.classList.add('out');
+    adhkarTimer = setTimeout(() => {
+      const list = ADHKAR[adhkarMode]; if (!list) return;
+      const x = list[ai % list.length], count = x[1].split(' · ').pop();
+      t.style.transition = 'opacity .6s ease'; t.style.transform = 'translateX(0)';
+      $('abDhikr').textContent = x[0]; $('abCount').textContent = '(' + count + ')';
+      t.classList.remove('out');
+      adhkarTimer = setTimeout(() => {                                     // measure after the fonts settle
+        const extra = t.scrollWidth - $('abView').clientWidth;
+        if (extra <= 4) { adhkarTimer = setTimeout(nextDhikr, DHIKR_MS - HOLD_MS); return; }
+        const pxPerSec = Math.max(40, $('abView').clientWidth * 0.055);    // slow enough to read the diacritics
+        const ms = Math.round(extra / pxPerSec * 1000);
+        t.style.transition = 'opacity .6s ease, transform ' + ms + 'ms linear';
+        t.style.transform = 'translateX(' + extra + 'px)';                  // RTL: slide right to reveal the end
+        adhkarTimer = setTimeout(nextDhikr, ms + HOLD_MS);
+      }, HOLD_MS);
+    }, first ? 0 : 650);
+  }
+  function nextDhikr() { ai++; showDhikr(false); }
 
   /* ---------- Scenes ---------- */
   const PAL = {
