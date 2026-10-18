@@ -153,6 +153,11 @@ body.idle{cursor:none}
 body.has-adhkar .place{bottom:27vh}
 /* make the two menus obvious: gold chips + a "new" badge until each menu is opened once */
 .now{align-items:center}
+.now-row{display:flex;align-items:center;flex-wrap:wrap;gap:.8vw;margin-top:1.2vh;pointer-events:auto}
+.now-row .now{margin-top:0}
+.stop-btn.is-idle{background:var(--gold);color:#1b1206;border-color:var(--gold);font-weight:600;animation:fresh 2.6s ease-in-out infinite}
+.stop-btn.is-idle:hover,.stop-btn.is-idle:focus-visible{background:#f0d293;transform:scale(1.04)}
+@media (prefers-reduced-motion:reduce){.stop-btn.is-idle,.now.fresh{animation:none}}
 .now i.chip,.city i.chip{font-style:normal;white-space:nowrap;color:var(--gold);background:rgba(232,194,122,.14);border:1px solid rgba(232,194,122,.6);
   border-radius:999px;padding:.25vh .75vw;font-size:.95vw;line-height:1.5;transition:background .2s}
 .now:hover i.chip,.now:focus-visible i.chip,.city:hover i.chip,.city:focus-visible i.chip{background:rgba(232,194,122,.32);color:var(--ink)}
@@ -175,6 +180,7 @@ body.has-adhkar .place{bottom:27vh}
 .adhan-card b{font-family:var(--f-title);font-size:5vw;color:var(--gold);text-shadow:0 .3vw 2vw rgba(0,0,0,.6)}
 .adhan-card small{font-size:1.1vw;color:var(--ink-faint)}
 @media (max-width:700px){.now{max-width:none;font-size:3.2vw;gap:1.6vw;padding:.8vh 3vw;border-radius:2.4vw}.now-k{font-size:2.6vw}.now i.chip,.city i.chip{font-size:2.8vw;padding:.3vh 2.2vw}.new-badge{font-size:2.4vw;padding:.1vh 1.6vw}.city-row{gap:1.4vw}
+  .now-row{gap:2vw;margin-top:1vh}
   .sig .vsep{display:none!important}.rcd{font-size:2.8vw;gap:.4vh 1.2vw;padding:.5vh 2.4vw;margin-top:.8vh;white-space:normal;flex-wrap:wrap;justify-content:center;border-radius:3vw;max-width:36vw;box-sizing:border-box}.rcd b{font-size:4.4vw}.rcd small{display:none}.sig{column-gap:2.4vw}
   .adhkar-bar{min-height:5vh;border-radius:2.4vw}.ab-k{font-size:3vw;padding:0 2.6vw}.ab-text{font-size:4.2vw;padding:0 3vw}.ab-text small{font-size:2.6vw}body.has-adhkar .place{bottom:42vh}
   .top{min-width:0}.top .station{min-width:0;flex:1 1 auto}.chip-x{display:none}.top .clock{flex-shrink:0}.now{max-width:100%;box-sizing:border-box}.now b{min-width:0}.now-k{display:none}
@@ -295,10 +301,10 @@ body.has-adhkar .place{bottom:27vh}
     <div class="station">
       <h1 class="brand"><span>Cairo</span> Quran</h1>
       <div class="from">قرآن · أذان · أذكار</div>
-      <button class="now" id="nowBtn" type="button"><span class="now-k">الآن</span><b id="nowName">إذاعة القرآن الكريم · القاهرة</b><i class="chip" id="nowChip">تغيير<span class="chip-x"> المحطة</span> ▾</i><em class="new-badge" id="nowNew" hidden>جديد</em></button>
+      <div class="now-row"><button class="now" id="nowBtn" type="button"><span class="now-k">الآن</span><b id="nowName">إذاعة القرآن الكريم · القاهرة</b><i class="chip" id="nowChip">تغيير<span class="chip-x"> المحطة</span> ▾</i><em class="new-badge" id="nowNew" hidden>جديد</em></button><button class="stop-btn" id="stopBtn" type="button" hidden aria-label="إيقاف البث"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>إيقاف</button></div>
       <div class="status-row">
   <div class="status" id="status" data-s="idle"><span class="dot"></span><span id="statusText">جاهز للتشغيل</span></div>
-        <button class="stop-btn" id="stopBtn" type="button" hidden aria-label="إيقاف البث"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>إيقاف</button>
+        
       </div>
       <div class="dbg" id="dbg" hidden></div>
     </div>
@@ -1270,10 +1276,7 @@ body.has-adhkar .place{bottom:27vh}
       if (err && err.name === 'NotAllowedError') { // browser blocked sound until a key press
         wantPlay = false;
         setStatus('idle', 'جاهز للتشغيل');
-        $('stopBtn').hidden = true;
-        $('gateTitle').textContent = 'بسم الله الرحمن الرحيم';
-        $('gateHint').textContent = TOUCH ? 'اضغط زر التشغيل لبدء البث' : 'اضغط OK لبدء البث';
-        $('gate').classList.remove('hide'); $('play').focus();
+        syncPlayBtn();
         return;
       }
       scheduleRetry();
@@ -1352,7 +1355,7 @@ body.has-adhkar .place{bottom:27vh}
     wantPlay = false; clearTimeout(retryTimer); clearTimeout(nativeTimer);
     if (NATIVE) { try { NATIVE.stop(); } catch (e) {} }
     else { audio.pause(); audio.removeAttribute('src'); audio.load(); }
-    $('stopBtn').hidden = true;
+    syncPlayBtn();
   }
   function chimeDone() {                       // the chime finished: bring the radio back, keep the notice
     if (!chimePlaying) return;
@@ -1382,7 +1385,7 @@ body.has-adhkar .place{bottom:27vh}
     if (chimePlaying) chimeDone();
     adhanActive = false; clearTimeout(adhanFailsafe);
     $('adhanOv').hidden = true;
-    if (!wantPlay) setStatus('idle', $('gate').classList.contains('hide') ? 'متوقف مؤقتًا' : 'جاهز للتشغيل');
+    if (!wantPlay) setStatus('idle', everPlayed ? 'متوقف مؤقتًا' : 'جاهز للتشغيل');
     if (adhanReturn && adhanReturn.focus) adhanReturn.focus();
   }
   $('adhanOv').addEventListener('click', endAdhan);
@@ -1396,26 +1399,39 @@ body.has-adhkar .place{bottom:27vh}
     }
   }
 
+  // On the website the play/stop button sits beside the station name; the full-screen gate is for the TV app only.
+  let everPlayed = false;
+  const ICON_PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg>';
+  const ICON_STOP = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
+  function syncPlayBtn() {
+    if (NATIVE) return;
+    const b = $('stopBtn');
+    b.hidden = false; b.classList.toggle('is-idle', !wantPlay);
+    b.innerHTML = wantPlay ? ICON_STOP + 'إيقاف' : ICON_PLAY + 'تشغيل';
+    b.setAttribute('aria-label', wantPlay ? 'إيقاف البث' : 'تشغيل البث');
+  }
   function start() {
-    wantPlay = true;
+    wantPlay = true; everPlayed = true;
     $('gate').classList.add('hide');
-    if (!NATIVE) $('stopBtn').hidden = false;
+    syncPlayBtn();
     keepAwake();
     connect();
   }
   function pause() {
     wantPlay = false; clearTimeout(retryTimer); clearTimeout(nativeTimer);
-    $('stopBtn').hidden = true;
+    syncPlayBtn();
     if (NATIVE) { try { NATIVE.stop(); } catch (e) {} }
     else { audio.pause(); audio.removeAttribute('src'); audio.load(); }
     setStatus('idle', 'متوقف مؤقتًا');
+    if (!NATIVE) return;                       // the website keeps the page open; the button shows «تشغيل» again
     $('gateTitle').textContent = 'متوقف مؤقتًا';
     $('gateHint').textContent = TOUCH ? 'اضغط زر التشغيل لاستئناف البث' : 'اضغط OK لاستئناف البث';
     $('gate').classList.remove('hide');
     $('play').focus();
   }
   $('play').addEventListener('click', () => (wantPlay ? pause() : start()));
-  $('stopBtn').addEventListener('click', () => { if (wantPlay) pause(); });
+  $('stopBtn').addEventListener('click', () => (wantPlay ? pause() : start()));
+  if (!NATIVE) { $('gate').classList.add('hide'); $('play').tabIndex = -1; $('play').removeAttribute('autofocus'); $('gateShare').tabIndex = -1; syncPlayBtn(); }
   if ('mediaSession' in navigator && !NATIVE) {     // lock-screen / headset buttons
     try {
       navigator.mediaSession.setActionHandler('play', () => { if (!wantPlay) start(); });
