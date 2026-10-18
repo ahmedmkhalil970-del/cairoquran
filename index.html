@@ -1616,13 +1616,16 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
     $('appInApp').hidden = !!installEvt || !IN_APP;
     $('appOther').hidden = !!installEvt || IN_APP || IS_IOS;
   }
-  $('appBtn').addEventListener('click', () => { showAppWays(); openInfo('appPanel'); });
-  $('appInstall').addEventListener('click', async () => {
-    if (!installEvt) return;
+  async function promptInstall() {                // the browser's own "Add to home screen" dialog, straight away
     const ev = installEvt; installEvt = null;
+    trackEvent('app-prompt', 'نافذة الإضافة للشاشة الرئيسية');
     try { ev.prompt(); const c = await ev.userChoice; if (c && c.outcome === 'accepted') $('appMsg').textContent = 'تمت الإضافة ✓ هتلاقي Cairo Quran على الشاشة الرئيسية.'; } catch (e) {}
     showAppWays();
-  });
+  }
+  // Where the browser allows it (Chrome and Edge on Android and computers), the button adds the app directly.
+  // Elsewhere (iPhone, Facebook's built-in browser) there is no way to do it from a page, so the steps are shown.
+  $('appBtn').addEventListener('click', () => { if (installEvt) promptInstall(); else { showAppWays(); openInfo('appPanel'); } });
+  $('appInstall').addEventListener('click', () => { if (installEvt) promptInstall(); });
   if (STANDALONE) document.querySelectorAll('.app-x').forEach(el => { el.hidden = true; });   // already opened as the app
   if (!NATIVE && location.protocol === 'https:' && 'serviceWorker' in navigator) {
     window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').catch(() => {}); });
