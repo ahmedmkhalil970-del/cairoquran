@@ -161,6 +161,11 @@ body.has-adhkar .place{bottom:27vh}
 .now.fresh{border-color:rgba(232,194,122,.75);animation:fresh 2.6s ease-in-out infinite}
 @keyframes fresh{0%,100%{box-shadow:0 0 0 0 rgba(232,194,122,0)}50%{box-shadow:0 0 1.2vw .15vw rgba(232,194,122,.35)}}
 .dates .occasion{color:var(--ink);opacity:.9}
+/* Ramadan countdown chip */
+.rcd{display:inline-flex;align-items:baseline;gap:.5vw;margin-top:1.2vh;padding:.5vh 1vw;border-radius:999px;direction:rtl;
+  background:rgba(232,194,122,.12);border:1px solid rgba(232,194,122,.55);color:var(--ink);font-size:1.1vw;white-space:nowrap}
+.rcd b{font-size:1.9vw;font-weight:600;color:var(--gold);line-height:1;font-variant-numeric:tabular-nums}
+.rcd small{font-size:.8vw;color:var(--ink-faint)}
 .verse.mid p{font-size:2.9vw;line-height:1.85}
 .verse.long p{font-size:2.15vw;line-height:1.95}
 .verse.long{max-width:78vw}
@@ -170,7 +175,7 @@ body.has-adhkar .place{bottom:27vh}
 .adhan-card b{font-family:var(--f-title);font-size:5vw;color:var(--gold);text-shadow:0 .3vw 2vw rgba(0,0,0,.6)}
 .adhan-card small{font-size:1.1vw;color:var(--ink-faint)}
 @media (max-width:700px){.now{max-width:none;font-size:3.2vw;gap:1.6vw;padding:.8vh 3vw;border-radius:2.4vw}.now-k{font-size:2.6vw}.now i.chip,.city i.chip{font-size:2.8vw;padding:.3vh 2.2vw}.new-badge{font-size:2.4vw;padding:.1vh 1.6vw}.city-row{gap:1.4vw}
-  .sig .vsep{display:none!important}.sig{column-gap:2.4vw}
+  .sig .vsep{display:none!important}.rcd{font-size:2.8vw;gap:.4vh 1.2vw;padding:.5vh 2.4vw;margin-top:.8vh;white-space:normal;flex-wrap:wrap;justify-content:center;border-radius:3vw;max-width:36vw;box-sizing:border-box}.rcd b{font-size:4.4vw}.rcd small{display:none}.sig{column-gap:2.4vw}
   .adhkar-bar{min-height:5vh;border-radius:2.4vw}.ab-k{font-size:3vw;padding:0 2.6vw}.ab-text{font-size:4.2vw;padding:0 3vw}.ab-text small{font-size:2.6vw}body.has-adhkar .place{bottom:42vh}
   .top{min-width:0}.top .station{min-width:0;flex:1 1 auto}.chip-x{display:none}.top .clock{flex-shrink:0}.now{max-width:100%;box-sizing:border-box}.now b{min-width:0}.now-k{display:none}
   .picker-groups.wide .pg-list{grid-template-columns:repeat(2,1fr)}.verse.mid p{font-size:5.4vw}.verse.long p{font-size:4.3vw}.verse.long{max-width:94vw}
@@ -300,6 +305,7 @@ body.has-adhkar .place{bottom:27vh}
     <div class="clock">
       <div class="time" id="time">--:--</div>
       <div class="dates"><div id="greg"></div><div class="hijri" id="hijri"></div><div class="occasion" id="occasion" hidden></div></div>
+      <div class="rcd" id="ramadanCd" hidden><span class="rcd-k" id="rcdLabel">🌙 باقٍ على رمضان</span><b id="rcdNum"></b><span id="rcdUnit"></span><small>تقريبًا</small></div>
     </div>
   </header>
 
@@ -676,7 +682,7 @@ body.has-adhkar .place{bottom:27vh}
     } catch (e) { return null; }
   }
   const OCCASIONS = [
-    { m: 9, d: 1, name: 'رمضان' }, { m: 10, d: 1, name: 'عيد الفطر' }, { m: 12, d: 9, name: 'يوم عرفة' },
+    { m: 12, d: 9, name: 'يوم عرفة' },
     { m: 12, d: 10, name: 'عيد الأضحى' }, { m: 1, d: 1, name: 'رأس السنة الهجرية' }, { m: 1, d: 10, name: 'يوم عاشوراء' }
   ];
   function daysWord(n) {
@@ -705,9 +711,29 @@ body.has-adhkar .place{bottom:27vh}
     }
     return '';
   }
+  // countdown to the first of Ramadan (Umm al-Qura calendar; the real start depends on the moon sighting)
+  function daysToRamadan(n) {
+    const today = hijriMD(n.y, n.mo, n.d);
+    if (!today || today.m === 9 || (today.m === 10 && today.d <= 3)) return 0;   // during Ramadan and Eid: no countdown
+    for (let i = 1; i <= 400; i++) {
+      const dt = new Date(Date.UTC(n.y, n.mo - 1, n.d + i));
+      const h = hijriMD(dt.getUTCFullYear(), dt.getUTCMonth() + 1, dt.getUTCDate());
+      if (!h) return 0;
+      if (h.m === 9 && h.d === 1) return i;
+    }
+    return 0;
+  }
+  function showRamadanCountdown(n) {
+    const left = daysToRamadan(n), el = $('ramadanCd');
+    el.hidden = !left; if (!left) return;
+    const short = left <= 2;
+    $('rcdLabel').textContent = left === 1 ? '🌙 رمضان غدًا إن شاء الله' : left === 2 ? '🌙 رمضان بعد يومين إن شاء الله' : '🌙 باقٍ على رمضان';
+    $('rcdNum').hidden = short; $('rcdUnit').hidden = short;
+    $('rcdNum').textContent = ar(left); $('rcdUnit').textContent = left <= 10 ? 'أيام' : 'يومًا';
+  }
   function showOccasion(now, n, nowMin) {
     const k = dayKey(n);
-    if (k !== occKey) { occKey = k; occText = computeOccasion(n); }
+    if (k !== occKey) { occKey = k; occText = computeOccasion(n); showRamadanCountdown(n); }
     let text = occText;
     if (occIsRamadan && times) {
       const imsak = times.fajr - 10;
@@ -841,7 +867,7 @@ body.has-adhkar .place{bottom:27vh}
     setTimeout(() => { vi = (vi + 1) % VERSES.length; setVerse(); v.classList.remove('out'); }, 2600);
   }
   /* ---------- Adhkar ticker: each dhikr stays 10 s; a long one glides slowly to its end ---------- */
-  const DHIKR_MS = 10000, HOLD_MS = 2500;
+  const DHIKR_MS = 20000, HOLD_MS = 4000;   // 20 s per dhikr, so children can read it calmly
   let ADHKAR_ON = true, adhkarTimer = 0;
   try { ADHKAR_ON = localStorage.getItem('qtv-adhkar') !== '0'; } catch (e) {}
   function adhkarLabel() { return ADHKAR_ON ? 'شريط الأذكار: ظاهر ✓' : 'شريط الأذكار: مخفي'; }
@@ -871,11 +897,11 @@ body.has-adhkar .place{bottom:27vh}
       adhkarTimer = setTimeout(() => {                                     // measure after the fonts settle
         const extra = t.scrollWidth - $('abView').clientWidth;
         if (extra <= 4) { adhkarTimer = setTimeout(nextDhikr, DHIKR_MS - HOLD_MS); return; }
-        const pxPerSec = Math.max(40, $('abView').clientWidth * 0.055);    // slow enough to read the diacritics
+        const pxPerSec = Math.max(30, $('abView').clientWidth * 0.035);    // slow enough to read the diacritics
         const ms = Math.round(extra / pxPerSec * 1000);
         t.style.transition = 'opacity .6s ease, transform ' + ms + 'ms linear';
         t.style.transform = 'translateX(' + extra + 'px)';                  // RTL: slide right to reveal the end
-        adhkarTimer = setTimeout(nextDhikr, ms + HOLD_MS);
+        adhkarTimer = setTimeout(nextDhikr, Math.max(ms + HOLD_MS, DHIKR_MS - HOLD_MS));   // never shorter than 20 s
       }, HOLD_MS);
     }, first ? 0 : 650);
   }
