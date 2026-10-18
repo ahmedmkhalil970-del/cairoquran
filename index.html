@@ -141,6 +141,15 @@ body.idle{cursor:none}
 .now:hover i,.now:focus-visible i{color:var(--gold)}
 .now:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .picker-groups.wide .pg-list{grid-template-columns:repeat(4,1fr)}
+/* make the two menus obvious: gold chips + a "new" badge until each menu is opened once */
+.now{align-items:center}
+.now i.chip,.city i.chip{font-style:normal;white-space:nowrap;color:var(--gold);background:rgba(232,194,122,.14);border:1px solid rgba(232,194,122,.6);
+  border-radius:999px;padding:.25vh .75vw;font-size:.95vw;line-height:1.5;transition:background .2s}
+.now:hover i.chip,.now:focus-visible i.chip,.city:hover i.chip,.city:focus-visible i.chip{background:rgba(232,194,122,.32);color:var(--ink)}
+.city-row{display:flex;align-items:center;gap:.5vw;margin-top:.4vh}
+.new-badge{font-style:normal;font-weight:600;font-size:.72vw;line-height:1.5;color:#1b1206;background:var(--gold);border-radius:999px;padding:.05vh .55vw;white-space:nowrap}
+.now.fresh{border-color:rgba(232,194,122,.75);animation:fresh 2.6s ease-in-out infinite}
+@keyframes fresh{0%,100%{box-shadow:0 0 0 0 rgba(232,194,122,0)}50%{box-shadow:0 0 1.2vw .15vw rgba(232,194,122,.35)}}
 .dates .occasion{color:var(--ink);opacity:.9}
 .verse.mid p{font-size:2.9vw;line-height:1.85}
 .verse.long p{font-size:2.15vw;line-height:1.95}
@@ -150,7 +159,8 @@ body.idle{cursor:none}
 .adhan-k{font-size:1.6vw;color:var(--ink-soft)}
 .adhan-card b{font-family:var(--f-title);font-size:5vw;color:var(--gold);text-shadow:0 .3vw 2vw rgba(0,0,0,.6)}
 .adhan-card small{font-size:1.1vw;color:var(--ink-faint)}
-@media (max-width:700px){.now{max-width:none;font-size:3.2vw;gap:1.6vw;padding:.8vh 3vw;border-radius:2.4vw}.now i,.now-k{font-size:2.6vw}
+@media (max-width:700px){.now{max-width:none;font-size:3.2vw;gap:1.6vw;padding:.8vh 3vw;border-radius:2.4vw}.now-k{font-size:2.6vw}.now i.chip,.city i.chip{font-size:2.8vw;padding:.3vh 2.2vw}.new-badge{font-size:2.4vw;padding:.1vh 1.6vw}.city-row{gap:1.4vw}
+  .top{min-width:0}.top .station{min-width:0;flex:1 1 auto}.chip-x{display:none}.top .clock{flex-shrink:0}.now{max-width:100%;box-sizing:border-box}.now b{min-width:0}.now-k{display:none}
   .picker-groups.wide .pg-list{grid-template-columns:repeat(2,1fr)}.verse.mid p{font-size:5.4vw}.verse.long p{font-size:4.3vw}.verse.long{max-width:94vw}
   .adhan-k{font-size:4vw}.adhan-card b{font-size:11vw}.adhan-card small{font-size:3.2vw}}
 /* update notice (TV app) */
@@ -259,7 +269,7 @@ body.idle{cursor:none}
     <div class="station">
       <h1 class="brand"><span>Cairo</span> Quran</h1>
       <div class="from">قرآن · أذان · أذكار</div>
-      <button class="now" id="nowBtn" type="button"><span class="now-k">الآن</span><b id="nowName">إذاعة القرآن الكريم · القاهرة</b><i>تغيير ▾</i></button>
+      <button class="now" id="nowBtn" type="button"><span class="now-k">الآن</span><b id="nowName">إذاعة القرآن الكريم · القاهرة</b><i class="chip" id="nowChip">تغيير<span class="chip-x"> المحطة</span> ▾</i><em class="new-badge" id="nowNew" hidden>جديد</em></button>
       <div class="status-row">
   <div class="status" id="status" data-s="idle"><span class="dot"></span><span id="statusText">جاهز للتشغيل</span></div>
         <button class="stop-btn" id="stopBtn" type="button" hidden aria-label="إيقاف البث"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>إيقاف</button>
@@ -275,7 +285,7 @@ body.idle{cursor:none}
   <section class="verse" id="verse"><p id="verseText"></p><cite id="verseRef"></cite></section>
 
   <footer class="prayers" id="prayers">
-    <div class="p-head"><button class="city" id="cityBtn" type="button"><b id="cityLabel">مواقيت الصلاة · الكويت</b><i>تغيير المدينة ▾</i></button><span id="countdown"></span></div>
+    <div class="p-head"><button class="city" id="cityBtn" type="button"><b id="cityLabel">مواقيت الصلاة · الكويت</b><span class="city-row"><i class="chip" id="cityChip">تغيير المدينة ▾</i><em class="new-badge" id="cityNew" hidden>جديد</em></span></button><span id="countdown"></span></div>
   </footer>
   <div class="sig"><span>By-<b>Ahmed Khalil</b></span><span class="vsep" id="visitsDot" hidden>·</span><span class="visits" id="visits" hidden></span><span class="vsep share-sep" id="shareSep">·</span><button class="share-btn" id="shareBtn" type="button" aria-label="شارك Cairo Quran"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>شارك مع أحبابك</button></div>
 </main>
@@ -677,9 +687,8 @@ body.idle{cursor:none}
     groups.innerHTML = ''; pickerButtons = [];
     groups.classList.toggle('wide', mode === 'station');
     $('pickerTitle').textContent = mode === 'station' ? 'ماذا تحب أن تسمع؟' : 'اختر مدينتك';
-    $('pickerSub').textContent = mode === 'station'
-      ? 'البث من مصادره: إذاعة القرآن الكريم، وإذاعات MP3Quran.net'
-      : 'تُحسب المواقيت بالطريقة الرسمية لكل دولة';
+    $('pickerSub').textContent = mode === 'station' ? '' : 'تُحسب المواقيت بالطريقة الرسمية لكل دولة';
+    $('pickerSub').hidden = mode === 'station';
     (mode === 'station' ? stationSections() : citySections()).forEach(sec => {
       const g = document.createElement('section'); g.className = 'pg';
       g.innerHTML = '<h3></h3><div class="pg-list"></div>';
@@ -699,8 +708,18 @@ body.idle{cursor:none}
     pickerButtons.forEach((b, k) => b.classList.toggle('focus', k === pickerFocus));
     const b = pickerButtons[pickerFocus]; b.focus({ preventScroll: true }); b.scrollIntoView({ block: 'nearest' });
   }
+  // "new" badges: shown until the person opens each menu once
+  const seenMenus = (() => { try { return JSON.parse(localStorage.getItem('qtv-seen') || '{}') || {}; } catch (e) { return {}; } })();
+  function showMenuBadges() {
+    $('nowNew').hidden = !!seenMenus.station; $('nowBtn').classList.toggle('fresh', !seenMenus.station);
+    $('cityNew').hidden = !!seenMenus.city;
+  }
+  if (typeof window.QuranTV === 'object' && window.QuranTV) { $('nowChip').textContent = '▲ تغيير المحطة'; $('cityChip').textContent = '▼ تغيير المدينة'; }
+  showMenuBadges();
   function openPicker(mode) {
-    buildPicker(mode || 'city');
+    mode = mode || 'city';
+    if (!seenMenus[mode]) { seenMenus[mode] = 1; try { localStorage.setItem('qtv-seen', JSON.stringify(seenMenus)); } catch (e) {} showMenuBadges(); }
+    buildPicker(mode);
     pickerOpen = true; $('picker').hidden = false;
     focusItem(Math.max(0, pickerButtons.findIndex(b => b.classList.contains('cur'))));
   }
@@ -764,15 +783,15 @@ body.idle{cursor:none}
     $('verseText').textContent = text; $('verseRef').textContent = ref;
   }
   function nextVerse() {
-    const v = $('verse'); v.classList.add('out');
+    const v = $('verse');
+    if (v.classList.contains('off')) return;   // hidden behind the photos: keep the adhkar where they were
+    v.classList.add('out');
     setTimeout(() => { if (adhkarMode) ai++; else vi = (vi + 1) % VERSES.length; setVerse(); v.classList.remove('out'); }, 2600);
   }
   function setAdhkarMode(mode) {
     adhkarMode = mode; ai = 0;
     if (typeof startVersePhase !== 'function') { setVerse(); return; }
-    if (mode) startVersePhase();            // adhkar stay on screen for the whole period (no photos)
-    else if (phase === 'verses') startPhotoPhase();
-    setVerse();
+    setVerse();                             // adhkar take the verses' place; Egypt photos keep their schedule
   }
 
   /* ---------- Scenes ---------- */
@@ -1060,7 +1079,6 @@ body.idle{cursor:none}
   }
   function startPhotoPhase() {
     clearTimeout(photoTimer);
-    if (adhkarMode) { startVersePhase(); return; }
     phase = 'photos';
     shownInSegment = 0; photoFails = 0;
     $('verse').classList.add('off');
@@ -1072,7 +1090,7 @@ body.idle{cursor:none}
     setPhotoMode(false);
     showScene();
     $('verse').classList.remove('off');
-    if (!adhkarMode) photoTimer = setTimeout(startPhotoPhase, VERSE_PHASE_MS);
+    photoTimer = setTimeout(startPhotoPhase, VERSE_PHASE_MS);
   }
   function nextPhoto() {
     clearTimeout(photoTimer);
