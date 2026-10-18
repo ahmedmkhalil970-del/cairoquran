@@ -232,6 +232,7 @@ body.has-adhkar .place{bottom:27vh}
 .info .note{margin-top:16px;padding:10px 12px;border-radius:12px;font-size:14px;color:var(--ink-soft);background:rgba(253,246,233,.06);border:1px solid var(--edge)}
 .mail-go{display:block;margin-top:12px;padding:11px;border-radius:12px;font-size:16px;font-weight:600;text-decoration:none;color:#1a1405;background:var(--gold)}
 .mail-go:hover,.mail-go:focus-visible{filter:brightness(1.08)}
+button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-top:4px;margin-bottom:6px;padding:12px;border-radius:12px;font-size:17px;font-weight:600;color:#1a1405;background:var(--gold);cursor:pointer;text-align:center}
 .sig-mail{letter-spacing:.04em}
 .sig{flex-wrap:wrap;justify-content:center;row-gap:.6vh}
 [hidden]{display:none!important}
@@ -326,7 +327,7 @@ body.has-adhkar .place{bottom:27vh}
     <div class="p-head"><button class="city" id="cityBtn" type="button"><b id="cityLabel">مواقيت الصلاة · الكويت</b><span class="city-row"><i class="chip" id="cityChip">تغيير المدينة ▾</i><em class="new-badge" id="cityNew" hidden>جديد</em></span></button><span id="countdown"></span></div>
   </footer>
   </div>
-  <div class="sig"><span>By-<b>Ahmed Khalil</b></span><span class="vsep" id="visitsDot" hidden>·</span><span class="visits" id="visits" hidden></span><span class="vsep share-sep" id="shareSep">·</span><button class="share-btn" id="shareBtn" type="button" aria-label="شارك Cairo Quran"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>شارك مع أحبابك</button><span class="vsep web-x">·</span><button class="share-btn web-x" id="tvBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>على التليفزيون</button><span class="vsep web-x">·</span><button class="share-btn web-x" id="contactBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>تواصل معنا</button><span class="vsep" id="sigMailSep" hidden>·</span><span class="sig-mail" id="sigMail" hidden></span></div>
+  <div class="sig"><span>By-<b>Ahmed Khalil</b></span><span class="vsep" id="visitsDot" hidden>·</span><span class="visits" id="visits" hidden></span><span class="vsep share-sep" id="shareSep">·</span><button class="share-btn" id="shareBtn" type="button" aria-label="شارك Cairo Quran"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>شارك مع أحبابك</button><span class="vsep web-x app-x">·</span><button class="share-btn web-x app-x" id="appBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg>على الموبايل</button><span class="vsep web-x">·</span><button class="share-btn web-x" id="tvBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>على التليفزيون</button><span class="vsep web-x">·</span><button class="share-btn web-x" id="contactBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>تواصل معنا</button><span class="vsep" id="sigMailSep" hidden>·</span><span class="sig-mail" id="sigMail" hidden></span></div>
 </main>
 
 <div class="picker" id="picker" hidden role="dialog" aria-modal="true" aria-labelledby="pickerTitle">
@@ -354,6 +355,30 @@ body.has-adhkar .place{bottom:27vh}
       <li>افتح Cairo Quran واستمتع. التحديثات الجاية بتوصلك من جوه التطبيق.</li>
     </ol>
     <div class="note">تليفزيون سامسونج أو إل جي؟ افتح <b>cairoquran.com</b> من متصفح التليفزيون مباشرة.</div>
+    <button class="share-close" type="button" data-close>إغلاق</button>
+  </div>
+</div>
+
+<div class="share info" id="appPanel" hidden role="dialog" aria-modal="true" aria-labelledby="appTitle">
+  <div class="share-card">
+    <h2 id="appTitle">Cairo Quran على موبايلك</h2>
+    <p>أضفه للشاشة الرئيسية، ويفتح بأيقونته زي أي تطبيق، من غير تحميل ولا متجر.</p>
+    <button class="mail-go app-go" id="appInstall" type="button" hidden>أضف للشاشة الرئيسية</button>
+    <ol class="steps" id="appIos" hidden>
+      <li>اضغط زر <b>المشاركة</b> (المربع اللي طالع منه سهم) في أسفل الشاشة.</li>
+      <li>انزل واختار <b>«إضافة إلى الشاشة الرئيسية»</b>.</li>
+      <li>اضغط <b>«إضافة»</b>، وهتلاقي الأيقونة على الشاشة.</li>
+    </ol>
+    <ol class="steps" id="appInApp" hidden>
+      <li>إنت فاتح الصفحة من جوه فيسبوك أو تطبيق تاني، وده ما بيسمحش بالإضافة.</li>
+      <li>اضغط القائمة <b>⋯</b> واختار <b>«فتح في المتصفح»</b> (Chrome أو Safari).</li>
+      <li>من هناك اضغط «على الموبايل» تاني.</li>
+    </ol>
+    <ol class="steps" id="appOther" hidden>
+      <li>افتح قائمة المتصفح <b>⋮</b> (فوق في الركن).</li>
+      <li>اختار <b>«تثبيت التطبيق»</b> أو <b>«إضافة إلى الشاشة الرئيسية»</b>.</li>
+    </ol>
+    <div class="note" id="appMsg">للتليفزيون استخدم زرار «على التليفزيون».</div>
     <button class="share-close" type="button" data-close>إغلاق</button>
   </div>
 </div>
@@ -1479,7 +1504,8 @@ body.has-adhkar .place{bottom:27vh}
   const GC = 'https://' + GC_CODE + '.goatcounter.com';
   function countVisit() {
     if (GC_CODE.indexOf('__') === 0) return;
-    const path = NATIVE ? '/tv-app' : '/';     // website visits and TV-app opens are counted separately
+    const home = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
+    const path = NATIVE ? '/tv-app' : (home ? '/home-app' : '/');     // website, home-screen app and TV app are counted separately
     const q = 'p=' + encodeURIComponent(path) + '&t=' + encodeURIComponent(document.title) +
       '&r=' + encodeURIComponent(document.referrer || '') + '&s=' + screen.width + ',' + screen.height + ',' + (window.devicePixelRatio || 1) +
       '&rnd=' + Math.random().toString(36).slice(2);
@@ -1561,7 +1587,8 @@ body.has-adhkar .place{bottom:27vh}
   function openInfo(id) {
     infoReturn = document.activeElement; infoOpen = $(id); infoOpen.hidden = false;
     const f = infoOpen.querySelector('[data-close]'); if (f) f.focus();
-    trackEvent(id === 'tvPanel' ? 'tv-guide' : 'contact', id === 'tvPanel' ? 'طريقة التنزيل على التليفزيون' : 'تواصل معنا');
+    const ev = { tvPanel: ['tv-guide', 'طريقة التنزيل على التليفزيون'], contactPanel: ['contact', 'تواصل معنا'], appPanel: ['app-guide', 'إضافة للشاشة الرئيسية'] }[id];
+    if (ev) trackEvent(ev[0], ev[1]);
   }
   function closeInfo() {
     if (!infoOpen) return;
@@ -1574,6 +1601,32 @@ body.has-adhkar .place{bottom:27vh}
     el.addEventListener('click', e => { if (e.target === el || e.target.hasAttribute('data-close')) closeInfo(); });
   });
   $('tvBtn').addEventListener('click', () => openInfo('tvPanel'));
+
+  /* ---------- Home-screen app (add to home screen) ---------- */
+  const STANDALONE = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
+  const UA = navigator.userAgent || '';
+  const IS_IOS = /iPhone|iPad|iPod/.test(UA) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const IN_APP = /FBAN|FBAV|FB_IAB|Instagram|Line\/|; wv\)|Snapchat|TikTok/i.test(UA);
+  let installEvt = null;
+  window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEvt = e; if (infoOpen === $('appPanel')) showAppWays(); });
+  window.addEventListener('appinstalled', () => { installEvt = null; trackEvent('app-installed', 'تمت إضافة التطبيق للشاشة الرئيسية'); $('appMsg').textContent = 'تمت الإضافة ✓ هتلاقي Cairo Quran على الشاشة الرئيسية.'; $('appInstall').hidden = true; });
+  function showAppWays() {
+    $('appInstall').hidden = !installEvt;
+    $('appIos').hidden = !!installEvt || IN_APP || !IS_IOS;
+    $('appInApp').hidden = !!installEvt || !IN_APP;
+    $('appOther').hidden = !!installEvt || IN_APP || IS_IOS;
+  }
+  $('appBtn').addEventListener('click', () => { showAppWays(); openInfo('appPanel'); });
+  $('appInstall').addEventListener('click', async () => {
+    if (!installEvt) return;
+    const ev = installEvt; installEvt = null;
+    try { ev.prompt(); const c = await ev.userChoice; if (c && c.outcome === 'accepted') $('appMsg').textContent = 'تمت الإضافة ✓ هتلاقي Cairo Quran على الشاشة الرئيسية.'; } catch (e) {}
+    showAppWays();
+  });
+  if (STANDALONE) document.querySelectorAll('.app-x').forEach(el => { el.hidden = true; });   // already opened as the app
+  if (!NATIVE && location.protocol === 'https:' && 'serviceWorker' in navigator) {
+    window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').catch(() => {}); });
+  }
   $('contactBtn').addEventListener('click', () => openInfo('contactPanel'));
   $('contactCopy').addEventListener('click', async () => {
     let ok = false;

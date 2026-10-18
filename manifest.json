@@ -21,6 +21,14 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
-  ]
+  ],
+  "id": "/",
+  "description": "إذاعة القرآن الكريم من القاهرة وإذاعات كبار القرّاء، مع مواقيت الصلاة وتنبيه بموعدها وأذكار الصباح والمساء."
 }
