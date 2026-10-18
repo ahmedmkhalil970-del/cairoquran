@@ -2,7 +2,7 @@
 
 بث مباشر لإذاعة القرآن الكريم من القاهرة على مدار الساعة، مع مواقيت الصلاة، وتطبيق لشاشات Android TV.
 
-- الموقع: https://ahmedmkhalil970-del.github.io/cairoquran/
+- الموقع: https://cairoquran.com
 - تطبيق التليفزيون: `quran.apk`
 
 مشروع مجاني لوجه الله تعالى.

@@ -4,6 +4,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>إذاعة القرآن الكريم</title>
+<meta name="description" content="إذاعة القرآن الكريم من القاهرة بث مباشر على مدار الساعة، مع مواقيت الصلاة لمدينتك وصور من مصر. مجاني لوجه الله.">
+<meta name="theme-color" content="#050816">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="إذاعة القرآن">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cairoquran.com/">
+<meta property="og:title" content="إذاعة القرآن الكريم من القاهرة">
+<meta property="og:description" content="بث مباشر على مدار الساعة، مع مواقيت الصلاة لمدينتك. مجاني لوجه الله.">
+<meta property="og:image" content="https://cairoquran.com/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Readex+Pro:wght@300;400;600&display=swap">
@@ -104,6 +121,29 @@ body.idle{cursor:none}
   .p-head b,.p-head span{font-size:3.4vw}.p .n{font-size:3vw}.p .t{font-size:4.4vw}
   .gate-title{font-size:6vw}.gate-hint{font-size:3.4vw}.sig{font-size:3vw}
 }
+/* share */
+.share-btn{all:unset;pointer-events:auto;cursor:pointer;display:inline-flex;align-items:center;gap:.5vw;direction:rtl;
+  letter-spacing:0;font-size:1.05vw;padding:.4vh .9vw;border-radius:999px;color:var(--ink-soft);
+  background:var(--glass);border:1px solid var(--edge);transition:background .2s,color .2s}
+.share-btn svg{width:1.05vw;height:1.05vw}
+.gate-share{font-size:1.15vw;padding:.7vh 1.4vw;margin-top:1vh}
+.share-btn:hover,.share-btn:focus-visible{color:var(--ink);background:rgba(232,194,122,.22)}
+.share{position:fixed;inset:0;z-index:25;display:flex;align-items:center;justify-content:center;background:rgba(3,5,14,.72);backdrop-filter:blur(6px)}
+.share-card{width:min(92vw,560px);padding:24px 22px 18px;border-radius:18px;background:rgba(10,13,30,.96);border:1px solid var(--edge);text-align:center}
+.share-card h2{margin:0;font-family:var(--f-title);font-size:26px;font-weight:700}
+.share-card p{margin:6px 0 18px;font-size:14px;color:var(--ink-soft)}
+.share-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.sbtn{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:7px;padding:14px 6px;border-radius:12px;
+  font-size:14px;color:var(--ink);background:rgba(253,246,233,.06);border:1px solid var(--edge);transition:background .2s,transform .2s}
+.sbtn:hover,.sbtn:focus-visible{background:rgba(232,194,122,.2);transform:translateY(-2px)}
+.sbtn i{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff}
+.sbtn i svg{width:24px;height:24px;fill:currentColor}
+.share-link{margin-top:16px;display:flex;align-items:center;gap:8px;padding:8px 8px 8px 12px;border-radius:12px;background:rgba(253,246,233,.06);border:1px solid var(--edge);direction:ltr}
+.share-link span{flex:1;text-align:left;font-size:15px;color:var(--ink-soft);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.share-link button{all:unset;cursor:pointer;padding:7px 14px;border-radius:9px;font-size:14px;background:var(--gold);color:#1a1405;font-weight:600}
+.share-close{all:unset;cursor:pointer;margin-top:14px;font-size:14px;color:var(--ink-faint);padding:6px 14px;border-radius:8px}
+.share-close:hover,.share-close:focus-visible{color:var(--ink)}
+@media (max-width:700px){.gate-share{font-size:3.6vw;padding:1vh 4vw}.share-btn{font-size:3.2vw;padding:.6vh 2.6vw;gap:1.4vw}.share-btn svg{width:3.2vw;height:3.2vw}}
 [hidden]{display:none!important}
 #nl-badge-frame{display:none!important}
 /* city button + picker */
@@ -185,7 +225,7 @@ body.idle{cursor:none}
   <footer class="prayers" id="prayers">
     <div class="p-head"><button class="city" id="cityBtn" type="button"><b id="cityLabel">مواقيت الصلاة · الكويت</b><i>تغيير المدينة ▾</i></button><span id="countdown"></span></div>
   </footer>
-  <div class="sig"><span>By-<b>Ahmed Khalil</b></span><span class="vsep" id="visitsDot" hidden>·</span><span class="visits" id="visits" hidden></span></div>
+  <div class="sig"><span>By-<b>Ahmed Khalil</b></span><span class="vsep" id="visitsDot" hidden>·</span><span class="visits" id="visits" hidden></span><span class="vsep share-sep" id="shareSep">·</span><button class="share-btn" id="shareBtn" type="button" aria-label="شارك الإذاعة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>شارك الإذاعة</button></div>
 </main>
 
 <div class="picker" id="picker" hidden role="dialog" aria-modal="true" aria-labelledby="pickerTitle">
@@ -196,6 +236,23 @@ body.idle{cursor:none}
   </div>
 </div>
 
+<div class="share" id="share" hidden role="dialog" aria-modal="true" aria-labelledby="shareTitle">
+  <div class="share-card">
+    <h2 id="shareTitle">شارك الإذاعة</h2>
+    <p>انشر الخير، والدال على الخير كفاعله</p>
+    <div class="share-grid">
+      <button class="sbtn" type="button" data-net="whatsapp"><i style="background:#25D366"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.5 4c1.7.7 2.4.8 3.2.6a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></i>واتساب</button>
+      <button class="sbtn" type="button" data-net="facebook"><i style="background:#1877F2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8.5V6.8c0-.8.2-1.3 1.4-1.3H17V2.3A22 22 0 0 0 14.6 2C12.3 2 10.7 3.4 10.7 6v2.5H8v3.6h2.7V22H14v-9.9h2.7l.4-3.6z"/></svg></i>فيسبوك</button>
+      <button class="sbtn" type="button" data-net="telegram"><i style="background:#229ED9"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.4 3.6 2.9 10.7c-1.3.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.5-1.4zM8.6 13.4l9.9-6.2c.5-.3.9-.1.5.2l-8.4 7.6-.3 3.6z"/></svg></i>تيليجرام</button>
+      <button class="sbtn" type="button" data-net="x"><i style="background:#000;border:1px solid #333"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.8 2.5h3.3l-7.2 8.2 8.4 11.1h-6.6l-5.2-6.8-5.9 6.8H1.3l7.7-8.8L1 2.5h6.8l4.7 6.2zm-1.2 17.4h1.8L6.6 4.3H4.6z"/></svg></i>إكس</button>
+      <button class="sbtn" type="button" data-net="email"><i style="background:#6b7280"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 2.3V17h16V7.3l-8 5.3zM5.2 7 12 11.5 18.8 7z"/></svg></i>البريد</button>
+      <button class="sbtn" type="button" data-net="more" id="shareMore"><i style="background:#b8862f"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16a3 3 0 0 0-2.4 1.2l-6.8-3.4a3 3 0 0 0 0-1.6l6.8-3.4A3 3 0 1 0 15 7l-6.8 3.4a3 3 0 1 0 0 3.2L15 17a3 3 0 1 0 3-1z"/></svg></i>تطبيقات أخرى</button>
+    </div>
+    <div class="share-link"><span id="shareUrl">cairoquran.com</span><button type="button" id="shareCopy">نسخ الرابط</button></div>
+    <button class="share-close" type="button" id="shareClose">إغلاق</button>
+  </div>
+</div>
+
 <div class="gate" id="gate">
   <div class="gate-card">
     <div class="gate-title" id="gateTitle">بسم الله الرحمن الرحيم</div>
@@ -203,6 +260,7 @@ body.idle{cursor:none}
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg>
     </button>
     <div class="gate-hint" id="gateHint">اضغط زر OK في جهاز التحكم لبدء البث</div>
+    <button class="share-btn gate-share" id="gateShare" type="button">شارك الإذاعة مع أحبابك</button>
   </div>
 </div>
 
@@ -780,6 +838,8 @@ body.idle{cursor:none}
 
   // Inside the TV app, the app plays the stream with Android's own player (window.QuranTV).
   const NATIVE = (typeof window.QuranTV === 'object' && window.QuranTV) ? window.QuranTV : null;
+  const TOUCH = !NATIVE && window.matchMedia && matchMedia('(pointer: coarse)').matches;
+  if (TOUCH) $('gateHint').textContent = 'اضغط زر التشغيل لبدء البث';
   let errCount = 0, nativeTimer = 0;
   window.__qtvDebug = m => { const d = $('dbg'); d.textContent = m; d.hidden = $('status').dataset.s === 'live'; };
   if (NATIVE) { try { window.__qtvDebug('نسخة التطبيق ' + NATIVE.version()); } catch (e) {} }
@@ -806,7 +866,7 @@ body.idle{cursor:none}
         wantPlay = false;
         setStatus('idle', 'جاهز للتشغيل');
         $('gateTitle').textContent = 'بسم الله الرحمن الرحيم';
-        $('gateHint').textContent = 'اضغط OK لبدء البث';
+        $('gateHint').textContent = TOUCH ? 'اضغط زر التشغيل لبدء البث' : 'اضغط OK لبدء البث';
         $('gate').classList.remove('hide'); $('play').focus();
         return;
       }
@@ -865,13 +925,18 @@ body.idle{cursor:none}
     else { audio.pause(); audio.removeAttribute('src'); audio.load(); }
     setStatus('idle', 'متوقف مؤقتًا');
     $('gateTitle').textContent = 'متوقف مؤقتًا';
-    $('gateHint').textContent = 'اضغط OK لاستئناف البث';
+    $('gateHint').textContent = TOUCH ? 'اضغط زر التشغيل لاستئناف البث' : 'اضغط OK لاستئناف البث';
     $('gate').classList.remove('hide');
     $('play').focus();
   }
   $('play').addEventListener('click', () => (wantPlay ? pause() : start()));
   document.addEventListener('keydown', e => {
     const k = e.key;
+    if (typeof shareOpen !== 'undefined' && shareOpen) {
+      if (k === 'Escape' || k === 'Backspace' || k === 'GoBack') { e.preventDefault(); closeShare(); }
+      return;                                   // buttons inside the share panel handle Enter themselves
+    }
+    if (document.activeElement && (document.activeElement.id === 'shareBtn' || document.activeElement.id === 'gateShare') && (k === 'Enter' || k === ' ')) return;
     if (pickerOpen) {
       if (k === 'ArrowUp' || k === 'ArrowDown' || k === 'ArrowLeft' || k === 'ArrowRight') { e.preventDefault(); moveFocus(k); }
       else if (k === 'Enter' || k === ' ') { e.preventDefault(); chooseCity(cityButtons[pickerFocus].dataset.id); }
@@ -921,6 +986,61 @@ body.idle{cursor:none}
       el.innerHTML = (dayN >= SHOW_TODAY_FROM ? '<em>زوار اليوم</em> ' + arNum(dayN) + ' · ' : '') + '<em>إجمالي الزيارات</em> ' + arNum(allN);
       el.hidden = false; $('visitsDot').hidden = false;
     } catch (e) {}
+  }
+
+  /* ---------- Share ---------- */
+  const SHARE_URL = 'https://cairoquran.com/';
+  const SHARE_TEXT = 'إذاعة القرآن الكريم من القاهرة 📻 بث مباشر على مدار الساعة، مع مواقيت الصلاة لمدينتك. مجاني لوجه الله.';
+  let shareOpen = false, shareReturn = null;
+  function trackShare(net) {
+    try { new Image().src = GC + '/count?p=' + encodeURIComponent('share-' + net) + '&t=' + encodeURIComponent('مشاركة: ' + net) + '&e=true&rnd=' + Math.random().toString(36).slice(2); } catch (e) {}
+  }
+  function openShare() {
+    shareReturn = document.activeElement;
+    $('share').hidden = false; shareOpen = true;
+    $('shareMore').hidden = !navigator.share;
+    const first = $('share').querySelector('.sbtn'); if (first) first.focus();
+  }
+  function closeShare() {
+    $('share').hidden = true; shareOpen = false;
+    if (shareReturn && shareReturn.focus) shareReturn.focus();
+  }
+  async function copyLink() {
+    let ok = false;
+    try { await navigator.clipboard.writeText(SHARE_URL); ok = true; } catch (e) {
+      try { const t = document.createElement('textarea'); t.value = SHARE_URL; t.style.position = 'fixed'; t.style.opacity = '0';
+        document.body.appendChild(t); t.select(); ok = document.execCommand('copy'); t.remove(); } catch (e2) {}
+    }
+    const b = $('shareCopy'); b.textContent = ok ? 'تم النسخ ✓' : 'انسخه يدويًا';
+    setTimeout(() => { b.textContent = 'نسخ الرابط'; }, 2200);
+    trackShare('copy');
+  }
+  function shareTo(net) {
+    const u = encodeURIComponent(SHARE_URL), t = encodeURIComponent(SHARE_TEXT);
+    const links = {
+      whatsapp: 'https://wa.me/?text=' + encodeURIComponent(SHARE_TEXT + '\n' + SHARE_URL),
+      facebook: 'https://www.facebook.com/sharer/sharer.php?u=' + u,
+      telegram: 'https://t.me/share/url?url=' + u + '&text=' + t,
+      x: 'https://twitter.com/intent/tweet?text=' + t + '&url=' + u,
+      email: 'mailto:?subject=' + encodeURIComponent('إذاعة القرآن الكريم من القاهرة') + '&body=' + encodeURIComponent(SHARE_TEXT + '\n\n' + SHARE_URL)
+    };
+    trackShare(net);
+    if (net === 'more') {
+      if (navigator.share) navigator.share({ title: 'إذاعة القرآن الكريم', text: SHARE_TEXT, url: SHARE_URL }).catch(() => {});
+      return;
+    }
+    if (net === 'email') { location.href = links.email; return; }
+    window.open(links[net], '_blank', 'noopener');
+  }
+  if (NATIVE) {                       // the TV app has no use for sharing
+    $('shareBtn').hidden = true; $('shareSep').hidden = true; $('gateShare').hidden = true;
+  } else {
+    $('shareBtn').addEventListener('click', openShare);
+    $('gateShare').addEventListener('click', openShare);
+    $('shareClose').addEventListener('click', closeShare);
+    $('shareCopy').addEventListener('click', copyLink);
+    $('share').addEventListener('click', e => { if (e.target === $('share')) closeShare(); });
+    document.querySelectorAll('.sbtn').forEach(b => b.addEventListener('click', () => shareTo(b.dataset.net)));
   }
 
   /* ---------- Boot ---------- */
