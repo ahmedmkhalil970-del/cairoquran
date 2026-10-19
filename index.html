@@ -149,7 +149,7 @@ body.idle{cursor:none}
 .ab-view{flex:1;min-width:0;overflow:hidden;display:flex;align-items:center;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 4%,#000 98.5%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 4%,#000 98.5%,transparent 100%)}
 .ab-text{white-space:nowrap;padding:0 1.6vw;font-family:var(--f-verse);font-size:1.75vw;line-height:1.9;color:var(--ink);will-change:transform,opacity;transition:opacity .6s ease}
 .ab-text.out{opacity:0}
-.ab-text small{font-family:var(--f-ui);font-size:1vw;color:var(--gold);margin-inline-start:1.2vw}
+.ab-text small{font-family:var(--f-ui);font-size:1.3vw;font-weight:600;color:var(--gold);margin-inline-start:1.2vw}
 body.has-adhkar .place{bottom:27vh}
 /* make the two menus obvious: gold chips + a "new" badge until each menu is opened once */
 .now{align-items:center}
@@ -182,7 +182,7 @@ body.has-adhkar .place{bottom:27vh}
 @media (max-width:700px){.now{max-width:none;font-size:3.2vw;gap:1.6vw;padding:.8vh 3vw;border-radius:2.4vw}.now-k{font-size:2.6vw}.now i.chip,.city i.chip{font-size:2.8vw;padding:.3vh 2.2vw}.new-badge{font-size:2.4vw;padding:.1vh 1.6vw}.city-row{gap:1.4vw}
   .now-row{gap:2vw;margin-top:1vh}
   .sig .vsep{display:none!important}.rcd{font-size:2.8vw;gap:.4vh 1.2vw;padding:.5vh 2.4vw;margin-top:.8vh;white-space:normal;flex-wrap:wrap;justify-content:center;border-radius:3vw;max-width:36vw;box-sizing:border-box}.rcd b{font-size:4.4vw}.rcd small{display:none}.sig{column-gap:2.4vw}
-  .adhkar-bar{min-height:5vh;border-radius:2.4vw}.ab-k{font-size:3vw;padding:0 2.6vw}.ab-text{font-size:4.2vw;padding:0 3vw}.ab-text small{font-size:2.6vw}body.has-adhkar .place{bottom:42vh}
+  .adhkar-bar{min-height:5vh;border-radius:2.4vw}.ab-k{font-size:3vw;padding:0 2.6vw}.ab-text{font-size:4.2vw;padding:0 3vw}.ab-text small{font-size:3.1vw}body.has-adhkar .place{bottom:42vh}
   .top{min-width:0}.top .station{min-width:0;flex:1 1 auto}.chip-x{display:none}.top .clock{flex-shrink:0}.now{max-width:100%;box-sizing:border-box}.now b{min-width:0}.now-k{display:none}
   .picker-groups.wide .pg-list{grid-template-columns:repeat(2,1fr)}.verse.mid p{font-size:5.4vw}.verse.long p{font-size:4.3vw}.verse.long{max-width:94vw}
   .adhan-k{font-size:4vw}.adhan-card b{font-size:11vw}.adhan-card small{font-size:3.2vw}}
@@ -912,7 +912,7 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
     v.classList.add('out');
     setTimeout(() => { vi = (vi + 1) % VERSES.length; setVerse(); v.classList.remove('out'); }, 2600);
   }
-  /* ---------- Adhkar ticker: each dhikr stays 10 s; a long one glides slowly to its end ---------- */
+  /* ---------- Adhkar ticker: each dhikr stays long enough to be said as many times as its count ---------- */
   const DHIKR_MS = 20000, HOLD_MS = 4000;   // 20 s per dhikr, so children can read it calmly
   let ADHKAR_ON = true, adhkarTimer = 0;
   try { ADHKAR_ON = localStorage.getItem('qtv-adhkar') !== '0'; } catch (e) {}
@@ -930,6 +930,13 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
     $('abLabel').textContent = { morning: 'أذكار الصباح', evening: 'أذكار المساء', sleep: 'أذكار النوم' }[mode] || '';
     showDhikr(true);
   }
+  // How many times a dhikr is said, from its count label ('ثلاث مرات', 'مائة مرة', '٣٣ و٣٣ و٣٤ مرة' ...)
+  const REPS = { 'مرة واحدة': 1, 'مرتين': 2, 'ثلاث مرات': 3, 'أربع مرات': 4, 'سبع مرات': 7, 'عشر مرات': 10 };
+  function repsOf(count) { return REPS[count] || (/مائة|٣٣/.test(count) ? 100 : 1); }
+  // Time to say it once: about 6 letters a second plus a breath (diacritics are not counted)
+  function passMs(text) { return 2500 + text.replace(/[ً-ْٰ۝\s]/g, '').length * 160; }
+  const MAX_DHIKR_MS = 120000;   // a dhikr said 10 or 100 times stays at most 2 minutes
+  // Each dhikr stays long enough to be said as many times as its count; a counter shows the repetition
   function showDhikr(first) {
     clearTimeout(adhkarTimer);
     const t = $('abText');
@@ -937,18 +944,38 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
     adhkarTimer = setTimeout(() => {
       const list = ADHKAR[adhkarMode]; if (!list) return;
       const x = list[ai % list.length], count = x[1].split(' · ').pop();
-      t.style.transition = 'opacity .6s ease'; t.style.transform = 'translateX(0)';
-      $('abDhikr').textContent = x[0]; $('abCount').textContent = '(' + count + ')';
-      t.classList.remove('out');
-      adhkarTimer = setTimeout(() => {                                     // measure after the fonts settle
-        const extra = t.scrollWidth - $('abView').clientWidth;
-        if (extra <= 4) { adhkarTimer = setTimeout(nextDhikr, DHIKR_MS - HOLD_MS); return; }
-        const pxPerSec = Math.max(30, $('abView').clientWidth * 0.035);    // slow enough to read the diacritics
-        const ms = Math.round(extra / pxPerSec * 1000);
-        t.style.transition = 'opacity .6s ease, transform ' + ms + 'ms linear';
-        t.style.transform = 'translateX(' + extra + 'px)';                  // RTL: slide right to reveal the end
-        adhkarTimer = setTimeout(nextDhikr, Math.max(ms + HOLD_MS, DHIKR_MS - HOLD_MS));   // never shorter than 20 s
-      }, HOLD_MS);
+      const reps = repsOf(count), once = passMs(x[0]);
+      let total = 0;                                                       // set once the first pass is measured
+      const counted = reps > 1 && reps <= 10;                              // 100 times is not counted on screen
+      const started = Date.now();
+      $('abDhikr').textContent = x[0];
+      let pass = 0;
+      const runPass = () => {
+        pass++;
+        t.style.transition = 'none'; t.style.transform = 'translateX(0)';
+        void t.offsetWidth;
+        $('abCount').textContent = '(' + (counted ? ar(pass) + ' من ' + ar(reps) : count) + ')';
+        t.style.transition = 'opacity .6s ease';
+        t.classList.remove('out');
+        adhkarTimer = setTimeout(() => {                                   // measure after the fonts settle
+          const extra = t.scrollWidth - $('abView').clientWidth;
+          let slide = 0;
+          if (extra > 4) {
+            const pxPerSec = Math.max(30, $('abView').clientWidth * 0.035);  // slow enough to read the diacritics
+            slide = Math.round(extra / pxPerSec * 1000);
+            t.style.transition = 'opacity .6s ease, transform ' + slide + 'ms linear';
+            t.style.transform = 'translateX(' + extra + 'px)';              // RTL: slide right to reveal the end
+          }
+          const perPass = Math.max(once, slide + 2 * HOLD_MS);              // a long dhikr needs its full glide each time
+          if (!total) total = Math.max(DHIKR_MS, Math.min(MAX_DHIKR_MS, reps * (perPass + 650)));
+          if (counted && pass < reps && Date.now() - started - HOLD_MS + 2 * perPass <= total + 1000) {   // say it again: fade, reset, count up
+            adhkarTimer = setTimeout(() => { t.classList.add('out'); adhkarTimer = setTimeout(runPass, 650); }, perPass - HOLD_MS);
+          } else {
+            adhkarTimer = setTimeout(nextDhikr, Math.max(slide + HOLD_MS, total - (Date.now() - started)));
+          }
+        }, HOLD_MS);
+      };
+      runPass();
     }, first ? 0 : 650);
   }
   function nextDhikr() { ai++; showDhikr(false); }
