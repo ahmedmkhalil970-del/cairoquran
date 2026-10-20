@@ -19,36 +19,56 @@ const getBuf = async u => { const r = await fetch(u, { headers: UA }); if (!r.ok
 const sh = (cmd, args) => execFileSync(cmd, args, { stdio: ['ignore', 'pipe', 'inherit'], maxBuffer: 1 << 28 });
 const duration = f => parseFloat(sh('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', f]).toString());
 
-async function verseData(key, recitation) {
-  const j = await getJSON(`${API}/verses/by_key/${key}?words=true&word_fields=text_uthmani&audio=${recitation}`);
-  const v = j.verse;
-  const words = v.words.filter(w => w.char_type_name === 'word').map(w => ({ pos: w.position, text: w.text_uthmani }));
-  const audio = v.audio || {};
-  if (!audio.url) throw new Error(`no audio for ${key} recitation ${recitation}`);
-  const url = audio.url.startsWith('http') ? audio.url : (audio.url.startsWith('//') ? 'https:' + audio.url : 'https://verses.quran.com/' + audio.url);
-  return { key, words, url, segments: audio.segments || [] };
+// Word text from quran.com; audio and per-word timings from the chapter recordings quran.com itself uses (QDC).
+const getWords = async key => {
+  const j = await getJSON(`${API}/verses/by_key/${key}?words=true&word_fields=text_uthmani`);
+  return j.verse.words.filter(w => w.char_type_name === 'word').map(w => ({ pos: w.position, text: w.text_uthmani.replace(/۞\s*/g, '').trim() })).filter(w => w.text);
+};
+async function chapterAudio(recitation, chapter, dir) {
+  const j = await getJSON(`https://api.qurancdn.com/api/qdc/audio/reciters/${recitation}/audio_files?chapter=${chapter}&segments=true`);
+  const f = (j.audio_files || [])[0];
+  if (!f || !f.audio_url) return null;
+  const file = join(dir, `ch${chapter}.mp3`);
+  writeFileSync(file, await getBuf(f.audio_url));
+  const timings = new Map((f.verse_timings || []).map(v => [v.verse_key, v]));
+  return { file, timings };
+}
+async function verseFallback(key, recitation) {
+  const j = await getJSON(`${API}/verses/by_key/${key}?audio=${recitation}`);
+  const a = j.verse.audio || {};
+  if (!a.url) throw new Error(`no audio for ${key} recitation ${recitation}`);
+  return a.url.startsWith('http') ? a.url : (a.url.startsWith('//') ? 'https:' + a.url : 'https://verses.quran.com/' + a.url);
 }
 
 async function build(s, browser) {
   console.log(`== ${s.id}`);
   const tmp = join(OUT, 'tmp-' + s.id); rmSync(tmp, { recursive: true, force: true }); mkdirSync(join(tmp, 'f'), { recursive: true });
-  const verses = [];
-  for (const k of s.verses) verses.push(await verseData(k, s.recitation));
-
-  // audio: download each ayah, note its length, join into one track
+  const chapter = s.verses[0].split(':')[0];
+  let ch = null;
+  try { ch = await chapterAudio(s.recitation, chapter, tmp); } catch (e) { console.log(`  chapter audio unavailable: ${e.message}`); }
   let offset = 0; const words = []; const list = [];
-  for (const [i, v] of verses.entries()) {
-    const f = join(tmp, `a${i}.mp3`); writeFileSync(f, await getBuf(v.url)); list.push(`file '${f}'`);
+  for (const [i, key] of s.verses.entries()) {
+    const ws = await getWords(key);
+    const f = join(tmp, `a${i}.wav`);
+    const vt = ch && ch.timings.get(key);
+    let seg = new Map();
+    if (vt) {
+      const from = vt.timestamp_from / 1000, to = vt.timestamp_to / 1000;
+      sh('ffmpeg', ['-loglevel', 'error', '-y', '-ss', String(from), '-to', String(to), '-i', ch.file, '-ar', '44100', '-ac', '2', f]);
+      for (const sg of vt.segments || []) if (sg.length >= 3) seg.set(sg[0], [sg[sg.length - 2] / 1000 - from, sg[sg.length - 1] / 1000 - from]);
+    } else {
+      const mp3 = join(tmp, `a${i}.mp3`); writeFileSync(mp3, await getBuf(await verseFallback(key, s.recitation)));
+      sh('ffmpeg', ['-loglevel', 'error', '-y', '-i', mp3, '-ar', '44100', '-ac', '2', f]);
+    }
+    list.push(`file '${f}'`);
     const d = duration(f);
-    const seg = new Map();
-    for (const sg of v.segments) { if (sg.length >= 3) seg.set(sg[0], [sg[sg.length - 2] / 1000, sg[sg.length - 1] / 1000]); }
-    const timed = v.words.every(w => seg.has(w.pos));
-    console.log(`  ${v.key}: ${d.toFixed(1)}s, ${v.words.length} words, timings: ${timed ? 'yes' : 'no (even spread)'}`);
-    v.words.forEach((w, j) => {
-      const [a, b] = timed ? seg.get(w.pos) : [d * j / v.words.length, d * (j + 1) / v.words.length];
-      words.push({ text: w.text, start: offset + a, end: offset + b });
+    const timed = ws.every(w => seg.has(w.pos));
+    console.log(`  ${key}: ${d.toFixed(1)}s, ${ws.length} words, word timings: ${timed ? 'yes' : 'no (even spread)'}`);
+    ws.forEach((w, j) => {
+      const [a, b] = timed ? seg.get(w.pos) : [d * j / ws.length, d * (j + 1) / ws.length];
+      words.push({ text: w.text, start: offset + Math.max(0, a), end: offset + Math.max(a, b) });
     });
-    words.push({ text: '﴿' + ar(v.key.split(':')[1]) + '﴾', mark: true, start: offset + d - .2, end: offset + d });
+    words.push({ text: '﴿' + ar(key.split(':')[1]) + '﴾', mark: true, start: offset + d - .25, end: offset + d });
     offset += d;
   }
   writeFileSync(join(tmp, 'list.txt'), list.join('\n'));
@@ -84,7 +104,7 @@ async function build(s, browser) {
   const mp4 = join(OUT, s.id + '.mp4');
   sh('ffmpeg', ['-loglevel', 'error', '-y', '-framerate', String(FPS), '-i', join(tmp, 'f', '%05d.jpg'), '-i', wav,
     '-filter_complex', `[1:a]adelay=${Math.round(INTRO * 1000)}|${Math.round(INTRO * 1000)},apad[a]`, '-map', '0:v', '-map', '[a]', '-shortest',
-    '-c:v', 'libx264', '-preset', 'slow', '-crf', '20', '-pix_fmt', 'yuv420p', '-profile:v', 'high', '-r', String(FPS),
+    '-c:v', 'libx264', '-preset', 'slow', '-crf', '21', '-maxrate', '7M', '-bufsize', '14M', '-pix_fmt', 'yuv420p', '-profile:v', 'high', '-r', String(FPS),
     '-c:a', 'aac', '-b:a', '160k', '-movflags', '+faststart', mp4]);
   sh('ffmpeg', ['-loglevel', 'error', '-y', '-ss', String(INTRO + Math.min(audioLen * .6, audioLen - .5)), '-i', mp4, '-frames:v', '1', '-vf', 'scale=540:-1', join(OUT, s.id + '.jpg')]);
   rmSync(tmp, { recursive: true, force: true });
