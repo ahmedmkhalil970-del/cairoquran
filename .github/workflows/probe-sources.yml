@@ -29,9 +29,11 @@ jobs:
           for u in https://stream.radiojar.com/8s5u5tpdtwzuv https://backup.qurango.net/radio/abdulbasit_abdulsamad; do
             echo "== $u"; curl -s -m 6 -D - -o /dev/null -H "Origin: $O" "$u" | grep -iE '^(HTTP|access-control-allow-origin|content-type|location)'; done
       - name: Audio editions (alquran.cloud)
-        run: curl -s -m 20 https://api.alquran.cloud/v1/edition/format/audio | jq -r '.data[] | select(.language=="ar") | "\(.identifier)\t\(.name)\t\(.englishName)"'
+        run: |
+          curl -s -m 20 https://api.alquran.cloud/v1/edition/format/audio | jq -r '.data[] | select(.language=="ar") | "\(.identifier)\t\(.name)\t\(.englishName)"'
       - name: everyayah recitations (Egyptian + Alafasy)
-        run: curl -s -m 20 https://everyayah.com/data/recitations.js | grep -oiE '"subfolder": *"[^"]+"' | grep -iE 'basit|minsh|husar|husr|mustafa|ismail|banna|tablaw|naina|nauina|jibreel|afasy|shaatri|rifai|sudais|alafasy' | sort -u || true
+        run: |
+          curl -s -m 20 https://everyayah.com/data/recitations.js | grep -oiE '"subfolder": *"[^"]+"' | grep -iE 'basit|minsh|husar|husr|mustafa|ismail|banna|tablaw|naina|nauina|jibreel|afasy|shaatri|rifai|sudais|alafasy' | sort -u || true
       - name: Wikimedia Commons reciter images
         run: |
           for q in "Abdul Basit Abdus Samad" "Mohamed Siddiq El-Minshawi" "Mahmoud Khalil Al-Hussary" "Mustafa Ismail reciter" "Mahmoud Ali Al-Banna" "Mohamed Mahmoud Al-Tablawi" "Mishary Rashid Alafasy" "Ahmed Naina" "عبد الباسط عبد الصمد" "محمد صديق المنشاوي" "محمود خليل الحصري" "مصطفى إسماعيل" ; do
