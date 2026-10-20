@@ -1,0 +1,11 @@
+[
+  { "id": "minshawi-duha", "style": "circle", "reciter": "محمد صديق المنشاوي", "label": "مرتّل", "recitation": 9,
+    "verses": ["93:1","93:2","93:3","93:4","93:5"], "surah": "سورة الضحى",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Elminshwey.jpg" },
+  { "id": "abdulbasit-raad", "style": "cinema", "reciter": "عبد الباسط عبد الصمد", "label": "مجوّد", "recitation": 1,
+    "verses": ["13:28"], "surah": "سورة الرعد",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/5/52/Abdul_Basit_Abd_us-Samad_in_South_Africa_in_1966_05.jpg" },
+  { "id": "husary-zumar", "style": "wave", "reciter": "محمود خليل الحصري", "label": "مرتّل", "recitation": 6,
+    "verses": ["39:53"], "surah": "سورة الزمر",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/7/70/Hussary.jpg" }
+]
