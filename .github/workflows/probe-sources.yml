@@ -1,0 +1,42 @@
+# Temporary: checks which recitation, image and stream sources allow use from a web page (CORS). Will be removed.
+name: probe-sources
+on:
+  push:
+    branches: [claude/relaxed-volta-yog6yf]
+    paths: ['.github/workflows/probe-sources.yml']
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: CORS headers
+        run: |
+          O='https://cairoquran.com'
+          for u in \
+            https://cdn.islamic.network/quran/audio/128/ar.abdulbasitmurattal/1.mp3 \
+            https://cdn.islamic.network/quran/audio/64/ar.minshawimujawwad/1.mp3 \
+            https://everyayah.com/data/Abdul_Basit_Murattal_192kbps/013028.mp3 \
+            https://verses.quran.com/AbdulBaset/Mujawwad/mp3/013028.mp3 \
+            https://server7.mp3quran.net/basit/013.mp3 \
+            https://api.alquran.cloud/v1/ayah/13:28/ar.abdulbasitmurattal \
+            https://api.quran.com/api/v4/resources/recitations \
+            https://upload.wikimedia.org/wikipedia/commons/d/d8/Mount_sinai_egypt_moses.jpg \
+            https://commons.wikimedia.org/w/api.php?action=query\&meta=siteinfo\&format=json\&origin=* ; do
+            h=$(curl -s -m 15 -D - -o /dev/null -H "Origin: $O" -r 0-1000 "$u")
+            echo "== $u"; echo "$h" | grep -iE '^(HTTP|access-control-allow-origin|content-type|location)' ; done
+          for u in https://stream.radiojar.com/8s5u5tpdtwzuv https://backup.qurango.net/radio/abdulbasit_abdulsamad; do
+            echo "== $u"; curl -s -m 6 -D - -o /dev/null -H "Origin: $O" "$u" | grep -iE '^(HTTP|access-control-allow-origin|content-type|location)'; done
+      - name: Audio editions (alquran.cloud)
+        run: curl -s -m 20 https://api.alquran.cloud/v1/edition/format/audio | jq -r '.data[] | select(.language=="ar") | "\(.identifier)\t\(.name)\t\(.englishName)"'
+      - name: everyayah recitations (Egyptian + Alafasy)
+        run: curl -s -m 20 https://everyayah.com/data/recitations.js | grep -oiE '"subfolder": *"[^"]+"' | grep -iE 'basit|minsh|husar|husr|mustafa|ismail|banna|tablaw|naina|nauina|jibreel|afasy|shaatri|rifai|sudais|alafasy' | sort -u || true
+      - name: Wikimedia Commons reciter images
+        run: |
+          for q in "Abdul Basit Abdus Samad" "Mohamed Siddiq El-Minshawi" "Mahmoud Khalil Al-Hussary" "Mustafa Ismail reciter" "Mahmoud Ali Al-Banna" "Mohamed Mahmoud Al-Tablawi" "Mishary Rashid Alafasy" "Ahmed Naina" "عبد الباسط عبد الصمد" "محمد صديق المنشاوي" "محمود خليل الحصري" "مصطفى إسماعيل" ; do
+            echo "== $q"
+            curl -s -m 20 -G 'https://commons.wikimedia.org/w/api.php' --data-urlencode "gsrsearch=$q" \
+              -d action=query -d generator=search -d gsrnamespace=6 -d gsrlimit=6 -d prop=imageinfo -d iiprop='url|extmetadata|size' -d format=json \
+              | jq -r '.query.pages[]? | "\(.title) | \(.imageinfo[0].width)x\(.imageinfo[0].height) | \(.imageinfo[0].extmetadata.LicenseShortName.value // "?") | \(.imageinfo[0].url)"'
+          done
