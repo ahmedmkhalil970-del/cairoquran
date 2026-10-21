@@ -14,7 +14,7 @@ const url = f => `https://github.com/${REPO}/releases/download/${TAG}/${encodeUR
 mkdirSync(dist, { recursive: true });
 
 const readJSON = f => existsSync(f) ? JSON.parse(readFileSync(f, 'utf8')) : [];
-const reels = readJSON(join(dist, 'reels.json'));
+const reels = [...readJSON(join(dist, 'reels.json')), ...readJSON(join(dist, 'extra.json'))];
 const posts = readJSON(join(W, 'posts.json'));
 if (existsSync(join(W, 'assets'))) for (const f of readdirSync(join(W, 'assets'))) copyFileSync(join(W, 'assets', f), join(dist, f));
 

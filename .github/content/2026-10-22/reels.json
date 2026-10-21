@@ -1,0 +1,53 @@
+[
+  {
+    "id": "2-minshawi-imran-8",
+    "at": "2026-10-23T20:00:00+03:00",
+    "when": "الجمعة 23 أكتوبر · 8:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram"
+    ],
+    "style": "circle",
+    "reciter": "محمد صديق المنشاوي",
+    "label": "مرتّل",
+    "recitation": 9,
+    "expect": [
+      "minshaw",
+      "murattal"
+    ],
+    "verses": [
+      "3:8"
+    ],
+    "surah": "سورة آل عمران",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Elminshwey.jpg",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمد صديق المنشاوي\n\nدعاء الراسخين في العلم. أي دعاء من القرآن لا يفارق لسانك؟\n\n#دعاء #سورة_آل_عمران #المنشاوي #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "3-abdulbasit-taha-25",
+    "at": "2026-10-24T20:00:00+03:00",
+    "when": "السبت 24 أكتوبر · 8:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram"
+    ],
+    "style": "circle",
+    "reciter": "عبد الباسط عبد الصمد",
+    "label": "مرتّل",
+    "recitation": 2,
+    "expect": [
+      "bas",
+      "murattal"
+    ],
+    "verses": [
+      "20:25",
+      "20:26",
+      "20:27",
+      "20:28"
+    ],
+    "surah": "سورة طه",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Abdul_Basit_Abd_us-Samad_in_South_Africa_in_1966_%283%29_%28cropped%29.jpg",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ عبد الباسط عبد الصمد\n\nدعاء موسى عليه السلام قبل أصعب مهمة في حياته. متى دعوت به آخر مرة؟\n\n#رب_اشرح_لي_صدري #سورة_طه #عبد_الباسط_عبد_الصمد #قرآن_كريم #CairoQuran"
+  }
+]

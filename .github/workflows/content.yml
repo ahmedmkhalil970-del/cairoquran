@@ -20,7 +20,6 @@ jobs:
         with:
           node-version: 22
       - name: Tools
-        working-directory: .github/reels
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-noto-core > /dev/null
           npm i --no-save --silent playwright@1.56.1
@@ -32,6 +31,13 @@ jobs:
           if [ -f ".github/content/$W/reels.json" ]; then
             BATCH_FILE="$GITHUB_WORKSPACE/.github/content/$W/reels.json" OUT_DIR="$RUNNER_TEMP/dist" node .github/reels/build.mjs
           fi
+      - name: Record live channel reels
+        run: |
+          if [ -f ".github/content/$WEEK/live.json" ]; then
+            python3 -m http.server 8000 --bind 127.0.0.1 > /dev/null 2>&1 &
+            sleep 2
+            node .github/content/live.mjs ".github/content/$WEEK/live.json" "$RUNNER_TEMP/dist"
+          fi
       - name: Assemble
         run: node .github/content/publish.mjs "$WEEK" "$RUNNER_TEMP/dist"
       - name: Publish release
@@ -40,7 +46,7 @@ jobs:
         run: |
           TAG="content-$WEEK"
           cd "$RUNNER_TEMP/dist"
-          FILES=$(ls | grep -v '^notes.md$\|^reels.json$')
+          FILES=$(ls -p | grep -v / | grep -v '^notes.md$\|^reels.json$\|^extra.json$')
           if gh release view "$TAG" -R "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
             gh release upload "$TAG" $FILES --clobber -R "$GITHUB_REPOSITORY"
             gh release edit "$TAG" --notes-file notes.md -R "$GITHUB_REPOSITORY"
