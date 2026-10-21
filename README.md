@@ -4,6 +4,8 @@
 
 - الموقع: https://cairoquran.com
 - تطبيق التليفزيون (Android TV): `quran.apk` — كود Downloader: 5229519
+- فيسبوك: https://www.facebook.com/cairoquran
+- إنستغرام: https://www.instagram.com/cairoquran.radio
 
 
 جميع الحقوق محفوظة © 2026 Ahmed Khalil

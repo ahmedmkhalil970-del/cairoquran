@@ -151,6 +151,23 @@ body.idle{cursor:none}
 .ab-text.out{opacity:0}
 .ab-text small{font-family:var(--f-ui);font-size:1.3vw;font-weight:600;color:var(--gold);margin-inline-start:1.2vw}
 body.has-adhkar .place{bottom:27vh}
+/* follow us: icon links on the web, a periodic QR card on the TV (no clicking on a TV) */
+.soc{all:unset;pointer-events:auto;cursor:pointer;display:inline-grid;place-items:center;width:1.9vw;height:1.9vw;border-radius:50%;align-self:center;
+  color:var(--ink-soft);background:var(--glass);border:1px solid var(--edge);transition:background .2s,color .2s}
+.soc svg{width:1.05vw;height:1.05vw}
+.soc:hover,.soc:focus-visible{color:var(--ink);background:rgba(232,194,122,.22)}
+@media (max-width:700px){.soc{width:7.4vw;height:7.4vw}.soc svg{width:3.8vw;height:3.8vw}}
+.follow{position:fixed;left:4.2vw;bottom:20vh;padding:1.2vh 1.2vw 1vh;border-radius:1.2vw;z-index:4;text-align:center;
+  background:rgba(10,13,30,.86);border:1px solid var(--edge);box-shadow:0 1vw 3vw rgba(0,0,0,.45);transition:opacity 1s ease,transform 1s ease}
+.follow.out{opacity:0;transform:translateY(1.5vh)}
+body.has-adhkar .follow{bottom:27vh}
+.fw-head{font-family:var(--f-title);font-weight:700;font-size:1.5vw;color:var(--gold);line-height:1.2}
+.fw-row{display:flex;gap:1.4vw;margin-top:1vh;direction:rtl}
+.fw-row figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:.6vh}
+.fw-row svg{display:block;width:7vw;height:7vw;border-radius:.5vw}
+.fw-row b{font-size:1.15vw;font-weight:600;color:var(--ink)}
+.fw-row span{font-size:.9vw;color:var(--ink-soft);direction:ltr}
+.fw-hint{margin-top:.9vh;font-size:.9vw;color:var(--ink-faint)}
 /* make the two menus obvious: gold chips + a "new" badge until each menu is opened once */
 .now{align-items:center}
 .now-row{display:flex;align-items:center;flex-wrap:wrap;gap:.8vw;margin-top:1.2vh;pointer-events:auto}
@@ -297,6 +314,15 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
   <div class="place-credit" id="placeCredit"></div>
 </aside>
 
+<aside class="follow out" id="follow" hidden aria-hidden="true">
+  <div class="fw-head">تابعونا</div>
+  <div class="fw-row">
+    <figure><svg viewBox="0 0 33 33" shape-rendering="crispEdges" aria-hidden="true"><rect width="33" height="33" fill="#fdf6e9"/><path fill="#0b0f22" d="M2 2h7v1h-7zM12 2h5v1h-5zM18 2h4v1h-4zM24 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM11 3h2v1h-2zM15 3h4v1h-4zM20 3h1v1h-1zM22 3h1v1h-1zM24 3h1v1h-1zM30 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM11 4h1v1h-1zM13 4h3v1h-3zM18 4h2v1h-2zM21 4h1v1h-1zM24 4h1v1h-1zM26 4h3v1h-3zM30 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM11 5h2v1h-2zM14 5h4v1h-4zM20 5h2v1h-2zM24 5h1v1h-1zM26 5h3v1h-3zM30 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM11 6h1v1h-1zM15 6h2v1h-2zM19 6h2v1h-2zM24 6h1v1h-1zM26 6h3v1h-3zM30 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h3v1h-3zM15 7h3v1h-3zM20 7h3v1h-3zM24 7h1v1h-1zM30 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h1v1h-1zM22 8h1v1h-1zM24 8h7v1h-7zM11 9h3v1h-3zM16 9h1v1h-1zM19 9h4v1h-4zM2 10h1v1h-1zM5 10h1v1h-1zM7 10h2v1h-2zM10 10h1v1h-1zM12 10h2v1h-2zM17 10h2v1h-2zM20 10h2v1h-2zM23 10h1v1h-1zM25 10h1v1h-1zM13 11h1v1h-1zM16 11h1v1h-1zM18 11h1v1h-1zM23 11h2v1h-2zM27 11h1v1h-1zM30 11h1v1h-1zM2 12h2v1h-2zM7 12h4v1h-4zM14 12h1v1h-1zM18 12h2v1h-2zM21 12h1v1h-1zM23 12h1v1h-1zM27 12h3v1h-3zM4 13h4v1h-4zM9 13h1v1h-1zM11 13h2v1h-2zM16 13h2v1h-2zM20 13h1v1h-1zM22 13h5v1h-5zM28 13h2v1h-2zM5 14h2v1h-2zM8 14h1v1h-1zM10 14h3v1h-3zM18 14h2v1h-2zM21 14h4v1h-4zM27 14h1v1h-1zM29 14h2v1h-2zM2 15h1v1h-1zM4 15h1v1h-1zM10 15h1v1h-1zM13 15h1v1h-1zM19 15h1v1h-1zM21 15h3v1h-3zM25 15h1v1h-1zM4 16h1v1h-1zM8 16h1v1h-1zM14 16h1v1h-1zM18 16h1v1h-1zM20 16h1v1h-1zM22 16h1v1h-1zM24 16h1v1h-1zM27 16h4v1h-4zM2 17h2v1h-2zM5 17h2v1h-2zM12 17h1v1h-1zM15 17h2v1h-2zM19 17h2v1h-2zM22 17h1v1h-1zM27 17h1v1h-1zM29 17h1v1h-1zM3 18h1v1h-1zM5 18h4v1h-4zM10 18h1v1h-1zM12 18h2v1h-2zM15 18h2v1h-2zM18 18h2v1h-2zM22 18h2v1h-2zM25 18h1v1h-1zM29 18h1v1h-1zM4 19h2v1h-2zM7 19h1v1h-1zM10 19h1v1h-1zM13 19h1v1h-1zM18 19h1v1h-1zM23 19h3v1h-3zM27 19h1v1h-1zM30 19h1v1h-1zM2 20h1v1h-1zM5 20h1v1h-1zM7 20h4v1h-4zM13 20h3v1h-3zM20 20h1v1h-1zM24 20h2v1h-2zM29 20h2v1h-2zM4 21h2v1h-2zM9 21h1v1h-1zM12 21h2v1h-2zM15 21h1v1h-1zM17 21h1v1h-1zM19 21h4v1h-4zM29 21h2v1h-2zM2 22h1v1h-1zM5 22h2v1h-2zM8 22h1v1h-1zM11 22h2v1h-2zM16 22h1v1h-1zM21 22h6v1h-6zM28 22h1v1h-1zM10 23h4v1h-4zM15 23h1v1h-1zM18 23h1v1h-1zM21 23h2v1h-2zM26 23h1v1h-1zM28 23h3v1h-3zM2 24h7v1h-7zM11 24h6v1h-6zM18 24h1v1h-1zM20 24h1v1h-1zM22 24h1v1h-1zM24 24h1v1h-1zM26 24h1v1h-1zM29 24h1v1h-1zM2 25h1v1h-1zM8 25h1v1h-1zM10 25h1v1h-1zM12 25h2v1h-2zM15 25h1v1h-1zM17 25h1v1h-1zM20 25h1v1h-1zM22 25h1v1h-1zM26 25h3v1h-3zM30 25h1v1h-1zM2 26h1v1h-1zM4 26h3v1h-3zM8 26h1v1h-1zM11 26h1v1h-1zM13 26h1v1h-1zM16 26h1v1h-1zM19 26h1v1h-1zM22 26h5v1h-5zM30 26h1v1h-1zM2 27h1v1h-1zM4 27h3v1h-3zM8 27h1v1h-1zM10 27h2v1h-2zM13 27h2v1h-2zM16 27h1v1h-1zM19 27h2v1h-2zM22 27h1v1h-1zM24 27h1v1h-1zM26 27h4v1h-4zM2 28h1v1h-1zM4 28h3v1h-3zM8 28h1v1h-1zM11 28h1v1h-1zM13 28h1v1h-1zM15 28h1v1h-1zM20 28h1v1h-1zM26 28h3v1h-3zM30 28h1v1h-1zM2 29h1v1h-1zM8 29h1v1h-1zM11 29h3v1h-3zM18 29h2v1h-2zM21 29h2v1h-2zM26 29h1v1h-1zM29 29h1v1h-1zM2 30h7v1h-7zM10 30h1v1h-1zM13 30h2v1h-2zM16 30h2v1h-2zM19 30h1v1h-1zM22 30h2v1h-2zM25 30h2v1h-2zM29 30h1v1h-1z"/></svg><b>فيسبوك</b><span>cairoquran</span></figure>
+    <figure><svg viewBox="0 0 33 33" shape-rendering="crispEdges" aria-hidden="true"><rect width="33" height="33" fill="#fdf6e9"/><path fill="#0b0f22" d="M2 2h7v1h-7zM15 2h4v1h-4zM20 2h2v1h-2zM24 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM13 3h6v1h-6zM24 3h1v1h-1zM30 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM11 4h2v1h-2zM14 4h1v1h-1zM17 4h1v1h-1zM19 4h1v1h-1zM21 4h2v1h-2zM24 4h1v1h-1zM26 4h3v1h-3zM30 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM12 5h3v1h-3zM16 5h1v1h-1zM20 5h1v1h-1zM24 5h1v1h-1zM26 5h3v1h-3zM30 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM12 6h1v1h-1zM14 6h2v1h-2zM17 6h4v1h-4zM22 6h1v1h-1zM24 6h1v1h-1zM26 6h3v1h-3zM30 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h1v1h-1zM13 7h2v1h-2zM16 7h6v1h-6zM24 7h1v1h-1zM30 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h1v1h-1zM22 8h1v1h-1zM24 8h7v1h-7zM13 9h2v1h-2zM17 9h4v1h-4zM22 9h1v1h-1zM2 10h1v1h-1zM5 10h1v1h-1zM7 10h2v1h-2zM10 10h2v1h-2zM15 10h2v1h-2zM18 10h1v1h-1zM21 10h1v1h-1zM23 10h1v1h-1zM25 10h1v1h-1zM2 11h3v1h-3zM6 11h2v1h-2zM9 11h1v1h-1zM11 11h2v1h-2zM14 11h2v1h-2zM18 11h1v1h-1zM22 11h3v1h-3zM27 11h1v1h-1zM30 11h1v1h-1zM2 12h1v1h-1zM4 12h8v1h-8zM15 12h2v1h-2zM21 12h1v1h-1zM24 12h1v1h-1zM27 12h3v1h-3zM2 13h2v1h-2zM6 13h1v1h-1zM10 13h2v1h-2zM15 13h1v1h-1zM20 13h3v1h-3zM25 13h2v1h-2zM28 13h2v1h-2zM2 14h1v1h-1zM5 14h5v1h-5zM12 14h1v1h-1zM14 14h2v1h-2zM19 14h2v1h-2zM22 14h3v1h-3zM27 14h1v1h-1zM29 14h2v1h-2zM2 15h1v1h-1zM4 15h3v1h-3zM9 15h1v1h-1zM11 15h3v1h-3zM21 15h3v1h-3zM25 15h1v1h-1zM4 16h1v1h-1zM7 16h3v1h-3zM11 16h2v1h-2zM14 16h1v1h-1zM16 16h1v1h-1zM23 16h1v1h-1zM27 16h4v1h-4zM2 17h1v1h-1zM5 17h1v1h-1zM15 17h1v1h-1zM17 17h4v1h-4zM23 17h2v1h-2zM27 17h1v1h-1zM29 17h1v1h-1zM4 18h2v1h-2zM7 18h8v1h-8zM18 18h2v1h-2zM21 18h1v1h-1zM23 18h1v1h-1zM25 18h1v1h-1zM29 18h1v1h-1zM3 19h2v1h-2zM7 19h1v1h-1zM9 19h2v1h-2zM12 19h1v1h-1zM14 19h1v1h-1zM16 19h1v1h-1zM18 19h1v1h-1zM24 19h2v1h-2zM27 19h1v1h-1zM30 19h1v1h-1zM2 20h1v1h-1zM4 20h7v1h-7zM12 20h1v1h-1zM14 20h1v1h-1zM16 20h1v1h-1zM19 20h2v1h-2zM24 20h2v1h-2zM29 20h2v1h-2zM6 21h2v1h-2zM9 21h2v1h-2zM16 21h7v1h-7zM29 21h2v1h-2zM2 22h1v1h-1zM4 22h2v1h-2zM8 22h1v1h-1zM10 22h4v1h-4zM15 22h2v1h-2zM22 22h5v1h-5zM28 22h1v1h-1zM10 23h3v1h-3zM18 23h2v1h-2zM21 23h2v1h-2zM26 23h1v1h-1zM28 23h3v1h-3zM2 24h7v1h-7zM11 24h1v1h-1zM13 24h2v1h-2zM18 24h1v1h-1zM20 24h1v1h-1zM22 24h1v1h-1zM24 24h1v1h-1zM26 24h1v1h-1zM29 24h1v1h-1zM2 25h1v1h-1zM8 25h1v1h-1zM10 25h1v1h-1zM14 25h2v1h-2zM18 25h1v1h-1zM20 25h1v1h-1zM22 25h1v1h-1zM26 25h5v1h-5zM2 26h1v1h-1zM4 26h3v1h-3zM8 26h1v1h-1zM11 26h2v1h-2zM16 26h4v1h-4zM22 26h5v1h-5zM2 27h1v1h-1zM4 27h3v1h-3zM8 27h1v1h-1zM10 27h2v1h-2zM14 27h2v1h-2zM21 27h1v1h-1zM24 27h1v1h-1zM26 27h4v1h-4zM2 28h1v1h-1zM4 28h3v1h-3zM8 28h1v1h-1zM14 28h1v1h-1zM18 28h3v1h-3zM23 28h1v1h-1zM26 28h3v1h-3zM30 28h1v1h-1zM2 29h1v1h-1zM8 29h1v1h-1zM12 29h4v1h-4zM19 29h4v1h-4zM26 29h1v1h-1zM29 29h1v1h-1zM2 30h7v1h-7zM10 30h2v1h-2zM13 30h1v1h-1zM16 30h1v1h-1zM18 30h2v1h-2zM22 30h1v1h-1zM25 30h2v1h-2zM29 30h1v1h-1z"/></svg><b>إنستغرام</b><span>@cairoquran.radio</span></figure>
+  </div>
+  <div class="fw-hint">وجّه كاميرا الموبايل إلى الرمز</div>
+</aside>
+
 <main class="frame">
   <header class="top">
     <div class="station">
@@ -327,7 +353,7 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
     <div class="p-head"><button class="city" id="cityBtn" type="button"><b id="cityLabel">مواقيت الصلاة · الكويت</b><span class="city-row"><i class="chip" id="cityChip">تغيير المدينة ▾</i><em class="new-badge" id="cityNew" hidden>جديد</em></span></button><span id="countdown"></span></div>
   </footer>
   </div>
-  <div class="sig"><span>By-<b>Ahmed Khalil</b></span><span class="vsep" id="visitsDot" hidden>·</span><span class="visits" id="visits" hidden></span><span class="vsep share-sep" id="shareSep">·</span><button class="share-btn" id="shareBtn" type="button" aria-label="شارك Cairo Quran"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>شارك مع أحبابك</button><span class="vsep web-x app-x">·</span><button class="share-btn web-x app-x" id="appBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg>على الموبايل</button><span class="vsep web-x">·</span><button class="share-btn web-x" id="tvBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>على التليفزيون</button><span class="vsep web-x">·</span><button class="share-btn web-x" id="contactBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>تواصل معنا</button><span class="vsep" id="sigMailSep" hidden>·</span><span class="sig-mail" id="sigMail" hidden></span></div>
+  <div class="sig"><span>By-<b>Ahmed Khalil</b></span><span class="vsep" id="visitsDot" hidden>·</span><span class="visits" id="visits" hidden></span><span class="vsep share-sep" id="shareSep">·</span><button class="share-btn" id="shareBtn" type="button" aria-label="شارك Cairo Quran"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>شارك مع أحبابك</button><span class="vsep web-x app-x">·</span><button class="share-btn web-x app-x" id="appBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg>على الموبايل</button><span class="vsep web-x">·</span><button class="share-btn web-x" id="tvBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>على التليفزيون</button><span class="vsep web-x">·</span><button class="share-btn web-x" id="contactBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>تواصل معنا</button><span class="vsep web-x">·</span><a class="soc web-x" id="fbLink" href="https://www.facebook.com/cairoquran" target="_blank" rel="noopener" aria-label="Cairo Quran على فيسبوك" title="فيسبوك"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21z"/></svg></a><a class="soc web-x" id="igLink" href="https://www.instagram.com/cairoquran.radio" target="_blank" rel="noopener" aria-label="Cairo Quran على إنستغرام" title="إنستغرام"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg></a><span class="vsep" id="sigMailSep" hidden>·</span><span class="sig-mail" id="sigMail" hidden></span></div>
 </main>
 
 <div class="picker" id="picker" hidden role="dialog" aria-modal="true" aria-labelledby="pickerTitle">
@@ -1433,6 +1459,7 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
   function startAdhan(k) {
     if (adhanActive) return;
     adhanActive = true; chimePlaying = true; adhanReturn = document.activeElement;
+    if (window.followHide) window.followHide();
     resumeAfterAdhan = wantPlay;
     if (wantPlay) quietStop();
     setStatus('idle', 'موعد صلاة ' + NAMES[k]);
@@ -1685,6 +1712,29 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
   if (NATIVE) {                       // inside the TV app: no guide, no mail client; just show the address
     document.querySelectorAll('.web-x').forEach(el => { el.hidden = true; });
     $('sigMail').textContent = MAIL; $('sigMail').hidden = false; $('sigMailSep').hidden = false;
+  }
+
+
+  /* ---------- follow us ---------- */
+  // Web: two icon links. TV app: a QR card in the free lower-left corner, 20 s every 10 min,
+  // never over the adhan notice or an open menu.
+  ['fbLink', 'igLink'].forEach(id => $(id).addEventListener('click', () => trackEvent(id === 'fbLink' ? 'facebook' : 'instagram', id === 'fbLink' ? 'فيسبوك' : 'إنستغرام')));
+  if (NATIVE) {
+    const fw = $('follow'), FW_FIRST = 3 * 60e3, FW_EVERY = 10 * 60e3, FW_FOR = 20e3;
+    let fwHide = 0;
+    fw.hidden = false;
+    const covered = () => (typeof adhanActive !== 'undefined' && adhanActive) ||
+      ['gate', 'picker', 'update', 'tvPanel', 'appPanel', 'contactPanel', 'share', 'adhanOv'].some(id => {
+        const el = $(id); if (!el || el.hidden) return false;
+        const cs = getComputedStyle(el); return cs.display !== 'none' && cs.visibility !== 'hidden' && parseFloat(cs.opacity) > .05;
+      });
+    window.followHide = () => { clearTimeout(fwHide); fw.classList.add('out'); };
+    const followShow = () => {
+      if (covered()) { setTimeout(followShow, 60e3); return; }
+      fw.classList.remove('out');
+      clearTimeout(fwHide); fwHide = setTimeout(window.followHide, FW_FOR);
+    };
+    setTimeout(() => { followShow(); setInterval(followShow, FW_EVERY); }, FW_FIRST);
   }
 
   if (NATIVE) {                       // the TV app has no use for sharing
