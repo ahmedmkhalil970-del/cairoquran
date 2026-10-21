@@ -119,7 +119,7 @@
         const blob = await rec.stop(), ext = blob.type.includes('mp4') ? 'mp4' : 'webm';
         CQ.deliver(blob, `cairo-quran-video.${ext}`, $('edDownload'), $('edShare'));
         $('edPreview').src = URL.createObjectURL(blob);
-        $('edCaption').value = (S.text ? `${S.text.plain}\n\n${S.text.ref}${R ? '\nبصوت الشيخ ' + $('edReciter').selectedOptions[0].text : ''}\n\n` : '') + `${$('edTitle').value.trim() ? $('edTitle').value.trim() + '\n\n' : ''}[اكتب هنا سؤالًا يفتح حوارًا مع المتابعين]\n\n${CQ.hashtags}`;
+        $('edCaption').value = (S.text ? `${S.text.plain}\n\n${S.text.ref}${R ? '\nبصوت الشيخ ' + $('edReciter').selectedOptions[0].text : ''}\n\n` : '') + `${$('edTitle').value.trim() ? $('edTitle').value.trim() + '\n\n' : ''}${CQ.hashtags}`;
         $('edResult').hidden = false;
         msg(ext === 'mp4' ? 'المقطع جاهز: شاهده، ثم نزّله أو شاركه مباشرة.' : 'المقطع جاهز بصيغة WebM، ويقبلها فيسبوك. أما إنستجرام فيحتاج MP4، فأنشئه من Safari أو من إصدار حديث من Chrome.', 'ok');
       } else msg('انتهت المعاينة.', 'ok');

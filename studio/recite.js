@@ -132,7 +132,7 @@
         const blob = await rec.stop(), ext = blob.type.includes('mp4') ? 'mp4' : 'webm';
         CQ.deliver(blob, `cairo-quran-${$('recSurah').value}-${$('recFrom').value}-${$('recTo').value}.${ext}`, $('recDownload'), $('recShare'));
         $('recPreview').src = URL.createObjectURL(blob);
-        $('recCaption').value = `${J.plain}\n\n${J.ref}\nبصوت الشيخ ${J.reciter}${J.label ? ' · ' + J.label : ''}\n\n[اكتب هنا سؤالًا يفتح حوارًا مع المتابعين]\n\n${CQ.hashtags}`;
+        $('recCaption').value = `${J.plain}\n\n${J.ref}\nبصوت الشيخ ${J.reciter}${J.label ? ' · ' + J.label : ''}\n\n${CQ.hashtags}`;
         $('recResult').hidden = false;
         msg([ext === 'mp4' ? 'المقطع جاهز: شاهده، ثم نزّله أو شاركه مباشرة.' : 'المقطع جاهز بصيغة WebM، ويقبلها فيسبوك. أما إنستجرام فيحتاج MP4، فأنشئه من Safari أو من إصدار حديث من Chrome.', 'ok']);
       } else msg(['انتهت المعاينة. إن أعجبتك فاضغط «إنشاء المقطع».', 'ok']);
@@ -147,7 +147,7 @@
 
   async function onReciter() {
     const url = CQ.PHOTOS[+$('recReciter').value]; S.photo = null; $('recThumb').removeAttribute('src');
-    $('recPhotoNote').textContent = url ? 'الصورة من Wikimedia Commons.' : 'لا توجد صورة لهذا القارئ؛ ارفع صورة أو يظهر الهلال.';
+    $('recPhotoNote').textContent = url ? '' : 'لا توجد صورة لهذا القارئ. ارفع صورة، وإلا يظهر الهلال مكانها.';
     if (url) try { S.photo = await CQ.loadImage(url, true); $('recThumb').src = url; } catch (e) {}
     save(); idle();
   }
