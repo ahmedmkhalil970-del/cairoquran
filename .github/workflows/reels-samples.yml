@@ -1,10 +1,11 @@
-# Renders the sample reels in .github/reels/samples.json and commits the videos to .github/reels/out on this branch.
+# Renders the batch named in .github/reels/current and commits the videos to .github/reels/out on this branch.
+# Runs only when that file changes, so ordinary pushes never add videos to the branch.
 # Runs only on this working branch; it never touches main or the live site.
 name: reels-samples
 on:
   push:
     branches: [claude/relaxed-volta-yog6yf]
-    paths: ['.github/reels/**', '!.github/reels/out/**', '.github/workflows/reels-samples.yml']
+    paths: ['.github/reels/current']
 permissions:
   contents: write
 concurrency:
