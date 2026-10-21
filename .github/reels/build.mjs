@@ -15,6 +15,16 @@ const API = 'https://api.quran.com/api/v4';
 const UA = { 'user-agent': 'CairoQuran-Reels/1.0 (https://cairoquran.com; contact@cairoquran.com)' };
 const ar = n => String(n).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
 
+function radiosLine(html) {
+  // "إذاعات القرآن الكريم من مصر والسعودية", read from the live-radio group in the site's station list
+  const g = html.indexOf("title: 'إذاعات مباشرة'"), e = g < 0 ? -1 : html.indexOf('] }', g);
+  const places = g < 0 ? [] : [...html.slice(g, e).matchAll(/name: 'إذاعة القرآن الكريم · ([^']+)'/g)].map(m => m[1].trim() === 'القاهرة' ? 'مصر' : m[1].trim());
+  const list = [...new Set(places)];
+  if (!list.length) return 'إذاعات القرآن الكريم';
+  return 'إذاعات القرآن الكريم من ' + list.join(' و');
+}
+const RADIOS = (() => { try { return radiosLine(readFileSync(join(HERE, '..', '..', 'index.html'), 'utf8')); } catch { return 'إذاعات القرآن الكريم'; } })();
+
 const getJSON = async u => { const r = await fetch(u, { headers: UA }); if (!r.ok) throw new Error(`${r.status} ${u}`); return r.json(); };
 const getBuf = async u => { const r = await fetch(u, { headers: UA }); if (!r.ok) throw new Error(`${r.status} ${u}`); return Buffer.from(await r.arrayBuffer()); };
 const sh = (cmd, args) => execFileSync(cmd, args, { stdio: ['ignore', 'pipe', 'inherit'], maxBuffer: 1 << 28 });
@@ -93,7 +103,7 @@ async function build(s, browser) {
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 } });
   await page.goto('file://' + join(HERE, 'reel.html'));
   await page.evaluate(() => document.fonts.ready);
-  await page.evaluate(d => setup(d), { style: s.style, photo, reciter: s.reciter, label: s.label, words, ref, total, intro: INTRO, outro: OUTRO, env: envN });
+  await page.evaluate(d => setup(d), { style: s.style, photo, reciter: s.reciter, label: s.label, words, ref, total, intro: INTRO, outro: OUTRO, env: envN, radios: RADIOS });
   await page.evaluate(() => Promise.all([...document.fonts].map(f => f.load())));
   await page.waitForTimeout(800);
   const frames = Math.ceil(total * FPS);

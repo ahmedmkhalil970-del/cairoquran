@@ -147,7 +147,15 @@ select:focus,input:focus,textarea:focus{outline:2px solid var(--gold);outline-of
   const ORDER = [2, 1, 6, 12, 9, 7];
   const STYLE_AR = { Murattal: 'مرتّل', Mujawwad: 'مجوّد', Muallim: 'المعلّم', 'Kids repeat': 'مع ترديد الأطفال' };
 
-  const S = { style: 'circle', reciters: [], chapters: [], photo: null, busy: false, job: null };
+  function radiosLine(html) {
+    // "إذاعات القرآن الكريم من مصر والسعودية", read from the live-radio group in the site's station list
+    const g = html.indexOf("title: 'إذاعات مباشرة'"), e = g < 0 ? -1 : html.indexOf('] }', g);
+    const places = g < 0 ? [] : [...html.slice(g, e).matchAll(/name: 'إذاعة القرآن الكريم · ([^']+)'/g)].map(m => m[1].trim() === 'القاهرة' ? 'مصر' : m[1].trim());
+    const list = [...new Set(places)];
+    if (!list.length) return 'إذاعات القرآن الكريم';
+    return 'إذاعات القرآن الكريم من ' + list.join(' و');
+  }
+  const S = { radios: 'إذاعات القرآن الكريم', style: 'circle', reciters: [], chapters: [], photo: null, busy: false, job: null };
 
   /* ---------- data ---------- */
   const getJSON = async u => { const r = await fetch(u); if (!r.ok) throw new Error('تعذّر الوصول إلى ' + new URL(u).host); return r.json(); };
@@ -344,9 +352,8 @@ select:focus,input:focus,textarea:focus{outline:2px solid var(--gold);outline-of
     c.font = '700 104px Amiri, serif'; c.direction = 'ltr'; c.textAlign = 'left';
     const e1 = c.measureText('Cairo ').width, e2 = c.measureText('Quran').width, ex = (W - e1 - e2) / 2;
     c.fillStyle = '#e8c27a'; c.fillText('Cairo ', ex, 860 + ey); c.fillStyle = '#fdf6e9'; c.fillText('Quran', ex + e1, 860 + ey);
-    text('تلاوات كبار القرّاء', W / 2, 960 + ey, '300 44px "Readex Pro", sans-serif', 'rgba(253,246,233,.86)');
-    text('مواقيت الصلاة لمدينتك · الأذكار', W / 2, 1030 + ey, '300 44px "Readex Pro", sans-serif', 'rgba(253,246,233,.86)');
-    text('cairoquran.com', W / 2, 1130 + ey, '400 48px "Readex Pro", sans-serif', '#e8c27a', 'center', 'ltr');
+    ['تلاوات كبار القرّاء', S.radios, 'مواقيت الصلاة لمدينتك · الأذكار'].forEach((l, i) => text(l, W / 2, 960 + i * 70 + ey, '300 44px "Readex Pro", sans-serif', 'rgba(253,246,233,.86)'));
+    text('cairoquran.com', W / 2, 1200 + ey, '400 48px "Readex Pro", sans-serif', '#e8c27a', 'center', 'ltr');
     c.globalAlpha = 1; c.fillStyle = `rgba(5,8,22,${1 - win(t, 0, 1)})`; c.fillRect(0, 0, W, H);
     c.restore();
   }
@@ -443,6 +450,7 @@ select:focus,input:focus,textarea:focus{outline:2px solid var(--gold);outline-of
   $('recordBtn').addEventListener('click', () => run(true));
   $('copyBtn').addEventListener('click', async () => { const t = $('caption'); try { await navigator.clipboard.writeText(t.value); say('نُسخ نص المنشور.', 'ok'); } catch (e) { t.focus(); t.select(); say('النص محدّد، انسخه من القائمة.'); } });
 
+  fetch('../index.html').then(r => r.ok ? r.text() : '').then(h => { if (h) S.radios = radiosLine(h); }).catch(() => {});
   document.fonts.ready.then(drawIdle);
   loadLists();
 })();

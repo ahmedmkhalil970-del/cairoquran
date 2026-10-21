@@ -40,7 +40,7 @@ canvas{position:absolute;inset:0}
 <div class="reciter" id="reciter"></div>
 <div class="verse" id="verse"></div>
 <div class="ref" id="ref"></div>
-<div class="end" id="end"><div class="t"><b>Cairo</b> Quran</div><div class="s">تلاوات كبار القرّاء<br>مواقيت الصلاة لمدينتك · الأذكار</div><div class="u">cairoquran.com</div></div>
+<div class="end" id="end"><div class="t"><b>Cairo</b> Quran</div><div class="s" id="endLines"></div><div class="u">cairoquran.com</div></div>
 <script>
 const W = 1080, H = 1920, cv = document.getElementById('bg'), c = cv.getContext('2d');
 const $ = id => document.getElementById(id);
@@ -58,6 +58,7 @@ function star8(x, y, r) { c.beginPath(); for (let k = 0; k < 2; k++) { const a0 
 
 window.setup = function (data) {
   D = data;
+  $('endLines').replaceChildren(...['تلاوات كبار القرّاء', D.radios || 'إذاعات القرآن الكريم', 'مواقيت الصلاة لمدينتك · الأذكار'].flatMap((l, i) => i ? [document.createElement('br'), l] : [l]));
   const st = D.style;
   if (st === 'cinema') { $('photo').hidden = false; $('shade').hidden = false; $('photo').style.backgroundImage = `url(${D.photo})`; }
   const rc = $('reciter');
