@@ -78,6 +78,8 @@ select:focus,input:focus,textarea:focus{outline:2px solid var(--gold);outline-of
 .result{width:100%;display:flex;flex-direction:column;gap:10px;max-width:520px}
 .result video{width:min(100%,300px);align-self:center;border-radius:12px;background:#000}
 .result textarea{min-height:150px;font-size:14px;line-height:1.75}
+footer.rights{margin-top:8px;padding-top:14px;border-top:1px solid var(--edge-2);text-align:center;font-size:12px;color:var(--ink-faint)}
+footer.rights b{color:var(--gold);font-weight:400;direction:ltr;display:inline-block}
 .hint{font-size:12px;color:var(--ink-faint);text-align:center;max-width:400px}
 @media (max-width:880px){.desk{grid-template-columns:minmax(0,1fr)}.preview{position:static;order:-1}.stage{width:min(100%,300px)}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -110,8 +112,8 @@ select:focus,input:focus,textarea:focus{outline:2px solid var(--gold);outline-of
           <div class="field"><label for="imgRef">السطر الذهبي تحت النص</label><input type="text" id="imgRef" dir="rtl"></div>
         </div>
         <div class="group"><h2>الشكل</h2>
-          <div class="field"><span class="label">المقاس</span>
-            <div class="seg" id="imgSize"><button type="button" data-size="square">مربع</button><button type="button" data-size="portrait">طولي ٤:٥</button><button type="button" data-size="story">ستوري ٩:١٦</button></div></div>
+          <div class="field"><span class="label">نوع النشر</span>
+            <div class="seg" id="imgSize"><button type="button" data-size="portrait">منشور ٤:٥</button><button type="button" data-size="square">منشور مربع</button><button type="button" data-size="story">ستوري ٩:١٦</button></div></div>
           <div class="field"><span class="label">الخلفية</span>
             <div class="seg" id="imgTheme"><button type="button" data-theme="night">ليل</button><button type="button" data-theme="dawn">فجر</button><button type="button" data-theme="emerald">زمرّدي</button><button type="button" data-theme="photo">صورتك</button></div></div>
           <div class="field" id="imgPhotoField" hidden><label class="btn ghost small" for="imgPhoto">اختر صورة الخلفية</label><input type="file" id="imgPhoto" accept="image/*" hidden></div>
@@ -123,7 +125,7 @@ select:focus,input:focus,textarea:focus{outline:2px solid var(--gold);outline-of
       <div class="preview">
         <div class="img-stage"><canvas id="imgCanvas" width="1080" height="1350"></canvas></div>
         <div class="result">
-          <div class="actions"><a class="btn primary" id="imgDownload" download>تنزيل الصورة</a><button type="button" class="btn ghost" id="imgShare" hidden>مشاركة</button><button type="button" class="btn ghost" id="imgCopy">نسخ النص</button></div>
+          <div class="actions"><a class="btn primary" id="imgDownload" download>تنزيل الصورة</a><button type="button" class="btn ghost" id="imgShare" hidden>نشر على إنستجرام أو فيسبوك أو واتساب</button><button type="button" class="btn ghost" id="imgCopy">نسخ النص</button></div>
           <label for="imgCaption">نص مقترح للمنشور</label><textarea id="imgCaption" dir="rtl"></textarea>
         </div>
       </div>
@@ -141,7 +143,7 @@ select:focus,input:focus,textarea:focus{outline:2px solid var(--gold);outline-of
           <div class="row"><div class="field"><label for="recFrom">من الآية</label><input type="number" id="recFrom" min="1" value="1"></div><div class="field"><label for="recTo">إلى الآية</label><input type="number" id="recTo" min="1" value="1"></div></div>
         </div>
         <div class="group"><h2>الشكل</h2>
-          <div class="field"><span class="label">المقاس</span><div class="seg" id="recRatio"><button type="button" data-ratio="9:16">Reels ٩:١٦</button><button type="button" data-ratio="4:5">منشور ٤:٥</button><button type="button" data-ratio="1:1">مربع</button></div></div>
+          <div class="field"><span class="label">نوع النشر</span><div class="seg" id="recRatio"><button type="button" data-ratio="9:16">ريلز وستوري ٩:١٦</button><button type="button" data-ratio="4:5">منشور ٤:٥</button><button type="button" data-ratio="1:1">منشور مربع</button></div><span class="note">الريلز يصل إلى غير المتابعين، والمنشور يظهر في صفحتك وبين صور حسابك.</span></div>
           <div class="field"><span class="label">صورة القارئ</span><div class="seg" id="recLayout"><button type="button" data-layout="circle">دائرية</button><button type="button" data-layout="card">كبيرة</button><button type="button" data-layout="chip">صغيرة</button></div></div>
           <div class="photo-row"><img id="recThumb" alt=""><div><label class="btn ghost small" for="recPhoto">رفع صورة أخرى للقارئ</label><input type="file" id="recPhoto" accept="image/*" hidden><div class="note" id="recPhotoNote"></div></div></div>
           <div class="field"><span class="label">الخلفية</span><div class="seg" id="recBg"><button type="button" data-bg="night">ليل</button><button type="button" data-bg="dawn">فجر</button><button type="button" data-bg="emerald">زمرّدي</button><button type="button" data-bg="photo">صورة</button><button type="button" data-bg="video">فيديو من جهازك</button></div></div>
@@ -159,7 +161,7 @@ select:focus,input:focus,textarea:focus{outline:2px solid var(--gold);outline-of
         <div class="hint">اترك الصفحة ظاهرة أثناء الإنشاء، فالتسجيل يجري بالسرعة الحقيقية للتلاوة.</div>
         <div class="result" id="recResult" hidden>
           <video id="recPreview" controls playsinline></video>
-          <div class="actions"><a class="btn primary" id="recDownload" download>تنزيل المقطع</a><button type="button" class="btn ghost" id="recShare" hidden>مشاركة إلى إنستجرام أو فيسبوك</button><button type="button" class="btn ghost" id="recCopy">نسخ النص</button></div>
+          <div class="actions"><a class="btn primary" id="recDownload" download>تنزيل المقطع</a><button type="button" class="btn ghost" id="recShare" hidden>نشر على إنستجرام أو فيسبوك أو واتساب</button><button type="button" class="btn ghost" id="recCopy">نسخ النص</button></div>
           <label for="recCaption">نص مقترح للمنشور</label><textarea id="recCaption" dir="rtl"></textarea>
         </div>
       </div>
@@ -178,7 +180,7 @@ select:focus,input:focus,textarea:focus{outline:2px solid var(--gold);outline-of
           <div class="note" id="edTrimOut"></div>
         </div>
         <div class="group"><h2>الإطار والألوان</h2>
-          <div class="field"><span class="label">المقاس</span><div class="seg" id="edRatio"><button type="button" data-ratio="9:16" aria-pressed="true">Reels ٩:١٦</button><button type="button" data-ratio="4:5" aria-pressed="false">منشور ٤:٥</button><button type="button" data-ratio="1:1" aria-pressed="false">مربع</button></div></div>
+          <div class="field"><span class="label">نوع النشر</span><div class="seg" id="edRatio"><button type="button" data-ratio="9:16" aria-pressed="true">ريلز وستوري ٩:١٦</button><button type="button" data-ratio="4:5" aria-pressed="false">منشور ٤:٥</button><button type="button" data-ratio="1:1" aria-pressed="false">منشور مربع</button></div><span class="note">الريلز يصل إلى غير المتابعين، والمنشور يظهر في صفحتك وبين صور حسابك.</span></div>
           <div class="field"><span class="label">الملاءمة</span><div class="seg" id="edFit"><button type="button" data-fit="fill" aria-pressed="true">ملء الإطار (قص)</button><button type="button" data-fit="fit" aria-pressed="false">الفيديو كاملًا مع خلفية مموّهة</button></div></div>
           <div id="edFrameFields" class="row3"><div class="field"><label for="edZoom">تكبير</label><input type="range" id="edZoom" min="1" max="2.5" step=".01" value="1"></div><div class="field"><label for="edPanX">أفقي</label><input type="range" id="edPanX" min="-1" max="1" step=".01" value="0"></div><div class="field"><label for="edPanY">رأسي</label><input type="range" id="edPanY" min="-1" max="1" step=".01" value="0"></div></div>
           <div class="field"><span class="label">الألوان</span><div class="seg" id="edLook"><button type="button" data-look="none" aria-pressed="true">طبيعي</button><button type="button" data-look="warm" aria-pressed="false">دافئ</button><button type="button" data-look="soft" aria-pressed="false">ناعم</button><button type="button" data-look="bw" aria-pressed="false">أبيض وأسود</button><button type="button" data-look="dim" aria-pressed="false">معتّم للنص</button></div></div>
@@ -193,7 +195,7 @@ select:focus,input:focus,textarea:focus{outline:2px solid var(--gold);outline-of
             <div class="row"><div class="field"><label for="edFrom">من الآية</label><input type="number" id="edFrom" min="1" value="1"></div><div class="field"><label for="edTo">إلى الآية</label><input type="number" id="edTo" min="1" value="1"></div></div>
           </div>
           <div class="field"><label for="edSub">سطر صغير أسفل المقطع (اختياري)</label><input type="text" id="edSub" dir="rtl" placeholder="مثال: القاهرة · رمضان ١٤٤٨"></div>
-          <div class="checks"><label class="check"><input type="checkbox" id="edBrand" checked> شعار Cairo Quran</label><label class="check"><input type="checkbox" id="edEnd" checked> الخاتمة</label><label class="check"><input type="checkbox" id="edSafeToggle"> مساحة واجهة Reels</label></div>
+          <div class="checks"><label class="check"><input type="checkbox" id="edEnd" checked> الخاتمة</label><label class="check"><input type="checkbox" id="edSafeToggle"> مساحة واجهة Reels</label></div>
         </div>
         <div class="group"><h2>الصوت</h2>
           <div class="field"><label for="edVolOrig">صوت الفيديو الأصلي</label><input type="range" id="edVolOrig" min="0" max="1" step=".05" value="1"></div>
@@ -208,12 +210,13 @@ select:focus,input:focus,textarea:focus{outline:2px solid var(--gold);outline-of
         <div class="hint">يُنشأ المقطع داخل جهازك، ولا يُرفع إلى أي خادم.</div>
         <div class="result" id="edResult" hidden>
           <video id="edPreview" controls playsinline></video>
-          <div class="actions"><a class="btn primary" id="edDownload" download>تنزيل المقطع</a><button type="button" class="btn ghost" id="edShare" hidden>مشاركة إلى إنستجرام أو فيسبوك</button><button type="button" class="btn ghost" id="edCopy">نسخ النص</button></div>
+          <div class="actions"><a class="btn primary" id="edDownload" download>تنزيل المقطع</a><button type="button" class="btn ghost" id="edShare" hidden>نشر على إنستجرام أو فيسبوك أو واتساب</button><button type="button" class="btn ghost" id="edCopy">نسخ النص</button></div>
           <label for="edCaption">نص مقترح للمنشور</label><textarea id="edCaption" dir="rtl"></textarea>
         </div>
       </div>
     </div>
   </section>
+  <footer class="rights">© ٢٠٢٦ <b>Cairo Quran</b> · جميع الحقوق محفوظة · كل ما يُنتج في الاستوديو يحمل هوية <b>cairoquran.com</b></footer>
 </div>
 
 <script src="common.js"></script>

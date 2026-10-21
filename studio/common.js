@@ -208,6 +208,9 @@
     const file = new File([blob], name, { type: blob.type });
     const can = navigator.canShare && navigator.canShare({ files: [file] });
     shareEl.hidden = !can;
+    // On phones the share sheet is the fastest way to publish, so it becomes the main button
+    linkEl.className = can ? 'btn ghost' : 'btn primary'; shareEl.className = can ? 'btn primary' : 'btn ghost';
+    linkEl.textContent = can ? 'تنزيل' : (blob.type.startsWith('image') ? 'تنزيل الصورة' : 'تنزيل المقطع');
     shareEl.onclick = async () => { try { await navigator.share({ files: [file], title: 'Cairo Quran' }); } catch (e) {} };
     return url;
   };

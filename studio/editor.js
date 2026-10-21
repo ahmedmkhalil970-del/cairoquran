@@ -36,7 +36,7 @@
     const hasText = S.text || $('edTitle').value.trim() || $('edSub').value.trim();
     if (hasText) { const g = c.createLinearGradient(0, 0, 0, H); g.addColorStop(0, 'rgba(7,11,28,.45)'); g.addColorStop(.3, 'rgba(7,11,28,0)'); g.addColorStop(.48, 'rgba(7,11,28,0)'); g.addColorStop(1, 'rgba(7,11,28,.82)'); c.fillStyle = g; c.fillRect(0, 0, W, H); }
     const out = endAt != null ? CQ.win(t, endAt, endAt + .8) : 0, show = 1 - out;
-    if ($('edBrand').checked) CQ.brand(c, W, G.brand, 46, show);
+    CQ.brand(c, W, G.brand, 46, show);
     const title = $('edTitle').value.trim();
     if (title) { c.globalAlpha = show; c.shadowColor = 'rgba(0,0,0,.6)'; c.shadowBlur = 20; CQ.text(c, title, W / 2, G.title, `600 ${num('edTitleSize')}px ${CQ.FONT.ui}`, '#fdf6e9'); c.shadowBlur = 0; c.globalAlpha = 1; }
     if (S.text) {
@@ -154,7 +154,7 @@
     seg('edVerse', 'verse', v => { S.verse = v; $('edVerseFields').hidden = v === 'none'; $('edReciterField').hidden = v !== 'recite'; $('edVolRecField').hidden = v !== 'recite'; S.text = null; if (v !== 'none') loadVerse().then(still).catch(e => msg(e.message, 'bad')); });
     ['edZoom', 'edPanX', 'edPanY', 'edTitleSize'].forEach(id => $(id).addEventListener('input', still));
     ['edTitle', 'edSub'].forEach(id => $(id).addEventListener('input', still));
-    ['edBrand', 'edEnd'].forEach(id => $(id).addEventListener('change', still));
+    $('edEnd').addEventListener('change', still);
     $('edSafeToggle').addEventListener('change', () => CQ.safeZones(safe, $('edSafeToggle').checked ? S.ratio : ''));
     ['edStart', 'edEnd2'].forEach(id => $(id).addEventListener('input', () => { showTrim(); if (S.video && !S.busy) { S.video.currentTime = id === 'edStart' ? num('edStart') : Math.max(0, num('edEnd2') - .1); S.video.addEventListener('seeked', still, { once: true }); } }));
     ['edSurah', 'edFrom', 'edTo', 'edReciter'].forEach(id => $(id).addEventListener('change', () => { if (id === 'edSurah') { $('edFrom').value = 1; $('edTo').value = 1; } if (S.verse !== 'none') loadVerse().then(still).catch(e => msg(e.message, 'bad')); }));
