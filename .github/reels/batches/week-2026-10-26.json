@@ -1,0 +1,99 @@
+[
+  {
+    "id": "1-minshawi-mulk",
+    "when": "الاثنين 26 أكتوبر · 9:00 مساءً",
+    "style": "wave",
+    "reciter": "محمد صديق المنشاوي",
+    "label": "مرتّل",
+    "recitation": 9,
+    "expect": [
+      "minshaw",
+      "murattal"
+    ],
+    "verses": [
+      "67:1",
+      "67:2"
+    ],
+    "surah": "سورة الملك",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Elminshwey.jpg",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمد صديق المنشاوي\n\nسورة الملك قبل النوم: هل جعلتها وِردًا ثابتًا لك كل ليلة؟\n\n#سورة_الملك #قرآن_كريم #المنشاوي #تلاوة_خاشعة #CairoQuran"
+  },
+  {
+    "id": "2-husary-sharh",
+    "when": "الثلاثاء 27 أكتوبر · 9:00 مساءً",
+    "style": "circle",
+    "reciter": "محمود خليل الحصري",
+    "label": "مرتّل",
+    "recitation": 6,
+    "expect": [
+      "husar",
+      "murattal"
+    ],
+    "verses": [
+      "94:5",
+      "94:6",
+      "94:7",
+      "94:8"
+    ],
+    "surah": "سورة الشرح",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/7/70/Hussary.jpg",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمود خليل الحصري\n\nآية تكرّرت مرتين في سطر واحد، فأي عسر مررت به ثم جاء بعده اليسر؟\n\n#سورة_الشرح #فإن_مع_العسر_يسرا #الحصري #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "3-abdulbasit-rahman",
+    "when": "الأربعاء 28 أكتوبر · 9:00 مساءً",
+    "style": "cinema",
+    "reciter": "عبد الباسط عبد الصمد",
+    "label": "مجوّد",
+    "recitation": 1,
+    "expect": [
+      "bas",
+      "mujawwad"
+    ],
+    "verses": [
+      "55:1",
+      "55:2",
+      "55:3",
+      "55:4"
+    ],
+    "surah": "سورة الرحمن",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Abdul_Basit_Abd_us-Samad_in_South_Africa_in_1966_%283%29_%28cropped%29.jpg",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ عبد الباسط عبد الصمد · مجوّد\n\nمن أوّل من أسمعك صوت الشيخ عبد الباسط؟ وأين كنتم؟\n\n#سورة_الرحمن #عبد_الباسط_عبد_الصمد #تلاوات_نادرة #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "4-abdulbasit-anbiya",
+    "when": "الخميس 29 أكتوبر · 9:00 مساءً",
+    "style": "circle",
+    "reciter": "عبد الباسط عبد الصمد",
+    "label": "مرتّل",
+    "recitation": 2,
+    "expect": [
+      "bas",
+      "murattal"
+    ],
+    "verses": [
+      "21:87"
+    ],
+    "surah": "سورة الأنبياء",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Abdul_Basit_Abd_us-Samad_in_South_Africa_in_1966_%283%29_%28cropped%29.jpg",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ عبد الباسط عبد الصمد · مرتّل\n\nدعاء نبي الله يونس في بطن الحوت. متى دعوت به آخر مرة، وفي أي ضيق؟\n\n#دعاء_يونس #سورة_الأنبياء #عبد_الباسط_عبد_الصمد #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "5-husary-kahf",
+    "when": "الجمعة 30 أكتوبر · 7:00 صباحًا",
+    "style": "wave",
+    "reciter": "محمود خليل الحصري",
+    "label": "مرتّل",
+    "recitation": 6,
+    "expect": [
+      "husar",
+      "murattal"
+    ],
+    "verses": [
+      "18:10"
+    ],
+    "surah": "سورة الكهف",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/7/70/Hussary.jpg",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمود خليل الحصري\n\nجمعة مباركة. هل بدأت قراءة سورة الكهف اليوم؟\n\n#سورة_الكهف #يوم_الجمعة #الحصري #قرآن_كريم #CairoQuran"
+  }
+]
