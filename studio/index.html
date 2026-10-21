@@ -4,455 +4,233 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<title>استوديو المقاطع · Cairo Quran</title>
+<title>استوديو Cairo Quran</title>
 <link rel="icon" type="image/png" href="../icon-192.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Amiri:wght@400;700&family=Readex+Pro:wght@300;400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@700&family=Readex+Pro:wght@300;400;600&display=swap">
 <style>
-/* Reels studio for Cairo Quran: pick a reciter, surah and verses; the page fetches the recitation, the Uthmani
-   text and per-word timings, draws a 1080x1920 reel on a canvas and records it to a video file in the browser.
-   Layout: controls on the right, live preview on the left; stacked on phones. Not linked from the site. */
+/* One studio, three desks: images, recitation reels, and the viewer's own video.
+   Each desk: controls on the right, the live canvas on the left; stacked on phones. Night-and-gold, like the site. */
 :root{
   --bg:#070b1c; --panel:#0e1430; --panel-2:#141b3d; --edge:rgba(232,194,122,.2); --edge-2:rgba(253,246,233,.12);
   --ink:#fdf6e9; --ink-soft:#c9c3b6; --ink-faint:#8e8a86; --gold:#e8c27a; --gold-ink:#1b1206; --bad:#f08a7a; --ok:#7fd1a0;
-  --f-title:"Amiri",serif; --f-verse:"Amiri Quran","Amiri",serif; --f-ui:"Readex Pro","Segoe UI",Tahoma,sans-serif;
+  --f-title:"Amiri",serif; --f-ui:"Readex Pro","Segoe UI",Tahoma,sans-serif;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{background:var(--bg)}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 var(--f-ui);
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px}
-.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
-header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
-h1{margin:0;font:700 30px var(--f-title);direction:ltr}
-h1 span{color:var(--gold)}
-h1 small{font:700 20px var(--f-title);color:var(--ink-soft);margin-left:10px}
-header p{margin:0;color:var(--ink-faint);font-size:14px}
-.desk{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:24px;align-items:start}
-.controls{display:flex;flex-direction:column;gap:16px;background:var(--panel);border:1px solid var(--edge);border-radius:16px;padding:18px}
-.field{display:flex;flex-direction:column;gap:7px;min-width:0}
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:18px 48px}
+.wrap{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+h1{margin:0;font:700 30px var(--f-title);direction:ltr;white-space:nowrap}
+h1 span{color:var(--gold)} h1 small{font:700 20px var(--f-title);color:var(--ink-soft);margin-left:10px}
+nav.tabs{display:flex;gap:6px;flex-wrap:wrap;background:var(--panel);border:1px solid var(--edge);padding:5px;border-radius:14px}
+nav.tabs a{color:var(--ink-soft);text-decoration:none;padding:8px 16px;border-radius:10px;font-size:15px}
+nav.tabs a[aria-current="page"]{background:var(--gold);color:var(--gold-ink);font-weight:600}
+nav.tabs a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.lead{margin:0 0 14px;color:var(--ink-faint);font-size:14px}
+.desk{display:grid;grid-template-columns:minmax(0,430px) minmax(0,1fr);gap:24px;align-items:start}
+.controls{display:flex;flex-direction:column;gap:15px;background:var(--panel);border:1px solid var(--edge);border-radius:16px;padding:18px}
+.group{display:flex;flex-direction:column;gap:13px;padding-top:13px;border-top:1px solid var(--edge-2)}
+.group:first-child{border-top:0;padding-top:0}
+.group h2{margin:0;font:600 13px var(--f-ui);color:var(--gold);letter-spacing:.02em}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
 label,.label{font-size:13px;color:var(--ink-soft)}
 select,input[type=number],input[type=text],textarea{font:inherit;color:var(--ink);background:var(--panel-2);border:1px solid var(--edge-2);border-radius:10px;padding:9px 11px;width:100%}
+textarea{resize:vertical}
+#imgText{min-height:110px;font-family:"Amiri",serif;font-size:19px;line-height:1.8}
+input[type=range]{width:100%;accent-color:var(--gold)}
 select:focus,input:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
 .seg{display:flex;flex-wrap:wrap;gap:6px}
-.seg button{all:unset;cursor:pointer;padding:7px 13px;border-radius:999px;font-size:14px;color:var(--ink-soft);background:var(--panel-2);border:1px solid var(--edge-2)}
+.seg button{all:unset;cursor:pointer;padding:7px 12px;border-radius:999px;font-size:14px;color:var(--ink-soft);background:var(--panel-2);border:1px solid var(--edge-2)}
 .seg button[aria-pressed="true"]{background:var(--gold);color:var(--gold-ink);border-color:var(--gold);font-weight:600}
+.seg button:disabled{opacity:.35;cursor:not-allowed}
 .seg button:focus-visible,.btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.nav{display:flex;align-items:center;gap:8px}
+.nav button{all:unset;cursor:pointer;padding:6px 12px;border-radius:10px;background:var(--panel-2);border:1px solid var(--edge-2);font-size:14px}
+.nav .count{flex:1;text-align:center;color:var(--ink-faint);font-size:13px}
+.check{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink-soft);cursor:pointer}
+.check input{accent-color:var(--gold);width:16px;height:16px}
+.checks{display:flex;flex-wrap:wrap;gap:8px 18px}
 .photo-row{display:flex;align-items:center;gap:12px}
-.photo-row img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);background:var(--panel-2)}
-.photo-row .note{font-size:12px;color:var(--ink-faint)}
-.upload{padding:7px 14px;font-size:13px;font-weight:400;display:inline-block;margin-bottom:4px}
+.photo-row img{width:54px;height:54px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);background:var(--panel-2);flex:none}
+.note{font-size:12px;color:var(--ink-faint)}
 .actions{display:flex;flex-wrap:wrap;gap:10px}
 .btn{all:unset;cursor:pointer;padding:11px 18px;border-radius:12px;font-weight:600;font-size:15px;text-align:center}
 .btn.primary{background:var(--gold);color:var(--gold-ink);flex:1}
 .btn.ghost{border:1px solid var(--edge);color:var(--ink)}
+.btn.small{padding:7px 14px;font-size:13px;font-weight:400}
 .btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
-.msg{min-height:1.5em;font-size:13px;color:var(--ink-soft)}
-.msg.bad{color:var(--bad)}.msg.ok{color:var(--ok)}
-.bar{height:6px;border-radius:6px;background:var(--panel-2);overflow:hidden}
-.bar i{display:block;height:100%;width:0;background:var(--gold)}
+.msg{min-height:1.5em;font-size:13px;color:var(--ink-soft)} .msg.bad{color:var(--bad)} .msg.ok{color:var(--ok)}
+.bar{height:6px;border-radius:6px;background:var(--panel-2);overflow:hidden} .bar i{display:block;height:100%;width:0;background:var(--gold)}
 .preview{position:sticky;top:max(16px,env(safe-area-inset-top,0px));display:flex;flex-direction:column;gap:12px;align-items:center;min-width:0}
-.stage{width:min(100%,380px);aspect-ratio:9/16;border-radius:14px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.55);background:#000}
-.stage canvas,.stage video{display:block;width:100%;height:100%}
-.result{width:100%;display:flex;flex-direction:column;gap:10px}
-.result textarea{min-height:170px;font-size:14px;line-height:1.75}
-.hint{font-size:12px;color:var(--ink-faint);text-align:center;max-width:380px}
-@media (max-width:860px){.desk{grid-template-columns:minmax(0,1fr)}.preview{position:static;order:-1}.stage{width:min(100%,300px)}}
+.stage{position:relative;width:min(100%,400px);aspect-ratio:9/16;border-radius:14px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.55);background:#000}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%}
+.stage canvas.overlay{pointer-events:none}
+.img-stage{width:min(100%,520px)}
+.img-stage canvas{display:block;width:100%;height:auto;border-radius:8px;box-shadow:0 18px 50px rgba(0,0,0,.55)}
+.result{width:100%;display:flex;flex-direction:column;gap:10px;max-width:520px}
+.result video{width:min(100%,300px);align-self:center;border-radius:12px;background:#000}
+.result textarea{min-height:150px;font-size:14px;line-height:1.75}
+.hint{font-size:12px;color:var(--ink-faint);text-align:center;max-width:400px}
+@media (max-width:880px){.desk{grid-template-columns:minmax(0,1fr)}.preview{position:static;order:-1}.stage{width:min(100%,300px)}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <h1><span>Cairo</span> Quran <small>استوديو المقاطع</small></h1>
-    <p>مقطع Reels بتلاوة حقيقية وتظليل كل كلمة لحظة نطقها، جاهز للنشر على فيسبوك وإنستجرام.</p>
+    <h1><span>Cairo</span> Quran <small>الاستوديو</small></h1>
+    <nav class="tabs" aria-label="أقسام الاستوديو">
+      <a href="#images" data-tab="images">الصور</a>
+      <a href="#recite" data-tab="recite">فيديو التلاوة</a>
+      <a href="#edit" data-tab="edit">فيديو من جهازك</a>
+    </nav>
   </header>
 
-  <div class="desk">
-    <section class="controls" aria-label="إعدادات المقطع">
-      <div class="field">
-        <label for="reciter">القارئ</label>
-        <select id="reciter"><option>جارٍ تحميل القرّاء…</option></select>
+  <!-- ===================== Images ===================== -->
+  <section id="tab-images" hidden>
+    <p class="lead">صورة جاهزة للنشر في دقيقة: ذكر اليوم، آية، العدّ لرمضان، الجمعة، أو نص حر، بهوية الموقع.</p>
+    <div class="desk">
+      <div class="controls">
+        <div class="group">
+          <div class="field"><span class="label">نوع الصورة</span>
+            <div class="seg" id="imgKind"><button type="button" data-kind="dhikr">ذكر اليوم</button><button type="button" data-kind="verse">آية</button><button type="button" data-kind="ramadan">العد لرمضان</button><button type="button" data-kind="friday">جمعة مباركة</button><button type="button" data-kind="free">نص حر</button></div></div>
+          <div class="field" id="imgTimeField"><span class="label">الأذكار</span>
+            <div class="seg" id="imgTime"><button type="button" data-time="morning">الصباح</button><button type="button" data-time="evening">المساء</button><button type="button" data-time="sleep">النوم</button></div></div>
+          <div class="nav" id="imgNav"><button type="button" id="imgPrev">→ السابق</button><span class="count" id="imgCount"></span><button type="button" id="imgNext">التالي ←</button></div>
+          <div class="field" id="imgDaysField" hidden><label for="imgDays">عدد الأيام على رمضان (محسوب تلقائيًا، ويمكنك تعديله)</label><input type="number" id="imgDays" min="1" max="400"></div>
+          <div class="field"><label for="imgText">النص</label><textarea id="imgText" dir="rtl"></textarea></div>
+          <div class="field"><label for="imgRef">السطر الذهبي تحت النص</label><input type="text" id="imgRef" dir="rtl"></div>
+        </div>
+        <div class="group"><h2>الشكل</h2>
+          <div class="field"><span class="label">المقاس</span>
+            <div class="seg" id="imgSize"><button type="button" data-size="square">مربع</button><button type="button" data-size="portrait">طولي ٤:٥</button><button type="button" data-size="story">ستوري ٩:١٦</button></div></div>
+          <div class="field"><span class="label">الخلفية</span>
+            <div class="seg" id="imgTheme"><button type="button" data-theme="night">ليل</button><button type="button" data-theme="dawn">فجر</button><button type="button" data-theme="emerald">زمرّدي</button><button type="button" data-theme="photo">صورتك</button></div></div>
+          <div class="field" id="imgPhotoField" hidden><label class="btn ghost small" for="imgPhoto">اختر صورة الخلفية</label><input type="file" id="imgPhoto" accept="image/*" hidden></div>
+          <div class="field"><label for="imgScale">حجم الخط</label><input type="range" id="imgScale" min=".7" max="1.3" step=".05" value="1"></div>
+          <label class="check"><input type="checkbox" id="imgHijri" checked> إظهار التاريخ الهجري</label>
+        </div>
+        <div class="msg" id="imgMsg" role="status"></div>
       </div>
-      <div class="field">
-        <label for="surah">السورة</label>
-        <select id="surah"><option>جارٍ تحميل السور…</option></select>
-      </div>
-      <div class="row">
-        <div class="field"><label for="from">من الآية</label><input type="number" id="from" min="1" value="1"></div>
-        <div class="field"><label for="to">إلى الآية</label><input type="number" id="to" min="1" value="1"></div>
-      </div>
-      <div class="field">
-        <span class="label">الشكل</span>
-        <div class="seg" id="styleSeg">
-          <button type="button" data-style="circle" aria-pressed="true">صورة دائرية</button>
-          <button type="button" data-style="cinema" aria-pressed="false">صورة كبيرة</button>
-          <button type="button" data-style="wave" aria-pressed="false">موجات الصوت</button>
+      <div class="preview">
+        <div class="img-stage"><canvas id="imgCanvas" width="1080" height="1350"></canvas></div>
+        <div class="result">
+          <div class="actions"><a class="btn primary" id="imgDownload" download>تنزيل الصورة</a><button type="button" class="btn ghost" id="imgShare" hidden>مشاركة</button><button type="button" class="btn ghost" id="imgCopy">نسخ النص</button></div>
+          <label for="imgCaption">نص مقترح للمنشور</label><textarea id="imgCaption" dir="rtl"></textarea>
         </div>
       </div>
-      <div class="field">
-        <span class="label">صورة القارئ</span>
-        <div class="photo-row">
-          <img id="photoThumb" alt="">
-          <div>
-            <label class="btn ghost upload" for="photoFile">رفع صورة أخرى</label><input type="file" id="photoFile" accept="image/*" hidden>
-            <div class="note" id="photoNote">الصورة الافتراضية من Wikimedia Commons.</div>
-          </div>
-        </div>
-      </div>
-      <div class="actions">
-        <button type="button" class="btn ghost" id="previewBtn" aria-disabled="true">معاينة</button>
-        <button type="button" class="btn primary" id="recordBtn" aria-disabled="true">إنشاء المقطع</button>
-      </div>
-      <div class="bar" aria-hidden="true"><i id="barFill"></i></div>
-      <div class="msg" id="msg" role="status"></div>
-    </section>
+    </div>
+  </section>
 
-    <section class="preview" aria-label="المعاينة">
-      <div class="stage" id="stage"><canvas id="cv" width="1080" height="1920"></canvas></div>
-      <div class="hint" id="hint">اترك هذه الصفحة ظاهرة أثناء إنشاء المقطع، فالتسجيل يجري بالسرعة الحقيقية للتلاوة.</div>
-      <div class="result" id="result" hidden>
-        <div class="actions">
-          <a class="btn primary" id="download" download>تنزيل المقطع</a>
-          <button type="button" class="btn ghost" id="copyBtn">نسخ نص المنشور</button>
+  <!-- ===================== Recitation reels ===================== -->
+  <section id="tab-recite" hidden>
+    <p class="lead">مقطع Reels بتلاوة حقيقية، تضيء فيه كل كلمة لحظة نطقها.</p>
+    <div class="desk">
+      <div class="controls">
+        <div class="group">
+          <div class="field"><label for="recReciter">القارئ</label><select id="recReciter"><option>جارٍ التحميل…</option></select></div>
+          <div class="field"><label for="recSurah">السورة</label><select id="recSurah"><option>جارٍ التحميل…</option></select></div>
+          <div class="row"><div class="field"><label for="recFrom">من الآية</label><input type="number" id="recFrom" min="1" value="1"></div><div class="field"><label for="recTo">إلى الآية</label><input type="number" id="recTo" min="1" value="1"></div></div>
         </div>
-        <label for="caption">نص مقترح للمنشور (أكمل السؤال قبل النشر)</label>
-        <textarea id="caption" dir="rtl"></textarea>
+        <div class="group"><h2>الشكل</h2>
+          <div class="field"><span class="label">المقاس</span><div class="seg" id="recRatio"><button type="button" data-ratio="9:16">Reels ٩:١٦</button><button type="button" data-ratio="4:5">منشور ٤:٥</button><button type="button" data-ratio="1:1">مربع</button></div></div>
+          <div class="field"><span class="label">صورة القارئ</span><div class="seg" id="recLayout"><button type="button" data-layout="circle">دائرية</button><button type="button" data-layout="card">كبيرة</button><button type="button" data-layout="chip">صغيرة</button></div></div>
+          <div class="photo-row"><img id="recThumb" alt=""><div><label class="btn ghost small" for="recPhoto">رفع صورة أخرى للقارئ</label><input type="file" id="recPhoto" accept="image/*" hidden><div class="note" id="recPhotoNote"></div></div></div>
+          <div class="field"><span class="label">الخلفية</span><div class="seg" id="recBg"><button type="button" data-bg="night">ليل</button><button type="button" data-bg="dawn">فجر</button><button type="button" data-bg="emerald">زمرّدي</button><button type="button" data-bg="photo">صورة</button><button type="button" data-bg="video">فيديو من جهازك</button></div></div>
+          <div class="field" id="recBgPhotoField" hidden><label class="btn ghost small" for="recBgPhoto">اختر صورة الخلفية</label><input type="file" id="recBgPhoto" accept="image/*" hidden><span class="note">إن لم تختر صورة، تُستخدم صورة القارئ مموّهة.</span></div>
+          <div class="field" id="recBgVideoField" hidden><label class="btn ghost small" for="recBgVideo">اختر فيديو الخلفية</label><input type="file" id="recBgVideo" accept="video/*" hidden><span class="note">يظهر مموّهًا ومعتّمًا خلف الآيات، ويتكرر حتى نهاية التلاوة.</span></div>
+          <div class="checks"><label class="check"><input type="checkbox" id="recBars"> أعمدة الصوت</label><label class="check"><input type="checkbox" id="recSafeToggle"> إظهار مساحة واجهة Reels</label></div>
+        </div>
+        <div class="actions"><button type="button" class="btn ghost" id="recPreviewBtn" aria-disabled="true">معاينة</button><button type="button" class="btn primary" id="recRecordBtn" aria-disabled="true">إنشاء المقطع</button></div>
+        <div class="actions"><button type="button" class="btn ghost small" id="recCoverBtn" aria-disabled="true">صورة غلاف للمقطع</button><a class="btn ghost small" id="recCoverLink" download hidden>تنزيل الغلاف</a><button type="button" class="btn ghost small" id="recCoverShare" hidden>مشاركة الغلاف</button></div>
+        <div class="bar" aria-hidden="true"><i id="recBar"></i></div>
+        <div class="msg" id="recMsg" role="status">جارٍ تحميل القرّاء والسور…</div>
       </div>
-    </section>
-  </div>
+      <div class="preview">
+        <div class="stage" id="recStage"><canvas id="recCanvas" width="1080" height="1920"></canvas><canvas id="recSafe" class="overlay" width="1080" height="1920"></canvas></div>
+        <div class="hint">اترك الصفحة ظاهرة أثناء الإنشاء، فالتسجيل يجري بالسرعة الحقيقية للتلاوة.</div>
+        <div class="result" id="recResult" hidden>
+          <video id="recPreview" controls playsinline></video>
+          <div class="actions"><a class="btn primary" id="recDownload" download>تنزيل المقطع</a><button type="button" class="btn ghost" id="recShare" hidden>مشاركة إلى إنستجرام أو فيسبوك</button><button type="button" class="btn ghost" id="recCopy">نسخ النص</button></div>
+          <label for="recCaption">نص مقترح للمنشور (أكمل السؤال قبل النشر)</label><textarea id="recCaption" dir="rtl"></textarea>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Own video ===================== -->
+  <section id="tab-edit" hidden>
+    <p class="lead">ارفع فيديو صوّرته بنفسك، ثم قصّه واضبطه على مقاس Reels، وأضف إليه عنوانًا أو آية بتلاوة متزامنة، ثم انشره.</p>
+    <div class="desk">
+      <div class="controls">
+        <div class="group">
+          <label class="btn primary" for="edFile">اختر فيديو من جهازك</label><input type="file" id="edFile" accept="video/*" hidden>
+          <div class="note" id="edInfo">لم تختر فيديو بعد.</div>
+          <div class="row"><div class="field"><label for="edStart">البداية (ثانية)</label><input type="range" id="edStart" min="0" max="60" step=".1" value="0"></div><div class="field"><label for="edEnd2">النهاية (ثانية)</label><input type="range" id="edEnd2" min="0" max="60" step=".1" value="60"></div></div>
+          <div class="note" id="edTrimOut"></div>
+        </div>
+        <div class="group"><h2>الإطار والألوان</h2>
+          <div class="field"><span class="label">المقاس</span><div class="seg" id="edRatio"><button type="button" data-ratio="9:16" aria-pressed="true">Reels ٩:١٦</button><button type="button" data-ratio="4:5" aria-pressed="false">منشور ٤:٥</button><button type="button" data-ratio="1:1" aria-pressed="false">مربع</button></div></div>
+          <div class="field"><span class="label">الملاءمة</span><div class="seg" id="edFit"><button type="button" data-fit="fill" aria-pressed="true">ملء الإطار (قص)</button><button type="button" data-fit="fit" aria-pressed="false">الفيديو كاملًا مع خلفية مموّهة</button></div></div>
+          <div id="edFrameFields" class="row3"><div class="field"><label for="edZoom">تكبير</label><input type="range" id="edZoom" min="1" max="2.5" step=".01" value="1"></div><div class="field"><label for="edPanX">أفقي</label><input type="range" id="edPanX" min="-1" max="1" step=".01" value="0"></div><div class="field"><label for="edPanY">رأسي</label><input type="range" id="edPanY" min="-1" max="1" step=".01" value="0"></div></div>
+          <div class="field"><span class="label">الألوان</span><div class="seg" id="edLook"><button type="button" data-look="none" aria-pressed="true">طبيعي</button><button type="button" data-look="warm" aria-pressed="false">دافئ</button><button type="button" data-look="soft" aria-pressed="false">ناعم</button><button type="button" data-look="bw" aria-pressed="false">أبيض وأسود</button><button type="button" data-look="dim" aria-pressed="false">معتّم للنص</button></div></div>
+        </div>
+        <div class="group"><h2>النصوص</h2>
+          <div class="field"><label for="edTitle">عنوان أعلى المقطع (اختياري)</label><input type="text" id="edTitle" dir="rtl" placeholder="مثال: من مسجد الإمام الحسين"></div>
+          <div class="field"><label for="edTitleSize">حجم العنوان</label><input type="range" id="edTitleSize" min="36" max="84" step="2" value="56"></div>
+          <div class="field"><span class="label">آية على المقطع</span><div class="seg" id="edVerse"><button type="button" data-verse="none" aria-pressed="true">بدون</button><button type="button" data-verse="static" aria-pressed="false">نص الآية</button><button type="button" data-verse="recite" aria-pressed="false">الآية بتلاوة متزامنة</button></div></div>
+          <div id="edVerseFields" hidden>
+            <div class="field" id="edReciterField" hidden><label for="edReciter">القارئ</label><select id="edReciter"></select></div>
+            <div class="field"><label for="edSurah">السورة</label><select id="edSurah"></select></div>
+            <div class="row"><div class="field"><label for="edFrom">من الآية</label><input type="number" id="edFrom" min="1" value="1"></div><div class="field"><label for="edTo">إلى الآية</label><input type="number" id="edTo" min="1" value="1"></div></div>
+          </div>
+          <div class="field"><label for="edSub">سطر صغير أسفل المقطع (اختياري)</label><input type="text" id="edSub" dir="rtl" placeholder="مثال: القاهرة · رمضان ١٤٤٨"></div>
+          <div class="checks"><label class="check"><input type="checkbox" id="edBrand" checked> شعار Cairo Quran</label><label class="check"><input type="checkbox" id="edEnd" checked> الخاتمة</label><label class="check"><input type="checkbox" id="edSafeToggle"> مساحة واجهة Reels</label></div>
+        </div>
+        <div class="group"><h2>الصوت</h2>
+          <div class="field"><label for="edVolOrig">صوت الفيديو الأصلي</label><input type="range" id="edVolOrig" min="0" max="1" step=".05" value="1"></div>
+          <div class="field" id="edVolRecField" hidden><label for="edVolRec">صوت التلاوة</label><input type="range" id="edVolRec" min="0" max="1" step=".05" value="1"><span class="note">لتبقى التلاوة وحدها، اخفض صوت الفيديو الأصلي إلى الصفر.</span></div>
+        </div>
+        <div class="actions"><button type="button" class="btn ghost" id="edPreviewBtn" aria-disabled="true">معاينة</button><button type="button" class="btn primary" id="edRecordBtn" aria-disabled="true">إنشاء المقطع</button></div>
+        <div class="bar" aria-hidden="true"><i id="edBar"></i></div>
+        <div class="msg" id="edMsg" role="status"></div>
+      </div>
+      <div class="preview">
+        <div class="stage" id="edStage"><canvas id="edCanvas" width="1080" height="1920"></canvas><canvas id="edSafe" class="overlay" width="1080" height="1920"></canvas></div>
+        <div class="hint">يُنشأ المقطع داخل جهازك، ولا يُرفع إلى أي خادم.</div>
+        <div class="result" id="edResult" hidden>
+          <video id="edPreview" controls playsinline></video>
+          <div class="actions"><a class="btn primary" id="edDownload" download>تنزيل المقطع</a><button type="button" class="btn ghost" id="edShare" hidden>مشاركة إلى إنستجرام أو فيسبوك</button><button type="button" class="btn ghost" id="edCopy">نسخ النص</button></div>
+          <label for="edCaption">نص مقترح للمنشور</label><textarea id="edCaption" dir="rtl"></textarea>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 
+<script src="common.js"></script>
+<script src="images.js"></script>
+<script src="recite.js"></script>
+<script src="editor.js"></script>
 <script>
 (() => {
-  const $ = id => document.getElementById(id);
-  const ar = n => String(n).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
-  const API = 'https://api.quran.com/api/v4', QDC = 'https://api.qurancdn.com/api/qdc/audio';
-  const W = 1080, H = 1920, FPS = 30, INTRO = 1.6, OUTRO = 3.4, MAX_SECONDS = 90;
-  const cv = $('cv'), c = cv.getContext('2d');
-
-  // Reciters shown first, with public-domain or freely licensed photos from Wikimedia Commons.
-  const COMMONS = 'https://upload.wikimedia.org/wikipedia/commons/';
-  const PHOTOS = {
-    1: COMMONS + 'b/b9/Abdul_Basit_Abd_us-Samad_in_South_Africa_in_1966_%283%29_%28cropped%29.jpg',
-    2: COMMONS + '6/6a/Abdul_Basit_Abd_us-Samad.jpg',
-    6: COMMONS + '7/70/Hussary.jpg', 12: COMMONS + '7/70/Hussary.jpg',
-    9: COMMONS + 'e/ee/Elminshwey.jpg',
-    7: COMMONS + '2/24/%D0%9C%D0%B8%D1%88%D0%B0%D1%80%D0%B8_%D0%A0%D0%B0%D1%88%D0%B8%D0%B4.jpg',
-    173: COMMONS + '2/24/%D0%9C%D0%B8%D1%88%D0%B0%D1%80%D0%B8_%D0%A0%D0%B0%D1%88%D0%B8%D0%B4.jpg'
-  };
-  const ORDER = [2, 1, 6, 12, 9, 7];
-  const STYLE_AR = { Murattal: 'مرتّل', Mujawwad: 'مجوّد', Muallim: 'المعلّم', 'Kids repeat': 'مع ترديد الأطفال' };
-
-  function radiosLine(html) {
-    // "إذاعات القرآن الكريم من مصر والسعودية", read from the live-radio group in the site's station list
-    const g = html.indexOf("title: 'إذاعات مباشرة'"), e = g < 0 ? -1 : html.indexOf('] }', g);
-    const places = g < 0 ? [] : [...html.slice(g, e).matchAll(/name: 'إذاعة القرآن الكريم · ([^']+)'/g)].map(m => m[1].trim() === 'القاهرة' ? 'مصر' : m[1].trim());
-    const list = [...new Set(places)];
-    if (!list.length) return 'إذاعات القرآن الكريم';
-    return 'إذاعات القرآن الكريم من ' + list.join(' و');
+  const tabs = ['images', 'recite', 'edit'], started = {};
+  const init = { images: () => CQ.images.init(), recite: () => CQ.recite.init(), edit: () => CQ.editor.init() };
+  function show() {
+    const t = tabs.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'images';
+    tabs.forEach(x => { document.getElementById('tab-' + x).hidden = x !== t; });
+    document.querySelectorAll('nav.tabs a').forEach(a => { if (a.dataset.tab === t) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+    if (!started[t]) { started[t] = true; init[t](); }
   }
-  const S = { radios: 'إذاعات القرآن الكريم', style: 'circle', reciters: [], chapters: [], photo: null, busy: false, job: null };
-
-  /* ---------- data ---------- */
-  const getJSON = async u => { const r = await fetch(u); if (!r.ok) throw new Error('تعذّر الوصول إلى ' + new URL(u).host); return r.json(); };
-
-  async function loadLists() {
-    try {
-      const [rj, cj] = await Promise.all([getJSON(QDC + '/reciters?locale=ar'), getJSON(API + '/chapters?language=ar')]);
-      const rs = rj.reciters.filter(r => r.style && r.style.name !== 'Kids repeat');
-      rs.sort((a, b) => (ORDER.indexOf(a.id) + 1 || 99) - (ORDER.indexOf(b.id) + 1 || 99));
-      S.reciters = rs;
-      $('reciter').innerHTML = rs.map(r => `<option value="${r.id}">${r.translated_name?.name || r.name} · ${STYLE_AR[r.style.name] || r.style.name}</option>`).join('');
-      S.chapters = cj.chapters;
-      $('surah').innerHTML = cj.chapters.map(ch => `<option value="${ch.id}">${ar(ch.id)}. ${ch.name_arabic}</option>`).join('');
-      restore();
-      onReciter(); onSurah();
-      setReady(true);
-      say('');
-      drawIdle();
-    } catch (e) { say('تعذّر تحميل قوائم القرّاء والسور. تأكد من الاتصال ثم أعد تحميل الصفحة.', 'bad'); }
-  }
-
-  async function verseWords(key) {
-    const j = await getJSON(`${API}/verses/by_key/${key}?words=true&word_fields=text_uthmani`);
-    return j.verse.words.filter(w => w.char_type_name === 'word')
-      .map(w => ({ pos: w.position, text: w.text_uthmani.replace(/۞\s*/g, '').trim() })).filter(w => w.text);
-  }
-
-  async function prepare() {
-    const rid = +$('reciter').value, ch = +$('surah').value;
-    const chapter = S.chapters.find(x => x.id === ch);
-    let from = Math.max(1, Math.min(+$('from').value || 1, chapter.verses_count));
-    let to = Math.max(from, Math.min(+$('to').value || from, chapter.verses_count));
-    $('from').value = from; $('to').value = to;
-    say('جارٍ جلب التلاوة والتوقيتات…');
-    const aj = await getJSON(`${QDC}/reciters/${rid}/audio_files?chapter=${ch}&segments=true`);
-    const file = (aj.audio_files || [])[0];
-    if (!file || !file.audio_url) throw new Error('لا تتوفر تلاوة هذا القارئ لهذه السورة.');
-    const timings = new Map((file.verse_timings || []).map(v => [v.verse_key, v]));
-    const start = timings.get(`${ch}:${from}`), end = timings.get(`${ch}:${to}`);
-    if (!start || !end) throw new Error('لا تتوفر توقيتات هذه الآيات لهذا القارئ.');
-    const t0 = start.timestamp_from / 1000, t1 = end.timestamp_to / 1000;
-    if (t1 - t0 > MAX_SECONDS) throw new Error(`مدة التلاوة ${Math.round(t1 - t0)} ثانية. قلّل عدد الآيات حتى لا تتجاوز ${MAX_SECONDS} ثانية.`);
-    const words = [], plain = [];
-    for (let n = from; n <= to; n++) {
-      const key = `${ch}:${n}`, vt = timings.get(key), ws = await verseWords(key);
-      const seg = new Map((vt.segments || []).filter(s => s.length >= 3).map(s => [s[0], [s[s.length - 2] / 1000, s[s.length - 1] / 1000]]));
-      const timed = ws.every(w => seg.has(w.pos));
-      const a0 = vt.timestamp_from / 1000, a1 = vt.timestamp_to / 1000;
-      ws.forEach((w, j) => {
-        const [a, b] = timed ? seg.get(w.pos) : [a0 + (a1 - a0) * j / ws.length, a0 + (a1 - a0) * (j + 1) / ws.length];
-        words.push({ text: w.text, start: a - t0, end: b - t0 });
-      });
-      words.push({ text: '﴿' + ar(n) + '﴾', mark: true, start: a1 - t0 - .25, end: a1 - t0 });
-      plain.push(ws.map(w => w.text).join(' ') + ' ﴿' + ar(n) + '﴾');
-    }
-    const r = S.reciters.find(x => x.id === rid);
-    const ref = `سورة ${chapter.name_arabic} · ${from === to ? 'الآية ' + ar(from) : 'الآيات ' + ar(from) + '–' + ar(to)}`;
-    return {
-      url: file.audio_url, t0, t1, words, plain: plain.join(' '), ref,
-      reciter: r.translated_name?.name || r.name, label: STYLE_AR[r.style.name] || r.style.name,
-      style: S.style, photo: S.photo, total: INTRO + (t1 - t0) + OUTRO
-    };
-  }
-
-  /* ---------- photo ---------- */
-  function loadImage(src, cors) {
-    return new Promise((res, rej) => { const im = new Image(); if (cors) im.crossOrigin = 'anonymous'; im.onload = () => res(im); im.onerror = () => rej(new Error('تعذّر تحميل الصورة.')); im.src = src; });
-  }
-  async function onReciter() {
-    const rid = +$('reciter').value, url = PHOTOS[rid];
-    S.photo = null; $('photoThumb').removeAttribute('src');
-    $('photoNote').textContent = url ? 'الصورة الافتراضية من Wikimedia Commons.' : 'لا توجد صورة افتراضية لهذا القارئ. ارفع صورة، أو يظهر الهلال مكانها.';
-    if (url) try { S.photo = await loadImage(url, true); $('photoThumb').src = url; } catch (e) { S.photo = null; }
-    save(); drawIdle();
-  }
-  $('photoFile').addEventListener('change', async e => {
-    const f = e.target.files && e.target.files[0]; if (!f) return;
-    const u = URL.createObjectURL(f);
-    try { S.photo = await loadImage(u, false); $('photoThumb').src = u; $('photoNote').textContent = 'تُستخدم صورتك المرفوعة في هذا المقطع.'; drawIdle(); }
-    catch (err) { say('تعذّر قراءة الصورة. جرّب ملف JPG أو PNG.', 'bad'); }
-  });
-
-  function onSurah() {
-    const ch = S.chapters.find(x => x.id === +$('surah').value); if (!ch) return;
-    $('from').max = $('to').max = ch.verses_count;
-    if (+$('from').value > ch.verses_count) $('from').value = 1;
-    if (+$('to').value > ch.verses_count || +$('to').value < +$('from').value) $('to').value = $('from').value;
-    save();
-  }
-
-  /* ---------- drawing ---------- */
-  const ease = x => x <= 0 ? 0 : x >= 1 ? 1 : 1 - Math.pow(1 - x, 3);
-  const win = (t, a, b) => ease((t - a) / (b - a));
-  const stars = [...Array(80)].map((_, i) => ({ x: (Math.sin(i * 91.7) * .5 + .5) * W, y: (Math.sin(i * 37.3) * .5 + .5) * H * .8, r: 1 + (i * 7 % 3) * .7, p: i * .9 }));
-  const THEME = { circle: ['#0a1230', '#22305c', 'rgba(232,194,122,.12)'], wave: ['#141f45', '#9c6a4a', 'rgba(255,214,150,.20)'] };
-
-  function star8(x, y, r) { c.beginPath(); for (let k = 0; k < 2; k++) { const a0 = k * Math.PI / 4; for (let i = 0; i < 4; i++) { const a = a0 + i * Math.PI / 2; const px = x + r * Math.cos(a), py = y + r * Math.sin(a); i ? c.lineTo(px, py) : c.moveTo(px, py); } c.closePath(); } c.stroke(); }
-  function crescent(cx, cy, r) { c.save(); c.fillStyle = '#e8c27a'; c.beginPath(); c.arc(cx, cy, r, 0, 7); c.arc(cx + r * .42, cy - r * .18, r * .86, 0, 7, true); c.fill('evenodd'); c.restore(); }
-  function cover(img, x, y, w, h, fy) {
-    const s = Math.max(w / img.width, h / img.height), iw = img.width * s, ih = img.height * s;
-    c.drawImage(img, x + (w - iw) / 2, y + (h - ih) * (fy ?? .5), iw, ih);
-  }
-  function rrect(x, y, w, h, r) { c.beginPath(); c.moveTo(x + r, y); c.arcTo(x + w, y, x + w, y + h, r); c.arcTo(x + w, y + h, x, y + h, r); c.arcTo(x, y + h, x, y, r); c.arcTo(x, y, x + w, y, r); c.closePath(); }
-  function text(t, x, y, font, color, align, dir) { c.font = font; c.fillStyle = color; c.textAlign = align || 'center'; c.direction = dir || 'rtl'; c.fillText(t, x, y); }
-
-  function layout(J) {
-    const box = J.style === 'circle' ? [880, 1500] : J.style === 'wave' ? [600, 1330] : [1110, 1465];
-    const maxW = W - 220, h = box[1] - box[0];
-    let size = 104, lines;
-    for (; size >= 44; size -= 4) {
-      c.font = `${size}px "Amiri Quran", Amiri, serif`;
-      const gap = size * .32; lines = []; let cur = [], wsum = 0;
-      J.words.forEach((w, i) => { w.w = c.measureText(w.text).width; const add = (cur.length ? gap : 0) + w.w; if (cur.length && wsum + add > maxW) { lines.push({ items: cur, width: wsum }); cur = []; wsum = 0; } wsum += (cur.length ? gap : 0) + w.w; cur.push(i); });
-      if (cur.length) lines.push({ items: cur, width: wsum });
-      if (lines.length * size * 2.05 <= h) break;
-    }
-    const lh = size * 2.05, gap = size * .32, top = box[0] + (h - lines.length * lh) / 2;
-    lines.forEach((ln, k) => { let x = W / 2 + ln.width / 2; const y = top + lh * k + lh * .66; ln.items.forEach(i => { const w = J.words[i]; x -= w.w; w.x = x; w.y = y; x -= gap; }); });
-    J.size = size; J.box = box;
-  }
-
-  function render(J, t, at, env) {
-    const st = J.style, endAt = J.total - OUTRO;
-    c.save(); c.setTransform(1, 0, 0, 1, 0, 0); c.filter = 'none'; c.globalAlpha = 1;
-    if (st === 'cinema') {
-      c.fillStyle = '#070b1c'; c.fillRect(0, 0, W, H);
-      if (J.photo) { c.save(); c.filter = 'blur(34px) grayscale(.5) brightness(.42)'; const z = 1.18 + .06 * Math.min(t / J.total, 1); cover(J.photo, -(z - 1) * W / 2, -(z - 1) * H / 2, W * z, H * z, .2); c.restore(); }
-      const g = c.createLinearGradient(0, 0, 0, H); g.addColorStop(0, 'rgba(7,11,28,.35)'); g.addColorStop(.5, 'rgba(7,11,28,.55)'); g.addColorStop(1, 'rgba(7,11,28,.85)'); c.fillStyle = g; c.fillRect(0, 0, W, H);
-    } else {
-      const th = THEME[st];
-      const g = c.createLinearGradient(0, 0, 0, H); g.addColorStop(0, th[0]); g.addColorStop(1, th[1]); c.fillStyle = g; c.fillRect(0, 0, W, H);
-      const rg = c.createRadialGradient(W / 2, H * .45, 10, W / 2, H * .45, W * .95); rg.addColorStop(0, th[2]); rg.addColorStop(1, 'rgba(0,0,0,0)'); c.fillStyle = rg; c.fillRect(0, 0, W, H);
-      c.strokeStyle = 'rgba(232,194,122,.05)'; c.lineWidth = 2; const sp = 135;
-      for (let y = -sp / 2, row = 0; y < H + sp; y += sp * .866, row++) for (let x = (row % 2 ? sp / 2 : 0) - sp / 2; x < W + sp; x += sp) star8(x, y, 30);
-      stars.forEach(s => { c.fillStyle = `rgba(253,246,233,${.2 + .45 * (.5 + .5 * Math.sin(t * 1.5 + s.p))})`; c.beginPath(); c.arc(s.x, s.y, s.r, 0, 7); c.fill(); });
-    }
-    if (st === 'wave') {
-      const e = env || 0, n = 48, bw = 10, gp = 8, x0 = (W - n * (bw + gp)) / 2, yc = 1500;
-      c.fillStyle = 'rgba(232,194,122,.75)';
-      for (let k = 0; k < n; k++) { const f = Math.max(0, 1 - Math.abs(k - n / 2) / (n / 2)) * .6 + .4; const h = 8 + e * 150 * f * (0.55 + 0.45 * Math.sin(k * 1.7 + t * 3) ** 2); c.fillRect(x0 + k * (bw + gp), yc - h / 2, bw, h); }
-    }
-    c.strokeStyle = 'rgba(232,194,122,.5)'; c.lineWidth = 2.5; c.strokeRect(46, 46, W - 92, H - 92);
-
-    const out = win(t, endAt, endAt + .8), endIn = win(t, endAt + .5, endAt + 1.6), show = 1 - out;
-    // brand
-    c.globalAlpha = win(t, .3, 1.2) * show;
-    c.font = '700 46px Amiri, serif'; c.direction = 'ltr'; c.textAlign = 'left';
-    const w1 = c.measureText('Cairo ').width, w2 = c.measureText('Quran').width, bx = (W - w1 - w2) / 2;
-    c.fillStyle = '#e8c27a'; c.fillText('Cairo ', bx, 300); c.fillStyle = '#fdf6e9'; c.fillText('Quran', bx + w1, 300);
-    // reciter block
-    const ra = win(t, .4, 1.4) * show, dy = (1 - win(t, .4, 1.4)) * 24;
-    c.globalAlpha = ra;
-    if (st === 'circle') {
-      const cx = W / 2, cy = 360 + 165 + dy, r = 157;
-      c.save(); c.translate(cx, cy); c.rotate(t * .1); const cg = c.createConicGradient ? c.createConicGradient(0, 0, 0) : null;
-      if (cg) { [0, .25, .5, .75, 1].forEach((p, i) => cg.addColorStop(p, i % 2 ? '#8a6a2e' : '#e8c27a')); c.fillStyle = cg; } else c.fillStyle = '#e8c27a';
-      c.beginPath(); c.arc(0, 0, r + 8, 0, 7); c.fill(); c.restore();
-      c.save(); c.beginPath(); c.arc(cx, cy, r, 0, 7); c.clip();
-      if (J.photo) cover(J.photo, cx - r, cy - r, r * 2, r * 2, .25); else { c.fillStyle = '#141b3d'; c.fillRect(cx - r, cy - r, r * 2, r * 2); crescent(cx, cy, 70); }
-      c.restore();
-      text(J.reciter, W / 2, 770 + dy, '700 58px Amiri, serif', '#fdf6e9');
-      text(J.label, W / 2, 830 + dy, '400 32px "Readex Pro", sans-serif', '#e8c27a');
-    } else if (st === 'wave') {
-      c.font = '700 58px Amiri, serif'; const nw = c.measureText(J.reciter).width, pr = 60, gap = 22;
-      const total = pr * 2 + gap + nw, xr = W / 2 + total / 2, cy = 440 + dy;
-      c.save(); c.beginPath(); c.arc(xr - pr, cy, pr, 0, 7); c.clip(); if (J.photo) cover(J.photo, xr - pr * 2, cy - pr, pr * 2, pr * 2, .25); else { c.fillStyle = '#141b3d'; c.fillRect(xr - 2 * pr, cy - pr, 2 * pr, 2 * pr); } c.restore();
-      c.strokeStyle = '#e8c27a'; c.lineWidth = 4; c.beginPath(); c.arc(xr - pr, cy, pr, 0, 7); c.stroke();
-      text(J.reciter, xr - pr * 2 - gap, cy + 4, '700 58px Amiri, serif', '#fdf6e9', 'right');
-      text(J.label, xr - pr * 2 - gap, cy + 52, '400 32px "Readex Pro", sans-serif', '#e8c27a', 'right');
-    } else {
-      const cw = 460, chh = 580, z = 1 + .035 * Math.min(t / J.total, 1), x = (W - cw * z) / 2, y = 350 + dy;
-      c.save(); c.shadowColor = 'rgba(0,0,0,.65)'; c.shadowBlur = 90; c.shadowOffsetY = 30; rrect(x, y, cw * z, chh * z, 26); c.fillStyle = '#141b3d'; c.fill(); c.restore();
-      c.save(); rrect(x, y, cw * z, chh * z, 26); c.clip(); if (J.photo) cover(J.photo, x, y, cw * z, chh * z, .18); else crescent(W / 2, y + chh / 2, 90); c.restore();
-      c.strokeStyle = '#e8c27a'; c.lineWidth = 5; rrect(x, y, cw * z, chh * z, 26); c.stroke();
-      text(J.reciter, W / 2, y + chh * z + 72, '700 58px Amiri, serif', '#fdf6e9');
-      text(J.label, W / 2, y + chh * z + 128, '400 32px "Readex Pro", sans-serif', '#e8c27a');
-    }
-    // verse, word by word
-    c.font = `${J.size}px "Amiri Quran", Amiri, serif`; c.direction = 'rtl'; c.textAlign = 'left';
-    c.shadowColor = 'rgba(0,0,0,.55)'; c.shadowBlur = 30;
-    const vin = Math.min(1, win(t, .8, 1.8) + .0001);
-    J.words.forEach(w => {
-      let o = .22, col = '#fdf6e9';
-      if (at >= w.start) { o = 1; col = (at < w.end || w.mark) ? '#e8c27a' : '#fdf6e9'; }
-      else if (at >= w.start - .35) o = .22 + .78 * win(at, w.start - .35, w.start);
-      if (w.mark) c.font = `${J.size}px Amiri, serif`; else c.font = `${J.size}px "Amiri Quran", Amiri, serif`;
-      c.globalAlpha = o * vin * show; c.fillStyle = w.mark && at < w.start ? '#e8c27a' : col; c.fillText(w.text, w.x, w.y);
-    });
-    c.shadowBlur = 0;
-    c.globalAlpha = win(t, 1.2, 2.2) * show;
-    text(J.ref, W / 2, (st === 'cinema' ? 1500 : st === 'wave' ? 1360 : 1515) + 40, '400 36px "Readex Pro", sans-serif', '#e8c27a');
-    // closing card: the whole site, not only the radio
-    c.globalAlpha = endIn; const ey = (1 - endIn) * 24;
-    c.font = '700 104px Amiri, serif'; c.direction = 'ltr'; c.textAlign = 'left';
-    const e1 = c.measureText('Cairo ').width, e2 = c.measureText('Quran').width, ex = (W - e1 - e2) / 2;
-    c.fillStyle = '#e8c27a'; c.fillText('Cairo ', ex, 860 + ey); c.fillStyle = '#fdf6e9'; c.fillText('Quran', ex + e1, 860 + ey);
-    ['تلاوات كبار القرّاء', S.radios, 'مواقيت الصلاة لمدينتك · الأذكار'].forEach((l, i) => text(l, W / 2, 960 + i * 70 + ey, '300 44px "Readex Pro", sans-serif', 'rgba(253,246,233,.86)'));
-    text('cairoquran.com', W / 2, 1200 + ey, '400 48px "Readex Pro", sans-serif', '#e8c27a', 'center', 'ltr');
-    c.globalAlpha = 1; c.fillStyle = `rgba(5,8,22,${1 - win(t, 0, 1)})`; c.fillRect(0, 0, W, H);
-    c.restore();
-  }
-
-  function drawIdle() {
-    const rid = +$('reciter').value, r = S.reciters.find(x => x.id === rid);
-    const J = { style: S.style, photo: S.photo, reciter: r ? (r.translated_name?.name || r.name) : '', label: r ? (STYLE_AR[r.style.name] || '') : '',
-      words: [{ text: 'اختر', start: 0, end: 0 }, { text: 'السورة', start: 0, end: 0 }, { text: 'والآيات', start: 0, end: 0 }], ref: 'ثم اضغط «معاينة»', total: 999 };
-    layout(J); render(J, 3, 5, .4);
-  }
-
-  /* ---------- play / record ---------- */
-  function say(t, kind) { const m = $('msg'); m.textContent = t; m.className = 'msg' + (kind ? ' ' + kind : ''); }
-  function setReady(on) { ['previewBtn', 'recordBtn'].forEach(id => $(id).setAttribute('aria-disabled', on ? 'false' : 'true')); }
-  function pickMime() {
-    const list = ['video/mp4;codecs=avc1.42E01E,mp4a.40.2', 'video/mp4;codecs=avc1,mp4a', 'video/mp4', 'video/webm;codecs=vp9,opus', 'video/webm;codecs=vp8,opus', 'video/webm'];
-    return list.find(m => window.MediaRecorder && MediaRecorder.isTypeSupported(m)) || '';
-  }
-
-  async function run(record) {
-    if (S.busy) return; S.busy = true; setReady(false); $('result').hidden = true;
-    // Create and resume the audio clock inside the click itself, so iPhone Safari allows playback later.
-    const ac = new (window.AudioContext || window.webkitAudioContext)(); ac.resume();
-    let rec, node;
-    try {
-      await document.fonts.load('80px "Amiri Quran"', 'بِسْمِ'); await document.fonts.load('700 60px Amiri', 'Cairo'); await document.fonts.load('300 40px "Readex Pro"', 'مواقيت');
-      const J = await prepare(); layout(J);
-      say('جارٍ تنزيل ملف التلاوة…');
-      const r = await fetch(J.url); if (!r.ok) throw new Error('تعذّر تنزيل ملف التلاوة.');
-      const raw = await r.arrayBuffer();
-      const audioBuf = await new Promise((res, rej) => ac.decodeAudioData(raw, res, () => rej(new Error('تعذّر قراءة ملف التلاوة.'))));
-      const dur = J.t1 - J.t0; J.total = INTRO + dur + OUTRO;
-      const an = ac.createAnalyser(); an.fftSize = 1024;
-      const dest = ac.createMediaStreamDestination();
-      node = ac.createBufferSource(); node.buffer = audioBuf;
-      node.connect(an); an.connect(dest); an.connect(ac.destination);
-      const buf = new Float32Array(an.fftSize);
-      let mime = '', chunks = [];
-      if (record) {
-        mime = pickMime(); if (!mime) throw new Error('هذا المتصفح لا يدعم تسجيل الفيديو. استخدم Chrome أو Safari حديثًا.');
-        const stream = cv.captureStream(FPS); dest.stream.getAudioTracks().forEach(tr => stream.addTrack(tr));
-        rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 8000000, audioBitsPerSecond: 160000 });
-        rec.ondataavailable = e => { if (e.data && e.data.size) chunks.push(e.data); };
-        rec.start(500);
-      }
-      say(record ? 'جارٍ إنشاء المقطع… اترك الصفحة ظاهرة حتى ينتهي.' : 'معاينة…');
-      await ac.resume();
-      const clock0 = ac.currentTime + .15;
-      node.start(clock0 + INTRO, J.t0, dur);
-      let env = 0;
-      await new Promise(resolve => {
-        function frame() {
-          const t = Math.max(0, ac.currentTime - clock0), at = t - INTRO;
-          if (at >= 0 && at <= dur) { an.getFloatTimeDomainData(buf); let q = 0; for (let i = 0; i < buf.length; i++) q += buf[i] * buf[i]; env = env * .6 + Math.min(1, Math.sqrt(q / buf.length) * 4) * .4; } else env *= .85;
-          render(J, t, at, env);
-          $('barFill').style.width = Math.min(100, t / J.total * 100) + '%';
-          if (t >= J.total + .15) return resolve();
-          requestAnimationFrame(frame);
-        }
-        requestAnimationFrame(frame);
-      });
-      if (record) {
-        await new Promise(res => { rec.onstop = res; rec.stop(); });
-        const type = mime.split(';')[0], blob = new Blob(chunks, { type });
-        const ext = type.includes('mp4') ? 'mp4' : 'webm', url = URL.createObjectURL(blob);
-        $('download').href = url; $('download').download = `cairo-quran-${$('surah').value}-${$('from').value}-${$('to').value}.${ext}`;
-        $('caption').value = `${J.plain}\n\n${J.ref}\nبصوت الشيخ ${J.reciter}${J.label ? ' · ' + J.label : ''}\n\n[اكتب هنا سؤالًا يفتح حوارًا مع المتابعين]\n\n#قرآن_كريم #تلاوة_خاشعة #CairoQuran`;
-        $('result').hidden = false;
-        say(ext === 'mp4' ? 'المقطع جاهز. نزّله ثم ارفعه على فيسبوك وإنستجرام.' : 'المقطع جاهز بصيغة WebM، ويقبلها فيسبوك. أما إنستجرام فيحتاج MP4، فأنشئ المقطع من Safari أو من إصدار حديث من Chrome.', 'ok');
-      } else say('انتهت المعاينة. إن أعجبتك فاضغط «إنشاء المقطع».', 'ok');
-    } catch (e) {
-      try { rec && rec.state !== 'inactive' && rec.stop(); } catch (_) {}
-      say(e.message || 'حدث خطأ غير متوقع.', 'bad');
-    } finally {
-      try { node && node.stop(); } catch (_) {}
-      try { ac.close(); } catch (_) {}
-      S.busy = false; setReady(true); $('barFill').style.width = '0';
-    }
-  }
-
-  /* ---------- wiring ---------- */
-  function save() { try { localStorage.setItem('cq-studio', JSON.stringify({ r: $('reciter').value, s: $('surah').value, f: $('from').value, t: $('to').value, st: S.style })); } catch (e) {} }
-  function restore() {
-    let v = null; try { v = JSON.parse(localStorage.getItem('cq-studio') || 'null'); } catch (e) {}
-    if (!v) { $('surah').value = '93'; $('from').value = 1; $('to').value = 5; return; }
-    if (v.r) $('reciter').value = v.r; if (v.s) $('surah').value = v.s; $('from').value = v.f || 1; $('to').value = v.t || 1;
-    if (v.st) { S.style = v.st; document.querySelectorAll('#styleSeg button').forEach(b => b.setAttribute('aria-pressed', b.dataset.style === S.style)); }
-  }
-  $('reciter').addEventListener('change', onReciter);
-  $('surah').addEventListener('change', () => { $('from').value = 1; $('to').value = 1; onSurah(); });
-  ['from', 'to'].forEach(id => $(id).addEventListener('change', () => { onSurah(); save(); }));
-  $('styleSeg').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; S.style = b.dataset.style; document.querySelectorAll('#styleSeg button').forEach(x => x.setAttribute('aria-pressed', x === b)); save(); drawIdle(); });
-  $('previewBtn').addEventListener('click', () => run(false));
-  $('recordBtn').addEventListener('click', () => run(true));
-  $('copyBtn').addEventListener('click', async () => { const t = $('caption'); try { await navigator.clipboard.writeText(t.value); say('نُسخ نص المنشور.', 'ok'); } catch (e) { t.focus(); t.select(); say('النص محدّد، انسخه من القائمة.'); } });
-
-  fetch('../index.html').then(r => r.ok ? r.text() : '').then(h => { if (h) S.radios = radiosLine(h); }).catch(() => {});
-  document.fonts.ready.then(drawIdle);
-  loadLists();
+  window.addEventListener('hashchange', show); show();
 })();
 </script>
 </body>
