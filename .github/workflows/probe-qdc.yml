@@ -1,0 +1,22 @@
+# Temporary: checks browser access (CORS) to the QDC timing API and its audio host. Will be removed.
+name: probe-qdc
+on:
+  push:
+    branches: [claude/relaxed-volta-yog6yf]
+    paths: ['.github/workflows/probe-qdc.yml']
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - run: |
+          O='https://cairoquran.com'
+          J=$(curl -s -m 20 -H "Origin: $O" 'https://api.qurancdn.com/api/qdc/audio/reciters/9/audio_files?chapter=93&segments=true')
+          echo "$J" | head -c 600; echo
+          U=$(echo "$J" | jq -r '.audio_files[0].audio_url')
+          echo "== api.qurancdn.com"; curl -s -m 15 -D - -o /dev/null -H "Origin: $O" 'https://api.qurancdn.com/api/qdc/audio/reciters?locale=ar' | grep -iE '^(HTTP|access-control-allow-origin)'
+          echo "== $U"; curl -s -m 15 -D - -o /dev/null -H "Origin: $O" -r 0-1000 "$U" | grep -iE '^(HTTP|access-control-allow-origin|content-type|location|accept-ranges)'
+          echo "== reciters"; curl -s -m 20 'https://api.qurancdn.com/api/qdc/audio/reciters?locale=ar' | jq -r '.reciters[] | "\(.id)\t\(.name)\t\(.translated_name.name)\t\(.style.name)"'
+          echo "== chapters"; curl -s -m 15 -D - -o /dev/null -H "Origin: $O" 'https://api.quran.com/api/v4/chapters?language=ar' | grep -iE '^(HTTP|access-control-allow-origin)'
