@@ -5,7 +5,7 @@ name: content
 on:
   push:
     branches: [claude/relaxed-volta-yog6yf]
-    paths: ['.github/content/current']
+    paths: ['.github/content/current', '.github/workflows/content.yml']
 permissions:
   contents: write
 concurrency:
@@ -41,9 +41,9 @@ jobs:
           TAG="content-$WEEK"
           cd "$RUNNER_TEMP/dist"
           FILES=$(ls | grep -v '^notes.md$\|^reels.json$')
-          if gh release view "$TAG" > /dev/null 2>&1; then
-            gh release upload "$TAG" $FILES --clobber
-            gh release edit "$TAG" --notes-file notes.md
+          if gh release view "$TAG" -R "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
+            gh release upload "$TAG" $FILES --clobber -R "$GITHUB_REPOSITORY"
+            gh release edit "$TAG" --notes-file notes.md -R "$GITHUB_REPOSITORY"
           else
-            gh release create "$TAG" $FILES --title "محتوى أسبوع $WEEK" --notes-file notes.md --target "$GITHUB_SHA" --latest=false
+            gh release create "$TAG" $FILES --title "محتوى أسبوع $WEEK" --notes-file notes.md --target "$GITHUB_SHA" --latest=false -R "$GITHUB_REPOSITORY"
           fi
