@@ -69,14 +69,20 @@ for (const it of items) {
   await page.close();
   const ok = await audioP;
   if (!ok) throw new Error('could not record the live stream');
+  // A pause in the broadcast at the end would leave dead air: end the reel half a second after the last sound
+  let cut = dur;
+  const log = (() => { try { return execFileSync('sh', ['-c', `ffmpeg -hide_banner -i '${audio}' -af silencedetect=n=-45dB:d=1.5 -f null - 2>&1`]).toString(); } catch (e) { return ''; } })();
+  const starts = [...log.matchAll(/silence_start: ([\d.]+)/g)].map(m => +m[1]), ends = [...log.matchAll(/silence_end: ([\d.]+)/g)].map(m => +m[1]);
+  if (starts.length > ends.length || (ends.length && ends[ends.length - 1] >= dur - .3)) { const last = starts[starts.length - 1]; if (last > 14) cut = Math.min(dur, last + .6); }
+  if (cut < dur) console.log(`${it.id}: trailing silence from ${cut.toFixed(1)}s, reel ends there`);
   let list = ''; frames.forEach((fr, i) => { const next = i + 1 < frames.length ? frames[i + 1].t : dur; list += `file '${fr.f}'\nduration ${Math.max(.01, next - fr.t).toFixed(3)}\n`; });
   list += `file '${frames[frames.length - 1].f}'\n`; writeFileSync(join(tmp, 'list.txt'), list);
   const mp4 = join(dist, it.id + '.mp4');
   sh('ffmpeg', ['-loglevel', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', join(tmp, 'list.txt'), '-i', audio,
-    '-vf', 'fps=30,format=yuv420p', '-af', 'afade=t=in:d=0.8,afade=t=out:st=' + (dur - 1.2) + ':d=1.2',
+    '-vf', 'fps=30,format=yuv420p', '-af', 'loudnorm=I=-16:TP=-1.5:LRA=11,afade=t=in:d=0.8,afade=t=out:st=' + (cut - 1.2) + ':d=1.2',
     '-c:v', 'libx264', '-preset', 'slow', '-crf', '23', '-maxrate', '2500k', '-bufsize', '5000k', '-profile:v', 'high',
-    '-c:a', 'aac', '-b:a', '128k', '-t', String(dur), '-movflags', '+faststart', mp4]);
-  sh('ffmpeg', ['-loglevel', 'error', '-y', '-ss', String(dur / 2), '-i', mp4, '-frames:v', '1', join(dist, it.id + '.jpg')]);
+    '-c:a', 'aac', '-b:a', '128k', '-t', String(cut), '-movflags', '+faststart', mp4]);
+  sh('ffmpeg', ['-loglevel', 'error', '-y', '-ss', String(cut / 2), '-i', mp4, '-frames:v', '1', join(dist, it.id + '.jpg')]);
   console.log(`${it.id}: ${frames.length} frames over ${dur}s -> ${mp4}`);
   out.push({ id: it.id, file: it.id + '.mp4', cover: it.id + '.jpg', type: 'reel', at: it.at, when: it.when, platforms: it.platforms || ['facebook', 'instagram'], caption: it.caption });
 }

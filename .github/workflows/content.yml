@@ -5,7 +5,7 @@ name: content
 on:
   push:
     branches: [claude/relaxed-volta-yog6yf]
-    paths: ['.github/content/current', '.github/workflows/content.yml']
+    paths: ['.github/content/current', '.github/content/*.mjs', '.github/workflows/content.yml']
 permissions:
   contents: write
 concurrency:
