@@ -1,4 +1,4 @@
-// Builds Cairo Quran reels from samples.json: fetches verse words, recitation audio and word timings
+// Builds Cairo Quran reels from the batch file named in ./current (default samples.json): fetches verse words, recitation audio and word timings
 // from the quran.com API, the reciter photo from Wikimedia Commons, renders reel.html frame by frame
 // with Playwright and muxes the frames with the recitation using ffmpeg. Output: out/<id>.mp4
 import { chromium } from 'playwright';
@@ -8,7 +8,8 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
-const OUT = join(HERE, 'out');
+const BATCH = (() => { try { return readFileSync(join(HERE, 'current'), 'utf8').trim(); } catch { return 'samples.json'; } })();
+const OUT = join(HERE, 'out', BATCH.replace(/^.*\//, '').replace(/\.json$/, ''));
 const FPS = 30, INTRO = 1.6, OUTRO = 3.4;
 const API = 'https://api.quran.com/api/v4';
 const UA = { 'user-agent': 'CairoQuran-Reels/1.0 (https://cairoquran.com; contact@cairoquran.com)' };
@@ -46,7 +47,7 @@ async function build(s, browser) {
   const chapter = s.verses[0].split(':')[0];
   let ch = null;
   try { ch = await chapterAudio(s.recitation, chapter, tmp); } catch (e) { console.log(`  chapter audio unavailable: ${e.message}`); }
-  let offset = 0; const words = []; const list = [];
+  let offset = 0; const words = []; const list = []; const plain = [];
   for (const [i, key] of s.verses.entries()) {
     const ws = await getWords(key);
     const f = join(tmp, `a${i}.wav`);
@@ -68,6 +69,7 @@ async function build(s, browser) {
       const [a, b] = timed ? seg.get(w.pos) : [d * j / ws.length, d * (j + 1) / ws.length];
       words.push({ text: w.text, start: offset + Math.max(0, a), end: offset + Math.max(a, b) });
     });
+    plain.push(ws.map(w => w.text).join(' ') + ' ﴿' + ar(key.split(':')[1]) + '﴾');
     words.push({ text: '﴿' + ar(key.split(':')[1]) + '﴾', mark: true, start: offset + d - .25, end: offset + d });
     offset += d;
   }
@@ -109,12 +111,23 @@ async function build(s, browser) {
   sh('ffmpeg', ['-loglevel', 'error', '-y', '-ss', String(INTRO + Math.min(audioLen * .6, audioLen - .5)), '-i', mp4, '-frames:v', '1', '-vf', 'scale=540:-1', join(OUT, s.id + '.jpg')]);
   rmSync(tmp, { recursive: true, force: true });
   console.log(`  -> ${mp4} (${total.toFixed(1)}s)`);
+  return { verse: plain.join(' '), ref };
 }
 
-const samples = JSON.parse(readFileSync(join(HERE, 'samples.json'), 'utf8'));
+const samples = JSON.parse(readFileSync(join(HERE, BATCH), 'utf8'));
+// Guard: the recitation id must belong to the reciter and style named in the batch, or the item is skipped.
+const qdc = (await getJSON('https://api.qurancdn.com/api/qdc/audio/reciters?locale=en')).reciters || [];
+for (const s of samples) {
+  const r = qdc.find(x => x.id === s.recitation);
+  const label = r ? `${r.name} / ${r.style?.name || ''}`.toLowerCase() : '';
+  console.log(`recitation ${s.recitation}: ${label || 'not found'}`);
+  if (s.expect && !s.expect.every(k => label.includes(k))) { s.skip = `recitation ${s.recitation} is "${label}", expected ${s.expect.join(' + ')}`; }
+}
 mkdirSync(OUT, { recursive: true });
 const browser = await chromium.launch();
 let failed = 0;
-for (const s of samples) { try { await build(s, browser); } catch (e) { failed++; console.error(`!! ${s.id}: ${e.message}`); } }
+const captions = [];
+for (const s of samples) { if (s.skip) { failed++; console.error(`!! ${s.id}: ${s.skip}`); continue; } try { const r = await build(s, browser); if (s.caption) captions.push(`### ${s.id}${s.when ? ' · ' + s.when : ''}\n\n${s.caption.replace('{{verse}}', r.verse).replace('{{ref}}', r.ref)}\n`); } catch (e) { failed++; console.error(`!! ${s.id}: ${e.message}`); } }
+if (captions.length) writeFileSync(join(OUT, 'captions.md'), captions.join('\n'));
 await browser.close();
 process.exit(failed === samples.length ? 1 : 0);

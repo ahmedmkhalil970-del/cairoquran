@@ -31,5 +31,5 @@ jobs:
         run: |
           git config user.name "Ahmed Khalil"
           git config user.email "ahmedmkhalil970@gmail.com"
-          git add .github/reels/out/*.mp4 .github/reels/out/*.jpg
-          git commit -q -m "Render sample reels" && git pull -q --rebase && git push -q || echo "nothing to commit"
+          git add .github/reels/out
+          git commit -q -m "Render reels: $(cat .github/reels/current)" && git pull -q --rebase && git push -q || echo "nothing to commit"
