@@ -1,0 +1,49 @@
+# Content pipeline: renders the week named in .github/content/current (reels from reels.json, plus static assets)
+# and publishes everything as the GitHub release "content-<week>", with schedule.json for the scheduling session.
+# Runs only on the working branch and only when that file changes; it never touches main or the live site.
+name: content
+on:
+  push:
+    branches: [claude/relaxed-volta-yog6yf]
+    paths: ['.github/content/current']
+permissions:
+  contents: write
+concurrency:
+  group: content
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Tools
+        working-directory: .github/reels
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-noto-core > /dev/null
+          npm i --no-save --silent playwright@1.56.1
+          npx playwright install --with-deps chromium > /dev/null
+      - name: Render reels
+        run: |
+          W=$(cat .github/content/current)
+          echo "WEEK=$W" >> "$GITHUB_ENV"
+          if [ -f ".github/content/$W/reels.json" ]; then
+            BATCH_FILE="$GITHUB_WORKSPACE/.github/content/$W/reels.json" OUT_DIR="$RUNNER_TEMP/dist" node .github/reels/build.mjs
+          fi
+      - name: Assemble
+        run: node .github/content/publish.mjs "$WEEK" "$RUNNER_TEMP/dist"
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="content-$WEEK"
+          cd "$RUNNER_TEMP/dist"
+          FILES=$(ls | grep -v '^notes.md$\|^reels.json$')
+          if gh release view "$TAG" > /dev/null 2>&1; then
+            gh release upload "$TAG" $FILES --clobber
+            gh release edit "$TAG" --notes-file notes.md
+          else
+            gh release create "$TAG" $FILES --title "محتوى أسبوع $WEEK" --notes-file notes.md --target "$GITHUB_SHA" --latest=false
+          fi
