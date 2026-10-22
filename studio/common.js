@@ -120,7 +120,7 @@
       const j = await getJSON(`${CQ.API}/recitations/${rid}/by_ayah/${vk}?fields=segments`);
       const f = (j.audio_files || [])[0];
       if (!f || !f.url) throw new Error('لا تتوفر تلاوة هذا القارئ لهذه الآيات.');
-      const url = /^https?:/.test(f.url) ? f.url.replace(/^http:/, 'https:') : AYAH_AUDIO + f.url.replace(/^\/+/, '');
+      const url = /^https?:/.test(f.url) ? f.url.replace(/^http:/, 'https:') : f.url.startsWith('//') ? 'https:' + f.url : AYAH_AUDIO + f.url.replace(/^\/+/, '');
       const r = await fetch(url); if (!r.ok) throw new Error('تعذّر تنزيل ملف التلاوة.');
       const raw = await r.arrayBuffer(), buf = await decodeRaw(raw.slice(0)), d = buf.duration;
       if (maxSeconds && at + d > maxSeconds) throw new Error(`مدة التلاوة تتجاوز ${maxSeconds} ثانية. قلّل عدد الآيات.`);
