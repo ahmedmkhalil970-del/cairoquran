@@ -77,6 +77,9 @@
     const aj = await getJSON(`${CQ.QDC}/reciters/${rid}/audio_files?chapter=${ch}&segments=true`);
     const file = (aj.audio_files || [])[0];
     if (!file || !file.audio_url) throw new Error('لا تتوفر تلاوة هذا القارئ لهذه السورة.');
+    // Long surahs (Al-Baqarah is over two hours, 130–250 MB) cannot be downloaded and decoded whole in a browser,
+    // so for them the verses are fetched one by one from quran.com's per-verse recordings, with their own word timings.
+    if ((file.duration || 0) > LONG_MS && PER_AYAH.has(rid)) return CQ.recitationByAyah(rid, ch, from, to, maxSeconds);
     const tm = new Map((file.verse_timings || []).map(v => [v.verse_key, v]));
     const s = tm.get(`${ch}:${from}`), e = tm.get(`${ch}:${to}`);
     if (!s || !e) throw new Error('لا تتوفر توقيتات هذه الآيات لهذا القارئ.');
@@ -100,7 +103,46 @@
     return { words, plain: plain.join(' ') };
   };
   CQ.refText = (chapter, from, to) => `سورة ${chapter.name_arabic} · ${from === to ? 'الآية ' + CQ.ar(from) : 'الآيات ' + CQ.ar(from) + '–' + CQ.ar(to)}`;
+  /* ---------- per-verse recordings (long surahs) ---------- */
+  const LONG_MS = 12 * 60 * 1000;                       // chapter recordings longer than this are fetched verse by verse
+  const PER_AYAH = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);   // reciters that quran.com also publishes per verse
+  const AYAH_AUDIO = 'https://verses.quran.com/';
+  const ayahCache = new Map();                          // 'ayat:rid:ch:from-to' -> [{ raw ArrayBuffer }]
+  const decodeRaw = raw => new Promise((res, rej) => {
+    const oc = new (window.OfflineAudioContext || window.webkitOfflineAudioContext)(1, 1, 44100);
+    oc.decodeAudioData(raw, res, () => rej(new Error('تعذّر قراءة ملف التلاوة.')));
+  });
+  CQ.recitationByAyah = async (rid, ch, from, to, maxSeconds) => {
+    const key = `ayat:${rid}:${ch}:${from}-${to}`, words = [], plain = [], parts = [];
+    let at = 0;
+    for (let n = from; n <= to; n++) {
+      const vk = `${ch}:${n}`;
+      const j = await getJSON(`${CQ.API}/recitations/${rid}/by_ayah/${vk}?fields=segments`);
+      const f = (j.audio_files || [])[0];
+      if (!f || !f.url) throw new Error('لا تتوفر تلاوة هذا القارئ لهذه الآيات.');
+      const url = /^https?:/.test(f.url) ? f.url.replace(/^http:/, 'https:') : AYAH_AUDIO + f.url.replace(/^\/+/, '');
+      const r = await fetch(url); if (!r.ok) throw new Error('تعذّر تنزيل ملف التلاوة.');
+      const raw = await r.arrayBuffer(), buf = await decodeRaw(raw.slice(0)), d = buf.duration;
+      if (maxSeconds && at + d > maxSeconds) throw new Error(`مدة التلاوة تتجاوز ${maxSeconds} ثانية. قلّل عدد الآيات.`);
+      parts.push(buf);
+      const ws = await CQ.verseWords(vk);
+      const seg = new Map((f.segments || []).filter(x => x.length >= 3).map(x => [x.length >= 4 ? x[1] : x[0], [x[x.length - 2] / 1000, x[x.length - 1] / 1000]]));
+      const timed = ws.every(w => seg.has(w.pos));
+      ws.forEach((w, i) => { const [a, b] = timed ? seg.get(w.pos) : [d * i / ws.length, d * (i + 1) / ws.length]; words.push({ text: w.text, start: at + a, end: at + b }); });
+      words.push({ text: '﴿' + CQ.ar(n) + '﴾', mark: true, start: at + d - .25, end: at + d });
+      plain.push(ws.map(w => w.text).join(' ') + ' ﴿' + CQ.ar(n) + '﴾');
+      at += d;
+    }
+    ayahCache.set(key, parts);
+    return { url: key, t0: 0, t1: at, dur: at, words, plain: plain.join(' ') };
+  };
   CQ.decode = async (ac, url, onMsg) => {
+    if (ayahCache.has(url)) {                           // join the per-verse recordings into one buffer
+      const parts = ayahCache.get(url), rate = parts[0].sampleRate, len = parts.reduce((s, b) => s + b.length, 0);
+      const out = ac.createBuffer(1, len, rate), data = out.getChannelData(0); let o = 0;
+      parts.forEach(b => { data.set(b.getChannelData(0), o); o += b.length; });
+      return out;
+    }
     onMsg && onMsg('جارٍ تنزيل ملف التلاوة…');
     const r = await fetch(url); if (!r.ok) throw new Error('تعذّر تنزيل ملف التلاوة.');
     const raw = await r.arrayBuffer();
