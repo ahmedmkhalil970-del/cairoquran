@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 const HERE = dirname(fileURLToPath(import.meta.url));
 const BATCH = process.env.BATCH_FILE || (() => { try { return join(HERE, readFileSync(join(HERE, 'current'), 'utf8').trim()); } catch { return join(HERE, 'samples.json'); } })();
 const OUT = process.env.OUT_DIR || join(HERE, 'out', BATCH.replace(/^.*\//, '').replace(/\.json$/, ''));
-const FPS = 30, INTRO = 1.6, OUTRO = 3.4;
+const FPS = 30, INTRO = 0.3, OUTRO = 2.6; // the recitation starts at once: the first second decides whether a viewer stays
 const API = 'https://api.quran.com/api/v4';
 const UA = { 'user-agent': 'CairoQuran-Reels/1.0 (https://cairoquran.com; contact@cairoquran.com)' };
 const ar = n => String(n).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
