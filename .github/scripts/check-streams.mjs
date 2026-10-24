@@ -2,14 +2,19 @@
    Reads the station list straight from index.html (so it never needs updating by hand),
    opens every stream URL, and confirms it answers and actually sends audio.
    A station counts as down only when all of its URLs fail; a failed mirror alone is a warning.
-   Exit code: 0 all stations up, 1 at least one station down, 2 the station list could not be read.
+   The upstream server (qurango.net) returns short HTTP 500 bursts on single stations that clear by themselves,
+   so a URL is retried three times, and any URL still failing is checked once more after RECHECK_MS;
+   only stations that fail every pass are reported.
+   Exit code: 0 the check ran (stations up or down; the result goes to GITHUB_OUTPUT as status=ok|down),
+   2 the station list could not be read (the tool itself is broken).
    Read-only: it changes no file of the site. */
 import { readFile, writeFile, appendFile } from 'node:fs/promises';
 
 const HTML_FILE = process.argv[2] || 'index.html';
 const TIMEOUT_MS = 20000;   // per attempt
 const MIN_BYTES = 16384;    // audio that must arrive before a stream counts as working
-const RETRY_DELAY_MS = 5000;
+const RETRY_DELAYS_MS = [15000, 45000]; // waits before the 2nd and 3rd attempt
+const RECHECK_MS = 180000;                // second pass for URLs that failed the first
 const CONCURRENCY = 4;
 
 async function loadStations() {
@@ -49,11 +54,16 @@ async function probeOnce(url) {
   }
 }
 
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
 async function probe(url) {
-  const first = await probeOnce(url);
-  if (first.ok) return first;
-  await new Promise(r => setTimeout(r, RETRY_DELAY_MS));
-  return probeOnce(url);
+  let res = await probeOnce(url);
+  for (const wait of RETRY_DELAYS_MS) {
+    if (res.ok) break;
+    await sleep(wait);
+    res = await probeOnce(url);
+  }
+  return res;
 }
 
 async function mapLimited(items, limit, fn) {
@@ -65,8 +75,9 @@ async function mapLimited(items, limit, fn) {
   return out;
 }
 
-async function report(text, code) {
+async function report(text, code, status) {
   console.log(text);
+  if (process.env.GITHUB_OUTPUT) await appendFile(process.env.GITHUB_OUTPUT, `status=${status}\n`);
   if (process.env.REPORT_FILE) await writeFile(process.env.REPORT_FILE, text);
   if (process.env.GITHUB_STEP_SUMMARY) await appendFile(process.env.GITHUB_STEP_SUMMARY, text + '\n');
   process.exit(code);
@@ -76,12 +87,19 @@ let stations;
 try {
   stations = await loadStations();
 } catch (e) {
-  await report(`## تعذّر فحص روابط البث\n\nلم يتمكن الفحص من قراءة قائمة الإذاعات من \`${HTML_FILE}\`.\n\n- السبب: ${e.message}\n- الإجراء: مراجعة آخر تعديل على قائمة الإذاعات في الموقع.\n`, 2);
+  await report(`## تعذّر فحص روابط البث\n\nلم يتمكن الفحص من قراءة قائمة الإذاعات من \`${HTML_FILE}\`.\n\n- السبب: ${e.message}\n- الإجراء: مراجعة آخر تعديل على قائمة الإذاعات في الموقع.\n`, 2, 'error');
 }
 
 const urls = [...new Set(stations.flatMap(s => s.urls))];
 const results = new Map();
 (await mapLimited(urls, CONCURRENCY, probe)).forEach((r, i) => results.set(urls[i], r));
+
+const failedFirst = urls.filter(u => !results.get(u).ok);
+if (failedFirst.length) {
+  console.log(`فشل ${failedFirst.length} رابط في الجولة الأولى؛ إعادة الفحص بعد ${RECHECK_MS / 60000} دقائق.`);
+  await sleep(RECHECK_MS);
+  (await mapLimited(failedFirst, CONCURRENCY, probe)).forEach((r, i) => results.set(failedFirst[i], r));
+}
 
 const down = [], degraded = [];
 for (const s of stations) {
@@ -99,4 +117,4 @@ if (down.length) text += `\n### إذاعات متوقفة بالكامل\nلن �
 if (degraded.length) text += `\n### روابط احتياطية متعطّلة\nالإذاعة تعمل من رابط آخر، لكن الاحتياطي غير متاح.\n\n${table(degraded)}`;
 if (!down.length && !degraded.length) text += `\nجميع الإذاعات تعمل بصورة سليمة.\n`;
 
-await report(text, down.length ? 1 : 0);
+await report(text, 0, down.length ? 'down' : 'ok');
