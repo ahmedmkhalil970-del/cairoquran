@@ -1,5 +1,6 @@
-# Content pipeline: renders the week named in .github/content/current (reels from reels.json, plus static assets)
-# and publishes everything as the GitHub release "content-<week>", with schedule.json for the scheduling session.
+# Content pipeline: renders each week named in .github/content/current, one per line (reels from reels.json, live
+# channel reels from live.json, plus static assets), and publishes each as the GitHub release "content-<week>",
+# with schedule.json for the scheduling session. Weeks render in parallel.
 # Runs only on the working branch and only when that file changes; it never touches main or the live site.
 name: content
 on:
@@ -11,7 +12,20 @@ permissions:
 concurrency:
   group: content
 jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    outputs:
+      weeks: ${{ steps.w.outputs.weeks }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: w
+        run: echo "weeks=$(grep -v '^\s*$' .github/content/current | jq -R . | jq -sc .)" >> "$GITHUB_OUTPUT"
   publish:
+    needs: plan
+    strategy:
+      fail-fast: false
+      matrix:
+        week: ${{ fromJSON(needs.plan.outputs.weeks) }}
     runs-on: ubuntu-24.04
     timeout-minutes: 45
     steps:
@@ -25,8 +39,9 @@ jobs:
           npm i --no-save --silent playwright@1.56.1
           npx playwright install --with-deps chromium > /dev/null
       - name: Render reels
+        env:
+          W: ${{ matrix.week }}
         run: |
-          W=$(cat .github/content/current)
           echo "WEEK=$W" >> "$GITHUB_ENV"
           if [ -f ".github/content/$W/reels.json" ]; then
             BATCH_FILE="$GITHUB_WORKSPACE/.github/content/$W/reels.json" OUT_DIR="$RUNNER_TEMP/dist" node .github/reels/build.mjs

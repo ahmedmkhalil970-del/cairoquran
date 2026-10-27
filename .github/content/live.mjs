@@ -8,11 +8,11 @@ import { join } from 'node:path';
 
 const [listFile, dist] = process.argv.slice(2);
 const items = JSON.parse(readFileSync(listFile, 'utf8'));
-const STREAMS = ['https://stream.radiojar.com/8s5u5tpdtwzuv', 'https://n12.radiojar.com/8s5u5tpdtwzuv', 'https://n0c.radiojar.com/8s5u5tpdtwzuv'];
+const CAIRO = ['https://stream.radiojar.com/8s5u5tpdtwzuv', 'https://n12.radiojar.com/8s5u5tpdtwzuv', 'https://n0c.radiojar.com/8s5u5tpdtwzuv'];
 mkdirSync(dist, { recursive: true });
 const sh = (cmd, args) => execFileSync(cmd, args, { stdio: ['ignore', 'pipe', 'inherit'] });
 
-const PAGE = `<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8">
+const page_ = sub => `<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Readex+Pro:wght@300;400;600&display=block">
 <style>
 *{margin:0;box-sizing:border-box}html,body{width:1080px;height:1920px;overflow:hidden}
@@ -32,17 +32,17 @@ body{background:radial-gradient(80% 50% at 50% 45%,rgba(232,194,122,.13),transpa
 </style></head><body><div class="frame"></div>
 <div class="brand"><b>Cairo</b> Quran</div>
 <div class="live"><i></i>بث مباشر الآن</div>
-<div class="sub">إذاعة القرآن الكريم من القاهرة</div>
+<div class="sub">${sub}</div>
 <div class="tv"><iframe src="http://127.0.0.1:8000/"></iframe></div><div class="stand"></div>
 <div class="note">على موقعنا وعلى شاشة التلفاز في بيتك<br><b>مع مواقيت الصلاة لمدينتك والأذكار</b></div>
 <div class="url">cairoquran.com</div>
 </body></html>`;
 
-function recordAudio(file, seconds) {
+function recordAudio(streams, file, seconds) {
   return new Promise(resolve => {
     const tryNext = i => {
-      if (i >= STREAMS.length) return resolve(false);
-      const p = spawn('ffmpeg', ['-loglevel', 'error', '-y', '-i', STREAMS[i], '-t', String(seconds), '-vn', '-ac', '2', '-ar', '44100', file], { stdio: 'inherit' });
+      if (i >= streams.length) return resolve(false);
+      const p = spawn('ffmpeg', ['-loglevel', 'error', '-y', '-i', streams[i], '-t', String(seconds), '-vn', '-ac', '2', '-ar', '44100', file], { stdio: 'inherit' });
       p.on('exit', code => (code === 0 && existsSync(file)) ? resolve(true) : tryNext(i + 1));
     };
     tryNext(0);
@@ -53,14 +53,23 @@ const browser = await chromium.launch({ args: ['--autoplay-policy=no-user-gestur
 const out = [];
 for (const it of items) {
   const tmp = join(dist, 'tmp-' + it.id); mkdirSync(join(tmp, 'f'), { recursive: true });
-  writeFileSync(join(process.cwd(), '_live.html'), PAGE);
+  writeFileSync(join(process.cwd(), '_live.html'), page_(it.sub || 'إذاعة القرآن الكريم من القاهرة'));
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, timezoneId: 'Africa/Cairo', locale: 'ar-EG' });
-  // Open the screen as a returning viewer in Cairo on the Cairo station, so no city picker appears
-  await page.addInitScript(() => { try { localStorage.setItem('qtv-city', 'cairo'); localStorage.setItem('qtv-station', 'cairo'); } catch (e) {} });
+  // Open the screen as a returning viewer in Cairo on the item's station, so no city picker appears
+  await page.addInitScript(st => { try { localStorage.setItem('qtv-city', 'cairo'); localStorage.setItem('qtv-station', st); } catch (e) {} }, it.station || 'cairo');
+  // The screen shows the clock and the next prayer as they will be when the reel is published
+  if (it.at) await page.clock.setSystemTime(new Date(it.at));
   await page.goto('http://127.0.0.1:8000/_live.html', { waitUntil: 'load' });
   await page.evaluate(() => document.fonts.ready); await page.waitForTimeout(6000);
+  // Start the station on the screen so it reads «على الهواء مباشرة»; if it cannot connect, return it to the idle state
+  const site = page.frames().find(f => f !== page.mainFrame());
+  const state = () => site.evaluate(() => document.getElementById('status').dataset.s).catch(() => '');
+  await site.evaluate(() => document.getElementById('play').click()).catch(() => {});
+  for (let i = 0; i < 20 && await state() !== 'live'; i++) await page.waitForTimeout(500);
+  if (await state() !== 'live') await site.evaluate(() => document.getElementById('play').click()).catch(() => {});
+  await page.waitForTimeout(1000);
   const dur = it.duration || 25, audio = join(tmp, 'a.wav');
-  const audioP = recordAudio(audio, dur + 1);
+  const audioP = recordAudio(it.streams || CAIRO, audio, dur + 1);
   const t0 = Date.now(), frames = [];
   while (Date.now() - t0 < dur * 1000) {
     const f = join(tmp, 'f', String(frames.length).padStart(5, '0') + '.jpg');
@@ -84,7 +93,7 @@ for (const it of items) {
     '-c:a', 'aac', '-b:a', '128k', '-t', String(cut), '-movflags', '+faststart', mp4]);
   sh('ffmpeg', ['-loglevel', 'error', '-y', '-ss', String(cut / 2), '-i', mp4, '-frames:v', '1', join(dist, it.id + '.jpg')]);
   console.log(`${it.id}: ${frames.length} frames over ${dur}s -> ${mp4}`);
-  out.push({ id: it.id, file: it.id + '.mp4', cover: it.id + '.jpg', type: 'reel', at: it.at, when: it.when, platforms: it.platforms || ['facebook', 'instagram'], caption: it.caption });
+  out.push({ id: it.id, file: it.id + '.mp4', cover: it.id + '.jpg', type: 'reel', at: it.at, when: it.when, platforms: it.platforms || ['facebook', 'instagram'], title: it.title || null, caption: it.caption });
 }
 await browser.close();
 writeFileSync(join(dist, 'extra.json'), JSON.stringify(out, null, 2));

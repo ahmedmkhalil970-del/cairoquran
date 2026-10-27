@@ -137,7 +137,7 @@ mkdirSync(OUT, { recursive: true });
 const browser = await chromium.launch();
 let failed = 0;
 const captions = [], made = [];
-for (const s of samples) { if (s.skip) { failed++; console.error(`!! ${s.id}: ${s.skip}`); continue; } try { const r = await build(s, browser); const cap = s.caption ? s.caption.replace('{{verse}}', r.verse).replace('{{ref}}', r.ref) : ''; made.push({ id: s.id, file: s.id + '.mp4', cover: s.id + '.jpg', type: s.type || 'reel', at: s.at || null, when: s.when || '', platforms: s.platforms || ['facebook', 'instagram'], caption: cap }); if (s.caption) captions.push(`### ${s.id}${s.when ? ' · ' + s.when : ''}\n\n${s.caption.replace('{{verse}}', r.verse).replace('{{ref}}', r.ref)}\n`); } catch (e) { failed++; console.error(`!! ${s.id}: ${e.message}`); } }
+for (const s of samples) { if (s.skip) { failed++; console.error(`!! ${s.id}: ${s.skip}`); continue; } try { const r = await build(s, browser); const cap = s.caption ? s.caption.replace('{{verse}}', r.verse).replace('{{ref}}', r.ref) : ''; made.push({ id: s.id, file: s.id + '.mp4', cover: s.id + '.jpg', type: s.type || 'reel', at: s.at || null, when: s.when || '', platforms: s.platforms || ['facebook', 'instagram'], title: s.title ? s.title.replace('{{ref}}', r.ref) : null, caption: cap }); if (s.caption) captions.push(`### ${s.id}${s.when ? ' · ' + s.when : ''}\n\n${s.caption.replace('{{verse}}', r.verse).replace('{{ref}}', r.ref)}\n`); } catch (e) { failed++; console.error(`!! ${s.id}: ${e.message}`); } }
 if (captions.length) writeFileSync(join(OUT, 'captions.md'), captions.join('\n'));
 writeFileSync(join(OUT, 'reels.json'), JSON.stringify(made, null, 2));
 await browser.close();

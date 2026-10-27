@@ -1,0 +1,40 @@
+[
+  {
+    "id": "2-live-abdulbasit-m",
+    "at": "2026-11-10T20:00:00+03:00",
+    "when": "الثلاثاء 10 نوفمبر · 8:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "station": "abdulbasit_m",
+    "streams": [
+      "https://backup.qurango.net/radio/abdulbasit_abdulsamad_mojawwad"
+    ],
+    "sub": "الشيخ عبد الباسط عبد الصمد · مجوّد",
+    "duration": 26,
+    "title": "بث مباشر · الشيخ عبد الباسط عبد الصمد · مجوّد | Cairo Quran",
+    "caption": "الآن على شاشة Cairo Quran: الشيخ عبد الباسط عبد الصمد · مجوّد، مع مواقيت الصلاة لمدينتك والأذكار، على موقعنا وعلى شاشة التلفاز في بيتك.\n\nمتى سمعت الشيخ عبد الباسط أول مرة؟\n\n#عبد_الباسط_عبد_الصمد #قرآن_كريم #بث_مباشر #تلاوة #CairoQuran"
+  },
+  {
+    "id": "6-live-minshawi-m",
+    "at": "2026-11-14T20:00:00+03:00",
+    "when": "السبت 14 نوفمبر · 8:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "station": "minshawi_m",
+    "streams": [
+      "https://backup.qurango.net/radio/mohammed_siddiq_alminshawi_mojawwad"
+    ],
+    "sub": "الشيخ محمد صديق المنشاوي · مجوّد",
+    "duration": 26,
+    "title": "بث مباشر · الشيخ محمد صديق المنشاوي · مجوّد | Cairo Quran",
+    "caption": "الآن على شاشة Cairo Quran: الشيخ محمد صديق المنشاوي · مجوّد، مع مواقيت الصلاة لمدينتك والأذكار، على موقعنا وعلى شاشة التلفاز في بيتك.\n\nأي سورة تحب أن تسمعها بصوت الشيخ المنشاوي؟\n\n#المنشاوي #قرآن_كريم #بث_مباشر #تلاوة #CairoQuran"
+  }
+]

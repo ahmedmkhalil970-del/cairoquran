@@ -1,0 +1,40 @@
+[
+  {
+    "id": "2-live-tablawi",
+    "at": "2026-11-24T20:00:00+03:00",
+    "when": "الثلاثاء 24 نوفمبر · 8:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "station": "tablawi",
+    "streams": [
+      "https://backup.qurango.net/radio/mohammad_altablaway"
+    ],
+    "sub": "تلاوة الشيخ محمد محمود الطبلاوي",
+    "duration": 26,
+    "title": "بث مباشر · تلاوة الشيخ محمد محمود الطبلاوي | Cairo Quran",
+    "caption": "الآن على شاشة Cairo Quran: تلاوة الشيخ محمد محمود الطبلاوي، مع مواقيت الصلاة لمدينتك والأذكار، على موقعنا وعلى شاشة التلفاز في بيتك.\n\nأي قارئ مصري تحب أن نعرضه على الشاشة في المرة القادمة؟\n\n#الطبلاوي #قرآن_كريم #بث_مباشر #تلاوة #CairoQuran"
+  },
+  {
+    "id": "6-live-naina",
+    "at": "2026-11-28T20:00:00+03:00",
+    "when": "السبت 28 نوفمبر · 8:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "station": "naina",
+    "streams": [
+      "https://backup.qurango.net/radio/ahmad_nauina"
+    ],
+    "sub": "تلاوة الشيخ أحمد نعينع",
+    "duration": 26,
+    "title": "بث مباشر · تلاوة الشيخ أحمد نعينع | Cairo Quran",
+    "caption": "الآن على شاشة Cairo Quran: تلاوة الشيخ أحمد نعينع، مع مواقيت الصلاة لمدينتك والأذكار، على موقعنا وعلى شاشة التلفاز في بيتك.\n\nماذا تسمع من القرآن قبل النوم؟\n\n#أحمد_نعينع #قرآن_كريم #بث_مباشر #تلاوة #CairoQuran"
+  }
+]

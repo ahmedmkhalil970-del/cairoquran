@@ -24,16 +24,17 @@ if (missing.length) { console.error('missing files: ' + missing.join(', ')); pro
 const items = [...posts, ...reels].map(x => ({
   id: x.id, type: x.type, at: x.at, when: x.when, platforms: x.platforms,
   file: x.file, url: url(x.file), cover: x.cover ? url(x.cover) : null,
-  caption: x.caption, first_comment: x.first_comment || null, note: x.facebook_caption_note || null, status: 'pending'
+  title: x.title || null, caption: x.caption, first_comment: x.first_comment || null, note: x.facebook_caption_note || null, status: 'pending'
 })).sort((a, b) => String(a.at).localeCompare(String(b.at)));
 writeFileSync(join(dist, 'schedule.json'), JSON.stringify({ week, tag: TAG, timezone: 'Asia/Kuwait', items }, null, 2));
 
 const TYPE = { reel: 'ريلز', post: 'منشور', story: 'قصة' };
+const PLATFORM = { facebook: 'فيسبوك', instagram: 'إنستغرام', youtube: 'يوتيوب (Shorts)' };
 let md = `# محتوى أسبوع ${week}\n\nالمواعيد بتوقيت الكويت. ملف الجدولة الآلي: [schedule.json](${url('schedule.json')})\n\n`;
 md += '| الموعد | النوع | الملف | المنصات |\n|---|---|---|---|\n';
-for (const i of items) md += `| ${i.when || i.at} | ${TYPE[i.type] || i.type} | [${i.file}](${i.url})${i.cover ? ` · [الغلاف](${i.cover})` : ''} | ${i.platforms.join('، ')} |\n`;
+for (const i of items) md += `| ${i.when || i.at} | ${TYPE[i.type] || i.type} | [${i.file}](${i.url})${i.cover ? ` · [الغلاف](${i.cover})` : ''} | ${i.platforms.map(p => PLATFORM[p] || p).join('، ')} |\n`;
 md += '\n## النصوص\n';
-for (const i of items) md += `\n### ${i.when || i.at} · ${i.file}\n\n${i.caption}\n${i.note ? `\n> ${i.note}\n` : ''}${i.first_comment?.facebook ? `\n> أول تعليق على فيسبوك: ${i.first_comment.facebook}\n` : ''}`;
+for (const i of items) md += `\n### ${i.when || i.at} · ${i.file}\n\n${i.title ? `**عنوان يوتيوب:** ${i.title}\n\n` : ''}${i.caption}\n${i.note ? `\n> ${i.note}\n` : ''}${i.first_comment?.facebook ? `\n> أول تعليق على فيسبوك: ${i.first_comment.facebook}\n` : ''}`;
 writeFileSync(join(dist, 'notes.md'), md);
 writeFileSync(join(dist, 'captions.md'), md);
 console.log(`${items.length} items -> ${dist}`);

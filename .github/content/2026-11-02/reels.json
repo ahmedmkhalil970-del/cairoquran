@@ -1,0 +1,134 @@
+[
+  {
+    "id": "1-minshawi-baqarah-152",
+    "at": "2026-11-02T20:00:00+03:00",
+    "when": "الاثنين 2 نوفمبر · 8:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "circle",
+    "reciter": "محمد صديق المنشاوي",
+    "label": "مرتّل",
+    "recitation": 9,
+    "expect": [
+      "minshaw",
+      "murattal"
+    ],
+    "verses": [
+      "2:152"
+    ],
+    "surah": "سورة البقرة",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Elminshwey.jpg",
+    "title": "﴿فاذكروني أذكركم﴾ | الشيخ المنشاوي | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمد صديق المنشاوي\n\nذكرٌ يقابله ذكر من الله. ما الذكر الذي لا يفارق لسانك؟\n\n#فاذكروني_أذكركم #سورة_البقرة #المنشاوي #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "3-husary-ibrahim-7",
+    "at": "2026-11-04T20:00:00+03:00",
+    "when": "الأربعاء 4 نوفمبر · 8:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "wave",
+    "reciter": "محمود خليل الحصري",
+    "label": "مرتّل",
+    "recitation": 6,
+    "expect": [
+      "husar",
+      "murattal"
+    ],
+    "verses": [
+      "14:7"
+    ],
+    "surah": "سورة إبراهيم",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/7/70/Hussary.jpg",
+    "title": "﴿لئن شكرتم لأزيدنكم﴾ | الشيخ الحصري | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمود خليل الحصري\n\nما النعمة التي تشكر الله عليها اليوم؟\n\n#الشكر #سورة_إبراهيم #الحصري #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "4-alafasy-qaf-16",
+    "at": "2026-11-05T20:00:00+03:00",
+    "when": "الخميس 5 نوفمبر · 8:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "cinema",
+    "reciter": "مشاري راشد العفاسي",
+    "label": "مرتّل",
+    "recitation": 7,
+    "expect": [
+      "afasy"
+    ],
+    "verses": [
+      "50:16"
+    ],
+    "surah": "سورة ق",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/2/24/%D0%9C%D0%B8%D1%88%D0%B0%D1%80%D0%B8_%D0%A0%D0%B0%D1%88%D0%B8%D0%B4.jpg",
+    "title": "﴿ونحن أقرب إليه من حبل الوريد﴾ | الشيخ مشاري العفاسي | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ مشاري راشد العفاسي\n\nأقرب إليك من حبل الوريد. ماذا تقول له الآن؟\n\n#سورة_ق #سورة_ق #العفاسي #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "5-minshawi-kahf-46",
+    "at": "2026-11-06T07:00:00+03:00",
+    "when": "الجمعة 6 نوفمبر · 7:00 صباحًا",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "circle",
+    "reciter": "محمد صديق المنشاوي",
+    "label": "مرتّل",
+    "recitation": 9,
+    "expect": [
+      "minshaw",
+      "murattal"
+    ],
+    "verses": [
+      "18:46"
+    ],
+    "surah": "سورة الكهف",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Elminshwey.jpg",
+    "title": "﴿والباقيات الصالحات خير﴾ | الشيخ المنشاوي | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمد صديق المنشاوي\n\nجمعة مباركة. ما الباقيات الصالحات التي تحرص عليها كل جمعة؟\n\n#يوم_الجمعة #سورة_الكهف #المنشاوي #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "7-abdulbasit-ikhlas-1",
+    "at": "2026-11-08T20:00:00+03:00",
+    "when": "الأحد 8 نوفمبر · 8:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "wave",
+    "reciter": "عبد الباسط عبد الصمد",
+    "label": "مرتّل",
+    "recitation": 2,
+    "expect": [
+      "bas",
+      "murattal"
+    ],
+    "verses": [
+      "112:1",
+      "112:2",
+      "112:3",
+      "112:4"
+    ],
+    "surah": "سورة الإخلاص",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Abdul_Basit_Abd_us-Samad_in_South_Africa_in_1966_%283%29_%28cropped%29.jpg",
+    "title": "﴿سورة الإخلاص﴾ | الشيخ عبد الباسط | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ عبد الباسط عبد الصمد\n\nسورة تعدل ثلث القرآن. كم مرة تقرؤها في يومك؟\n\n#سورة_الإخلاص #سورة_الإخلاص #عبد_الباسط_عبد_الصمد #قرآن_كريم #CairoQuran"
+  }
+]

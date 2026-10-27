@@ -1,0 +1,42 @@
+[
+  {
+    "id": "2-live-mustafa",
+    "at": "2026-11-03T20:00:00+03:00",
+    "when": "الثلاثاء 3 نوفمبر · 8:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "station": "mustafa",
+    "streams": [
+      "https://backup.qurango.net/radio/mustafa_ismail"
+    ],
+    "sub": "تلاوة الشيخ مصطفى إسماعيل",
+    "duration": 26,
+    "title": "بث مباشر · تلاوة الشيخ مصطفى إسماعيل | Cairo Quran",
+    "caption": "الآن على شاشة Cairo Quran: تلاوة الشيخ مصطفى إسماعيل، مع مواقيت الصلاة لمدينتك والأذكار، على موقعنا وعلى شاشة التلفاز في بيتك.\n\nأي تلاوة للشيخ مصطفى إسماعيل لا تنساها؟\n\n#مصطفى_إسماعيل #قرآن_كريم #بث_مباشر #تلاوة #CairoQuran"
+  },
+  {
+    "id": "6-live-cairo",
+    "at": "2026-11-07T20:00:00+03:00",
+    "when": "السبت 7 نوفمبر · 8:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "station": "cairo",
+    "streams": [
+      "https://stream.radiojar.com/8s5u5tpdtwzuv",
+      "https://n12.radiojar.com/8s5u5tpdtwzuv",
+      "https://n0c.radiojar.com/8s5u5tpdtwzuv"
+    ],
+    "sub": "إذاعة القرآن الكريم من القاهرة",
+    "duration": 26,
+    "title": "بث مباشر · إذاعة القرآن الكريم من القاهرة | Cairo Quran",
+    "caption": "الآن على شاشة Cairo Quran: إذاعة القرآن الكريم من القاهرة، مع مواقيت الصلاة لمدينتك والأذكار، على موقعنا وعلى شاشة التلفاز في بيتك.\n\nهل تسمع إذاعة القرآن الكريم في بيتك؟ وفي أي وقت من اليوم؟\n\n#إذاعة_القرآن_الكريم #قرآن_كريم #بث_مباشر #تلاوة #CairoQuran"
+  }
+]
