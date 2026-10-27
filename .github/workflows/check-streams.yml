@@ -1,6 +1,7 @@
 # Checks every six hours that all radio streams on the site are working.
-# On failure it opens an issue (or comments on the open one) so the owner is notified,
-# and closes it once every station is back. It only reads index.html; it never deploys or edits the site.
+# When a station is down it opens an issue (or comments on the open one) so the owner is notified,
+# and closes it once every station is back. A station outage is a result, not a failure of this tool,
+# so the run stays green; the run turns red only when the check itself cannot run. It only reads index.html; it never deploys or edits the site.
 name: فحص روابط البث
 
 on:
@@ -18,23 +19,22 @@ concurrency:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
 
       - name: فحص الإذاعات
         id: check
-        continue-on-error: true
         env:
           REPORT_FILE: ${{ runner.temp }}/stream-report.md
         run: node .github/scripts/check-streams.mjs index.html
 
       - name: فتح بلاغ أو تحديثه عند التعطّل
-        if: steps.check.outcome == 'failure'
+        if: steps.check.outputs.status == 'down'
         env:
           GH_TOKEN: ${{ github.token }}
           REPORT_FILE: ${{ runner.temp }}/stream-report.md
@@ -48,14 +48,10 @@ jobs:
           fi
 
       - name: إغلاق البلاغ بعد عودة البث
-        if: steps.check.outcome == 'success'
+        if: steps.check.outputs.status == 'ok'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           for n in $(gh issue list --label stream-down --state open --json number -q '.[].number'); do
             gh issue close "$n" --comment "عادت جميع الإذاعات إلى العمل."
           done
-
-      - name: إظهار الفشل في سجل التشغيل
-        if: steps.check.outcome == 'failure'
-        run: exit 1
