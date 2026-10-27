@@ -6,7 +6,7 @@ name: content
 on:
   push:
     branches: [claude/relaxed-volta-yog6yf]
-    paths: ['.github/content/current', '.github/content/*.mjs', '.github/workflows/content.yml', '.github/reels/build.mjs', '.github/reels/reel.html']
+    paths: ['.github/content/current', '.github/content/*/reels.json', '.github/content/*/live.json', '.github/content/*/posts.json', '.github/content/*.mjs', '.github/workflows/content.yml', '.github/reels/build.mjs', '.github/reels/reel.html']
 permissions:
   contents: write
 concurrency:
