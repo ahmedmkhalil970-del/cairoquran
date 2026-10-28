@@ -38,8 +38,11 @@ your own video (`#edit`). Shared helpers in `studio/common.js`.
 - QDC recitation ids: 2 AbdulBaset murattal, 1 AbdulBaset mujawwad, 6 Husary, 9 Minshawi murattal, 7 Alafasy.
 
 ## Social publisher (`main`)
-- `social.yml` runs every 10 minutes and posts due items from the releases listed in `.github/social/config.json`
-  via the Facebook, Instagram and YouTube APIs. What was posted is in `published.json` on release `social-log`.
-- Credentials are repository secrets (`META_TOKEN`, `FB_PAGE_ID`, `IG_USER_ID`, `YT_*`). Never write them anywhere else.
-- To publish a new week: add its release tag to `config.json`. Run the workflow by hand with mode `check` to verify.
-- Releases listed there must not also be scheduled by hand in Business Suite, or they post twice.
+- `social.yml` posts due items of every `content-<week>` release from `config.from` on (minus `config.exclude`) via the
+  Facebook and Instagram APIs. It runs in posting windows (daily 18:23, Fri 05:23, Thu 14:23, Sat 08:23 Kuwait) that
+  stay up 3.5 hours and post each item at its minute, plus a 10-minute safety net. Posted items: `published.json` on
+  release `social-log`. `insights.yml` collects daily numbers into release `insights`.
+- Credentials are repository secrets (`META_TOKEN`, `FB_PAGE_ID`, `IG_USER_ID`, `YT_API_KEY`). Never write them anywhere
+  else. `META_TOKEN` may be a user token; the Page token is derived from it. Run `social` by hand with mode `check` to
+  see token type, missing permissions and the next 24 hours.
+- A week scheduled by hand in Business Suite must be added to `config.exclude`, or it posts twice.
