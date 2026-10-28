@@ -34,12 +34,19 @@ const place = (key, n = 0) => PLACES.filter(p => p.key === key)[n];
 // A background from anywhere: "commons:<search>" picks a freely licensed photo from Wikimedia Commons (n-th match),
 // with its author and licence for the credit line. Any other value is a key of the site's PLACES table.
 const FREE = /^(cc0|public domain|pd|cc by(-sa)? [\d.]+)/i;
+// Searched first among Commons' reviewed photos (Quality images, then Featured pictures), so a search does not land on
+// a map, a plan or an advert; titles that look like such are skipped anyway.
+const NOT_PHOTO = /plan|map|diagram|drawing|logo|sign|poster|advert|stamp|coin|banknote|flag|chart|scheme|svg/i;
 async function commons(q, n = 0) {
-  const u = 'https://commons.wikimedia.org/w/api.php?' + new URLSearchParams({ action: 'query', format: 'json', generator: 'search', gsrnamespace: '6',
-    gsrsearch: q + ' filetype:bitmap', gsrlimit: '20', prop: 'imageinfo', iiprop: 'url|extmetadata|size|mime', iiurlwidth: '1920' });
-  const pages = Object.values((await getJSON(u)).query?.pages || {}).sort((a, b) => a.index - b.index);
-  const ok = pages.map(p => ({ t: p.title, i: p.imageinfo?.[0] })).filter(x => x.i && x.i.mime === 'image/jpeg' && x.i.width >= 1600
-    && FREE.test(x.i.extmetadata?.LicenseShortName?.value || ''));
+  let ok = [];
+  for (const scope of [' incategory:Quality_images', ' incategory:Featured_pictures_on_Wikimedia_Commons', '']) {
+    const u = 'https://commons.wikimedia.org/w/api.php?' + new URLSearchParams({ action: 'query', format: 'json', generator: 'search', gsrnamespace: '6',
+      gsrsearch: q + scope + ' filetype:bitmap', gsrlimit: '20', prop: 'imageinfo', iiprop: 'url|extmetadata|size|mime', iiurlwidth: '1920' });
+    const pages = Object.values((await getJSON(u)).query?.pages || {}).sort((a, b) => a.index - b.index);
+    ok = pages.map(p => ({ t: p.title, i: p.imageinfo?.[0] })).filter(x => x.i && x.i.mime === 'image/jpeg' && x.i.width >= 1600
+      && !NOT_PHOTO.test(x.t) && FREE.test(x.i.extmetadata?.LicenseShortName?.value || ''));
+    if (ok.length > n) break;
+  }
   const x = ok[n];
   if (!x) throw new Error(`no freely licensed photo for "${q}"`);
   const by = (x.i.extmetadata?.Artist?.value || '').replace(/<[^>]+>/g, '').trim().slice(0, 40);
@@ -142,9 +149,10 @@ async function build(s, browser) {
   await page.close();
 
   const mp4 = join(OUT, s.id + '.mp4');
+  const rate = Math.min(2500, Math.floor(7.5 * 8192 / total) - 160);   // video kbit/s that keeps the file under ~8 MB (audio is 160k)
   sh('ffmpeg', ['-loglevel', 'error', '-y', '-framerate', String(FPS), '-i', join(tmp, 'f', '%05d.jpg'), '-i', wav,
     '-filter_complex', `[1:a]adelay=${Math.round(INTRO * 1000)}|${Math.round(INTRO * 1000)},apad[a]`, '-map', '0:v', '-map', '[a]', '-shortest',
-    '-c:v', 'libx264', '-preset', 'slow', '-crf', '23', '-maxrate', '2500k', '-bufsize', '5000k', '-pix_fmt', 'yuv420p', '-profile:v', 'high', '-r', String(FPS),
+    '-c:v', 'libx264', '-preset', 'slow', '-crf', '23', '-maxrate', `${rate}k`, '-bufsize', `${rate * 2}k`, '-pix_fmt', 'yuv420p', '-profile:v', 'high', '-r', String(FPS),
     '-c:a', 'aac', '-b:a', '160k', '-movflags', '+faststart', mp4]);
   sh('ffmpeg', ['-loglevel', 'error', '-y', '-ss', String(INTRO + Math.min(audioLen * .6, audioLen - .5)), '-i', mp4, '-frames:v', '1', '-vf', 'scale=540:-1', join(OUT, s.id + '.jpg')]);
   rmSync(tmp, { recursive: true, force: true });

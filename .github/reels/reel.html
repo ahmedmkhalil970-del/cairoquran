@@ -7,6 +7,7 @@
 /* One 1080x1920 frame of a Cairo Quran reel. render(t) draws time t; build.mjs screenshots each frame.
    Text stays out of the top 240px and bottom 380px, where Reels puts its own buttons and caption. */
 *{margin:0;box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{width:1080px;height:1920px;overflow:hidden;background:#070b1c;color:#fdf6e9}
 canvas{position:absolute;inset:0}
 #photo{position:absolute;inset:0;background-size:cover;background-position:center 20%;filter:blur(34px) grayscale(.5) brightness(.42)}
