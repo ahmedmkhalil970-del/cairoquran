@@ -31,6 +31,20 @@ const PLACES = (() => { try {
   return [...g.matchAll(/\["([^"]+)", "([^"]+)", "([^"]*)", "([^"]*)"/g)].map(m => ({ key: m[1], src: m[2].startsWith('http') ? m[2] : 'https://upload.wikimedia.org/wikipedia/commons/thumb/' + m[2], by: m[3], lic: m[4] }));
 } catch { return []; } })();
 const place = (key, n = 0) => PLACES.filter(p => p.key === key)[n];
+// A background from anywhere: "commons:<search>" picks a freely licensed photo from Wikimedia Commons (n-th match),
+// with its author and licence for the credit line. Any other value is a key of the site's PLACES table.
+const FREE = /^(cc0|public domain|pd|cc by(-sa)? [\d.]+)/i;
+async function commons(q, n = 0) {
+  const u = 'https://commons.wikimedia.org/w/api.php?' + new URLSearchParams({ action: 'query', format: 'json', generator: 'search', gsrnamespace: '6',
+    gsrsearch: q + ' filetype:bitmap', gsrlimit: '20', prop: 'imageinfo', iiprop: 'url|extmetadata|size|mime', iiurlwidth: '1920' });
+  const pages = Object.values((await getJSON(u)).query?.pages || {}).sort((a, b) => a.index - b.index);
+  const ok = pages.map(p => ({ t: p.title, i: p.imageinfo?.[0] })).filter(x => x.i && x.i.mime === 'image/jpeg' && x.i.width >= 1600
+    && FREE.test(x.i.extmetadata?.LicenseShortName?.value || ''));
+  const x = ok[n];
+  if (!x) throw new Error(`no freely licensed photo for "${q}"`);
+  const by = (x.i.extmetadata?.Artist?.value || '').replace(/<[^>]+>/g, '').trim().slice(0, 40);
+  return { src: x.i.thumburl || x.i.url, by, lic: x.i.extmetadata.LicenseShortName.value, key: x.t.replace(/^File:/, '') };
+}
 const getJSON = async u => { const r = await fetch(u, { headers: UA }); if (!r.ok) throw new Error(`${r.status} ${u}`); return r.json(); };
 const getBuf = async u => { const r = await fetch(u, { headers: UA }); if (!r.ok) throw new Error(`${r.status} ${u}`); return Buffer.from(await r.arrayBuffer()); };
 const sh = (cmd, args) => execFileSync(cmd, args, { stdio: ['ignore', 'pipe', 'inherit'], maxBuffer: 1 << 28 });
@@ -102,10 +116,11 @@ async function build(s, browser) {
 
   let bg = null, credit = null;
   if (s.background) {
-    const pl = place(s.background, s.background_n || 0);
+    const pl = s.background.startsWith('commons:') ? await commons(s.background.slice(8), s.background_n || 0) : place(s.background, s.background_n || 0);
     if (!pl) throw new Error(`no place "${s.background}" in index.html`);
     bg = 'data:image/jpeg;base64,' + (await getBuf(pl.src)).toString('base64');
-    credit = `الصورة: ${pl.key}${pl.by ? ' · ' + pl.by : ''} · ${pl.lic}`;
+    credit = `${pl.by ? pl.by + ' · ' : ''}${pl.lic} · Wikimedia Commons`;
+    console.log(`  background: ${pl.key} (${pl.lic})`);
   }
   const img = await getBuf(s.photo);
   const photo = 'data:image/jpeg;base64,' + img.toString('base64');
@@ -116,7 +131,7 @@ async function build(s, browser) {
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 } });
   await page.goto('file://' + join(HERE, 'reel.html'));
   await page.evaluate(() => document.fonts.ready);
-  await page.evaluate(d => setup(d), { style: s.style, photo, reciter: s.reciter, label: s.label, words, ref, total, intro: INTRO, outro: OUTRO, env: envN, radios: RADIOS, bg, credit, series: s.series || null, hook: s.hook || null, note: s.note || null });
+  await page.evaluate(d => setup(d), { style: s.style, photo, reciter: s.reciter, label: s.label, words, ref, total, intro: INTRO, outro: OUTRO, env: envN, radios: RADIOS, bg, credit });
   await page.evaluate(() => Promise.all([...document.fonts].map(f => f.load())));
   await page.waitForTimeout(800);
   const frames = Math.ceil(total * FPS);

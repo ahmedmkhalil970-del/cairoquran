@@ -37,10 +37,10 @@ exact next step (see `.github/social/README.md`), then analyse whatever exists (
 3. ...
 ```
 Actions must be concrete and doable today, e.g. reply to the 12 comments on yesterday's reel, pin a comment, re-post
-the best reel to TikTok, change tomorrow's hook. No generic advice.
+the best reel to TikTok, change tomorrow's reciter or background. No generic advice.
 
 ## What you may change by yourself
-- Content not yet published, on branch `claude/relaxed-volta-yog6yf` only: hooks, captions, reciter, background,
+- Content not yet published, on branch `claude/relaxed-volta-yog6yf` only: captions, reciter, background,
   series, order of future items in `.github/content/<week>/`. Then push (the pipeline re-renders the week) and verify
   the release. Never edit an item due within 24 hours, or one already scheduled by hand (week of 2 Nov, TikTok).
 - Nothing else: no site files, no `main`, no posting to platforms, no account settings, no money. Those are
@@ -58,9 +58,11 @@ the best reel to TikTok, change tomorrow's hook. No generic advice.
 
 ## Accuracy rules for text you write
 - Verse text, references and audio come from the APIs; never type verse text yourself.
-- Hooks and reflection lines: only well-established meanings (plain tafsir) and only well-known authentic hadith;
-  no numbers or claims you cannot source. If unsure, use a neutral hook.
+- The video carries no text of yours: no hook, label or explanation (Ahmed's rule). Reflection lines and questions go
+  in the caption, and only with well-established meanings (plain tafsir) and well-known authentic hadith; no claims
+  you cannot source.
 - QDC recitation ids: 2 AbdulBaset murattal, 1 AbdulBaset mujawwad, 6 Husary, 9 Minshawi murattal, 7 Alafasy.
   Keep reels at or under 85 seconds (Facebook rejects longer reels through the API).
-- Background keys must exist in the site's PLACES table (mosques, the Nile, nature; avoid ancient temples and
-  statues behind Quran recitation).
+- The audience is global: vary backgrounds across the Islamic world and nature with `"commons:<search>"` (a freely
+  licensed Wikimedia Commons photo, credited automatically; `background_n` picks another match). Check the rendered
+  frame; avoid people's faces, ancient temples and statues behind recitation.
