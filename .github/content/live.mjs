@@ -38,7 +38,16 @@ body{background:radial-gradient(80% 50% at 50% 45%,rgba(232,194,122,.13),transpa
 <div class="url">cairoquran.com</div>
 </body></html>`;
 
-function recordAudio(streams, file, seconds) {
+// A station's own URLs, then the same station on qurango's main host; three rounds, 20 s apart, before giving up
+async function recordAudio(streams, file, seconds) {
+  const all = [...new Set([...streams, ...streams.filter(u => u.includes('backup.qurango.net')).map(u => u.replace('backup.qurango.net', 'qurango.net'))])];
+  for (let round = 0; round < 3; round++) {
+    if (await recordOnce(all, file, seconds)) return true;
+    console.log(`  stream unavailable, retrying in 20 s (${round + 1}/3)`); await new Promise(r => setTimeout(r, 20e3));
+  }
+  return false;
+}
+function recordOnce(streams, file, seconds) {
   return new Promise(resolve => {
     const tryNext = i => {
       if (i >= streams.length) return resolve(false);
@@ -77,7 +86,8 @@ for (const it of items) {
   }
   await page.close();
   const ok = await audioP;
-  if (!ok) throw new Error('could not record the live stream');
+  // A station that stays down skips this one reel; the rest of the week still renders
+  if (!ok) { console.log(`!! ${it.id}: could not record ${it.station || 'cairo'}, skipped`); continue; }
   // A pause in the broadcast at the end would leave dead air: end the reel half a second after the last sound
   let cut = dur;
   const log = (() => { try { return execFileSync('sh', ['-c', `ffmpeg -hide_banner -i '${audio}' -af silencedetect=n=-45dB:d=1.5 -f null - 2>&1`]).toString(); } catch (e) { return ''; } })();
