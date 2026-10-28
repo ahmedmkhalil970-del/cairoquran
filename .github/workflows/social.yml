@@ -1,0 +1,48 @@
+# Social publisher: every 10 minutes, posts the items of the content releases (listed in .github/social/config.json)
+# that are due, through the Facebook, Instagram and YouTube APIs. Credentials are repository secrets; without them it
+# only logs what it would post. Run it by hand with mode "check" to verify the credentials and see the next 24 hours.
+name: social
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'run, or check (verify credentials and list the next 24 hours, posts nothing)'
+        default: check
+permissions:
+  contents: write
+concurrency:
+  group: social
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Load state
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p state
+          gh release download social-log -p published.json -D state -R "$GITHUB_REPOSITORY" 2>/dev/null || echo '{}' > state/published.json
+      - name: Publish
+        env:
+          MODE: ${{ inputs.mode || 'run' }}
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: node .github/social/publish.mjs state/published.json "$MODE"
+      - name: Save state
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view social-log -R "$GITHUB_REPOSITORY" > /dev/null 2>&1 || gh release create social-log --title "سجل النشر الآلي" --notes "ما نُشر آليًا على المنصات؛ يحدّثه سير العمل social." --latest=false -R "$GITHUB_REPOSITORY"
+          gh release upload social-log state/published.json --clobber -R "$GITHUB_REPOSITORY"
