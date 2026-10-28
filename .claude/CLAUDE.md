@@ -1,5 +1,7 @@
 # Cairo Quran
 
+**New session? Read `.claude/HANDOVER.md` first** (full state, plans and pending decisions, in Arabic).
+
 Ahmed Khalil's project, live in production: the site cairoquran.com (GitHub Pages from `main`) and an Android TV app.
 Social: Facebook page "Cairo Quran" (creator page, ~94K followers), Instagram @cairoquran.radio, YouTube @CairoQuran.
 
