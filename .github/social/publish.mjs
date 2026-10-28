@@ -88,7 +88,25 @@ const POST = { facebook, instagram, youtube };
 // A per-platform caption (captions.facebook / captions.instagram) wins over the shared one
 const forPlatform = (it, pf) => ({ ...it, caption: it.captions?.[pf] || it.caption });
 
+// Each capability the publisher and the daily insights need, tried read-only; nothing is posted
+async function diagnose() {
+  const t = async (label, path, params) => { try { await graph(path, params, 'GET'); log(`  ok   ${label}`); } catch (e) { log(`  FAIL ${label}: ${e.message.slice(0, 140)}`); } };
+  try { const me = await graph('me', { fields: 'id,name' }, 'GET'); log(me.id === FB_PAGE_ID ? `  ok   token type: page token ("${me.name}")` : `  FAIL token type: not the page's token (it belongs to "${me.name}"); publishing to the page needs the Page access token from me/accounts`); }
+  catch (e) { log(`  FAIL token: ${e.message}`); }
+  if (FB_PAGE_ID) {
+    await t('facebook: read posts (pages_read_engagement, pages_read_user_content)', `${FB_PAGE_ID}/posts`, { limit: 1 });
+    await t('facebook: read reels', `${FB_PAGE_ID}/video_reels`, { limit: 1 });
+    await t('facebook: page insights (read_insights)', `${FB_PAGE_ID}/insights`, { metric: 'page_follows', period: 'day' });
+  }
+  if (IG_USER_ID) {
+    await t('instagram: publishing allowed (instagram_content_publish)', `${IG_USER_ID}/content_publishing_limit`, {});
+    const m = await graph(`${IG_USER_ID}/media`, { limit: 1, fields: 'id' }, 'GET').catch(() => ({ data: [] }));
+    if (m.data[0]) await t('instagram: post insights (instagram_manage_insights)', `${m.data[0].id}/insights`, { metric: 'reach' });
+  }
+}
+
 async function check() {
+  if (META_TOKEN) await diagnose();
   if (META_TOKEN) {
     const p = await graph(FB_PAGE_ID || 'me', { fields: 'name,instagram_business_account{username}' }, 'GET');
     log(`meta: page "${p.name}"${p.instagram_business_account ? `, instagram @${p.instagram_business_account.username} (IG_USER_ID ${p.instagram_business_account.id})` : ''}`);
