@@ -1,0 +1,39 @@
+# Daily insights: collects Facebook, Instagram and YouTube numbers into the "insights" release (latest.json, one file
+# per day, and history.json), for the daily analyst. Runs at 06:00 Kuwait time; can also be run by hand.
+name: insights
+on:
+  schedule:
+    - cron: '7 3 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: insights
+jobs:
+  collect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Load history
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p out
+          gh release download insights -p history.json -D . -R "$GITHUB_REPOSITORY" 2>/dev/null || echo '[]' > history.json
+      - name: Collect
+        env:
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+        run: node .github/social/insights.mjs out history.json
+      - name: Save
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view insights -R "$GITHUB_REPOSITORY" > /dev/null 2>&1 || gh release create insights --title "مؤشرات المنصات اليومية" --notes "لقطة يومية لأرقام فيسبوك وإنستغرام ويوتيوب؛ يحدّثها سير العمل insights." --latest=false -R "$GITHUB_REPOSITORY"
+          gh release upload insights out/*.json history.json --clobber -R "$GITHUB_REPOSITORY"

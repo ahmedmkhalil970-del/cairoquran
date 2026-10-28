@@ -25,6 +25,33 @@ function radiosLine(html) {
 }
 const RADIOS = (() => { try { return radiosLine(readFileSync(join(HERE, '..', '..', 'index.html'), 'utf8')); } catch { return 'إذاعات القرآن الكريم'; } })();
 
+// Landmark photos with their credits, from the PLACES table the site itself shows (index.html): [key, path, author, licence, ...]
+const PLACES = (() => { try {
+  const h = readFileSync(join(HERE, '..', '..', 'index.html'), 'utf8'), g = h.slice(h.indexOf('const PLACES = ['), h.indexOf('];', h.indexOf('const PLACES = [')));
+  return [...g.matchAll(/\["([^"]+)", "([^"]+)", "([^"]*)", "([^"]*)"/g)].map(m => ({ key: m[1], src: m[2].startsWith('http') ? m[2] : 'https://upload.wikimedia.org/wikipedia/commons/thumb/' + m[2], by: m[3], lic: m[4] }));
+} catch { return []; } })();
+const place = (key, n = 0) => PLACES.filter(p => p.key === key)[n];
+// A background from anywhere: "commons:<search>" picks a freely licensed photo from Wikimedia Commons (n-th match),
+// with its author and licence for the credit line. Any other value is a key of the site's PLACES table.
+const FREE = /^(cc0|public domain|pd|cc by(-sa)? [\d.]+)/i;
+// Searched first among Commons' reviewed photos (Quality images, then Featured pictures), so a search does not land on
+// a map, a plan or an advert; titles that look like such are skipped anyway.
+const NOT_PHOTO = /plan|map|diagram|drawing|logo|sign|poster|advert|stamp|coin|banknote|flag|chart|scheme|svg/i;
+async function commons(q, n = 0) {
+  let ok = [];
+  for (const scope of [' incategory:Quality_images', ' incategory:Featured_pictures_on_Wikimedia_Commons', '']) {
+    const u = 'https://commons.wikimedia.org/w/api.php?' + new URLSearchParams({ action: 'query', format: 'json', generator: 'search', gsrnamespace: '6',
+      gsrsearch: q + scope + ' filetype:bitmap', gsrlimit: '20', prop: 'imageinfo', iiprop: 'url|extmetadata|size|mime', iiurlwidth: '1920' });
+    const pages = Object.values((await getJSON(u)).query?.pages || {}).sort((a, b) => a.index - b.index);
+    ok = pages.map(p => ({ t: p.title, i: p.imageinfo?.[0] })).filter(x => x.i && x.i.mime === 'image/jpeg' && x.i.width >= 1600
+      && !NOT_PHOTO.test(x.t) && FREE.test(x.i.extmetadata?.LicenseShortName?.value || ''));
+    if (ok.length > n) break;
+  }
+  const x = ok[n];
+  if (!x) throw new Error(`no freely licensed photo for "${q}"`);
+  const by = (x.i.extmetadata?.Artist?.value || '').replace(/<[^>]+>/g, '').trim().slice(0, 40);
+  return { src: x.i.thumburl || x.i.url, by, lic: x.i.extmetadata.LicenseShortName.value, key: x.t.replace(/^File:/, '') };
+}
 const getJSON = async u => { const r = await fetch(u, { headers: UA }); if (!r.ok) throw new Error(`${r.status} ${u}`); return r.json(); };
 const getBuf = async u => { const r = await fetch(u, { headers: UA }); if (!r.ok) throw new Error(`${r.status} ${u}`); return Buffer.from(await r.arrayBuffer()); };
 const sh = (cmd, args) => execFileSync(cmd, args, { stdio: ['ignore', 'pipe', 'inherit'], maxBuffer: 1 << 28 });
@@ -94,6 +121,14 @@ async function build(s, browser) {
   for (let i = 0; i + per * 2 <= pcm.length; i += per * 2) { let q = 0; for (let j = 0; j < per; j++) { const x = pcm.readInt16LE(i + j * 2) / 32768; q += x * x; } env.push(Math.sqrt(q / per)); }
   const peak = Math.max(...env, 1e-6); const envN = env.map(x => +(Math.min(1, x / peak)).toFixed(3));
 
+  let bg = null, credit = null;
+  if (s.background) {
+    const pl = s.background.startsWith('commons:') ? await commons(s.background.slice(8), s.background_n || 0) : place(s.background, s.background_n || 0);
+    if (!pl) throw new Error(`no place "${s.background}" in index.html`);
+    bg = 'data:image/jpeg;base64,' + (await getBuf(pl.src)).toString('base64');
+    credit = `${pl.by ? pl.by + ' · ' : ''}${pl.lic} · Wikimedia Commons`;
+    console.log(`  background: ${pl.key} (${pl.lic})`);
+  }
   const img = await getBuf(s.photo);
   const photo = 'data:image/jpeg;base64,' + img.toString('base64');
   const first = s.verses[0].split(':')[1], last = s.verses[s.verses.length - 1].split(':')[1];
@@ -103,7 +138,7 @@ async function build(s, browser) {
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 } });
   await page.goto('file://' + join(HERE, 'reel.html'));
   await page.evaluate(() => document.fonts.ready);
-  await page.evaluate(d => setup(d), { style: s.style, photo, reciter: s.reciter, label: s.label, words, ref, total, intro: INTRO, outro: OUTRO, env: envN, radios: RADIOS });
+  await page.evaluate(d => setup(d), { style: s.style, photo, reciter: s.reciter, label: s.label, words, ref, total, intro: INTRO, outro: OUTRO, env: envN, radios: RADIOS, bg, credit });
   await page.evaluate(() => Promise.all([...document.fonts].map(f => f.load())));
   await page.waitForTimeout(800);
   const frames = Math.ceil(total * FPS);
@@ -114,9 +149,10 @@ async function build(s, browser) {
   await page.close();
 
   const mp4 = join(OUT, s.id + '.mp4');
+  const rate = Math.min(2500, Math.floor(7.5 * 8192 / total) - 160);   // video kbit/s that keeps the file under ~8 MB (audio is 160k)
   sh('ffmpeg', ['-loglevel', 'error', '-y', '-framerate', String(FPS), '-i', join(tmp, 'f', '%05d.jpg'), '-i', wav,
     '-filter_complex', `[1:a]adelay=${Math.round(INTRO * 1000)}|${Math.round(INTRO * 1000)},apad[a]`, '-map', '0:v', '-map', '[a]', '-shortest',
-    '-c:v', 'libx264', '-preset', 'slow', '-crf', '23', '-maxrate', '2500k', '-bufsize', '5000k', '-pix_fmt', 'yuv420p', '-profile:v', 'high', '-r', String(FPS),
+    '-c:v', 'libx264', '-preset', 'slow', '-crf', '23', '-maxrate', `${rate}k`, '-bufsize', `${rate * 2}k`, '-pix_fmt', 'yuv420p', '-profile:v', 'high', '-r', String(FPS),
     '-c:a', 'aac', '-b:a', '160k', '-movflags', '+faststart', mp4]);
   sh('ffmpeg', ['-loglevel', 'error', '-y', '-ss', String(INTRO + Math.min(audioLen * .6, audioLen - .5)), '-i', mp4, '-frames:v', '1', '-vf', 'scale=540:-1', join(OUT, s.id + '.jpg')]);
   rmSync(tmp, { recursive: true, force: true });
@@ -137,7 +173,7 @@ mkdirSync(OUT, { recursive: true });
 const browser = await chromium.launch();
 let failed = 0;
 const captions = [], made = [];
-for (const s of samples) { if (s.skip) { failed++; console.error(`!! ${s.id}: ${s.skip}`); continue; } try { const r = await build(s, browser); const cap = s.caption ? s.caption.replace('{{verse}}', r.verse).replace('{{ref}}', r.ref) : ''; made.push({ id: s.id, file: s.id + '.mp4', cover: s.id + '.jpg', type: s.type || 'reel', at: s.at || null, when: s.when || '', platforms: s.platforms || ['facebook', 'instagram'], title: s.title ? s.title.replace('{{ref}}', r.ref) : null, caption: cap }); if (s.caption) captions.push(`### ${s.id}${s.when ? ' · ' + s.when : ''}\n\n${s.caption.replace('{{verse}}', r.verse).replace('{{ref}}', r.ref)}\n`); } catch (e) { failed++; console.error(`!! ${s.id}: ${e.message}`); } }
+for (const s of samples) { if (s.skip) { failed++; console.error(`!! ${s.id}: ${s.skip}`); continue; } try { const r = await build(s, browser); const cap = s.caption ? s.caption.replace('{{verse}}', r.verse).replace('{{ref}}', r.ref) : ''; made.push({ id: s.id, file: s.id + '.mp4', cover: s.id + '.jpg', type: s.type || 'reel', at: s.at || null, when: s.when || '', platforms: s.platforms || ['facebook', 'instagram'], title: s.title ? s.title.replace('{{ref}}', r.ref) : null, caption: cap, meta: { series: s.series || null, style: s.style, background: s.background || null, hook: s.hook || null, reciter: s.reciter, recitation: s.recitation, verses: s.verses } }); if (s.caption) captions.push(`### ${s.id}${s.when ? ' · ' + s.when : ''}\n\n${s.caption.replace('{{verse}}', r.verse).replace('{{ref}}', r.ref)}\n`); } catch (e) { failed++; console.error(`!! ${s.id}: ${e.message}`); } }
 if (captions.length) writeFileSync(join(OUT, 'captions.md'), captions.join('\n'));
 writeFileSync(join(OUT, 'reels.json'), JSON.stringify(made, null, 2));
 await browser.close();

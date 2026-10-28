@@ -38,6 +38,7 @@ jobs:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: node .github/social/publish.mjs state/published.json "$MODE"
       - name: Save state
         if: always()

@@ -15,6 +15,10 @@ Social: Facebook page "Cairo Quran" (creator page, ~94K followers), Instagram @c
 - **Content:** no links in captions (Instagram: «الرابط في البايو»; Facebook: first comment, studio posts only),
   no engagement bait, no «مجانًا لوجه الله», no placeholders. Ahmed rejects rights caveats on recitations.
   Closing cards: «تلاوات كبار القرّاء» / «إذاعات القرآن الكريم من مصر والسعودية» / «مواقيت الصلاة لمدينتك · الأذكار» / cairoquran.com.
+- **Audience is global** (all Muslims, and non-Muslims too), not Egypt only: backgrounds come from across the Islamic
+  world and nature (`background: "commons:<search>"` in `reels.json`), not only Egyptian landmarks.
+- **No extra text on videos:** no hook line, series label or explanation above or below the verse. The viewer sees the
+  reciter and the verse at once. Series, reflections and questions go in the caption only.
 - **Times:** Kuwait time (UTC+3) for every schedule.
 
 ## Coordination
