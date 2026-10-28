@@ -1,6 +1,6 @@
 [
   {
-    "id": "1-minshawi-ghafir-60",
+    "id": "1-abdulbasit-mujawwad-kawthar-1",
     "at": "2026-11-23T20:00:00+03:00",
     "when": "الاثنين 23 نوفمبر · 8:00 مساءً",
     "type": "reel",
@@ -9,21 +9,26 @@
       "instagram",
       "youtube"
     ],
-    "style": "circle",
-    "reciter": "محمد صديق المنشاوي",
-    "label": "مرتّل",
-    "recitation": 9,
+    "style": "place",
+    "background": "مسجدا السلطان حسن والرفاعي",
+    "series": "قارئ الأسبوع",
+    "hook": "عبد الباسط… الحنجرة الذهبية",
+    "reciter": "عبد الباسط عبد الصمد",
+    "label": "مجوّد",
+    "recitation": 1,
     "expect": [
-      "minshaw",
-      "murattal"
+      "bas",
+      "mujawwad"
     ],
     "verses": [
-      "40:60"
+      "108:1",
+      "108:2",
+      "108:3"
     ],
-    "surah": "سورة غافر",
-    "photo": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Elminshwey.jpg",
-    "title": "﴿ادعوني أستجب لكم﴾ | الشيخ المنشاوي | Cairo Quran",
-    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمد صديق المنشاوي\n\nوعد من الله بالإجابة. ما الدعاء الذي تنتظر إجابته؟\n\n#ادعوني_أستجب_لكم #سورة_غافر #المنشاوي #قرآن_كريم #CairoQuran"
+    "surah": "سورة الكوثر",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Abdul_Basit_Abd_us-Samad_in_South_Africa_in_1966_%283%29_%28cropped%29.jpg",
+    "title": "سورة الكوثر · تلاوة مجوّدة | قارئ الأسبوع | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ عبد الباسط عبد الصمد\n\nأقصر سورة في القرآن. هل تحفظ معناها؟\n\n#قارئ_الأسبوع #سورة_الكوثر #عبد_الباسط_عبد_الصمد #قرآن_كريم #CairoQuran"
   },
   {
     "id": "3-alafasy-tawbah-51",
@@ -35,7 +40,11 @@
       "instagram",
       "youtube"
     ],
-    "style": "cinema",
+    "style": "place",
+    "background": "الصحراء البيضاء",
+    "series": "آية وتدبّر",
+    "hook": "آية تُسكت كل قلق",
+    "note": "ما يصيب المؤمن مكتوب عند الله، فيطمئن قلبه ويتوكل عليه",
     "reciter": "مشاري راشد العفاسي",
     "label": "مرتّل",
     "recitation": 7,
@@ -47,11 +56,11 @@
     ],
     "surah": "سورة التوبة",
     "photo": "https://upload.wikimedia.org/wikipedia/commons/2/24/%D0%9C%D0%B8%D1%88%D0%B0%D1%80%D0%B8_%D0%A0%D0%B0%D1%88%D0%B8%D0%B4.jpg",
-    "title": "﴿قل لن يصيبنا إلا ما كتب الله لنا﴾ | الشيخ مشاري العفاسي | Cairo Quran",
-    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ مشاري راشد العفاسي\n\nآية تطمئن القلب في كل قلق. متى احتجت إليها؟\n\n#سورة_التوبة #سورة_التوبة #العفاسي #قرآن_كريم #CairoQuran"
+    "title": "﴿قل لن يصيبنا إلا ما كتب الله لنا﴾ | آية وتدبّر | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ مشاري راشد العفاسي\n\nما يصيب المؤمن مكتوب عند الله، فيطمئن قلبه ويتوكل عليه.\n\nمتى احتجت إلى هذه الآية؟\n\n#تدبر #سورة_التوبة #العفاسي #قرآن_كريم #CairoQuran"
   },
   {
-    "id": "4-abdulbasit-taha-114",
+    "id": "4-alafasy-baqarah-286",
     "at": "2026-11-26T20:00:00+03:00",
     "when": "الخميس 26 نوفمبر · 8:00 مساءً",
     "type": "reel",
@@ -60,21 +69,23 @@
       "instagram",
       "youtube"
     ],
-    "style": "wave",
-    "reciter": "عبد الباسط عبد الصمد",
+    "style": "place",
+    "background": "وادي الريان",
+    "series": "من أذكار المساء",
+    "hook": "خاتمة سورة البقرة: لا يكلف الله نفسًا إلا وسعها",
+    "reciter": "مشاري راشد العفاسي",
     "label": "مرتّل",
-    "recitation": 2,
+    "recitation": 7,
     "expect": [
-      "bas",
-      "murattal"
+      "afasy"
     ],
     "verses": [
-      "20:114"
+      "2:286"
     ],
-    "surah": "سورة طه",
-    "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Abdul_Basit_Abd_us-Samad_in_South_Africa_in_1966_%283%29_%28cropped%29.jpg",
-    "title": "﴿وقل رب زدني علما﴾ | الشيخ عبد الباسط | Cairo Quran",
-    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ عبد الباسط عبد الصمد\n\nالدعاء الوحيد الذي أُمر النبي ﷺ أن يطلب فيه الزيادة. ماذا تتعلم هذه الأيام؟\n\n#رب_زدني_علما #سورة_طه #عبد_الباسط_عبد_الصمد #قرآن_كريم #CairoQuran"
+    "surah": "سورة البقرة",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/2/24/%D0%9C%D0%B8%D1%88%D0%B0%D1%80%D0%B8_%D0%A0%D0%B0%D1%88%D0%B8%D0%B4.jpg",
+    "title": "﴿لا يكلف الله نفسا إلا وسعها﴾ | من أذكار المساء | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ مشاري راشد العفاسي\n\nأي دعاء في هذه الآية أقرب إلى قلبك؟\n\n#أذكار_المساء #سورة_البقرة #العفاسي #قرآن_كريم #CairoQuran"
   },
   {
     "id": "5-husary-kahf-1",
@@ -86,7 +97,10 @@
       "instagram",
       "youtube"
     ],
-    "style": "circle",
+    "style": "place",
+    "background": "جامع الأقمر",
+    "series": "جمعة مباركة",
+    "hook": "جمعة مباركة… هل قرأت الكهف اليوم؟",
     "reciter": "محمود خليل الحصري",
     "label": "مرتّل",
     "recitation": 6,
@@ -99,11 +113,11 @@
     ],
     "surah": "سورة الكهف",
     "photo": "https://upload.wikimedia.org/wikipedia/commons/7/70/Hussary.jpg",
-    "title": "﴿الحمد لله الذي أنزل على عبده الكتاب﴾ | الشيخ الحصري | Cairo Quran",
-    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمود خليل الحصري\n\nجمعة مباركة. هل قرأت سورة الكهف اليوم؟\n\n#يوم_الجمعة #سورة_الكهف #الحصري #قرآن_كريم #CairoQuran"
+    "title": "﴿الحمد لله الذي أنزل على عبده الكتاب﴾ | جمعة مباركة | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمود خليل الحصري\n\nفي أي وقت من الجمعة تقرأ سورة الكهف؟\n\n#سورة_الكهف #الحصري #قرآن_كريم #CairoQuran"
   },
   {
-    "id": "7-abdulbasit-nas-1",
+    "id": "7-minshawi-araf-23",
     "at": "2026-11-29T20:00:00+03:00",
     "when": "الأحد 29 نوفمبر · 8:00 مساءً",
     "type": "reel",
@@ -112,64 +126,10 @@
       "instagram",
       "youtube"
     ],
-    "style": "cinema",
-    "reciter": "عبد الباسط عبد الصمد",
-    "label": "مرتّل",
-    "recitation": 2,
-    "expect": [
-      "bas",
-      "murattal"
-    ],
-    "verses": [
-      "114:1",
-      "114:2",
-      "114:3",
-      "114:4",
-      "114:5",
-      "114:6"
-    ],
-    "surah": "سورة الناس",
-    "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Abdul_Basit_Abd_us-Samad_in_South_Africa_in_1966_%283%29_%28cropped%29.jpg",
-    "title": "سورة الناس | الشيخ عبد الباسط | Cairo Quran",
-    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ عبد الباسط عبد الصمد\n\nخاتمة المصحف. هل تقرأ المعوذتين صباحًا ومساءً؟\n\n#سورة_الناس #سورة_الناس #عبد_الباسط_عبد_الصمد #قرآن_كريم #CairoQuran"
-  },
-  {
-    "id": "8-husary-talaq-3",
-    "at": "2026-11-30T20:00:00+03:00",
-    "when": "الاثنين 30 نوفمبر · 8:00 مساءً",
-    "type": "reel",
-    "platforms": [
-      "facebook",
-      "instagram",
-      "youtube"
-    ],
-    "style": "wave",
-    "reciter": "محمود خليل الحصري",
-    "label": "مرتّل",
-    "recitation": 6,
-    "expect": [
-      "husar",
-      "murattal"
-    ],
-    "verses": [
-      "65:3"
-    ],
-    "surah": "سورة الطلاق",
-    "photo": "https://upload.wikimedia.org/wikipedia/commons/7/70/Hussary.jpg",
-    "title": "﴿ومن يتوكل على الله فهو حسبه﴾ | الشيخ الحصري | Cairo Quran",
-    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمود خليل الحصري\n\nمن يتوكل على الله فهو حسبه. على ماذا توكلت هذا الأسبوع؟\n\n#التوكل_على_الله #سورة_الطلاق #الحصري #قرآن_كريم #CairoQuran"
-  },
-  {
-    "id": "9-minshawi-imran-8",
-    "at": "2026-12-01T20:00:00+03:00",
-    "when": "الثلاثاء 1 ديسمبر · 8:00 مساءً",
-    "type": "reel",
-    "platforms": [
-      "facebook",
-      "instagram",
-      "youtube"
-    ],
-    "style": "circle",
+    "style": "place",
+    "background": "جبل الطور",
+    "series": "دعاء من القرآن",
+    "hook": "الكلمات التي تاب بها آدم وزوجه",
     "reciter": "محمد صديق المنشاوي",
     "label": "مرتّل",
     "recitation": 9,
@@ -178,11 +138,69 @@
       "murattal"
     ],
     "verses": [
+      "7:23"
+    ],
+    "surah": "سورة الأعراف",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Elminshwey.jpg",
+    "title": "﴿ربنا ظلمنا أنفسنا﴾ | دعاء من القرآن | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمد صديق المنشاوي\n\nما الذنب الذي تتمنى أن يُغفر لك الليلة؟\n\n#دعاء_من_القرآن #سورة_الأعراف #المنشاوي #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "8-alafasy-ahzab-41",
+    "at": "2026-11-30T20:00:00+03:00",
+    "when": "الاثنين 30 نوفمبر · 8:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "مسجد أبو العباس المرسي",
+    "series": "قارئ الأسبوع",
+    "hook": "مشاري العفاسي… صوت يعرفه ملايين البيوت",
+    "reciter": "مشاري راشد العفاسي",
+    "label": "مرتّل",
+    "recitation": 7,
+    "expect": [
+      "afasy"
+    ],
+    "verses": [
+      "33:41",
+      "33:42"
+    ],
+    "surah": "سورة الأحزاب",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/2/24/%D0%9C%D0%B8%D1%88%D0%B0%D1%80%D0%B8_%D0%A0%D0%B0%D1%88%D0%B8%D0%B4.jpg",
+    "title": "﴿اذكروا الله ذكرا كثيرا﴾ | قارئ الأسبوع | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ مشاري راشد العفاسي\n\nما الذكر الذي يلازم لسانك صباحًا ومساءً؟\n\n#قارئ_الأسبوع #سورة_الأحزاب #العفاسي #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "9-abdulbasit-imran-8",
+    "at": "2026-12-01T20:00:00+03:00",
+    "when": "الثلاثاء 1 ديسمبر · 8:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "مسجد السيدة زينب",
+    "series": "دعاء من القرآن",
+    "hook": "دعاء الثبات بعد الهداية",
+    "reciter": "عبد الباسط عبد الصمد",
+    "label": "مرتّل",
+    "recitation": 2,
+    "expect": [
+      "bas",
+      "murattal"
+    ],
+    "verses": [
       "3:8"
     ],
     "surah": "سورة آل عمران",
-    "photo": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Elminshwey.jpg",
-    "title": "﴿ربنا لا تزغ قلوبنا بعد إذ هديتنا﴾ | الشيخ المنشاوي | Cairo Quran",
-    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمد صديق المنشاوي\n\nدعاء الثبات بعد الهداية. هل تدعو به كل يوم؟\n\n#دعاء #سورة_آل_عمران #المنشاوي #قرآن_كريم #CairoQuran"
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Abdul_Basit_Abd_us-Samad_in_South_Africa_in_1966_%283%29_%28cropped%29.jpg",
+    "title": "﴿ربنا لا تزغ قلوبنا بعد إذ هديتنا﴾ | دعاء من القرآن | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ عبد الباسط عبد الصمد\n\nهل تدعو به كل يوم؟\n\n#دعاء_من_القرآن #سورة_آل_عمران #عبد_الباسط_عبد_الصمد #قرآن_كريم #CairoQuran"
   }
 ]

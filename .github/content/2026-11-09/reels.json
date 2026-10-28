@@ -9,7 +9,10 @@
       "instagram",
       "youtube"
     ],
-    "style": "cinema",
+    "style": "place",
+    "background": "جامع عمرو بن العاص",
+    "series": "قارئ الأسبوع",
+    "hook": "الحصري… أول من سجّل المصحف كاملًا مرتّلًا",
     "reciter": "محمود خليل الحصري",
     "label": "مرتّل",
     "recitation": 6,
@@ -22,11 +25,11 @@
     ],
     "surah": "سورة الأنبياء",
     "photo": "https://upload.wikimedia.org/wikipedia/commons/7/70/Hussary.jpg",
-    "title": "﴿وأنت أرحم الراحمين﴾ | الشيخ الحصري | Cairo Quran",
-    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمود خليل الحصري\n\nدعاء أيوب عليه السلام بعد سنوات من الصبر. لمن تدعو بالشفاء الليلة؟\n\n#دعاء #سورة_الأنبياء #الحصري #قرآن_كريم #CairoQuran"
+    "title": "﴿وأنت أرحم الراحمين﴾ | قارئ الأسبوع | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمود خليل الحصري\n\nدعاء أيوب عليه السلام بعد سنوات من الصبر. لمن تدعو بالشفاء الليلة؟\n\n#قارئ_الأسبوع #سورة_الأنبياء #الحصري #قرآن_كريم #CairoQuran"
   },
   {
-    "id": "3-alafasy-furqan-74",
+    "id": "3-minshawi-baqarah-45",
     "at": "2026-11-11T20:00:00+03:00",
     "when": "الأربعاء 11 نوفمبر · 8:00 مساءً",
     "type": "reel",
@@ -35,32 +38,11 @@
       "instagram",
       "youtube"
     ],
-    "style": "circle",
-    "reciter": "مشاري راشد العفاسي",
-    "label": "مرتّل",
-    "recitation": 7,
-    "expect": [
-      "afasy"
-    ],
-    "verses": [
-      "25:74"
-    ],
-    "surah": "سورة الفرقان",
-    "photo": "https://upload.wikimedia.org/wikipedia/commons/2/24/%D0%9C%D0%B8%D1%88%D0%B0%D1%80%D0%B8_%D0%A0%D0%B0%D1%88%D0%B8%D0%B4.jpg",
-    "title": "﴿ربنا هب لنا من أزواجنا وذرياتنا﴾ | الشيخ مشاري العفاسي | Cairo Quran",
-    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ مشاري راشد العفاسي\n\nدعاء لكل بيت. لمن تدعو به من أهلك؟\n\n#دعاء #سورة_الفرقان #العفاسي #قرآن_كريم #CairoQuran"
-  },
-  {
-    "id": "4-minshawi-imran-173",
-    "at": "2026-11-12T20:00:00+03:00",
-    "when": "الخميس 12 نوفمبر · 8:00 مساءً",
-    "type": "reel",
-    "platforms": [
-      "facebook",
-      "instagram",
-      "youtube"
-    ],
-    "style": "wave",
+    "style": "place",
+    "background": "نهر النيل",
+    "series": "آية وتدبّر",
+    "hook": "كيف تهون عليك الصلاة؟",
+    "note": "الصبر والصلاة عونٌ على كل أمر، وتخفّ الصلاة على من خشع قلبه لله",
     "reciter": "محمد صديق المنشاوي",
     "label": "مرتّل",
     "recitation": 9,
@@ -69,12 +51,40 @@
       "murattal"
     ],
     "verses": [
-      "3:173"
+      "2:45"
     ],
-    "surah": "سورة آل عمران",
+    "surah": "سورة البقرة",
     "photo": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Elminshwey.jpg",
-    "title": "﴿حسبنا الله ونعم الوكيل﴾ | الشيخ المنشاوي | Cairo Quran",
-    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمد صديق المنشاوي\n\nمتى قلت «حسبنا الله ونعم الوكيل» فوجدت أثرها؟\n\n#حسبنا_الله_ونعم_الوكيل #سورة_آل_عمران #المنشاوي #قرآن_كريم #CairoQuran"
+    "title": "﴿واستعينوا بالصبر والصلاة﴾ | آية وتدبّر | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمد صديق المنشاوي\n\nالصبر والصلاة عونٌ على كل أمر، وتخفّ الصلاة على من خشع قلبه لله.\n\nمتى شعرت أن الصلاة أخفّ عليك من أي وقت مضى؟\n\n#تدبر #سورة_البقرة #المنشاوي #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "4-alafasy-baqarah-255",
+    "at": "2026-11-12T20:00:00+03:00",
+    "when": "الخميس 12 نوفمبر · 8:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "مسجد محمد علي",
+    "series": "من أذكار المساء",
+    "hook": "آية الكرسي… أعظم آية في كتاب الله",
+    "reciter": "مشاري راشد العفاسي",
+    "label": "مرتّل",
+    "recitation": 7,
+    "expect": [
+      "afasy"
+    ],
+    "verses": [
+      "2:255"
+    ],
+    "surah": "سورة البقرة",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/2/24/%D0%9C%D0%B8%D1%88%D0%B0%D1%80%D0%B8_%D0%A0%D0%B0%D1%88%D0%B8%D0%B4.jpg",
+    "title": "آية الكرسي | من أذكار المساء | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ مشاري راشد العفاسي\n\nهل تجعلها آخر ما تقرؤه قبل النوم؟\n\n#أذكار_المساء #سورة_البقرة #العفاسي #قرآن_كريم #CairoQuran"
   },
   {
     "id": "5-abdulbasit-kahf-109",
@@ -86,7 +96,10 @@
       "instagram",
       "youtube"
     ],
-    "style": "cinema",
+    "style": "place",
+    "background": "الجامع الأزهر",
+    "series": "جمعة مباركة",
+    "hook": "لو كان البحر حبرًا… ما نفدت كلمات الله",
     "reciter": "عبد الباسط عبد الصمد",
     "label": "مرتّل",
     "recitation": 2,
@@ -99,11 +112,11 @@
     ],
     "surah": "سورة الكهف",
     "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Abdul_Basit_Abd_us-Samad_in_South_Africa_in_1966_%283%29_%28cropped%29.jpg",
-    "title": "﴿قل لو كان البحر مدادا﴾ | الشيخ عبد الباسط | Cairo Quran",
-    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ عبد الباسط عبد الصمد\n\nجمعة مباركة. لو كان البحر مدادًا ما نفدت كلمات الله. أي آية من سورة الكهف تستوقفك؟\n\n#يوم_الجمعة #سورة_الكهف #عبد_الباسط_عبد_الصمد #قرآن_كريم #CairoQuran"
+    "title": "﴿قل لو كان البحر مدادا﴾ | جمعة مباركة | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ عبد الباسط عبد الصمد\n\nأي آية من سورة الكهف تستوقفك كل جمعة؟\n\n#سورة_الكهف #عبد_الباسط_عبد_الصمد #قرآن_كريم #CairoQuran"
   },
   {
-    "id": "7-abdulbasit-mujawwad-kawthar-1",
+    "id": "7-alafasy-furqan-74",
     "at": "2026-11-15T20:00:00+03:00",
     "when": "الأحد 15 نوفمبر · 8:00 مساءً",
     "type": "reel",
@@ -112,22 +125,22 @@
       "instagram",
       "youtube"
     ],
-    "style": "circle",
-    "reciter": "عبد الباسط عبد الصمد",
-    "label": "مجوّد",
-    "recitation": 1,
+    "style": "place",
+    "background": "حديقة الأزهر",
+    "series": "دعاء من القرآن",
+    "hook": "دعاء لكل بيت: قرّة العين في الزوج والذرية",
+    "reciter": "مشاري راشد العفاسي",
+    "label": "مرتّل",
+    "recitation": 7,
     "expect": [
-      "bas",
-      "mujawwad"
+      "afasy"
     ],
     "verses": [
-      "108:1",
-      "108:2",
-      "108:3"
+      "25:74"
     ],
-    "surah": "سورة الكوثر",
-    "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Abdul_Basit_Abd_us-Samad_in_South_Africa_in_1966_%283%29_%28cropped%29.jpg",
-    "title": "سورة الكوثر · تلاوة مجوّدة | الشيخ عبد الباسط | Cairo Quran",
-    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ عبد الباسط عبد الصمد\n\nأقصر سورة في القرآن. هل تحفظ تفسيرها؟\n\n#سورة_الكوثر #سورة_الكوثر #عبد_الباسط_عبد_الصمد #قرآن_كريم #CairoQuran"
+    "surah": "سورة الفرقان",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/2/24/%D0%9C%D0%B8%D1%88%D0%B0%D1%80%D0%B8_%D0%A0%D0%B0%D1%88%D0%B8%D0%B4.jpg",
+    "title": "﴿ربنا هب لنا من أزواجنا وذرياتنا﴾ | دعاء من القرآن | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ مشاري راشد العفاسي\n\nلمن تدعو به من أهلك الليلة؟\n\n#دعاء_من_القرآن #سورة_الفرقان #العفاسي #قرآن_كريم #CairoQuran"
   }
 ]

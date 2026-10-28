@@ -85,6 +85,8 @@ async function youtube(it) {
   return j.id;
 }
 const POST = { facebook, instagram, youtube };
+// A per-platform caption (captions.facebook / captions.instagram) wins over the shared one
+const forPlatform = (it, pf) => ({ ...it, caption: it.captions?.[pf] || it.caption });
 
 async function check() {
   if (META_TOKEN) {
@@ -96,7 +98,22 @@ async function check() {
 
 if (mode === 'check') await check();
 let posted = 0, failed = 0;
-for (const tag of cfg.releases) {
+// Releases to publish: every content-<week> release from cfg.from on (so new weeks need no change here), minus cfg.exclude
+async function releases() {
+  const list = new Set(cfg.releases || []);
+  if (cfg.from) {
+    const h = process.env.GITHUB_TOKEN ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` } : {};
+    for (let page = 1; page <= 5; page++) {
+      const r = await fetch(`https://api.github.com/repos/${REPO}/releases?per_page=100&page=${page}`, { headers: h });
+      if (!r.ok) throw new Error(`release list: ${r.status} ${(await r.text()).slice(0, 120)}`);
+      const j = await r.json();
+      j.filter(x => /^content-\d{4}-\d{2}-\d{2}$/.test(x.tag_name) && x.tag_name >= cfg.from).forEach(x => list.add(x.tag_name));
+      if (j.length < 100) break;
+    }
+  }
+  return [...list].filter(t => !(cfg.exclude || []).includes(t)).sort();
+}
+for (const tag of await releases()) {
   const r = await fetch(`https://github.com/${REPO}/releases/download/${tag}/schedule.json`);
   if (!r.ok) { log(`${tag}: no schedule.json (${r.status})`); continue; }
   for (const it of (await r.json()).items) {
@@ -110,7 +127,7 @@ for (const tag of cfg.releases) {
       if (now - at > WINDOW) { if (!state[key]) { state[key] = { skipped: 'late', at: new Date().toISOString() }; log(`late, skipped: ${key}`); } continue; }
       if (dry || !can[pf]) { log(`${dry ? 'would post' : 'no credentials for'}: ${key} (${it.at})`); continue; }
       try {
-        const id = await POST[pf](it);
+        const id = await POST[pf](forPlatform(it, pf));
         state[key] = { id, at: new Date().toISOString() }; posted++;
         log(`posted: ${key} -> ${id}`);
       } catch (e) {

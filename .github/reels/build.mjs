@@ -25,6 +25,12 @@ function radiosLine(html) {
 }
 const RADIOS = (() => { try { return radiosLine(readFileSync(join(HERE, '..', '..', 'index.html'), 'utf8')); } catch { return 'إذاعات القرآن الكريم'; } })();
 
+// Landmark photos with their credits, from the PLACES table the site itself shows (index.html): [key, path, author, licence, ...]
+const PLACES = (() => { try {
+  const h = readFileSync(join(HERE, '..', '..', 'index.html'), 'utf8'), g = h.slice(h.indexOf('const PLACES = ['), h.indexOf('];', h.indexOf('const PLACES = [')));
+  return [...g.matchAll(/\["([^"]+)", "([^"]+)", "([^"]*)", "([^"]*)"/g)].map(m => ({ key: m[1], src: m[2].startsWith('http') ? m[2] : 'https://upload.wikimedia.org/wikipedia/commons/thumb/' + m[2], by: m[3], lic: m[4] }));
+} catch { return []; } })();
+const place = (key, n = 0) => PLACES.filter(p => p.key === key)[n];
 const getJSON = async u => { const r = await fetch(u, { headers: UA }); if (!r.ok) throw new Error(`${r.status} ${u}`); return r.json(); };
 const getBuf = async u => { const r = await fetch(u, { headers: UA }); if (!r.ok) throw new Error(`${r.status} ${u}`); return Buffer.from(await r.arrayBuffer()); };
 const sh = (cmd, args) => execFileSync(cmd, args, { stdio: ['ignore', 'pipe', 'inherit'], maxBuffer: 1 << 28 });
@@ -94,6 +100,13 @@ async function build(s, browser) {
   for (let i = 0; i + per * 2 <= pcm.length; i += per * 2) { let q = 0; for (let j = 0; j < per; j++) { const x = pcm.readInt16LE(i + j * 2) / 32768; q += x * x; } env.push(Math.sqrt(q / per)); }
   const peak = Math.max(...env, 1e-6); const envN = env.map(x => +(Math.min(1, x / peak)).toFixed(3));
 
+  let bg = null, credit = null;
+  if (s.background) {
+    const pl = place(s.background, s.background_n || 0);
+    if (!pl) throw new Error(`no place "${s.background}" in index.html`);
+    bg = 'data:image/jpeg;base64,' + (await getBuf(pl.src)).toString('base64');
+    credit = `الصورة: ${pl.key}${pl.by ? ' · ' + pl.by : ''} · ${pl.lic}`;
+  }
   const img = await getBuf(s.photo);
   const photo = 'data:image/jpeg;base64,' + img.toString('base64');
   const first = s.verses[0].split(':')[1], last = s.verses[s.verses.length - 1].split(':')[1];
@@ -103,7 +116,7 @@ async function build(s, browser) {
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 } });
   await page.goto('file://' + join(HERE, 'reel.html'));
   await page.evaluate(() => document.fonts.ready);
-  await page.evaluate(d => setup(d), { style: s.style, photo, reciter: s.reciter, label: s.label, words, ref, total, intro: INTRO, outro: OUTRO, env: envN, radios: RADIOS });
+  await page.evaluate(d => setup(d), { style: s.style, photo, reciter: s.reciter, label: s.label, words, ref, total, intro: INTRO, outro: OUTRO, env: envN, radios: RADIOS, bg, credit, series: s.series || null, hook: s.hook || null, note: s.note || null });
   await page.evaluate(() => Promise.all([...document.fonts].map(f => f.load())));
   await page.waitForTimeout(800);
   const frames = Math.ceil(total * FPS);
