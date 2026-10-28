@@ -13,7 +13,9 @@ const [stateFile, mode = 'run'] = process.argv.slice(2);
 const cfg = JSON.parse(readFileSync(join(HERE, 'config.json'), 'utf8'));
 const REPO = process.env.GITHUB_REPOSITORY || 'ahmedmkhalil970-del/cairoquran';
 const GRAPH = 'https://graph.facebook.com/v21.0';
-const { META_TOKEN, FB_PAGE_ID, IG_USER_ID, YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN } = process.env;
+const { FB_PAGE_ID, IG_USER_ID, YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN } = process.env;
+let META_TOKEN = process.env.META_TOKEN;
+const USER_TOKEN = META_TOKEN;
 const WINDOW = (cfg.window_hours || 6) * 3600e3;   // an item later than this is skipped, not posted late
 const now = process.env.NOW ? Date.parse(process.env.NOW) : Date.now();   // NOW: for testing only
 const state = (() => { try { return JSON.parse(readFileSync(stateFile, 'utf8')); } catch { return {}; } })();
@@ -91,6 +93,13 @@ const forPlatform = (it, pf) => ({ ...it, caption: it.captions?.[pf] || it.capti
 // Each capability the publisher and the daily insights need, tried read-only; nothing is posted
 async function diagnose() {
   const t = async (label, path, params) => { try { await graph(path, params, 'GET'); log(`  ok   ${label}`); } catch (e) { log(`  FAIL ${label}: ${e.message.slice(0, 140)}`); } };
+  try {
+    const d = (await (await fetch(`${GRAPH}/debug_token?input_token=${USER_TOKEN}&access_token=${USER_TOKEN}`)).json()).data || {};
+    log(`  info secret token: type ${d.type || '?'}, expires ${d.expires_at ? (d.expires_at === 0 ? 'never' : new Date(d.expires_at * 1000).toISOString().slice(0, 10)) : 'never'}, valid ${d.is_valid}`);
+    const need = ['pages_show_list', 'pages_read_engagement', 'pages_read_user_content', 'pages_manage_posts', 'read_insights', 'instagram_basic', 'instagram_content_publish', 'instagram_manage_insights'];
+    const miss = need.filter(x => !(d.scopes || []).includes(x));
+    log(miss.length ? `  FAIL permissions missing: ${miss.join(', ')}` : '  ok   all permissions granted');
+  } catch (e) { log('  info debug_token unavailable: ' + e.message); }
   try { const me = await graph('me', { fields: 'id,name' }, 'GET'); log(me.id === FB_PAGE_ID ? `  ok   token type: page token ("${me.name}")` : `  FAIL token type: not the page's token (it belongs to "${me.name}"); publishing to the page needs the Page access token from me/accounts`); }
   catch (e) { log(`  FAIL token: ${e.message}`); }
   if (FB_PAGE_ID) {
@@ -114,6 +123,14 @@ async function check() {
   log('youtube:', can.youtube ? 'credentials present' : 'no credentials');
 }
 
+// The secret may hold a user token instead of the Page's own token: the page token is then fetched from it
+// (it lasts as long as the user token; a page token taken from a long-lived user token does not expire)
+if (META_TOKEN && FB_PAGE_ID) {
+  try {
+    const me = await graph('me', { fields: 'id' }, 'GET');
+    if (me.id !== FB_PAGE_ID) { const p = await graph(FB_PAGE_ID, { fields: 'access_token' }, 'GET'); if (p.access_token) { META_TOKEN = p.access_token; log('using the page token derived from the user token'); } }
+  } catch (e) { log('token check failed: ' + e.message); }
+}
 if (mode === 'check') await check();
 let posted = 0, failed = 0;
 // Releases to publish: every content-<week> release from cfg.from on (so new weeks need no change here), minus cfg.exclude

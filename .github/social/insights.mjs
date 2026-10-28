@@ -6,7 +6,8 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 const [outDir, histFile] = process.argv.slice(2);
-const { META_TOKEN, FB_PAGE_ID, IG_USER_ID, YT_API_KEY } = process.env;
+const { FB_PAGE_ID, IG_USER_ID, YT_API_KEY } = process.env;
+let META_TOKEN = process.env.META_TOKEN;
 const GRAPH = 'https://graph.facebook.com/v21.0';
 const DAYS = 21;                                   // posts from the last three weeks
 const since = Date.now() - DAYS * 86400e3;
@@ -75,6 +76,11 @@ async function youtube() {
       duration: v.contentDetails.duration, views: +v.statistics.viewCount || 0, likes: +v.statistics.likeCount || 0, comments: +v.statistics.commentCount || 0 })) };
 }
 
+// A user token in the secret: use the Page's own token for page calls
+if (META_TOKEN && FB_PAGE_ID) {
+  try { const me = await graph('me', { fields: 'id' }); if (me.id !== FB_PAGE_ID) { const p = await graph(FB_PAGE_ID, { fields: 'access_token' }); if (p.access_token) META_TOKEN = p.access_token; } }
+  catch (e) { errors.push('token: ' + e.message); }
+}
 const snap = { date: new Date().toISOString().slice(0, 10), collected_at: new Date().toISOString() };
 const run = async (name, ok, fn) => { if (!ok) { snap[name] = { missing: 'credentials' }; return; } try { snap[name] = await fn(); } catch (e) { snap[name] = { error: e.message }; } };
 await run('facebook', META_TOKEN && FB_PAGE_ID, facebook);
