@@ -1,0 +1,141 @@
+[
+  {
+    "id": "1-husary-fatiha-1",
+    "at": "2026-11-16T20:00:00+03:00",
+    "when": "الاثنين 16 نوفمبر · 8:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "wave",
+    "reciter": "محمود خليل الحصري",
+    "label": "مرتّل",
+    "recitation": 6,
+    "expect": [
+      "husar",
+      "murattal"
+    ],
+    "verses": [
+      "1:1",
+      "1:2",
+      "1:3",
+      "1:4",
+      "1:5",
+      "1:6",
+      "1:7"
+    ],
+    "surah": "سورة الفاتحة",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/7/70/Hussary.jpg",
+    "title": "سورة الفاتحة | الشيخ الحصري | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمود خليل الحصري\n\nنقرؤها سبع عشرة مرة كل يوم. أي آية منها تتوقف عندها؟\n\n#سورة_الفاتحة #سورة_الفاتحة #الحصري #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "3-abdulbasit-isra-24",
+    "at": "2026-11-18T20:00:00+03:00",
+    "when": "الأربعاء 18 نوفمبر · 8:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "cinema",
+    "reciter": "عبد الباسط عبد الصمد",
+    "label": "مرتّل",
+    "recitation": 2,
+    "expect": [
+      "bas",
+      "murattal"
+    ],
+    "verses": [
+      "17:24"
+    ],
+    "surah": "سورة الإسراء",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Abdul_Basit_Abd_us-Samad_in_South_Africa_in_1966_%283%29_%28cropped%29.jpg",
+    "title": "﴿وقل رب ارحمهما كما ربياني صغيرا﴾ | الشيخ عبد الباسط | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ عبد الباسط عبد الصمد\n\nدعاء للوالدين علّمنا إياه القرآن. ادعُ لهما الآن.\n\n#بر_الوالدين #سورة_الإسراء #عبد_الباسط_عبد_الصمد #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "4-alafasy-baqarah-201",
+    "at": "2026-11-19T20:00:00+03:00",
+    "when": "الخميس 19 نوفمبر · 8:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "circle",
+    "reciter": "مشاري راشد العفاسي",
+    "label": "مرتّل",
+    "recitation": 7,
+    "expect": [
+      "afasy"
+    ],
+    "verses": [
+      "2:201"
+    ],
+    "surah": "سورة البقرة",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/2/24/%D0%9C%D0%B8%D1%88%D0%B0%D1%80%D0%B8_%D0%A0%D0%B0%D1%88%D0%B8%D0%B4.jpg",
+    "title": "﴿ربنا آتنا في الدنيا حسنة﴾ | الشيخ مشاري العفاسي | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ مشاري راشد العفاسي\n\nأكثر دعاء كان يدعو به النبي ﷺ. هل تختم به دعاءك؟\n\n#دعاء #سورة_البقرة #العفاسي #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "5-alafasy-kahf-23",
+    "at": "2026-11-20T07:00:00+03:00",
+    "when": "الجمعة 20 نوفمبر · 7:00 صباحًا",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "wave",
+    "reciter": "مشاري راشد العفاسي",
+    "label": "مرتّل",
+    "recitation": 7,
+    "expect": [
+      "afasy"
+    ],
+    "verses": [
+      "18:23",
+      "18:24"
+    ],
+    "surah": "سورة الكهف",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/2/24/%D0%9C%D0%B8%D1%88%D0%B0%D1%80%D0%B8_%D0%A0%D0%B0%D1%88%D0%B8%D0%B4.jpg",
+    "title": "﴿ولا تقولن لشيء إني فاعل ذلك غدا﴾ | الشيخ مشاري العفاسي | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ مشاري راشد العفاسي\n\nجمعة مباركة. كم مرة نسيت أن تقول «إن شاء الله» في خطة كبيرة؟\n\n#يوم_الجمعة #سورة_الكهف #العفاسي #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "7-minshawi-falaq-1",
+    "at": "2026-11-22T20:00:00+03:00",
+    "when": "الأحد 22 نوفمبر · 8:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "cinema",
+    "reciter": "محمد صديق المنشاوي",
+    "label": "مرتّل",
+    "recitation": 9,
+    "expect": [
+      "minshaw",
+      "murattal"
+    ],
+    "verses": [
+      "113:1",
+      "113:2",
+      "113:3",
+      "113:4",
+      "113:5"
+    ],
+    "surah": "سورة الفلق",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Elminshwey.jpg",
+    "title": "سورة الفلق | الشيخ المنشاوي | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمد صديق المنشاوي\n\nمن المعوذتين. هل تحفظها لأطفالك قبل النوم؟\n\n#سورة_الفلق #سورة_الفلق #المنشاوي #قرآن_كريم #CairoQuran"
+  }
+]

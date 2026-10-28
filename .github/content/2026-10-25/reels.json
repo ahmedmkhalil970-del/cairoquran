@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1-alafasy-baqarah-186",
+    "at": "2026-10-25T20:00:00+03:00",
+    "when": "الأحد 25 أكتوبر · 8:00 مساءً",
+    "type": "reel",
+    "platforms": ["facebook", "instagram"],
+    "style": "circle",
+    "reciter": "مشاري راشد العفاسي",
+    "label": "مرتّل",
+    "recitation": 7,
+    "expect": ["afasy"],
+    "verses": ["2:186"],
+    "surah": "سورة البقرة",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/2/24/%D0%9C%D0%B8%D1%88%D0%B0%D1%80%D0%B8_%D0%A0%D0%B0%D1%88%D0%B8%D0%B4.jpg",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ مشاري راشد العفاسي\n\nلم يقل الله «فقل إني قريب»، بل قال «فإني قريب» مباشرة. بماذا تدعوه الليلة؟\n\n#دعاء #سورة_البقرة #العفاسي #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "2-minshawi-zumar-53",
+    "at": "2026-10-31T20:00:00+03:00",
+    "when": "السبت 31 أكتوبر · 8:00 مساءً",
+    "type": "reel",
+    "platforms": ["facebook", "instagram"],
+    "style": "cinema",
+    "reciter": "محمد صديق المنشاوي",
+    "label": "مرتّل",
+    "recitation": 9,
+    "expect": ["minshaw", "murattal"],
+    "verses": ["39:53"],
+    "surah": "سورة الزمر",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Elminshwey.jpg",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمد صديق المنشاوي\n\nيقول كثير من العلماء إنها أرجى آية في القرآن. من تحب أن تُهديها إليه؟\n\n#لا_تقنطوا_من_رحمة_الله #سورة_الزمر #المنشاوي #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "3-husary-rad-28",
+    "at": "2026-11-01T20:00:00+03:00",
+    "when": "الأحد 1 نوفمبر · 8:00 مساءً",
+    "type": "reel",
+    "platforms": ["facebook", "instagram"],
+    "style": "wave",
+    "reciter": "محمود خليل الحصري",
+    "label": "مرتّل",
+    "recitation": 6,
+    "expect": ["husar", "murattal"],
+    "verses": ["13:28"],
+    "surah": "سورة الرعد",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/7/70/Hussary.jpg",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمود خليل الحصري\n\nما الذِّكر الذي يطمئن به قلبك حين يضيق صدرك؟\n\n#ألا_بذكر_الله_تطمئن_القلوب #سورة_الرعد #الحصري #قرآن_كريم #CairoQuran"
+  }
+]

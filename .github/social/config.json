@@ -1,0 +1,6 @@
+{
+  "releases": ["content-2026-11-02", "content-2026-11-09", "content-2026-11-16", "content-2026-11-23"],
+  "platforms": ["facebook", "instagram"],
+  "window_hours": 6,
+  "dry_run": false
+}

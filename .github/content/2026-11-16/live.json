@@ -1,0 +1,40 @@
+[
+  {
+    "id": "2-live-banna",
+    "at": "2026-11-17T20:00:00+03:00",
+    "when": "الثلاثاء 17 نوفمبر · 8:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "station": "banna",
+    "streams": [
+      "https://backup.qurango.net/radio/mahmoud_ali__albanna"
+    ],
+    "sub": "تلاوة الشيخ محمود علي البنا",
+    "duration": 26,
+    "title": "بث مباشر · تلاوة الشيخ محمود علي البنا | Cairo Quran",
+    "caption": "الآن على شاشة Cairo Quran: تلاوة الشيخ محمود علي البنا، مع مواقيت الصلاة لمدينتك والأذكار، على موقعنا وعلى شاشة التلفاز في بيتك.\n\nهل تعرف صوت الشيخ محمود علي البنا من أول آية؟\n\n#محمود_علي_البنا #قرآن_كريم #بث_مباشر #تلاوة #CairoQuran"
+  },
+  {
+    "id": "6-live-husary-m",
+    "at": "2026-11-21T20:00:00+03:00",
+    "when": "السبت 21 نوفمبر · 8:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "station": "husary_m",
+    "streams": [
+      "https://backup.qurango.net/radio/mahmoud_khalil_alhussary_mojawwad"
+    ],
+    "sub": "الشيخ محمود خليل الحصري · مجوّد",
+    "duration": 26,
+    "title": "بث مباشر · الشيخ محمود خليل الحصري · مجوّد | Cairo Quran",
+    "caption": "الآن على شاشة Cairo Quran: الشيخ محمود خليل الحصري · مجوّد، مع مواقيت الصلاة لمدينتك والأذكار، على موقعنا وعلى شاشة التلفاز في بيتك.\n\nالشيخ الحصري علّم أجيالًا التلاوة. هل تعلمت القرآن على صوته؟\n\n#الحصري #قرآن_كريم #بث_مباشر #تلاوة #CairoQuran"
+  }
+]

@@ -105,11 +105,11 @@ window.render = function (t) {
     }
   }
   const pad = 46; c.strokeStyle = 'rgba(232,194,122,.5)'; c.lineWidth = 2.5; c.strokeRect(pad, pad, W - pad * 2, H - pad * 2);
-  c.fillStyle = `rgba(5,8,22,${1 - win(t, 0, 1)})`; c.fillRect(0, 0, W, H);
+  c.fillStyle = `rgba(5,8,22,${1 - win(t, 0, .25)})`; c.fillRect(0, 0, W, H);
 
-  const out = win(t, endAt, endAt + .8), endIn = win(t, endAt + .5, endAt + 1.6);
-  $('brand').style.opacity = win(t, .3, 1.2) * (1 - out);
-  const rc = $('reciter'); rc.style.opacity = win(t, .4, 1.4) * (1 - out); rc.style.transform = `translateY(${(1 - win(t, .4, 1.4)) * 24}px)`;
+  const out = win(t, endAt, endAt + .5), endIn = win(t, endAt + .3, endAt + 1);
+  $('brand').style.opacity = win(t, 0, .4) * (1 - out);
+  const rc = $('reciter'); rc.style.opacity = win(t, 0, .5) * (1 - out); rc.style.transform = `translateY(${(1 - win(t, 0, .5)) * 24}px)`;
   if (st === 'circle') rc.querySelector('.ring').style.transform = `rotate(${t * 6}deg)`, rc.querySelector('.ring div').style.transform = `rotate(${-t * 6}deg)`;
   const at = t - D.intro;
   D.words.forEach((w, i) => {
@@ -117,10 +117,10 @@ window.render = function (t) {
     let o = .22, col = '#fdf6e9';
     if (at >= w.start) { o = 1; col = at < w.end ? '#e8c27a' : (w.mark ? '#e8c27a' : '#fdf6e9'); }
     else if (at >= w.start - .35) o = .22 + .78 * win(at, w.start - .35, w.start);
-    s.style.opacity = o * Math.min(1, win(t, .8, 1.8) + .0001); s.style.color = col;
+    s.style.opacity = o * Math.min(1, win(t, 0, .3) + .0001); s.style.color = col;
   });
   $('verse').style.opacity = 1 - out;
-  $('ref').style.opacity = win(t, 1.2, 2.2) * (1 - out);
+  $('ref').style.opacity = win(t, .2, .8) * (1 - out);
   const e = $('end'); e.style.opacity = endIn; e.style.transform = `translateY(${(1 - endIn) * 24}px)`;
 };
 </script>

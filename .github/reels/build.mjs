@@ -1,4 +1,4 @@
-// Builds Cairo Quran reels from the batch file named in ./current (default samples.json): fetches verse words, recitation audio and word timings
+// Builds Cairo Quran reels from a batch file (env BATCH_FILE, else the one named in ./current): fetches verse words, recitation audio and word timings
 // from the quran.com API, the reciter photo from Wikimedia Commons, renders reel.html frame by frame
 // with Playwright and muxes the frames with the recitation using ffmpeg. Output: out/<id>.mp4
 import { chromium } from 'playwright';
@@ -8,9 +8,9 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
-const BATCH = (() => { try { return readFileSync(join(HERE, 'current'), 'utf8').trim(); } catch { return 'samples.json'; } })();
-const OUT = join(HERE, 'out', BATCH.replace(/^.*\//, '').replace(/\.json$/, ''));
-const FPS = 30, INTRO = 1.6, OUTRO = 3.4;
+const BATCH = process.env.BATCH_FILE || (() => { try { return join(HERE, readFileSync(join(HERE, 'current'), 'utf8').trim()); } catch { return join(HERE, 'samples.json'); } })();
+const OUT = process.env.OUT_DIR || join(HERE, 'out', BATCH.replace(/^.*\//, '').replace(/\.json$/, ''));
+const FPS = 30, INTRO = 0.3, OUTRO = 2.6; // the recitation starts at once: the first second decides whether a viewer stays
 const API = 'https://api.quran.com/api/v4';
 const UA = { 'user-agent': 'CairoQuran-Reels/1.0 (https://cairoquran.com; contact@cairoquran.com)' };
 const ar = n => String(n).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
@@ -116,7 +116,7 @@ async function build(s, browser) {
   const mp4 = join(OUT, s.id + '.mp4');
   sh('ffmpeg', ['-loglevel', 'error', '-y', '-framerate', String(FPS), '-i', join(tmp, 'f', '%05d.jpg'), '-i', wav,
     '-filter_complex', `[1:a]adelay=${Math.round(INTRO * 1000)}|${Math.round(INTRO * 1000)},apad[a]`, '-map', '0:v', '-map', '[a]', '-shortest',
-    '-c:v', 'libx264', '-preset', 'slow', '-crf', '21', '-maxrate', '7M', '-bufsize', '14M', '-pix_fmt', 'yuv420p', '-profile:v', 'high', '-r', String(FPS),
+    '-c:v', 'libx264', '-preset', 'slow', '-crf', '23', '-maxrate', '2500k', '-bufsize', '5000k', '-pix_fmt', 'yuv420p', '-profile:v', 'high', '-r', String(FPS),
     '-c:a', 'aac', '-b:a', '160k', '-movflags', '+faststart', mp4]);
   sh('ffmpeg', ['-loglevel', 'error', '-y', '-ss', String(INTRO + Math.min(audioLen * .6, audioLen - .5)), '-i', mp4, '-frames:v', '1', '-vf', 'scale=540:-1', join(OUT, s.id + '.jpg')]);
   rmSync(tmp, { recursive: true, force: true });
@@ -124,7 +124,7 @@ async function build(s, browser) {
   return { verse: plain.join(' '), ref };
 }
 
-const samples = JSON.parse(readFileSync(join(HERE, BATCH), 'utf8'));
+const samples = JSON.parse(readFileSync(BATCH, 'utf8'));
 // Guard: the recitation id must belong to the reciter and style named in the batch, or the item is skipped.
 const qdc = (await getJSON('https://api.qurancdn.com/api/qdc/audio/reciters?locale=en')).reciters || [];
 for (const s of samples) {
@@ -136,8 +136,9 @@ for (const s of samples) {
 mkdirSync(OUT, { recursive: true });
 const browser = await chromium.launch();
 let failed = 0;
-const captions = [];
-for (const s of samples) { if (s.skip) { failed++; console.error(`!! ${s.id}: ${s.skip}`); continue; } try { const r = await build(s, browser); if (s.caption) captions.push(`### ${s.id}${s.when ? ' · ' + s.when : ''}\n\n${s.caption.replace('{{verse}}', r.verse).replace('{{ref}}', r.ref)}\n`); } catch (e) { failed++; console.error(`!! ${s.id}: ${e.message}`); } }
+const captions = [], made = [];
+for (const s of samples) { if (s.skip) { failed++; console.error(`!! ${s.id}: ${s.skip}`); continue; } try { const r = await build(s, browser); const cap = s.caption ? s.caption.replace('{{verse}}', r.verse).replace('{{ref}}', r.ref) : ''; made.push({ id: s.id, file: s.id + '.mp4', cover: s.id + '.jpg', type: s.type || 'reel', at: s.at || null, when: s.when || '', platforms: s.platforms || ['facebook', 'instagram'], title: s.title ? s.title.replace('{{ref}}', r.ref) : null, caption: cap }); if (s.caption) captions.push(`### ${s.id}${s.when ? ' · ' + s.when : ''}\n\n${s.caption.replace('{{verse}}', r.verse).replace('{{ref}}', r.ref)}\n`); } catch (e) { failed++; console.error(`!! ${s.id}: ${e.message}`); } }
 if (captions.length) writeFileSync(join(OUT, 'captions.md'), captions.join('\n'));
+writeFileSync(join(OUT, 'reels.json'), JSON.stringify(made, null, 2));
 await browser.close();
 process.exit(failed === samples.length ? 1 : 0);
