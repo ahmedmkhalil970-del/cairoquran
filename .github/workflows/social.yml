@@ -1,10 +1,18 @@
-# Social publisher: every 10 minutes, posts the items of the content releases (listed in .github/social/config.json)
+# Social publisher: in posting windows (and every 10 minutes as a safety net), posts the items of the content releases (listed in .github/social/config.json)
 # that are due, through the Facebook, Instagram and YouTube APIs. Credentials are repository secrets; without them it
 # only logs what it would post. Run it by hand with mode "check" to verify the credentials and see the next 24 hours.
 name: social
 on:
   schedule:
+    # Safety net every 10 minutes (GitHub often fires these late or skips them)
     - cron: '*/10 * * * *'
+    # Posting windows: start well before each slot and stay up 3.5 hours, posting each item at its minute.
+    # Times are UTC; Kuwait is UTC+3. Daily 18:23 (evening reels at 20:00), Friday 05:23 (07:00),
+    # Thursday 14:23 (studio post at 16:00), Saturday 08:23 (studio post at 10:00).
+    - cron: '23 15 * * *'
+    - cron: '23 2 * * 5'
+    - cron: '23 11 * * 4'
+    - cron: '23 5 * * 6'
   workflow_dispatch:
     inputs:
       mode:
@@ -17,7 +25,7 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 240
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -32,6 +40,7 @@ jobs:
       - name: Publish
         env:
           MODE: ${{ inputs.mode || 'run' }}
+          LOOP_MINUTES: ${{ github.event_name == 'schedule' && github.event.schedule != '*/10 * * * *' && '210' || '0' }}
           META_TOKEN: ${{ secrets.META_TOKEN }}
           FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
           IG_USER_ID: ${{ secrets.IG_USER_ID }}

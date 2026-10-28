@@ -17,7 +17,9 @@ const { FB_PAGE_ID, IG_USER_ID, YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN
 let META_TOKEN = process.env.META_TOKEN;
 const USER_TOKEN = META_TOKEN;
 const WINDOW = (cfg.window_hours || 6) * 3600e3;   // an item later than this is skipped, not posted late
-const now = process.env.NOW ? Date.parse(process.env.NOW) : Date.now();   // NOW: for testing only
+let now = process.env.NOW ? Date.parse(process.env.NOW) : Date.now();   // NOW: for testing only
+// LOOP_MINUTES: stay up this long and post each item at its minute (GitHub's frequent schedules fire late or not at all)
+const LOOP = +(process.env.LOOP_MINUTES || 0);
 const state = (() => { try { return JSON.parse(readFileSync(stateFile, 'utf8')); } catch { return {}; } })();
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a);
@@ -148,30 +150,52 @@ async function releases() {
   }
   return [...list].filter(t => !(cfg.exclude || []).includes(t)).sort();
 }
-for (const tag of await releases()) {
-  const r = await fetch(`https://github.com/${REPO}/releases/download/${tag}/schedule.json`);
-  if (!r.ok) { log(`${tag}: no schedule.json (${r.status})`); continue; }
-  for (const it of (await r.json()).items) {
-    const at = Date.parse(it.at);
-    const pfs = it.platforms.filter(p => cfg.platforms.includes(p));
-    if (mode === 'check') { if (at > now - WINDOW && at < now + 86400e3) log(`next 24h: ${tag}/${it.id} at ${it.at} on ${pfs.join(', ')}`); continue; }
-    if (at > now) continue;
-    for (const pf of pfs) {
-      const key = `${tag}/${it.id}/${pf}`;
-      if (state[key]?.id || state[key]?.tries >= 3) continue;
-      if (now - at > WINDOW) { if (!state[key]) { state[key] = { skipped: 'late', at: new Date().toISOString() }; log(`late, skipped: ${key}`); } continue; }
-      if (dry || !can[pf]) { log(`${dry ? 'would post' : 'no credentials for'}: ${key} (${it.at})`); continue; }
-      try {
-        const id = await POST[pf](forPlatform(it, pf));
-        state[key] = { id, at: new Date().toISOString() }; posted++;
-        log(`posted: ${key} -> ${id}`);
-      } catch (e) {
-        failed++;
-        state[key] = { error: String(e.message).slice(0, 300), tries: (state[key]?.tries || 0) + 1, at: new Date().toISOString() };
-        log(`FAILED: ${key}: ${e.message}`);
+let schedules = [], loadedAt = 0;
+async function load() {
+  schedules = [];
+  for (const tag of await releases()) {
+    const r = await fetch(`https://github.com/${REPO}/releases/download/${tag}/schedule.json`);
+    if (!r.ok) { log(`${tag}: no schedule.json (${r.status})`); continue; }
+    schedules.push([tag, (await r.json()).items]);
+  }
+  loadedAt = Date.now();
+}
+async function pass() {
+  for (const [tag, items] of schedules) {
+    for (const it of items) {
+      const at = Date.parse(it.at);
+      const pfs = it.platforms.filter(p => cfg.platforms.includes(p));
+      if (mode === 'check') { if (at > now - WINDOW && at < now + 86400e3) log(`next 24h: ${tag}/${it.id} at ${it.at} on ${pfs.join(', ')}`); continue; }
+      if (at > now) continue;
+      for (const pf of pfs) {
+        const key = `${tag}/${it.id}/${pf}`;
+        if (state[key]?.id || state[key]?.tries >= 3) continue;
+        if (now - at > WINDOW) { if (!state[key]) { state[key] = { skipped: 'late', at: new Date().toISOString() }; log(`late, skipped: ${key}`); } continue; }
+        if (dry || !can[pf]) { log(`${dry ? 'would post' : 'no credentials for'}: ${key} (${it.at})`); continue; }
+        try {
+          const id = await POST[pf](forPlatform(it, pf));
+          state[key] = { id, at: new Date().toISOString() }; posted++;
+          log(`posted: ${key} -> ${id}`);
+        } catch (e) {
+          failed++;
+          state[key] = { error: String(e.message).slice(0, 300), tries: (state[key]?.tries || 0) + 1, at: new Date().toISOString() };
+          log(`FAILED: ${key}: ${e.message}`);
+        }
       }
     }
   }
+}
+const deadline = Date.now() + LOOP * 60e3;
+for (;;) {
+  // New or re-rendered weeks are picked up every half hour; a failed refresh keeps the schedules already loaded
+  if (Date.now() - loadedAt > 30 * 60e3) {
+    try { await load(); } catch (e) { if (!loadedAt) throw e; log('schedule refresh failed, keeping the last one: ' + e.message); loadedAt = Date.now(); }
+  }
+  await pass();
+  writeFileSync(stateFile, JSON.stringify(state, null, 2));
+  if (mode === 'check' || Date.now() + 60e3 > deadline) break;
+  await sleep(60e3);
+  if (!process.env.NOW) now = Date.now();
 }
 writeFileSync(stateFile, JSON.stringify(state, null, 2));
 log(`done: ${posted} posted, ${failed} failed${dry ? ' (dry run)' : ''}`);
