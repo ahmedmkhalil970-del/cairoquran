@@ -24,7 +24,7 @@ if (missing.length) { console.error('missing files: ' + missing.join(', ')); pro
 const items = [...posts, ...reels].map(x => ({
   id: x.id, type: x.type, at: x.at, when: x.when, platforms: x.platforms,
   file: x.file, url: url(x.file), cover: x.cover ? url(x.cover) : null,
-  title: x.title || null, caption: x.caption, captions: x.captions || null, first_comment: x.first_comment || null, note: x.facebook_caption_note || null, status: 'pending'
+  title: x.title || null, caption: x.caption, captions: x.captions || null, meta: x.meta || (x.type === 'post' ? { series: 'منشور الاستوديو' } : null), first_comment: x.first_comment || null, note: x.facebook_caption_note || null, status: 'pending'
 })).sort((a, b) => String(a.at).localeCompare(String(b.at)));
 writeFileSync(join(dist, 'schedule.json'), JSON.stringify({ week, tag: TAG, timezone: 'Asia/Kuwait', items }, null, 2));
 

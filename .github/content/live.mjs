@@ -93,7 +93,7 @@ for (const it of items) {
     '-c:a', 'aac', '-b:a', '128k', '-t', String(cut), '-movflags', '+faststart', mp4]);
   sh('ffmpeg', ['-loglevel', 'error', '-y', '-ss', String(cut / 2), '-i', mp4, '-frames:v', '1', join(dist, it.id + '.jpg')]);
   console.log(`${it.id}: ${frames.length} frames over ${dur}s -> ${mp4}`);
-  out.push({ id: it.id, file: it.id + '.mp4', cover: it.id + '.jpg', type: 'reel', at: it.at, when: it.when, platforms: it.platforms || ['facebook', 'instagram'], title: it.title || null, caption: it.caption });
+  out.push({ id: it.id, file: it.id + '.mp4', cover: it.id + '.jpg', type: 'reel', at: it.at, when: it.when, platforms: it.platforms || ['facebook', 'instagram'], title: it.title || null, caption: it.caption, meta: { series: 'من شاشة القناة', style: 'live', station: it.station || 'cairo' } });
 }
 await browser.close();
 writeFileSync(join(dist, 'extra.json'), JSON.stringify(out, null, 2));
