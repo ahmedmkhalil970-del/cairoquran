@@ -1025,8 +1025,8 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
   // Each dhikr stays long enough to be said as many times as its count; a counter shows the repetition
   function showDhikr(first) {
     clearTimeout(adhkarTimer);
-    const t = $('abText');
-    t.classList.add('out');
+    const tx = $('abText');
+    tx.classList.add('out');
     adhkarTimer = setTimeout(() => {
       const list = ADHKAR[adhkarMode]; if (!list) return;
       const x = list[ai % list.length], count = x[1].split(' · ').pop();
@@ -1045,24 +1045,24 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
       let pass = 0;
       const runPass = () => {
         pass++;
-        t.style.transition = 'none'; t.style.transform = 'translateX(0)';
-        void t.offsetWidth;
+        tx.style.transition = 'none'; tx.style.transform = 'translateX(0)';
+        void tx.offsetWidth;
         $('abCount').textContent = '(' + (counted ? t('counter', pass, reps, num) : (tk('adhkarCounts', count) || count)) + ')';
-        t.style.transition = 'opacity .6s ease';
-        t.classList.remove('out');
+        tx.style.transition = 'opacity .6s ease';
+        tx.classList.remove('out');
         adhkarTimer = setTimeout(() => {                                   // measure after the fonts settle
-          const extra = t.scrollWidth - $('abView').clientWidth;
+          const extra = tx.scrollWidth - $('abView').clientWidth;
           let slide = 0;
           if (extra > 4) {
             const pxPerSec = Math.max(30, $('abView').clientWidth * 0.035);  // slow enough to read the diacritics
             slide = Math.round(extra / pxPerSec * 1000);
-            t.style.transition = 'opacity .6s ease, transform ' + slide + 'ms linear';
-            t.style.transform = 'translateX(' + extra + 'px)';              // RTL: slide right to reveal the end
+            tx.style.transition = 'opacity .6s ease, transform ' + slide + 'ms linear';
+            tx.style.transform = 'translateX(' + extra + 'px)';              // RTL: slide right to reveal the end
           }
           const perPass = Math.max(once, slide + 2 * HOLD_MS);              // a long dhikr needs its full glide each time
           if (!total) total = Math.max(DHIKR_MS, Math.min(MAX_DHIKR_MS, reps * (perPass + 650)));
           if (counted && pass < reps && Date.now() - started - HOLD_MS + 2 * perPass <= total + 1000) {   // say it again: fade, reset, count up
-            adhkarTimer = setTimeout(() => { t.classList.add('out'); adhkarTimer = setTimeout(runPass, 650); }, perPass - HOLD_MS);
+            adhkarTimer = setTimeout(() => { tx.classList.add('out'); adhkarTimer = setTimeout(runPass, 650); }, perPass - HOLD_MS);
           } else {
             adhkarTimer = setTimeout(nextDhikr, Math.max(slide + HOLD_MS, total - (Date.now() - started)));
           }
