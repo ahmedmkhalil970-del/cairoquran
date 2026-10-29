@@ -3,6 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>/* language, set before the first paint: the saved choice, else the browser's language if the site has it, else Arabic */
+(function () {
+  var LANGS = ['ar', 'en'], L = 'ar', s = null;
+  try { s = localStorage.getItem('qtv-lang'); } catch (e) {}
+  if (s && LANGS.indexOf(s) >= 0) L = s;
+  else { var n = String(navigator.language || '').toLowerCase().slice(0, 2); if (n !== 'ar' && LANGS.indexOf(n) >= 0) L = n; }
+  window.QLANG = L; window.QLANGS = LANGS;
+  var h = document.documentElement; h.lang = L; h.dir = L === 'ar' ? 'rtl' : 'ltr';
+  if (L !== 'ar') h.className += ' i18n-wait';
+  setTimeout(function () { h.className = h.className.replace(' i18n-wait', ''); }, 4000);   // never stay hidden
+})();
+</script>
 <title>Cairo Quran · قرآن وأذان وأذكار</title>
 <meta name="description" content="Cairo Quran: إذاعة القرآن الكريم من القاهرة وإذاعات كبار القرّاء، مع مواقيت الصلاة وتنبيه بموعدها وأذكار الصباح والمساء.">
 <meta name="theme-color" content="#050816">
@@ -23,7 +35,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Readex+Pro:wght@300;400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Readex+Pro:wght@300;400;600&family=Cormorant+Garamond:wght@600;700&display=swap">
 <style>
 /* Layout: full-screen night sky drawn on canvas; station top-right, clock top-left,
    verse centered, Kuwait prayer strip along the bottom. Sky palette follows real prayer times. */
@@ -301,6 +313,33 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
 
 .dbg{margin-top:.8vh;max-width:40vw;font-size:.95vw;color:var(--ink-faint);direction:rtl;line-height:1.5;text-shadow:0 .1vw .5vw rgba(0,0,0,.7)}
 @media (prefers-reduced-motion:reduce){.scene{animation:none}.status[data-s="live"] .dot{animation:none}}
+/* ---------- Other languages: English and any left-to-right language (Arabic stays as written above) ---------- */
+html.i18n-wait body{visibility:hidden}
+html:not([lang="ar"]){--f-title:"Cormorant Garamond","Amiri",serif}
+html:not([lang="ar"]) .place-name{font-size:2.5vw;line-height:1.15}
+html:not([lang="ar"]) .place-fact{font-size:1.25vw;line-height:1.6}
+@media (min-width:701px){html:not([lang="ar"]) body.has-adhkar .place{bottom:31vh}}
+@media (max-width:700px){html:not([lang="ar"]) .place{bottom:37vh}html:not([lang="ar"]) body.has-adhkar .place{bottom:49vh}}
+html[dir="ltr"] .clock{text-align:right;direction:ltr}
+html[dir="ltr"] .station h1.brand{text-align:left}
+html[dir="ltr"] .place{right:auto;left:4.2vw}
+html[dir="ltr"] .follow{left:auto;right:4.2vw}
+html[dir="ltr"] .fw-row,html[dir="ltr"] .share-btn,html[dir="ltr"] .rcd,html[dir="ltr"] .visits,html[dir="ltr"] .place-credit,html[dir="ltr"] .dbg{direction:ltr}
+html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
+@media (max-width:700px){html[dir="ltr"] .place{left:4vw;right:4vw}html:not([lang="ar"]) .place-name{font-size:6vw}html:not([lang="ar"]) .place-fact{font-size:3.4vw}}
+.ar-text{direction:rtl;unicode-bidi:isolate}
+.verse .verse-tr{margin:1.2vh auto 0;max-width:62vw;font-family:var(--f-ui);font-size:1.6vw;font-weight:300;line-height:1.55;color:var(--ink-soft);text-wrap:balance;text-shadow:0 .2vw 1vw rgba(0,0,0,.7)}
+.ab-main{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center}
+.ab-main .ab-view{flex:none;min-height:6vh}
+.ab-tr{max-height:3.3em;overflow:hidden;padding:0 1.6vw .7vh;font-size:1.1vw;line-height:1.5;color:var(--ink-soft)}
+.ab-tr[hidden]{display:none}
+.ab-tr span{display:block;will-change:transform}
+.gate-tr{max-width:60vw;font-family:var(--f-ui);font-size:1.3vw;font-weight:300;color:var(--ink-soft);margin-top:-1vh}
+.gate-tr[hidden]{display:none}
+.lang-btn{all:unset;pointer-events:auto;cursor:pointer;display:inline-block;margin-bottom:1vh;padding:.35vh .9vw;border-radius:999px;font-family:var(--f-ui);font-size:.95vw;font-weight:400;
+  color:var(--ink-soft);background:var(--glass);border:1px solid var(--edge);transition:background .2s,color .2s}
+.lang-btn:hover,.lang-btn:focus-visible{color:var(--ink);background:rgba(232,194,122,.22)}
+@media (max-width:700px){.lang-btn{font-size:3.2vw;padding:.4vh 2.6vw}.verse .verse-tr{font-size:3.6vw;max-width:88vw}.ab-tr{font-size:2.8vw}.gate-tr{font-size:3.6vw;max-width:86vw}}
 </style>
 </head>
 <body>
@@ -315,20 +354,20 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
 </aside>
 
 <aside class="follow out" id="follow" hidden aria-hidden="true">
-  <div class="fw-head">تابعونا</div>
+  <div class="fw-head" data-i18n="followUs">تابعونا</div>
   <div class="fw-row">
-    <figure><svg viewBox="0 0 33 33" shape-rendering="crispEdges" aria-hidden="true"><rect width="33" height="33" fill="#fdf6e9"/><path fill="#0b0f22" d="M2 2h7v1h-7zM12 2h5v1h-5zM18 2h4v1h-4zM24 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM11 3h2v1h-2zM15 3h4v1h-4zM20 3h1v1h-1zM22 3h1v1h-1zM24 3h1v1h-1zM30 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM11 4h1v1h-1zM13 4h3v1h-3zM18 4h2v1h-2zM21 4h1v1h-1zM24 4h1v1h-1zM26 4h3v1h-3zM30 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM11 5h2v1h-2zM14 5h4v1h-4zM20 5h2v1h-2zM24 5h1v1h-1zM26 5h3v1h-3zM30 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM11 6h1v1h-1zM15 6h2v1h-2zM19 6h2v1h-2zM24 6h1v1h-1zM26 6h3v1h-3zM30 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h3v1h-3zM15 7h3v1h-3zM20 7h3v1h-3zM24 7h1v1h-1zM30 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h1v1h-1zM22 8h1v1h-1zM24 8h7v1h-7zM11 9h3v1h-3zM16 9h1v1h-1zM19 9h4v1h-4zM2 10h1v1h-1zM5 10h1v1h-1zM7 10h2v1h-2zM10 10h1v1h-1zM12 10h2v1h-2zM17 10h2v1h-2zM20 10h2v1h-2zM23 10h1v1h-1zM25 10h1v1h-1zM13 11h1v1h-1zM16 11h1v1h-1zM18 11h1v1h-1zM23 11h2v1h-2zM27 11h1v1h-1zM30 11h1v1h-1zM2 12h2v1h-2zM7 12h4v1h-4zM14 12h1v1h-1zM18 12h2v1h-2zM21 12h1v1h-1zM23 12h1v1h-1zM27 12h3v1h-3zM4 13h4v1h-4zM9 13h1v1h-1zM11 13h2v1h-2zM16 13h2v1h-2zM20 13h1v1h-1zM22 13h5v1h-5zM28 13h2v1h-2zM5 14h2v1h-2zM8 14h1v1h-1zM10 14h3v1h-3zM18 14h2v1h-2zM21 14h4v1h-4zM27 14h1v1h-1zM29 14h2v1h-2zM2 15h1v1h-1zM4 15h1v1h-1zM10 15h1v1h-1zM13 15h1v1h-1zM19 15h1v1h-1zM21 15h3v1h-3zM25 15h1v1h-1zM4 16h1v1h-1zM8 16h1v1h-1zM14 16h1v1h-1zM18 16h1v1h-1zM20 16h1v1h-1zM22 16h1v1h-1zM24 16h1v1h-1zM27 16h4v1h-4zM2 17h2v1h-2zM5 17h2v1h-2zM12 17h1v1h-1zM15 17h2v1h-2zM19 17h2v1h-2zM22 17h1v1h-1zM27 17h1v1h-1zM29 17h1v1h-1zM3 18h1v1h-1zM5 18h4v1h-4zM10 18h1v1h-1zM12 18h2v1h-2zM15 18h2v1h-2zM18 18h2v1h-2zM22 18h2v1h-2zM25 18h1v1h-1zM29 18h1v1h-1zM4 19h2v1h-2zM7 19h1v1h-1zM10 19h1v1h-1zM13 19h1v1h-1zM18 19h1v1h-1zM23 19h3v1h-3zM27 19h1v1h-1zM30 19h1v1h-1zM2 20h1v1h-1zM5 20h1v1h-1zM7 20h4v1h-4zM13 20h3v1h-3zM20 20h1v1h-1zM24 20h2v1h-2zM29 20h2v1h-2zM4 21h2v1h-2zM9 21h1v1h-1zM12 21h2v1h-2zM15 21h1v1h-1zM17 21h1v1h-1zM19 21h4v1h-4zM29 21h2v1h-2zM2 22h1v1h-1zM5 22h2v1h-2zM8 22h1v1h-1zM11 22h2v1h-2zM16 22h1v1h-1zM21 22h6v1h-6zM28 22h1v1h-1zM10 23h4v1h-4zM15 23h1v1h-1zM18 23h1v1h-1zM21 23h2v1h-2zM26 23h1v1h-1zM28 23h3v1h-3zM2 24h7v1h-7zM11 24h6v1h-6zM18 24h1v1h-1zM20 24h1v1h-1zM22 24h1v1h-1zM24 24h1v1h-1zM26 24h1v1h-1zM29 24h1v1h-1zM2 25h1v1h-1zM8 25h1v1h-1zM10 25h1v1h-1zM12 25h2v1h-2zM15 25h1v1h-1zM17 25h1v1h-1zM20 25h1v1h-1zM22 25h1v1h-1zM26 25h3v1h-3zM30 25h1v1h-1zM2 26h1v1h-1zM4 26h3v1h-3zM8 26h1v1h-1zM11 26h1v1h-1zM13 26h1v1h-1zM16 26h1v1h-1zM19 26h1v1h-1zM22 26h5v1h-5zM30 26h1v1h-1zM2 27h1v1h-1zM4 27h3v1h-3zM8 27h1v1h-1zM10 27h2v1h-2zM13 27h2v1h-2zM16 27h1v1h-1zM19 27h2v1h-2zM22 27h1v1h-1zM24 27h1v1h-1zM26 27h4v1h-4zM2 28h1v1h-1zM4 28h3v1h-3zM8 28h1v1h-1zM11 28h1v1h-1zM13 28h1v1h-1zM15 28h1v1h-1zM20 28h1v1h-1zM26 28h3v1h-3zM30 28h1v1h-1zM2 29h1v1h-1zM8 29h1v1h-1zM11 29h3v1h-3zM18 29h2v1h-2zM21 29h2v1h-2zM26 29h1v1h-1zM29 29h1v1h-1zM2 30h7v1h-7zM10 30h1v1h-1zM13 30h2v1h-2zM16 30h2v1h-2zM19 30h1v1h-1zM22 30h2v1h-2zM25 30h2v1h-2zM29 30h1v1h-1z"/></svg><b>فيسبوك</b><span>cairoquran</span></figure>
-    <figure><svg viewBox="0 0 33 33" shape-rendering="crispEdges" aria-hidden="true"><rect width="33" height="33" fill="#fdf6e9"/><path fill="#0b0f22" d="M2 2h7v1h-7zM15 2h4v1h-4zM20 2h2v1h-2zM24 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM13 3h6v1h-6zM24 3h1v1h-1zM30 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM11 4h2v1h-2zM14 4h1v1h-1zM17 4h1v1h-1zM19 4h1v1h-1zM21 4h2v1h-2zM24 4h1v1h-1zM26 4h3v1h-3zM30 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM12 5h3v1h-3zM16 5h1v1h-1zM20 5h1v1h-1zM24 5h1v1h-1zM26 5h3v1h-3zM30 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM12 6h1v1h-1zM14 6h2v1h-2zM17 6h4v1h-4zM22 6h1v1h-1zM24 6h1v1h-1zM26 6h3v1h-3zM30 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h1v1h-1zM13 7h2v1h-2zM16 7h6v1h-6zM24 7h1v1h-1zM30 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h1v1h-1zM22 8h1v1h-1zM24 8h7v1h-7zM13 9h2v1h-2zM17 9h4v1h-4zM22 9h1v1h-1zM2 10h1v1h-1zM5 10h1v1h-1zM7 10h2v1h-2zM10 10h2v1h-2zM15 10h2v1h-2zM18 10h1v1h-1zM21 10h1v1h-1zM23 10h1v1h-1zM25 10h1v1h-1zM2 11h3v1h-3zM6 11h2v1h-2zM9 11h1v1h-1zM11 11h2v1h-2zM14 11h2v1h-2zM18 11h1v1h-1zM22 11h3v1h-3zM27 11h1v1h-1zM30 11h1v1h-1zM2 12h1v1h-1zM4 12h8v1h-8zM15 12h2v1h-2zM21 12h1v1h-1zM24 12h1v1h-1zM27 12h3v1h-3zM2 13h2v1h-2zM6 13h1v1h-1zM10 13h2v1h-2zM15 13h1v1h-1zM20 13h3v1h-3zM25 13h2v1h-2zM28 13h2v1h-2zM2 14h1v1h-1zM5 14h5v1h-5zM12 14h1v1h-1zM14 14h2v1h-2zM19 14h2v1h-2zM22 14h3v1h-3zM27 14h1v1h-1zM29 14h2v1h-2zM2 15h1v1h-1zM4 15h3v1h-3zM9 15h1v1h-1zM11 15h3v1h-3zM21 15h3v1h-3zM25 15h1v1h-1zM4 16h1v1h-1zM7 16h3v1h-3zM11 16h2v1h-2zM14 16h1v1h-1zM16 16h1v1h-1zM23 16h1v1h-1zM27 16h4v1h-4zM2 17h1v1h-1zM5 17h1v1h-1zM15 17h1v1h-1zM17 17h4v1h-4zM23 17h2v1h-2zM27 17h1v1h-1zM29 17h1v1h-1zM4 18h2v1h-2zM7 18h8v1h-8zM18 18h2v1h-2zM21 18h1v1h-1zM23 18h1v1h-1zM25 18h1v1h-1zM29 18h1v1h-1zM3 19h2v1h-2zM7 19h1v1h-1zM9 19h2v1h-2zM12 19h1v1h-1zM14 19h1v1h-1zM16 19h1v1h-1zM18 19h1v1h-1zM24 19h2v1h-2zM27 19h1v1h-1zM30 19h1v1h-1zM2 20h1v1h-1zM4 20h7v1h-7zM12 20h1v1h-1zM14 20h1v1h-1zM16 20h1v1h-1zM19 20h2v1h-2zM24 20h2v1h-2zM29 20h2v1h-2zM6 21h2v1h-2zM9 21h2v1h-2zM16 21h7v1h-7zM29 21h2v1h-2zM2 22h1v1h-1zM4 22h2v1h-2zM8 22h1v1h-1zM10 22h4v1h-4zM15 22h2v1h-2zM22 22h5v1h-5zM28 22h1v1h-1zM10 23h3v1h-3zM18 23h2v1h-2zM21 23h2v1h-2zM26 23h1v1h-1zM28 23h3v1h-3zM2 24h7v1h-7zM11 24h1v1h-1zM13 24h2v1h-2zM18 24h1v1h-1zM20 24h1v1h-1zM22 24h1v1h-1zM24 24h1v1h-1zM26 24h1v1h-1zM29 24h1v1h-1zM2 25h1v1h-1zM8 25h1v1h-1zM10 25h1v1h-1zM14 25h2v1h-2zM18 25h1v1h-1zM20 25h1v1h-1zM22 25h1v1h-1zM26 25h5v1h-5zM2 26h1v1h-1zM4 26h3v1h-3zM8 26h1v1h-1zM11 26h2v1h-2zM16 26h4v1h-4zM22 26h5v1h-5zM2 27h1v1h-1zM4 27h3v1h-3zM8 27h1v1h-1zM10 27h2v1h-2zM14 27h2v1h-2zM21 27h1v1h-1zM24 27h1v1h-1zM26 27h4v1h-4zM2 28h1v1h-1zM4 28h3v1h-3zM8 28h1v1h-1zM14 28h1v1h-1zM18 28h3v1h-3zM23 28h1v1h-1zM26 28h3v1h-3zM30 28h1v1h-1zM2 29h1v1h-1zM8 29h1v1h-1zM12 29h4v1h-4zM19 29h4v1h-4zM26 29h1v1h-1zM29 29h1v1h-1zM2 30h7v1h-7zM10 30h2v1h-2zM13 30h1v1h-1zM16 30h1v1h-1zM18 30h2v1h-2zM22 30h1v1h-1zM25 30h2v1h-2zM29 30h1v1h-1z"/></svg><b>إنستغرام</b><span>@cairoquran.radio</span></figure>
+    <figure><svg viewBox="0 0 33 33" shape-rendering="crispEdges" aria-hidden="true"><rect width="33" height="33" fill="#fdf6e9"/><path fill="#0b0f22" d="M2 2h7v1h-7zM12 2h5v1h-5zM18 2h4v1h-4zM24 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM11 3h2v1h-2zM15 3h4v1h-4zM20 3h1v1h-1zM22 3h1v1h-1zM24 3h1v1h-1zM30 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM11 4h1v1h-1zM13 4h3v1h-3zM18 4h2v1h-2zM21 4h1v1h-1zM24 4h1v1h-1zM26 4h3v1h-3zM30 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM11 5h2v1h-2zM14 5h4v1h-4zM20 5h2v1h-2zM24 5h1v1h-1zM26 5h3v1h-3zM30 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM11 6h1v1h-1zM15 6h2v1h-2zM19 6h2v1h-2zM24 6h1v1h-1zM26 6h3v1h-3zM30 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h3v1h-3zM15 7h3v1h-3zM20 7h3v1h-3zM24 7h1v1h-1zM30 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h1v1h-1zM22 8h1v1h-1zM24 8h7v1h-7zM11 9h3v1h-3zM16 9h1v1h-1zM19 9h4v1h-4zM2 10h1v1h-1zM5 10h1v1h-1zM7 10h2v1h-2zM10 10h1v1h-1zM12 10h2v1h-2zM17 10h2v1h-2zM20 10h2v1h-2zM23 10h1v1h-1zM25 10h1v1h-1zM13 11h1v1h-1zM16 11h1v1h-1zM18 11h1v1h-1zM23 11h2v1h-2zM27 11h1v1h-1zM30 11h1v1h-1zM2 12h2v1h-2zM7 12h4v1h-4zM14 12h1v1h-1zM18 12h2v1h-2zM21 12h1v1h-1zM23 12h1v1h-1zM27 12h3v1h-3zM4 13h4v1h-4zM9 13h1v1h-1zM11 13h2v1h-2zM16 13h2v1h-2zM20 13h1v1h-1zM22 13h5v1h-5zM28 13h2v1h-2zM5 14h2v1h-2zM8 14h1v1h-1zM10 14h3v1h-3zM18 14h2v1h-2zM21 14h4v1h-4zM27 14h1v1h-1zM29 14h2v1h-2zM2 15h1v1h-1zM4 15h1v1h-1zM10 15h1v1h-1zM13 15h1v1h-1zM19 15h1v1h-1zM21 15h3v1h-3zM25 15h1v1h-1zM4 16h1v1h-1zM8 16h1v1h-1zM14 16h1v1h-1zM18 16h1v1h-1zM20 16h1v1h-1zM22 16h1v1h-1zM24 16h1v1h-1zM27 16h4v1h-4zM2 17h2v1h-2zM5 17h2v1h-2zM12 17h1v1h-1zM15 17h2v1h-2zM19 17h2v1h-2zM22 17h1v1h-1zM27 17h1v1h-1zM29 17h1v1h-1zM3 18h1v1h-1zM5 18h4v1h-4zM10 18h1v1h-1zM12 18h2v1h-2zM15 18h2v1h-2zM18 18h2v1h-2zM22 18h2v1h-2zM25 18h1v1h-1zM29 18h1v1h-1zM4 19h2v1h-2zM7 19h1v1h-1zM10 19h1v1h-1zM13 19h1v1h-1zM18 19h1v1h-1zM23 19h3v1h-3zM27 19h1v1h-1zM30 19h1v1h-1zM2 20h1v1h-1zM5 20h1v1h-1zM7 20h4v1h-4zM13 20h3v1h-3zM20 20h1v1h-1zM24 20h2v1h-2zM29 20h2v1h-2zM4 21h2v1h-2zM9 21h1v1h-1zM12 21h2v1h-2zM15 21h1v1h-1zM17 21h1v1h-1zM19 21h4v1h-4zM29 21h2v1h-2zM2 22h1v1h-1zM5 22h2v1h-2zM8 22h1v1h-1zM11 22h2v1h-2zM16 22h1v1h-1zM21 22h6v1h-6zM28 22h1v1h-1zM10 23h4v1h-4zM15 23h1v1h-1zM18 23h1v1h-1zM21 23h2v1h-2zM26 23h1v1h-1zM28 23h3v1h-3zM2 24h7v1h-7zM11 24h6v1h-6zM18 24h1v1h-1zM20 24h1v1h-1zM22 24h1v1h-1zM24 24h1v1h-1zM26 24h1v1h-1zM29 24h1v1h-1zM2 25h1v1h-1zM8 25h1v1h-1zM10 25h1v1h-1zM12 25h2v1h-2zM15 25h1v1h-1zM17 25h1v1h-1zM20 25h1v1h-1zM22 25h1v1h-1zM26 25h3v1h-3zM30 25h1v1h-1zM2 26h1v1h-1zM4 26h3v1h-3zM8 26h1v1h-1zM11 26h1v1h-1zM13 26h1v1h-1zM16 26h1v1h-1zM19 26h1v1h-1zM22 26h5v1h-5zM30 26h1v1h-1zM2 27h1v1h-1zM4 27h3v1h-3zM8 27h1v1h-1zM10 27h2v1h-2zM13 27h2v1h-2zM16 27h1v1h-1zM19 27h2v1h-2zM22 27h1v1h-1zM24 27h1v1h-1zM26 27h4v1h-4zM2 28h1v1h-1zM4 28h3v1h-3zM8 28h1v1h-1zM11 28h1v1h-1zM13 28h1v1h-1zM15 28h1v1h-1zM20 28h1v1h-1zM26 28h3v1h-3zM30 28h1v1h-1zM2 29h1v1h-1zM8 29h1v1h-1zM11 29h3v1h-3zM18 29h2v1h-2zM21 29h2v1h-2zM26 29h1v1h-1zM29 29h1v1h-1zM2 30h7v1h-7zM10 30h1v1h-1zM13 30h2v1h-2zM16 30h2v1h-2zM19 30h1v1h-1zM22 30h2v1h-2zM25 30h2v1h-2zM29 30h1v1h-1z"/></svg><b data-i18n="facebook">فيسبوك</b><span>cairoquran</span></figure>
+    <figure><svg viewBox="0 0 33 33" shape-rendering="crispEdges" aria-hidden="true"><rect width="33" height="33" fill="#fdf6e9"/><path fill="#0b0f22" d="M2 2h7v1h-7zM15 2h4v1h-4zM20 2h2v1h-2zM24 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM13 3h6v1h-6zM24 3h1v1h-1zM30 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM11 4h2v1h-2zM14 4h1v1h-1zM17 4h1v1h-1zM19 4h1v1h-1zM21 4h2v1h-2zM24 4h1v1h-1zM26 4h3v1h-3zM30 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM12 5h3v1h-3zM16 5h1v1h-1zM20 5h1v1h-1zM24 5h1v1h-1zM26 5h3v1h-3zM30 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM12 6h1v1h-1zM14 6h2v1h-2zM17 6h4v1h-4zM22 6h1v1h-1zM24 6h1v1h-1zM26 6h3v1h-3zM30 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h1v1h-1zM13 7h2v1h-2zM16 7h6v1h-6zM24 7h1v1h-1zM30 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h1v1h-1zM22 8h1v1h-1zM24 8h7v1h-7zM13 9h2v1h-2zM17 9h4v1h-4zM22 9h1v1h-1zM2 10h1v1h-1zM5 10h1v1h-1zM7 10h2v1h-2zM10 10h2v1h-2zM15 10h2v1h-2zM18 10h1v1h-1zM21 10h1v1h-1zM23 10h1v1h-1zM25 10h1v1h-1zM2 11h3v1h-3zM6 11h2v1h-2zM9 11h1v1h-1zM11 11h2v1h-2zM14 11h2v1h-2zM18 11h1v1h-1zM22 11h3v1h-3zM27 11h1v1h-1zM30 11h1v1h-1zM2 12h1v1h-1zM4 12h8v1h-8zM15 12h2v1h-2zM21 12h1v1h-1zM24 12h1v1h-1zM27 12h3v1h-3zM2 13h2v1h-2zM6 13h1v1h-1zM10 13h2v1h-2zM15 13h1v1h-1zM20 13h3v1h-3zM25 13h2v1h-2zM28 13h2v1h-2zM2 14h1v1h-1zM5 14h5v1h-5zM12 14h1v1h-1zM14 14h2v1h-2zM19 14h2v1h-2zM22 14h3v1h-3zM27 14h1v1h-1zM29 14h2v1h-2zM2 15h1v1h-1zM4 15h3v1h-3zM9 15h1v1h-1zM11 15h3v1h-3zM21 15h3v1h-3zM25 15h1v1h-1zM4 16h1v1h-1zM7 16h3v1h-3zM11 16h2v1h-2zM14 16h1v1h-1zM16 16h1v1h-1zM23 16h1v1h-1zM27 16h4v1h-4zM2 17h1v1h-1zM5 17h1v1h-1zM15 17h1v1h-1zM17 17h4v1h-4zM23 17h2v1h-2zM27 17h1v1h-1zM29 17h1v1h-1zM4 18h2v1h-2zM7 18h8v1h-8zM18 18h2v1h-2zM21 18h1v1h-1zM23 18h1v1h-1zM25 18h1v1h-1zM29 18h1v1h-1zM3 19h2v1h-2zM7 19h1v1h-1zM9 19h2v1h-2zM12 19h1v1h-1zM14 19h1v1h-1zM16 19h1v1h-1zM18 19h1v1h-1zM24 19h2v1h-2zM27 19h1v1h-1zM30 19h1v1h-1zM2 20h1v1h-1zM4 20h7v1h-7zM12 20h1v1h-1zM14 20h1v1h-1zM16 20h1v1h-1zM19 20h2v1h-2zM24 20h2v1h-2zM29 20h2v1h-2zM6 21h2v1h-2zM9 21h2v1h-2zM16 21h7v1h-7zM29 21h2v1h-2zM2 22h1v1h-1zM4 22h2v1h-2zM8 22h1v1h-1zM10 22h4v1h-4zM15 22h2v1h-2zM22 22h5v1h-5zM28 22h1v1h-1zM10 23h3v1h-3zM18 23h2v1h-2zM21 23h2v1h-2zM26 23h1v1h-1zM28 23h3v1h-3zM2 24h7v1h-7zM11 24h1v1h-1zM13 24h2v1h-2zM18 24h1v1h-1zM20 24h1v1h-1zM22 24h1v1h-1zM24 24h1v1h-1zM26 24h1v1h-1zM29 24h1v1h-1zM2 25h1v1h-1zM8 25h1v1h-1zM10 25h1v1h-1zM14 25h2v1h-2zM18 25h1v1h-1zM20 25h1v1h-1zM22 25h1v1h-1zM26 25h5v1h-5zM2 26h1v1h-1zM4 26h3v1h-3zM8 26h1v1h-1zM11 26h2v1h-2zM16 26h4v1h-4zM22 26h5v1h-5zM2 27h1v1h-1zM4 27h3v1h-3zM8 27h1v1h-1zM10 27h2v1h-2zM14 27h2v1h-2zM21 27h1v1h-1zM24 27h1v1h-1zM26 27h4v1h-4zM2 28h1v1h-1zM4 28h3v1h-3zM8 28h1v1h-1zM14 28h1v1h-1zM18 28h3v1h-3zM23 28h1v1h-1zM26 28h3v1h-3zM30 28h1v1h-1zM2 29h1v1h-1zM8 29h1v1h-1zM12 29h4v1h-4zM19 29h4v1h-4zM26 29h1v1h-1zM29 29h1v1h-1zM2 30h7v1h-7zM10 30h2v1h-2zM13 30h1v1h-1zM16 30h1v1h-1zM18 30h2v1h-2zM22 30h1v1h-1zM25 30h2v1h-2zM29 30h1v1h-1z"/></svg><b data-i18n="instagram">إنستغرام</b><span>@cairoquran.radio</span></figure>
   </div>
-  <div class="fw-hint">وجّه كاميرا الموبايل إلى الرمز</div>
+  <div class="fw-hint" data-i18n="scanHint">وجّه كاميرا الموبايل إلى الرمز</div>
 </aside>
 
 <main class="frame">
   <header class="top">
     <div class="station">
       <h1 class="brand"><span>Cairo</span> Quran</h1>
-      <div class="from">قرآن · أذان · أذكار</div>
-      <div class="now-row"><button class="now" id="nowBtn" type="button"><span class="now-k">الآن</span><b id="nowName">إذاعة القرآن الكريم · القاهرة</b><i class="chip" id="nowChip">تغيير<span class="chip-x"> المحطة</span> ▾</i><em class="new-badge" id="nowNew" hidden>جديد</em></button><button class="stop-btn" id="stopBtn" type="button" hidden aria-label="إيقاف البث"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>إيقاف</button></div>
+      <div class="from" data-i18n="tagline">قرآن · أذان · أذكار</div>
+      <div class="now-row"><button class="now" id="nowBtn" type="button"><span class="now-k" data-i18n="now">الآن</span><b id="nowName">إذاعة القرآن الكريم · القاهرة</b><i class="chip" id="nowChip" data-i18n="chipStation">تغيير<span class="chip-x"> المحطة</span> ▾</i><em class="new-badge" id="nowNew" hidden data-i18n="newBadge">جديد</em></button><button class="stop-btn" id="stopBtn" type="button" hidden aria-label="إيقاف البث" data-i18n-attr="aria-label:stopAria"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>إيقاف</button></div>
       <div class="status-row">
   <div class="status" id="status" data-s="idle"><span class="dot"></span><span id="statusText">جاهز للتشغيل</span></div>
         
@@ -336,121 +375,126 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
       <div class="dbg" id="dbg" hidden></div>
     </div>
     <div class="clock">
+      <button class="lang-btn" id="langBtn" type="button" aria-label="تغيير اللغة"></button>
       <div class="time" id="time">--:--</div>
       <div class="dates"><div id="greg"></div><div class="hijri" id="hijri"></div><div class="occasion" id="occasion" hidden></div></div>
-      <div class="rcd" id="ramadanCd" hidden><span class="rcd-k" id="rcdLabel">🌙 باقٍ على رمضان</span><b id="rcdNum"></b><span id="rcdUnit"></span><small>تقريبًا</small></div>
+      <div class="rcd" id="ramadanCd" hidden><span class="rcd-k" id="rcdLabel">🌙 باقٍ على رمضان</span><b id="rcdNum"></b><span id="rcdUnit"></span><small data-i18n="approx">تقريبًا</small></div>
     </div>
   </header>
 
-  <section class="verse" id="verse"><p id="verseText"></p><cite id="verseRef"></cite></section>
+  <section class="verse" id="verse"><p id="verseText" class="ar-text" lang="ar"></p><p class="verse-tr" id="verseTr" hidden></p><cite id="verseRef"></cite></section>
 
   <div class="bottom">
   <div class="adhkar-bar" id="adhkarBar" hidden aria-live="polite">
     <span class="ab-k" id="abLabel">أذكار الصباح</span>
-    <div class="ab-view" id="abView"><div class="ab-text" id="abText"><span id="abDhikr"></span><small id="abCount"></small></div></div>
+    <div class="ab-main"><div class="ab-view" id="abView" dir="rtl"><div class="ab-text" id="abText"><span id="abDhikr" lang="ar"></span><small id="abCount"></small></div></div><div class="ab-tr" id="abTr" hidden><span id="abTrText"></span></div></div>
   </div>
   <footer class="prayers" id="prayers">
-    <div class="p-head"><button class="city" id="cityBtn" type="button"><b id="cityLabel">مواقيت الصلاة · الكويت</b><span class="city-row"><i class="chip" id="cityChip">تغيير المدينة ▾</i><em class="new-badge" id="cityNew" hidden>جديد</em></span></button><span id="countdown"></span></div>
+    <div class="p-head"><button class="city" id="cityBtn" type="button"><b id="cityLabel">مواقيت الصلاة · الكويت</b><span class="city-row"><i class="chip" id="cityChip" data-i18n="chipCity">تغيير المدينة ▾</i><em class="new-badge" id="cityNew" hidden data-i18n="newBadge">جديد</em></span></button><span id="countdown"></span></div>
   </footer>
   </div>
-  <div class="sig"><span>By-<b>Ahmed Khalil</b></span><span class="vsep" id="visitsDot" hidden>·</span><span class="visits" id="visits" hidden></span><span class="vsep share-sep" id="shareSep">·</span><button class="share-btn" id="shareBtn" type="button" aria-label="شارك Cairo Quran"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>شارك مع أحبابك</button><span class="vsep web-x app-x">·</span><button class="share-btn web-x app-x" id="appBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg>على الموبايل</button><span class="vsep web-x">·</span><button class="share-btn web-x" id="tvBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>على التليفزيون</button><span class="vsep web-x">·</span><button class="share-btn web-x" id="contactBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>تواصل معنا</button><span class="vsep web-x">·</span><a class="share-btn web-x" id="studioLink" href="studio/" title="استوديو Cairo Quran"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="M17 10l5-3v10l-5-3"/></svg>اصنع مقطعك</a><span class="vsep web-x">·</span><a class="share-btn web-x" id="fbLink" href="https://www.facebook.com/cairoquran" target="_blank" rel="noopener" aria-label="Cairo Quran على فيسبوك" title="فيسبوك"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21z"/></svg>فيسبوك</a><span class="vsep web-x">·</span><a class="share-btn web-x" id="igLink" href="https://www.instagram.com/cairoquran.radio" target="_blank" rel="noopener" aria-label="Cairo Quran على إنستغرام" title="إنستغرام"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg>إنستغرام</a><span class="vsep" id="sigMailSep" hidden>·</span><span class="sig-mail" id="sigMail" hidden></span></div>
+  <div class="sig"><span>By-<b>Ahmed Khalil</b></span><span class="vsep" id="visitsDot" hidden>·</span><span class="visits" id="visits" hidden></span><span class="vsep share-sep" id="shareSep">·</span><button class="share-btn" id="shareBtn" type="button" aria-label="شارك Cairo Quran" data-i18n-attr="aria-label:shareAria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span data-i18n="shareShort">شارك مع أحبابك</span></button><span class="vsep web-x app-x">·</span><button class="share-btn web-x app-x" id="appBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg><span data-i18n="onPhone">على الموبايل</span></button><span class="vsep web-x">·</span><button class="share-btn web-x" id="tvBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span data-i18n="onTv">على التليفزيون</span></button><span class="vsep web-x">·</span><button class="share-btn web-x" id="contactBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span data-i18n="contactShort">تواصل معنا</span></button><span class="vsep web-x">·</span><a class="share-btn web-x" id="studioLink" href="studio/" title="استوديو Cairo Quran" data-i18n-attr="title:studioTitle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="M17 10l5-3v10l-5-3"/></svg><span data-i18n="studioShort">اصنع مقطعك</span></a><span class="vsep web-x">·</span><a class="share-btn web-x" id="fbLink" href="https://www.facebook.com/cairoquran" target="_blank" rel="noopener" aria-label="Cairo Quran على فيسبوك" title="فيسبوك" data-i18n-attr="aria-label:fbAria,title:facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21z"/></svg><span data-i18n="facebook">فيسبوك</span></a><span class="vsep web-x">·</span><a class="share-btn web-x" id="igLink" href="https://www.instagram.com/cairoquran.radio" target="_blank" rel="noopener" aria-label="Cairo Quran على إنستغرام" title="إنستغرام" data-i18n-attr="aria-label:igAria,title:instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg><span data-i18n="instagram">إنستغرام</span></a><span class="vsep" id="sigMailSep" hidden>·</span><span class="sig-mail" id="sigMail" hidden></span></div>
 </main>
 
 <div class="picker" id="picker" hidden role="dialog" aria-modal="true" aria-labelledby="pickerTitle">
   <div class="picker-card">
     <div class="picker-top"><h2 id="pickerTitle">اختر مدينتك</h2><span id="pickerSub">تُحسب المواقيت بالطريقة الرسمية لكل دولة</span></div>
     <div class="picker-groups" id="pickerGroups"></div>
-    <div class="picker-hint">استخدم الأسهم للتنقل، و OK للاختيار، و Back للإغلاق · ▲ للمحطات · ▼ للمدينة</div>
+    <div class="picker-hint" data-i18n="pickerHint">استخدم الأسهم للتنقل، و OK للاختيار، و Back للإغلاق · ▲ للمحطات · ▼ للمدينة</div>
   </div>
 </div>
 
 <div class="update" id="update" hidden role="dialog" aria-labelledby="updTitle">
-  <div class="upd-text"><span id="updTitle">🔔 يتوفر إصدار جديد من التطبيق <b id="updVer"></b></span><span class="upd-msg" id="updMsg"></span></div>
-  <div class="upd-actions"><button class="ubtn primary" id="updNow" type="button">تحديث الآن</button><button class="ubtn" id="updLater" type="button">لاحقًا</button></div>
+  <div class="upd-text"><span id="updTitle"><span data-i18n="updTitle">🔔 يتوفر إصدار جديد من التطبيق</span> <b id="updVer"></b></span><span class="upd-msg" id="updMsg"></span></div>
+  <div class="upd-actions"><button class="ubtn primary" id="updNow" type="button" data-i18n="updNow">تحديث الآن</button><button class="ubtn" id="updLater" type="button" data-i18n="updLater">لاحقًا</button></div>
   <div class="upd-bar" id="updBar" hidden><i id="updFill"></i></div>
 </div>
 <div class="share info" id="tvPanel" hidden role="dialog" aria-modal="true" aria-labelledby="tvTitle">
   <div class="share-card">
-    <h2 id="tvTitle">Cairo Quran على التليفزيون</h2>
-    <p>لأجهزة Android TV وGoogle TV · مجانًا</p>
+    <h2 id="tvTitle" data-i18n="tvTitle">Cairo Quran على التليفزيون</h2>
+    <p data-i18n="tvIntro">لأجهزة Android TV وGoogle TV · مجانًا</p>
     <ol class="steps">
-      <li>نزّل تطبيق <b>Downloader</b> من متجر التطبيقات في التليفزيون.</li>
-      <li>افتحه، واكتب الكود ده واضغط <b>Go</b>:<span class="dl-code">5229519</span></li>
-      <li>اضغط <b>Install</b>. لو طلب إذن «تثبيت التطبيقات غير المعروفة» فعّله وارجع.</li>
-      <li>لو ظهرت رسالة Play Protect اختار <b>Install anyway</b>؛ الرسالة دي بتظهر لأي تطبيق متنزّل من برّه المتجر.</li>
-      <li>افتح Cairo Quran واستمتع. التحديثات الجاية بتوصلك من جوه التطبيق.</li>
+      <li data-i18n="tv1">نزّل تطبيق <b>Downloader</b> من متجر التطبيقات في التليفزيون.</li>
+      <li data-i18n="tv2">افتحه، واكتب الكود ده واضغط <b>Go</b>:<span class="dl-code">5229519</span></li>
+      <li data-i18n="tv3">اضغط <b>Install</b>. لو طلب إذن «تثبيت التطبيقات غير المعروفة» فعّله وارجع.</li>
+      <li data-i18n="tv4">لو ظهرت رسالة Play Protect اختار <b>Install anyway</b>؛ الرسالة دي بتظهر لأي تطبيق متنزّل من برّه المتجر.</li>
+      <li data-i18n="tv5">افتح Cairo Quran واستمتع. التحديثات الجاية بتوصلك من جوه التطبيق.</li>
     </ol>
-    <div class="note">تليفزيون سامسونج أو إل جي؟ افتح <b>cairoquran.com</b> من متصفح التليفزيون مباشرة.</div>
-    <button class="share-close" type="button" data-close>إغلاق</button>
+    <div class="note" data-i18n="tvNote">تليفزيون سامسونج أو إل جي؟ افتح <b>cairoquran.com</b> من متصفح التليفزيون مباشرة.</div>
+    <button class="share-close" type="button" data-close data-i18n="close">إغلاق</button>
   </div>
 </div>
 
 <div class="share info" id="appPanel" hidden role="dialog" aria-modal="true" aria-labelledby="appTitle">
   <div class="share-card">
-    <h2 id="appTitle">Cairo Quran على موبايلك</h2>
-    <p>أضفه للشاشة الرئيسية، ويفتح بأيقونته زي أي تطبيق، من غير تحميل ولا متجر.</p>
-    <button class="mail-go app-go" id="appInstall" type="button" hidden>أضف للشاشة الرئيسية</button>
+    <h2 id="appTitle" data-i18n="appTitle">Cairo Quran على موبايلك</h2>
+    <p data-i18n="appIntro">أضفه للشاشة الرئيسية، ويفتح بأيقونته زي أي تطبيق، من غير تحميل ولا متجر.</p>
+    <button class="mail-go app-go" id="appInstall" type="button" hidden data-i18n="appInstall">أضف للشاشة الرئيسية</button>
     <ol class="steps" id="appIos" hidden>
-      <li>اضغط زر <b>المشاركة</b> (المربع اللي طالع منه سهم) في أسفل الشاشة.</li>
-      <li>انزل واختار <b>«إضافة إلى الشاشة الرئيسية»</b>.</li>
-      <li>اضغط <b>«إضافة»</b>، وهتلاقي الأيقونة على الشاشة.</li>
+      <li data-i18n="ios1">اضغط زر <b>المشاركة</b> (المربع اللي طالع منه سهم) في أسفل الشاشة.</li>
+      <li data-i18n="ios2">انزل واختار <b>«إضافة إلى الشاشة الرئيسية»</b>.</li>
+      <li data-i18n="ios3">اضغط <b>«إضافة»</b>، وهتلاقي الأيقونة على الشاشة.</li>
     </ol>
     <ol class="steps" id="appInApp" hidden>
-      <li>إنت فاتح الصفحة من جوه فيسبوك أو تطبيق تاني، وده ما بيسمحش بالإضافة.</li>
-      <li>اضغط القائمة <b>⋯</b> واختار <b>«فتح في المتصفح»</b> (Chrome أو Safari).</li>
-      <li>من هناك اضغط «على الموبايل» تاني.</li>
+      <li data-i18n="inapp1">إنت فاتح الصفحة من جوه فيسبوك أو تطبيق تاني، وده ما بيسمحش بالإضافة.</li>
+      <li data-i18n="inapp2">اضغط القائمة <b>⋯</b> واختار <b>«فتح في المتصفح»</b> (Chrome أو Safari).</li>
+      <li data-i18n="inapp3">من هناك اضغط «على الموبايل» تاني.</li>
     </ol>
     <ol class="steps" id="appOther" hidden>
-      <li>افتح قائمة المتصفح <b>⋮</b> (فوق في الركن).</li>
-      <li>اختار <b>«تثبيت التطبيق»</b> أو <b>«إضافة إلى الشاشة الرئيسية»</b>.</li>
+      <li data-i18n="other1">افتح قائمة المتصفح <b>⋮</b> (فوق في الركن).</li>
+      <li data-i18n="other2">اختار <b>«تثبيت التطبيق»</b> أو <b>«إضافة إلى الشاشة الرئيسية»</b>.</li>
     </ol>
-    <div class="note" id="appMsg">للتليفزيون استخدم زرار «على التليفزيون».</div>
-    <button class="share-close" type="button" data-close>إغلاق</button>
+    <div class="note" id="appMsg" data-i18n="appMsg">للتليفزيون استخدم زرار «على التليفزيون».</div>
+    <button class="share-close" type="button" data-close data-i18n="close">إغلاق</button>
   </div>
 </div>
 
 <div class="share info" id="contactPanel" hidden role="dialog" aria-modal="true" aria-labelledby="contactTitle">
   <div class="share-card">
-    <h2 id="contactTitle">تواصل معنا</h2>
-    <p>لاقتراح قارئ أو مدينة، أو لو واجهتك أي مشكلة، يسعدنا نسمع منك.</p>
-    <div class="share-link"><span id="contactAddr"></span><button type="button" id="contactCopy">نسخ</button></div>
-    <a class="mail-go" id="contactSend" href="#">أرسل رسالة</a>
-    <button class="share-close" type="button" data-close>إغلاق</button>
+    <h2 id="contactTitle" data-i18n="contactTitle">تواصل معنا</h2>
+    <p data-i18n="contactIntro">لاقتراح قارئ أو مدينة، أو لو واجهتك أي مشكلة، يسعدنا نسمع منك.</p>
+    <div class="share-link"><span id="contactAddr"></span><button type="button" id="contactCopy" data-i18n="contactCopy">نسخ</button></div>
+    <a class="mail-go" id="contactSend" href="#" data-i18n="contactSend">أرسل رسالة</a>
+    <button class="share-close" type="button" data-close data-i18n="close">إغلاق</button>
   </div>
 </div>
 
 <div class="share" id="share" hidden role="dialog" aria-modal="true" aria-labelledby="shareTitle">
   <div class="share-card">
-    <h2 id="shareTitle">شارك Cairo Quran</h2>
-    <p>انشر الخير، والدال على الخير كفاعله</p>
+    <h2 id="shareTitle" data-i18n="shareTitle">شارك Cairo Quran</h2>
+    <p data-i18n="shareIntro">انشر الخير، والدال على الخير كفاعله</p>
     <div class="share-grid">
-      <button class="sbtn" type="button" data-net="whatsapp"><i style="background:#25D366"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.5 4c1.7.7 2.4.8 3.2.6a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></i>واتساب</button>
-      <button class="sbtn" type="button" data-net="facebook"><i style="background:#1877F2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8.5V6.8c0-.8.2-1.3 1.4-1.3H17V2.3A22 22 0 0 0 14.6 2C12.3 2 10.7 3.4 10.7 6v2.5H8v3.6h2.7V22H14v-9.9h2.7l.4-3.6z"/></svg></i>فيسبوك</button>
-      <button class="sbtn" type="button" data-net="telegram"><i style="background:#229ED9"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.4 3.6 2.9 10.7c-1.3.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.5-1.4zM8.6 13.4l9.9-6.2c.5-.3.9-.1.5.2l-8.4 7.6-.3 3.6z"/></svg></i>تيليجرام</button>
-      <button class="sbtn" type="button" data-net="x"><i style="background:#000;border:1px solid #333"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.8 2.5h3.3l-7.2 8.2 8.4 11.1h-6.6l-5.2-6.8-5.9 6.8H1.3l7.7-8.8L1 2.5h6.8l4.7 6.2zm-1.2 17.4h1.8L6.6 4.3H4.6z"/></svg></i>إكس</button>
-      <button class="sbtn" type="button" data-net="email"><i style="background:#6b7280"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 2.3V17h16V7.3l-8 5.3zM5.2 7 12 11.5 18.8 7z"/></svg></i>البريد</button>
-      <button class="sbtn" type="button" data-net="more" id="shareMore"><i style="background:#b8862f"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16a3 3 0 0 0-2.4 1.2l-6.8-3.4a3 3 0 0 0 0-1.6l6.8-3.4A3 3 0 1 0 15 7l-6.8 3.4a3 3 0 1 0 0 3.2L15 17a3 3 0 1 0 3-1z"/></svg></i>تطبيقات أخرى</button>
+      <button class="sbtn" type="button" data-net="whatsapp"><i style="background:#25D366"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.5 4c1.7.7 2.4.8 3.2.6a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></i><span data-i18n="whatsapp">واتساب</span></button>
+      <button class="sbtn" type="button" data-net="facebook"><i style="background:#1877F2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8.5V6.8c0-.8.2-1.3 1.4-1.3H17V2.3A22 22 0 0 0 14.6 2C12.3 2 10.7 3.4 10.7 6v2.5H8v3.6h2.7V22H14v-9.9h2.7l.4-3.6z"/></svg></i><span data-i18n="facebook">فيسبوك</span></button>
+      <button class="sbtn" type="button" data-net="telegram"><i style="background:#229ED9"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.4 3.6 2.9 10.7c-1.3.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.5-1.4zM8.6 13.4l9.9-6.2c.5-.3.9-.1.5.2l-8.4 7.6-.3 3.6z"/></svg></i><span data-i18n="telegram">تيليجرام</span></button>
+      <button class="sbtn" type="button" data-net="x"><i style="background:#000;border:1px solid #333"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.8 2.5h3.3l-7.2 8.2 8.4 11.1h-6.6l-5.2-6.8-5.9 6.8H1.3l7.7-8.8L1 2.5h6.8l4.7 6.2zm-1.2 17.4h1.8L6.6 4.3H4.6z"/></svg></i><span data-i18n="xNet">إكس</span></button>
+      <button class="sbtn" type="button" data-net="email"><i style="background:#6b7280"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 2.3V17h16V7.3l-8 5.3zM5.2 7 12 11.5 18.8 7z"/></svg></i><span data-i18n="email">البريد</span></button>
+      <button class="sbtn" type="button" data-net="more" id="shareMore"><i style="background:#b8862f"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16a3 3 0 0 0-2.4 1.2l-6.8-3.4a3 3 0 0 0 0-1.6l6.8-3.4A3 3 0 1 0 15 7l-6.8 3.4a3 3 0 1 0 0 3.2L15 17a3 3 0 1 0 3-1z"/></svg></i><span data-i18n="moreApps">تطبيقات أخرى</span></button>
     </div>
-    <div class="share-link"><span id="shareUrl">cairoquran.com</span><button type="button" id="shareCopy">نسخ الرابط</button></div>
-    <button class="share-close" type="button" id="shareClose">إغلاق</button>
+    <div class="share-link"><span id="shareUrl">cairoquran.com</span><button type="button" id="shareCopy" data-i18n="copyLink">نسخ الرابط</button></div>
+    <button class="share-close" type="button" id="shareClose" data-i18n="close">إغلاق</button>
   </div>
 </div>
 
 <div class="adhan-ov" id="adhanOv" hidden role="alert">
-  <div class="adhan-card"><span class="adhan-k">حان الآن موعد</span><b id="adhanName">صلاة الظهر</b><small id="adhanHint">اضغط OK للإخفاء</small></div>
+  <div class="adhan-card"><span class="adhan-k" data-i18n="adhanK">حان الآن موعد</span><b id="adhanName">صلاة الظهر</b><small id="adhanHint">اضغط OK للإخفاء</small></div>
 </div>
 <div class="gate" id="gate">
   <div class="gate-card">
-    <div class="gate-title" id="gateTitle">بسم الله الرحمن الرحيم</div>
-    <button id="play" autofocus aria-label="تشغيل الإذاعة">
+    <div class="gate-title ar-text" id="gateTitle" lang="ar">بسم الله الرحمن الرحيم</div>
+    <div class="gate-tr" id="gateTr" hidden></div>
+    <button id="play" autofocus aria-label="تشغيل الإذاعة" data-i18n-attr="aria-label:playRadioAria">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg>
     </button>
-    <div class="gate-hint" id="gateHint">اضغط زر OK في جهاز التحكم لبدء البث</div>
-    <button class="share-btn gate-share" id="gateShare" type="button">شارك Cairo Quran مع أحبابك</button>
+    <div class="gate-hint" id="gateHint" data-i18n="gateHint">اضغط زر OK في جهاز التحكم لبدء البث</div>
+    <button class="share-btn gate-share" id="gateShare" type="button" data-i18n="gateShare">شارك Cairo Quran مع أحبابك</button>
   </div>
 </div>
 
 <audio id="radio" preload="none"></audio>
+<script src="i18n/ar.js?v=1"></script>
+<script src="i18n/en.js?v=1"></script>
+<script src="data/places.js?v=1"></script>
 
 <script>/* adhan-js 4.4.3 · MIT License · github.com/batoulapps/adhan-js */
 !function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports):"function"==typeof define&&define.amd?define(["exports"],e):e((t="undefined"!=typeof globalThis?globalThis:t||self).adhan={})}(this,(function(t){"use strict";function e(t,e){var n=Object.keys(t);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(t);e&&(r=r.filter((function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable}))),n.push.apply(n,r)}return n}function n(t){for(var n=1;n<arguments.length;n++){var r=null!=arguments[n]?arguments[n]:{};n%2?e(Object(r),!0).forEach((function(e){s(t,e,r[e])})):Object.getOwnPropertyDescriptors?Object.defineProperties(t,Object.getOwnPropertyDescriptors(r)):e(Object(r)).forEach((function(e){Object.defineProperty(t,e,Object.getOwnPropertyDescriptor(r,e))}))}return t}function r(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function a(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}function i(t,e,n){return e&&a(t.prototype,e),n&&a(t,n),Object.defineProperty(t,"prototype",{writable:!1}),t}function s(t,e,n){return e in t?Object.defineProperty(t,e,{value:n,enumerable:!0,configurable:!0,writable:!0}):t[e]=n,t}var o={Shafi:"shafi",Hanafi:"hanafi"};var h={MiddleOfTheNight:"middleofthenight",SeventhOfTheNight:"seventhofthenight",TwilightAngle:"twilightangle",recommended:function(t){return t.latitude>48?h.SeventhOfTheNight:h.MiddleOfTheNight}},u=i((function t(e,n){r(this,t),this.latitude=e,this.longitude=n})),l={Nearest:"nearest",Up:"up",None:"none"};function d(t,e){var n=t.getFullYear(),r=t.getMonth(),a=t.getDate()+e,i=t.getHours(),s=t.getMinutes(),o=t.getSeconds();return new Date(n,r,a,i,s,o)}function c(t,e){return g(t,60*e)}function g(t,e){return new Date(t.getTime()+1e3*e)}function f(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:l.Nearest,n=t.getUTCSeconds(),r=n>=30?60-n:-1*n;return e===l.Up?r=60-n:e===l.None&&(r=0),g(t,r)}function m(t){for(var e=0,n=[31,j.isLeapYear(t.getFullYear())?29:28,31,30,31,30,31,31,30,31,30,31],r=0;r<t.getMonth();r++)e+=n[r];return e+=t.getDate()}function M(t){return t instanceof Date&&!isNaN(t.valueOf())}function v(t){return t*Math.PI/180}function p(t){return 180*t/Math.PI}function b(t,e){return t-e*Math.floor(t/e)}function w(t){return b(t,360)}var A={General:"general",Ahmer:"ahmer",Abyad:"abyad"},j={meanSolarLongitude:function(t){var e=t;return w(280.4664567+36000.76983*e+3032e-7*Math.pow(e,2))},meanLunarLongitude:function(t){return w(218.3165+481267.8813*t)},ascendingLunarNodeLongitude:function(t){var e=t;return w(125.04452-1934.136261*e+.0020708*Math.pow(e,2)+Math.pow(e,3)/45e4)},meanSolarAnomaly:function(t){var e=t;return w(357.52911+35999.05029*e-1537e-7*Math.pow(e,2))},solarEquationOfTheCenter:function(t,e){var n=t,r=v(e);return(1.914602-.004817*n-14e-6*Math.pow(n,2))*Math.sin(r)+(.019993-101e-6*n)*Math.sin(2*r)+289e-6*Math.sin(3*r)},apparentSolarLongitude:function(t,e){var n=t,r=125.04-1934.136*n;return w(e+j.solarEquationOfTheCenter(n,j.meanSolarAnomaly(n))-.00569-.00478*Math.sin(v(r)))},meanObliquityOfTheEcliptic:function(t){var e=t;return 23.439291-.013004167*e-1.639e-7*Math.pow(e,2)+5.036e-7*Math.pow(e,3)},apparentObliquityOfTheEcliptic:function(t,e){var n=125.04-1934.136*t;return e+.00256*Math.cos(v(n))},meanSiderealTime:function(t){var e=t;return w(280.46061837+360.98564736629*(36525*e+2451545-2451545)+387933e-9*Math.pow(e,2)-Math.pow(e,3)/3871e4)},nutationInLongitude:function(t,e,n,r){var a=e,i=n,s=r;return-17.2/3600*Math.sin(v(s))-1.32/3600*Math.sin(2*v(a))-.23/3600*Math.sin(2*v(i))+.21/3600*Math.sin(2*v(s))},nutationInObliquity:function(t,e,n,r){var a=e,i=n,s=r;return 9.2/3600*Math.cos(v(s))+.57/3600*Math.cos(2*v(a))+.1/3600*Math.cos(2*v(i))-.09/3600*Math.cos(2*v(s))},altitudeOfCelestialBody:function(t,e,n){var r=t,a=e,i=n,s=Math.sin(v(r))*Math.sin(v(a)),o=Math.cos(v(r))*Math.cos(v(a))*Math.cos(v(i));return p(Math.asin(s+o))},approximateTransit:function(t,e,n){return b((n+-1*t-e)/360,1)},correctedTransit:function(t,e,n,r,a,i){var s,o=t,h=r,u=a,l=i,d=-1*e,c=w(n+360.985647*o),g=w(j.interpolateAngles(h,u,l,o));return 24*(o+((s=c-d-g)>=-180&&s<=180?s:s-360*Math.round(s/360))/-360)},correctedHourAngle:function(t,e,n,r,a,i,s,o,h,u,l){var d=t,c=e,g=a,f=i,m=s,M=o,b=h,A=u,y=l,T=-1*n.longitude,S=Math.sin(v(c))-Math.sin(v(n.latitude))*Math.sin(v(b)),O=Math.cos(v(n.latitude))*Math.cos(v(b)),D=p(Math.acos(S/O)),N=r?d+D/360:d-D/360,P=w(g+360.985647*N),L=w(j.interpolateAngles(f,m,M,N)),C=j.interpolate(b,A,y,N),Y=P-T-L;return 24*(N+(j.altitudeOfCelestialBody(n.latitude,C,Y)-c)/(360*Math.cos(v(C))*Math.cos(v(n.latitude))*Math.sin(v(Y))))},interpolate:function(t,e,n,r){var a=t-e,i=n-t;return t+r/2*(a+i+r*(i-a))},interpolateAngles:function(t,e,n,r){var a=w(t-e),i=w(n-t);return t+r/2*(a+i+r*(i-a))},julianDay:function(t,e,n){var r=arguments.length>3&&void 0!==arguments[3]?arguments[3]:0,a=Math.trunc,i=a(e>2?t:t-1),s=a(e>2?e:e+12),o=n+r/24,h=a(i/100),u=a(2-h+a(h/4)),l=a(365.25*(i+4716)),d=a(30.6001*(s+1));return l+d+o+u-1524.5},julianCentury:function(t){return(t-2451545)/36525},isLeapYear:function(t){return t%4==0&&(t%100!=0||t%400==0)},seasonAdjustedMorningTwilight:function(t,e,n,r){var a,i=75+28.65/55*Math.abs(t),s=75+19.44/55*Math.abs(t),o=75+32.74/55*Math.abs(t),h=75+48.1/55*Math.abs(t),u=(a=j.daysSinceSolstice(e,n,t))<91?i+(s-i)/91*a:a<137?s+(o-s)/46*(a-91):a<183?o+(h-o)/46*(a-137):a<229?h+(o-h)/46*(a-183):a<275?o+(s-o)/46*(a-229):s+(i-s)/91*(a-275);return g(r,Math.round(-60*u))},seasonAdjustedEveningTwilight:function(t,e,n,r,a){var i,s,o,h;a===A.Ahmer?(i=62+17.4/55*Math.abs(t),s=62-7.16/55*Math.abs(t),o=62+5.12/55*Math.abs(t),h=62+19.44/55*Math.abs(t)):a===A.Abyad?(i=75+25.6/55*Math.abs(t),s=75+7.16/55*Math.abs(t),o=75+36.84/55*Math.abs(t),h=75+1.488*Math.abs(t)):(i=75+25.6/55*Math.abs(t),s=75+2.05/55*Math.abs(t),o=75-9.21/55*Math.abs(t),h=75+6.14/55*Math.abs(t));var u,l=(u=j.daysSinceSolstice(e,n,t))<91?i+(s-i)/91*u:u<137?s+(o-s)/46*(u-91):u<183?o+(h-o)/46*(u-137):u<229?h+(o-h)/46*(u-183):u<275?o+(s-o)/46*(u-229):s+(i-s)/91*(u-275);return g(r,Math.round(60*l))},daysSinceSolstice:function(t,e,n){var r=0,a=j.isLeapYear(e)?173:172,i=j.isLeapYear(e)?366:365;return n>=0?(r=t+10,r>=i&&(r-=i)):(r=t-a,r<0&&(r+=i)),r}},y=i((function t(e){r(this,t);var n=j.julianCentury(e),a=j.meanSolarLongitude(n),i=j.meanLunarLongitude(n),s=j.ascendingLunarNodeLongitude(n),o=v(j.apparentSolarLongitude(n,a)),h=j.meanSiderealTime(n),u=j.nutationInLongitude(n,a,i,s),l=j.nutationInObliquity(n,a,i,s),d=j.meanObliquityOfTheEcliptic(n),c=v(j.apparentObliquityOfTheEcliptic(n,d));this.declination=p(Math.asin(Math.sin(c)*Math.sin(o))),this.rightAscension=w(p(Math.atan2(Math.cos(c)*Math.sin(o),Math.cos(o)))),this.apparentSiderealTime=h+3600*u*Math.cos(v(d+l))/3600})),T=function(){function t(e,n){r(this,t);var a=j.julianDay(e.getFullYear(),e.getMonth()+1,e.getDate(),0);this.observer=n,this.solar=new y(a),this.prevSolar=new y(a-1),this.nextSolar=new y(a+1);var i=j.approximateTransit(n.longitude,this.solar.apparentSiderealTime,this.solar.rightAscension),s=-50/60;this.approxTransit=i,this.transit=j.correctedTransit(i,n.longitude,this.solar.apparentSiderealTime,this.solar.rightAscension,this.prevSolar.rightAscension,this.nextSolar.rightAscension),this.sunrise=j.correctedHourAngle(i,s,n,!1,this.solar.apparentSiderealTime,this.solar.rightAscension,this.prevSolar.rightAscension,this.nextSolar.rightAscension,this.solar.declination,this.prevSolar.declination,this.nextSolar.declination),this.sunset=j.correctedHourAngle(i,s,n,!0,this.solar.apparentSiderealTime,this.solar.rightAscension,this.prevSolar.rightAscension,this.nextSolar.rightAscension,this.solar.declination,this.prevSolar.declination,this.nextSolar.declination)}return i(t,[{key:"hourAngle",value:function(t,e){return j.correctedHourAngle(this.approxTransit,t,this.observer,e,this.solar.apparentSiderealTime,this.solar.rightAscension,this.prevSolar.rightAscension,this.nextSolar.rightAscension,this.solar.declination,this.prevSolar.declination,this.nextSolar.declination)}},{key:"afternoon",value:function(t){var e=Math.abs(this.observer.latitude-this.solar.declination),n=t+Math.tan(v(e)),r=p(Math.atan(1/n));return this.hourAngle(r,!0)}}]),t}(),S={AqrabBalad:"AqrabBalad",AqrabYaum:"AqrabYaum",Unresolved:"Unresolved"},O=function(t){return!isNaN(t.sunrise)&&!isNaN(t.sunset)},D=function t(e,n){var r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:1,a=arguments.length>3&&void 0!==arguments[3]?arguments[3]:1;if(r>Math.ceil(182.5))return null;var i=new Date(n.getTime());i.setDate(i.getDate()+a*r);var s=d(i,1),o=new T(i,e),h=new T(s,e);return O(o)&&O(h)?{date:n,tomorrow:s,coordinates:e,solarTime:o,tomorrowSolarTime:h}:t(e,n,r+(a>0?0:1),-a)},N=function t(e,r,a){var i=new T(r,n(n({},e),{},{latitude:a})),s=d(r,1),o=new T(s,n(n({},e),{},{latitude:a}));return O(i)&&O(o)?{date:r,tomorrow:s,coordinates:new u(a,e.longitude),solarTime:i,tomorrowSolarTime:o}:Math.abs(a)>=65?t(e,r,a-.5*Math.sign(a)):null},P=function(t,e,n){var r={date:e,tomorrow:d(e,1),coordinates:n,solarTime:new T(e,n),tomorrowSolarTime:new T(d(e,1),n)};switch(t){case S.AqrabYaum:return D(n,e)||r;case S.AqrabBalad:var a=n.latitude;return N(n,e,a-.5*Math.sign(a))||r;default:return r}},L=function(){function t(e){var n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:0,a=arguments.length>2&&void 0!==arguments[2]?arguments[2]:0,i=arguments.length>3&&void 0!==arguments[3]?arguments[3]:0,u=arguments.length>4&&void 0!==arguments[4]?arguments[4]:0;r(this,t),s(this,"madhab",o.Shafi),s(this,"highLatitudeRule",h.MiddleOfTheNight),s(this,"adjustments",{fajr:0,sunrise:0,dhuhr:0,asr:0,maghrib:0,isha:0}),s(this,"methodAdjustments",{fajr:0,sunrise:0,dhuhr:0,asr:0,maghrib:0,isha:0}),s(this,"polarCircleResolution",S.Unresolved),s(this,"rounding",l.Nearest),s(this,"shafaq",A.General),this.method=e,this.fajrAngle=n,this.ishaAngle=a,this.ishaInterval=i,this.maghribAngle=u,null===this.method&&(this.method="Other")}return i(t,[{key:"nightPortions",value:function(){switch(this.highLatitudeRule){case h.MiddleOfTheNight:return{fajr:.5,isha:.5};case h.SeventhOfTheNight:return{fajr:1/7,isha:1/7};case h.TwilightAngle:return{fajr:this.fajrAngle/60,isha:this.ishaAngle/60};default:throw"Invalid high latitude rule found when attempting to compute night portions: ".concat(this.highLatitudeRule)}}}]),t}(),C={MuslimWorldLeague:function(){var t=new L("MuslimWorldLeague",18,17);return t.methodAdjustments.dhuhr=1,t},Egyptian:function(){var t=new L("Egyptian",19.5,17.5);return t.methodAdjustments.dhuhr=1,t},Karachi:function(){var t=new L("Karachi",18,18);return t.methodAdjustments.dhuhr=1,t},UmmAlQura:function(){return new L("UmmAlQura",18.5,0,90)},Dubai:function(){var t=new L("Dubai",18.2,18.2);return t.methodAdjustments=n(n({},t.methodAdjustments),{},{sunrise:-3,dhuhr:3,asr:3,maghrib:3}),t},MoonsightingCommittee:function(){var t=new L("MoonsightingCommittee",18,18);return t.methodAdjustments=n(n({},t.methodAdjustments),{},{dhuhr:5,maghrib:3}),t},NorthAmerica:function(){var t=new L("NorthAmerica",15,15);return t.methodAdjustments.dhuhr=1,t},Kuwait:function(){return new L("Kuwait",18,17.5)},Qatar:function(){return new L("Qatar",18,0,90)},Singapore:function(){var t=new L("Singapore",20,18);return t.methodAdjustments.dhuhr=1,t.rounding=l.Up,t},Tehran:function(){return new L("Tehran",17.7,14,0,4.5)},Turkey:function(){var t=new L("Turkey",18,17);return t.methodAdjustments=n(n({},t.methodAdjustments),{},{sunrise:-7,dhuhr:5,asr:4,maghrib:7}),t},Other:function(){return new L("Other",0,0)}},Y={Fajr:"fajr",Sunrise:"sunrise",Dhuhr:"dhuhr",Asr:"asr",Maghrib:"maghrib",Isha:"isha",None:"none"},F=function(){function t(e){return r(this,t),this.hours=Math.floor(e),this.minutes=Math.floor(60*(e-this.hours)),this.seconds=Math.floor(60*(e-(this.hours+this.minutes/60))*60),this}return i(t,[{key:"utcDate",value:function(t,e,n){return new Date(Date.UTC(t,e,n,this.hours,this.minutes,this.seconds))}}]),t}(),q=function(){function t(e,n,a){r(this,t),this.coordinates=e,this.date=n,this.calculationParameters=a;var i,s,h,u,l,v,p,b=new T(n,e);h=new F(b.transit).utcDate(n.getFullYear(),n.getMonth(),n.getDate()),s=new F(b.sunrise).utcDate(n.getFullYear(),n.getMonth(),n.getDate()),l=new F(b.sunset).utcDate(n.getFullYear(),n.getMonth(),n.getDate());var w=d(n,1),A=new T(w,e),y=a.polarCircleResolution;if((!M(s)||!M(l)||isNaN(A.sunrise))&&y!==S.Unresolved){var O,D,N,L=P(y,n,e);b=L.solarTime,A=L.tomorrowSolarTime;var C=[n.getFullYear(),n.getMonth(),n.getDate()];h=(O=new F(b.transit)).utcDate.apply(O,C),s=(D=new F(b.sunrise)).utcDate.apply(D,C),l=(N=new F(b.sunset)).utcDate.apply(N,C)}u=new F(b.afternoon(function(t){switch(t){case o.Shafi:return 1;case o.Hanafi:return 2;default:throw"Invalid Madhab"}}(a.madhab))).utcDate(n.getFullYear(),n.getMonth(),n.getDate());var Y=new F(A.sunrise).utcDate(w.getFullYear(),w.getMonth(),w.getDate()),q=(Number(Y)-Number(l))/1e3;i=new F(b.hourAngle(-1*a.fajrAngle,!1)).utcDate(n.getFullYear(),n.getMonth(),n.getDate()),"MoonsightingCommittee"===a.method&&e.latitude>=55&&(i=g(s,-(q/7)));var x=function(){if("MoonsightingCommittee"===a.method)return j.seasonAdjustedMorningTwilight(e.latitude,m(n),n.getFullYear(),s);var t=a.nightPortions().fajr;return g(s,-(t*q))}();if((isNaN(i.getTime())||x>i)&&(i=x),a.ishaInterval>0)p=c(l,a.ishaInterval);else{p=new F(b.hourAngle(-1*a.ishaAngle,!0)).utcDate(n.getFullYear(),n.getMonth(),n.getDate()),"MoonsightingCommittee"===a.method&&e.latitude>=55&&(p=g(l,q/7));var I=function(){if("MoonsightingCommittee"===a.method)return j.seasonAdjustedEveningTwilight(e.latitude,m(n),n.getFullYear(),l,a.shafaq);var t=a.nightPortions().isha;return g(l,t*q)}();(isNaN(p.getTime())||I<p)&&(p=I)}if(v=l,a.maghribAngle){var E=new F(b.hourAngle(-1*a.maghribAngle,!0)).utcDate(n.getFullYear(),n.getMonth(),n.getDate());l<E&&p>E&&(v=E)}var k=(a.adjustments.fajr||0)+(a.methodAdjustments.fajr||0),U=(a.adjustments.sunrise||0)+(a.methodAdjustments.sunrise||0),H=(a.adjustments.dhuhr||0)+(a.methodAdjustments.dhuhr||0),R=(a.adjustments.asr||0)+(a.methodAdjustments.asr||0),B=(a.adjustments.maghrib||0)+(a.methodAdjustments.maghrib||0),Q=(a.adjustments.isha||0)+(a.methodAdjustments.isha||0);this.fajr=f(c(i,k),a.rounding),this.sunrise=f(c(s,U),a.rounding),this.dhuhr=f(c(h,H),a.rounding),this.asr=f(c(u,R),a.rounding),this.sunset=f(l,a.rounding),this.maghrib=f(c(v,B),a.rounding),this.isha=f(c(p,Q),a.rounding)}return i(t,[{key:"timeForPrayer",value:function(t){return t===Y.Fajr?this.fajr:t===Y.Sunrise?this.sunrise:t===Y.Dhuhr?this.dhuhr:t===Y.Asr?this.asr:t===Y.Maghrib?this.maghrib:t===Y.Isha?this.isha:null}},{key:"currentPrayer",value:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:new Date;return t>=this.isha?Y.Isha:t>=this.maghrib?Y.Maghrib:t>=this.asr?Y.Asr:t>=this.dhuhr?Y.Dhuhr:t>=this.sunrise?Y.Sunrise:t>=this.fajr?Y.Fajr:Y.None}},{key:"nextPrayer",value:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:new Date;return t>=this.isha?Y.None:t>=this.maghrib?Y.Isha:t>=this.asr?Y.Maghrib:t>=this.dhuhr?Y.Asr:t>=this.sunrise?Y.Dhuhr:t>=this.fajr?Y.Sunrise:Y.Fajr}}]),t}();var x=i((function t(e){r(this,t);var n=d(e.date,1),a=(new q(e.coordinates,n,e.calculationParameters).fajr.getTime()-e.maghrib.getTime())/1e3;this.middleOfTheNight=f(g(e.maghrib,a/2)),this.lastThirdOfTheNight=f(g(e.maghrib,a*(2/3)))}));t.CalculationMethod=C,t.CalculationParameters=L,t.Coordinates=u,t.HighLatitudeRule=h,t.Madhab=o,t.PolarCircleResolution=S,t.Prayer=Y,t.PrayerTimes=q,t.Qibla=function(t){var e=new u(21.4225241,39.8261818),n=Math.sin(v(e.longitude)-v(t.longitude)),r=Math.cos(v(t.latitude))*Math.tan(v(e.latitude)),a=Math.sin(v(t.latitude))*Math.cos(v(e.longitude)-v(t.longitude));return w(p(Math.atan2(n,r-a)))},t.Rounding=l,t.Shafaq=A,t.SunnahTimes=x,Object.defineProperty(t,"__esModule",{value:!0})}));
@@ -592,7 +636,19 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
   ]
   };
   const $ = id => document.getElementById(id);
-  const ar = (n, pad) => Number(n).toLocaleString('ar-EG', { minimumIntegerDigits: pad || 1, useGrouping: false });
+
+  /* ---------- Language: strings live in i18n/<code>.js; <head> already picked the language ---------- */
+  const I18N = window.I18N || {};
+  let LANG = I18N[window.QLANG] ? window.QLANG : 'ar';
+  const AR_MARKUP = {};                      // Arabic written in the page itself, kept for switching back
+  function L(k) {                            // current language, then English, then Arabic
+    const chain = LANG === 'ar' ? ['ar'] : [LANG, 'en', 'ar'];
+    for (const c of chain) { const d = I18N[c]; if (d && d[k] !== undefined) return d[k]; }
+    return AR_MARKUP[k];
+  }
+  function t(k, ...a) { const v = L(k); return typeof v === 'function' ? v(...a) : (v === undefined ? '' : v); }
+  const tk = (k, key, ...a) => { const v = (L(k) || {})[key]; return typeof v === 'function' ? v(...a) : v; };
+  const num = (n, pad) => Number(n).toLocaleString(t('numLocale') || 'ar-EG', { minimumIntegerDigits: pad || 1, useGrouping: false });
 
   /* ---------- Cities: each country's official calculation method ---------- */
   // [id, name, country, lat, lng, IANA zone, adhan method, fallback UTC offset]
@@ -621,6 +677,8 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
     ['doha', 'الدوحة', 'قطر', 25.2854, 51.5310, 'Asia/Qatar', 'Qatar', 3]
   ].map(([id, name, country, lat, lng, tz, method, off]) => ({ id, name, country, lat, lng, tz, method, off }));
   const byId = id => CITIES.find(c => c.id === id);
+  const cityName = c => tk('cities', c.id) || c.name;
+  const countryName = c => tk('countries', c) || c;
 
   function loadCity() {
     let id = null;
@@ -671,9 +729,9 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
     return out;
   }
 
-  const NAMES = { fajr: 'الفجر', sunrise: 'الشروق', dhuhr: 'الظهر', asr: 'العصر', maghrib: 'المغرب', isha: 'العشاء' };
+  const pname = k => tk('prayer', k) || k;
   const ORDER = ['fajr', 'sunrise', 'dhuhr', 'asr', 'maghrib', 'isha'];
-  const fmt12 = mins => { mins = ((mins % 1440) + 1440) % 1440; let h = Math.floor(mins / 60), m = mins % 60; const h12 = h % 12 || 12; return ar(h12) + ':' + ar(m, 2); };
+  const fmt12 = mins => { mins = ((mins % 1440) + 1440) % 1440; let h = Math.floor(mins / 60), m = mins % 60; const h12 = h % 12 || 12; return num(h12) + ':' + num(m, 2); };
 
   let todayKey = '', times = null, tomorrowFajr = 0;
 
@@ -683,13 +741,13 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
     times = prayerTimes(n.y, n.mo, n.d);
     const tm = new Date(Date.UTC(n.y, n.mo - 1, n.d + 1));
     tomorrowFajr = prayerTimes(tm.getUTCFullYear(), tm.getUTCMonth() + 1, tm.getUTCDate()).fajr;
-    $('cityLabel').textContent = 'مواقيت الصلاة · ' + CITY.name;
+    $('cityLabel').textContent = t('cityLabel', cityName(CITY));
     const box = $('prayers');
     box.querySelectorAll('.p').forEach(e => e.remove());
     ORDER.forEach(k => {
       const d = document.createElement('div');
       d.className = 'p' + (k === 'sunrise' ? ' minor' : ''); d.id = 'p-' + k;
-      d.innerHTML = '<div class="n">' + NAMES[k] + '</div><div class="t">' + fmt12(times[k]) + '</div>';
+      d.innerHTML = '<div class="n">' + pname(k) + '</div><div class="t">' + fmt12(times[k]) + '</div>';
       box.appendChild(d);
     });
   }
@@ -706,8 +764,8 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
   /* ---------- Clock, dates, countdown ---------- */
   let fmtGreg = null, fmtHijri = null;
   function buildDateFormats() {
-    try { fmtGreg = new Intl.DateTimeFormat('ar-EG', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: CITY.tz }); } catch (e) { fmtGreg = null; }
-    try { fmtHijri = new Intl.DateTimeFormat('ar-EG-u-ca-islamic-umalqura', { day: 'numeric', month: 'long', year: 'numeric', timeZone: CITY.tz }); } catch (e) { fmtHijri = null; }
+    try { fmtGreg = new Intl.DateTimeFormat(t('dateLocale'), { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: CITY.tz }); } catch (e) { fmtGreg = null; }
+    try { fmtHijri = new Intl.DateTimeFormat(t('hijriLocale'), { day: 'numeric', month: 'long', year: 'numeric', timeZone: CITY.tz }); } catch (e) { fmtHijri = null; }
   }
   buildDateFormats();
 
@@ -716,7 +774,7 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
     const n = cityParts(now);
     if (dayKey(n) !== todayKey) buildPrayers();
     const h = n.h, m = n.mi, s = n.s;
-    $('time').innerHTML = ar(h % 12 || 12) + ':' + ar(m, 2) + '<small>' + (h < 12 ? 'صباحًا' : 'مساءً') + '</small>';
+    $('time').innerHTML = num(h % 12 || 12) + ':' + num(m, 2) + '<small>' + (h < 12 ? t('am') : t('pm')) + '</small>';
     if (fmtGreg) $('greg').textContent = fmtGreg.format(now);
     if (fmtHijri) $('hijri').textContent = fmtHijri.format(now);
 
@@ -727,7 +785,7 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
     document.querySelectorAll('.p.next').forEach(e => e.classList.remove('next'));
     const el = $('p-' + next); if (el) el.classList.add('next');
     const left = Math.max(0, Math.ceil(target - nowMin));
-    $('countdown').textContent = 'باقٍ على ' + NAMES[next] + ' ' + ar(Math.floor(left / 60)) + ':' + ar(left % 60, 2);
+    $('countdown').textContent = t('countdown', pname(next), num(Math.floor(left / 60)) + ':' + num(left % 60, 2));
 
     const p = period(h * 60 + m);
     if (p !== currentPeriod) { currentPeriod = p; showScene(); }
@@ -754,32 +812,27 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
     } catch (e) { return null; }
   }
   const OCCASIONS = [
-    { m: 12, d: 9, name: 'يوم عرفة' },
-    { m: 12, d: 10, name: 'عيد الأضحى' }, { m: 1, d: 1, name: 'رأس السنة الهجرية' }, { m: 1, d: 10, name: 'يوم عاشوراء' }
+    { m: 12, d: 9, key: 'arafah' },
+    { m: 12, d: 10, key: 'eidAdha' }, { m: 1, d: 1, key: 'hijriNewYear' }, { m: 1, d: 10, key: 'ashura' }
   ];
-  function daysWord(n) {
-    if (n === 1) return 'يوم واحد';
-    if (n === 2) return 'يومان';
-    if (n <= 10) return ar(n) + ' أيام';
-    return ar(n) + ' يومًا';
-  }
+  function daysWord(n) { return t('daysWord', n, num); }
   let occKey = '', occText = '', occIsRamadan = false;
   function computeOccasion(n) {
     const today = hijriMD(n.y, n.mo, n.d);
     occIsRamadan = !!today && today.m === 9;
     if (!today) return '';
-    if (today.m === 9) return 'رمضان كريم 🌙 · اليوم ' + ar(today.d) + ' من رمضان';
-    if (today.m === 10 && today.d <= 3) return 'عيد فطر مبارك 🌙';
-    if (today.m === 12 && today.d === 9) return 'يوم عرفة · خير الدعاء دعاء يوم عرفة';
-    if (today.m === 12 && today.d >= 10 && today.d <= 13) return 'عيد أضحى مبارك 🌙';
-    if (today.m === 1 && today.d === 1) return 'كل عام وأنتم بخير · سنة هجرية مباركة';
-    if (today.m === 1 && today.d === 10) return 'يوم عاشوراء';
+    if (today.m === 9) return t('ramadanDay', num(today.d));
+    if (today.m === 10 && today.d <= 3) return t('eidFitr');
+    if (today.m === 12 && today.d === 9) return t('arafahToday');
+    if (today.m === 12 && today.d >= 10 && today.d <= 13) return t('eidAdhaToday');
+    if (today.m === 1 && today.d === 1) return t('newYearToday');
+    if (today.m === 1 && today.d === 10) return t('ashuraToday');
     for (let i = 1; i <= 60; i++) {                           // the next occasion within two months
       const dt = new Date(Date.UTC(n.y, n.mo - 1, n.d + i));
       const h = hijriMD(dt.getUTCFullYear(), dt.getUTCMonth() + 1, dt.getUTCDate());
       if (!h) break;
       const o = OCCASIONS.find(x => x.m === h.m && x.d === h.d);
-      if (o) return 'باقٍ ' + daysWord(i) + ' على ' + o.name + ' تقريبًا';
+      if (o) return t('nextOccasion', daysWord(i), tk('occasion', o.key));
     }
     return '';
   }
@@ -799,9 +852,9 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
     const left = daysToRamadan(n), el = $('ramadanCd');
     el.hidden = !left; if (!left) return;
     const short = left <= 2;
-    $('rcdLabel').textContent = left === 1 ? '🌙 رمضان غدًا إن شاء الله' : left === 2 ? '🌙 رمضان بعد يومين إن شاء الله' : '🌙 باقٍ على رمضان';
+    $('rcdLabel').textContent = left === 1 ? t('rcdTomorrow') : left === 2 ? t('rcdInTwo') : t('rcdUntil');
     $('rcdNum').hidden = short; $('rcdUnit').hidden = short;
-    $('rcdNum').textContent = ar(left); $('rcdUnit').textContent = left <= 10 ? 'أيام' : 'يومًا';
+    $('rcdNum').textContent = num(left); $('rcdUnit').textContent = t('rcdUnit', left);
   }
   function showOccasion(now, n, nowMin) {
     const k = dayKey(n);
@@ -809,8 +862,8 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
     let text = occText;
     if (occIsRamadan && times) {
       const imsak = times.fajr - 10;
-      if (nowMin < times.fajr) text += ' · الإمساك ' + fmt12(imsak);
-      else if (nowMin < times.maghrib) { const left = Math.ceil(times.maghrib - nowMin); text += ' · الإفطار بعد ' + ar(Math.floor(left / 60)) + ':' + ar(left % 60, 2); }
+      if (nowMin < times.fajr) text += t('imsak', fmt12(imsak));
+      else if (nowMin < times.maghrib) { const left = Math.ceil(times.maghrib - nowMin); text += t('iftarIn', num(Math.floor(left / 60)) + ':' + num(left % 60, 2)); }
     }
     const el = $('occasion');
     if (el.textContent !== text) el.textContent = text;
@@ -822,25 +875,27 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
   function citySections() {
     const countries = [];
     CITIES.forEach(c => { if (countries.indexOf(c.country) < 0) countries.push(c.country); });
-    const out = countries.map(country => ({ title: country, items: CITIES.filter(c => c.country === country).map(c => ({
-      id: c.id, label: c.name, cur: c.id === CITY.id, choose: () => chooseCity(c.id) })) }));
-    out.push({ title: 'الإعدادات', items: [{ id: 'adhan', label: adhanLabel(), cur: false, keep: true,
+    const out = countries.map(country => ({ title: countryName(country), items: CITIES.filter(c => c.country === country).map(c => ({
+      id: c.id, label: cityName(c), cur: c.id === CITY.id, choose: () => chooseCity(c.id) })) }));
+    out.push({ title: t('settings'), items: [{ id: 'adhan', label: adhanLabel(), cur: false, keep: true,
       choose: b => { toggleAdhan(); b.textContent = adhanLabel(); } },
       { id: 'adhkar', label: adhkarLabel(), cur: false, keep: true,
-      choose: b => { toggleAdhkar(); b.textContent = adhkarLabel(); } }] });
+      choose: b => { toggleAdhkar(); b.textContent = adhkarLabel(); } },
+      { id: 'lang', label: langLabel(), cur: false, keep: true,
+      choose: () => { setLang(nextLang()); } }] });
     return out;
   }
   function stationSections() {
-    return STATION_GROUPS.map(g => ({ title: g.title, items: g.items.map(st => ({
-      id: st.id, label: st.name, cur: st.id === STATION.id, choose: () => chooseStation(st.id) })) }));
+    return STATION_GROUPS.map(g => ({ title: tk('groups', g.title) || g.title, items: g.items.map(st => ({
+      id: st.id, label: stationName(st), cur: st.id === STATION.id, choose: () => chooseStation(st.id) })) }));
   }
   function buildPicker(mode) {
     pickerMode = mode;
     const groups = $('pickerGroups');
     groups.innerHTML = ''; pickerButtons = [];
     groups.classList.toggle('wide', mode === 'station');
-    $('pickerTitle').textContent = mode === 'station' ? 'ماذا تحب أن تسمع؟' : 'اختر مدينتك';
-    $('pickerSub').textContent = mode === 'station' ? '' : 'تُحسب المواقيت بالطريقة الرسمية لكل دولة';
+    $('pickerTitle').textContent = mode === 'station' ? t('pickerStation') : t('pickerCity');
+    $('pickerSub').textContent = mode === 'station' ? '' : t('pickerCitySub');
     $('pickerSub').hidden = mode === 'station';
     (mode === 'station' ? stationSections() : citySections()).forEach(sec => {
       const g = document.createElement('section'); g.className = 'pg';
@@ -867,7 +922,7 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
     $('nowNew').hidden = !!seenMenus.station; $('nowBtn').classList.toggle('fresh', !seenMenus.station);
     $('cityNew').hidden = !!seenMenus.city;
   }
-  if (typeof window.QuranTV === 'object' && window.QuranTV) { $('nowChip').textContent = '▲ تغيير المحطة'; $('cityChip').textContent = '▼ تغيير المدينة'; }
+  function tvChips() { if (typeof window.QuranTV === 'object' && window.QuranTV) { $('nowChip').textContent = t('tvChipStation'); $('cityChip').textContent = t('tvChipCity'); } }
   showMenuBadges();
   function openPicker(mode) {
     mode = mode || 'city';
@@ -930,7 +985,11 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
     text = VERSES[vi][0]; ref = VERSES[vi][1];
     v.classList.toggle('long', text.length > 220);
     v.classList.toggle('mid', text.length > 110 && text.length <= 220);
-    $('verseText').textContent = text; $('verseRef').textContent = ref;
+    const tr = (L('verses') || [])[vi];
+    $('verseText').textContent = text;
+    $('verseRef').textContent = LANG !== 'ar' && tr ? tr.r : ref;
+    $('verseTr').textContent = LANG !== 'ar' && tr ? tr.t : '';
+    $('verseTr').hidden = !(LANG !== 'ar' && tr);
   }
   function nextVerse() {
     const v = $('verse');
@@ -942,7 +1001,7 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
   const DHIKR_MS = 20000, HOLD_MS = 4000;   // 20 s per dhikr, so children can read it calmly
   let ADHKAR_ON = true, adhkarTimer = 0;
   try { ADHKAR_ON = localStorage.getItem('qtv-adhkar') !== '0'; } catch (e) {}
-  function adhkarLabel() { return ADHKAR_ON ? 'شريط الأذكار: ظاهر ✓' : 'شريط الأذكار: مخفي'; }
+  function adhkarLabel() { return t('adhkarItem', ADHKAR_ON); }
   function toggleAdhkar() {
     ADHKAR_ON = !ADHKAR_ON; try { localStorage.setItem('qtv-adhkar', ADHKAR_ON ? '1' : '0'); } catch (e) {}
     const m = adhkarMode; adhkarMode = null; setAdhkarMode(m);
@@ -953,7 +1012,7 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
     const on = !!mode && ADHKAR_ON;
     $('adhkarBar').hidden = !on; document.body.classList.toggle('has-adhkar', on);
     if (!on) return;
-    $('abLabel').textContent = { morning: 'أذكار الصباح', evening: 'أذكار المساء', sleep: 'أذكار النوم' }[mode] || '';
+    $('abLabel').textContent = tk('adhkarLabel', mode) || '';
     showDhikr(true);
   }
   // How many times a dhikr is said, from its count label ('ثلاث مرات', 'مائة مرة', '٣٣ و٣٣ و٣٤ مرة' ...)
@@ -970,17 +1029,24 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
     adhkarTimer = setTimeout(() => {
       const list = ADHKAR[adhkarMode]; if (!list) return;
       const x = list[ai % list.length], count = x[1].split(' · ').pop();
-      const reps = repsOf(count), once = passMs(x[0]);
+      const tr = LANG !== 'ar' ? ((L('adhkar') || {})[adhkarMode] || [])[ai % list.length] : '';
+      const reps = repsOf(count), once = Math.max(passMs(x[0]), tr ? 3000 + tr.split(' ').length * 330 : 0);   // time to read the translation too
       let total = 0;                                                       // set once the first pass is measured
       const counted = reps > 1 && reps <= 10;                              // 100 times is not counted on screen
       const started = Date.now();
       $('abDhikr').textContent = x[0];
+      const trBox = $('abTr'), trText = $('abTrText');
+      trBox.hidden = !tr; trText.textContent = tr || ''; trText.style.transition = 'none'; trText.style.transform = 'translateY(0)';
+      if (tr) setTimeout(() => {                                           // a long translation scrolls up slowly while the dhikr stays
+        const extra = trText.scrollHeight - trBox.clientHeight;
+        if (extra > 2) { trText.style.transition = 'transform ' + Math.max(8000, extra * 180) + 'ms linear'; trText.style.transform = 'translateY(-' + extra + 'px)'; }
+      }, 4000);
       let pass = 0;
       const runPass = () => {
         pass++;
         t.style.transition = 'none'; t.style.transform = 'translateX(0)';
         void t.offsetWidth;
-        $('abCount').textContent = '(' + (counted ? ar(pass) + ' من ' + ar(reps) : count) + ')';
+        $('abCount').textContent = '(' + (counted ? t('counter', pass, reps, num) : (tk('adhkarCounts', count) || count)) + ')';
         t.style.transition = 'opacity .6s ease';
         t.classList.remove('out');
         adhkarTimer = setTimeout(() => {                                   // measure after the fonts settle
@@ -1136,124 +1202,22 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
   }
 
 
-  /* ---------- Egypt places (photos: Wikimedia Commons, free licenses) ---------- */
+  /* ---------- Places: Egypt and the world (photos: Wikimedia Commons, free licenses; list in data/places.js) ---------- */
   const TH = 'https://thumb.wikimedia.org/wikipedia/commons/thumb/';
-  // [place key, thumb path, photographer, license, name, where, fact]
-  const PLACES = [
-    ["الجامع الأزهر", "f/fd/Courtyard_of_Al-Azhar_Mosque_Cairo_Egypt_2019_%281%29.jpg/1920px-Courtyard_of_Al-Azhar_Mosque_Cairo_Egypt_2019_%281%29.jpg", "Radosław Botev", "CC BY 3.0", "الجامع الأزهر", "القاهرة", "بُني قبل أكثر من ألف سنة، سنة 970م، وفيه واحدة من أقدم الجامعات في العالم، يدرس فيها طلاب من بلاد كثيرة."],
-    ["الجامع الأزهر", "f/fc/Al-Azhar_Mosque_%28R_Prazeres_2019%29_DSCF4364.jpg/1920px-Al-Azhar_Mosque_%28R_Prazeres_2019%29_DSCF4364.jpg", "R Prazeres", "CC BY-SA 4.0", "الجامع الأزهر", "القاهرة", "للجامع الأزهر خمس مآذن، أشهرها مئذنة السلطان الغوري التي لها رأسان في أعلاها."],
-    ["الجامع الأزهر", "f/fb/Egypt%2C_Cairo%2C_The_courtyard_of_Al-Azhar.jpg/1920px-Egypt%2C_Cairo%2C_The_courtyard_of_Al-Azhar.jpg", "Vyacheslav Argenberg", "CC BY 4.0", "الجامع الأزهر", "القاهرة", "صحن الأزهر مكشوف تحيط به الأروقة، وكان الطلاب قديمًا يجلسون في حلقات حول شيوخهم ليتعلموا القرآن والعلوم."],
-    ["مسجد محمد علي", "7/7e/Muhammad_Ali_Mosque%2C_Citadel%2C_Cairo%2C_Egypt2.jpg/1920px-Muhammad_Ali_Mosque%2C_Citadel%2C_Cairo%2C_Egypt2.jpg", "Diego Delso", "CC BY-SA 3.0", "مسجد محمد علي", "قلعة صلاح الدين · القاهرة", "يقف فوق القلعة ويُرى من أماكن كثيرة في القاهرة، ويُسمّى «مسجد المرمر» لأن جدرانه مكسوّة بحجر المرمر اللامع."],
-    ["مسجد محمد علي", "f/fc/Muhammad_Ali_Mosque_1.jpg/1920px-Muhammad_Ali_Mosque_1.jpg", "kallerna", "CC BY-SA 3.0", "مسجد محمد علي", "قلعة صلاح الدين · القاهرة", "في صحنه ساعة نحاسية أهداها ملك فرنسا لمحمد علي، مقابل مسلة مصرية أُرسلت إلى باريس وما زالت هناك حتى اليوم."],
-    ["مسجد محمد علي", "b/b4/Muhammad_Ali_Mosque%2C_Citadel%2C_Cairo%2C_Egypt3.jpg/1920px-Muhammad_Ali_Mosque%2C_Citadel%2C_Cairo%2C_Egypt3.jpg", "Diego Delso", "CC BY-SA 3.0", "مسجد محمد علي", "قلعة صلاح الدين · القاهرة", "بُني على طراز المساجد العثمانية في إسطنبول، وتحيط بقبته الكبيرة أنصاف قباب ومئذنتان رفيعتان عاليتان."],
-    ["مسجدا السلطان حسن والرفاعي", "b/b0/%D9%85%D8%B3%D8%AC%D8%AF_%D8%A7%D9%84%D8%B1%D9%81%D8%A7%D8%B9%D9%8A_%D9%88_%D9%85%D8%B3%D8%AC%D8%AF_%D8%A7%D9%84%D8%B3%D9%84%D8%B7%D8%A7%D9%86_%D8%AD%D8%B3%D9%86_-_Rifai_Mosque_and_Sultan_Hassan_mosque.jpg/1920px-%D9%85%D8%B3%D8%AC%D8%AF_%D8%A7%D9%84%D8%B1%D9%81%D8%A7%D8%B9%D9%8A_%D9%88_%D9%85%D8%B3%D8%AC%D8%AF_%D8%A7%D9%84%D8%B3%D9%84%D8%B7%D8%A7%D9%86_%D8%AD%D8%B3%D9%86_-_Rifai_Mosque_and_Sultan_Hassan_mosque.jpg", "Mahmoud Mostafa Ashour", "CC BY-SA 4.0", "مسجدا السلطان حسن والرفاعي", "القاهرة", "مسجدان كبيران متجاوران: السلطان حسن بُني قبل نحو 670 سنة، والرفاعي بُني بجواره بعده بأكثر من 500 سنة ليشبهه في الفخامة."],
-    ["مسجد السلطان حسن", "b/bc/Al_Sultan_Hassan_Mosque.jpg/1920px-Al_Sultan_Hassan_Mosque.jpg", "Basssant Meligy", "CC BY-SA 4.0", "مسجد السلطان حسن", "القاهرة", "يحيط بصحنه أربعة إيوانات كبيرة، وكان كل إيوان منها مخصصًا لتدريس مذهب من المذاهب الفقهية الأربعة."],
-    ["مسجد السلطان حسن", "3/36/Madrassa_of_Sultan_Hassan.jpg/1920px-Madrassa_of_Sultan_Hassan.jpg", "Mohammed Moussa", "CC BY-SA 3.0", "مسجد السلطان حسن", "القاهرة", "من أضخم المساجد القديمة في العالم، ومئذنته من أعلى المآذن في القاهرة القديمة."],
-    ["ميدان القلعة", "2/2e/Panoramic_view_of_Saladin_Square_with_Sultan_Hassan%2C_Al-Rifa%27i%2C_and_Qanibay_al-Rammah_mosques14.jpg/1920px-Panoramic_view_of_Saladin_Square_with_Sultan_Hassan%2C_Al-Rifa%27i%2C_and_Qanibay_al-Rammah_mosques14.jpg", "ولاء", "ملكية عامة", "ميدان القلعة", "القاهرة", "في هذا الميدان تحت القلعة تتجاور مساجد عظيمة: السلطان حسن والرفاعي وقاني باي الرماح، وكأنها متحف مفتوح."],
-    ["مسجد الرفاعي", "e/e7/Al-Rifa%27i_Mosque%2C_Cairo_38.jpg/1920px-Al-Rifa%27i_Mosque%2C_Cairo_38.jpg", "Hassan Hamdy wahidy", "ملكية عامة", "مسجد الرفاعي", "القاهرة", "من الداخل تزيّنه الثريات والزخارف الذهبية، وفيه مقابر عدد من ملوك مصر وأسرهم."],
-    ["جامع أحمد بن طولون", "e/e0/Kairo_Ibn_Tulun_Moschee_BW_5.jpg/1920px-Kairo_Ibn_Tulun_Moschee_BW_5.jpg", "Berthold Werner", "CC BY 3.0", "جامع أحمد بن طولون", "القاهرة", "عمره أكثر من 1100 سنة، ومئذنته لها سُلّم يلتف حولها من الخارج، وهو من أكبر مساجد القاهرة مساحةً."],
-    ["جامع أحمد بن طولون", "1/1c/Ibn_Tulun_Mosque%2C_Cairo26.jpg/1920px-Ibn_Tulun_Mosque%2C_Cairo26.jpg", "ولاء", "ملكية عامة", "جامع أحمد بن طولون", "القاهرة", "القبة التي في وسط صحنه أُضيفت بعد بناء الجامع بأكثر من 400 سنة، أضافها السلطان لاجين ليتوضأ المصلون تحتها."],
-    ["جامع أحمد بن طولون", "7/7b/Ibn_Tulun_Mosque%2C_Cairo60.jpg/1920px-Ibn_Tulun_Mosque%2C_Cairo60.jpg", "ولاء", "ملكية عامة", "جامع أحمد بن طولون", "القاهرة", "أعلى جدرانه زخارف تشبه العرائس الورقية المتشابكة، وتحتها شريط طويل من الخشب نُقشت عليه آيات من القرآن الكريم."],
-    ["جامع عمرو بن العاص", "f/f1/Amr_Ibn_al-Aas_Mosque_Cairo_%288%29.jpg/1920px-Amr_Ibn_al-Aas_Mosque_Cairo_%288%29.jpg", "Manshy482", "CC BY-SA 3.0", "جامع عمرو بن العاص", "مصر القديمة · القاهرة", "أول مسجد بُني في مصر وفي قارة أفريقيا كلها، وكان ذلك سنة 642م، أي قبل نحو 1400 سنة."],
-    ["جامع عمرو بن العاص", "1/14/Mosque_of_Amr_ibn_al-As_Center_water_well.jpg/1920px-Mosque_of_Amr_ibn_al-As_Center_water_well.jpg", "Kaliper1", "CC BY-SA 4.0", "جامع عمرو بن العاص", "مصر القديمة · القاهرة", "عندما بُني أول مرة كان صغيرًا جدًا، أعمدته من جذوع النخل وسقفه من جريد النخل، ثم كبُر وتوسع على مر السنين."],
-    ["جامع عمرو بن العاص", "b/b4/Mosque_of_Amr_Ibn_al-As.._NV_00_%2819%29.JPG/1920px-Mosque_of_Amr_Ibn_al-As.._NV_00_%2819%29.JPG", "لا روسا", "CC BY-SA 4.0", "جامع عمرو بن العاص", "مصر القديمة · القاهرة", "يمتلئ بالمصلين في ليالي رمضان، خاصة في صلاة التهجد وليلة السابع والعشرين."],
-    ["مسجد الحسين", "e/e8/Al-Hussein_Mosque%2C_Cairo_%2842911867350%29.jpg/1920px-Al-Hussein_Mosque%2C_Cairo_%2842911867350%29.jpg", "Terrazzo", "CC BY 2.0", "مسجد الحسين", "القاهرة", "من أشهر مساجد القاهرة، يقع بجوار الجامع الأزهر وسوق خان الخليلي، ويمتلئ بالزوار خصوصًا في شهر رمضان."],
-    ["مسجد الحسين", "f/f3/Al_Hussein_Mosque_Cairo_2006.jpg/1920px-Al_Hussein_Mosque_Cairo_2006.jpg", "Tentoila", "ملكية عامة", "مسجد الحسين", "القاهرة", "بُني شكله الحالي في عهد الخديوي إسماعيل، ومئذنته رفيعة وطويلة، وتحيط به ساحة واسعة يجتمع فيها الناس."],
-    ["مسجد السيدة زينب", "d/de/Mosque_of_Sayeda_Zeinab%2C_Cairo_004.jpg/1920px-Mosque_of_Sayeda_Zeinab%2C_Cairo_004.jpg", "لا روسا", "CC BY-SA 3.0", "مسجد السيدة زينب", "القاهرة", "من أشهر مساجد القاهرة وأحبها إلى أهلها، والحي المحيط به كله يُسمّى باسمه: حي السيدة زينب."],
-    ["جامع الحاكم بأمر الله", "7/7f/Al-Hakim_Mosque_-_Cairo.jpg/1920px-Al-Hakim_Mosque_-_Cairo.jpg", "Mohammed Moussa", "CC BY-SA 3.0", "جامع الحاكم بأمر الله", "شارع المعز · القاهرة", "من أكبر مساجد القاهرة الفاطمية، اكتمل بناؤه سنة 1013م، وصحنه واسع جدًا ومحاط بالأروقة."],
-    ["جامع الحاكم بأمر الله", "6/64/Al_Hakim_Mosque_Courtyard.jpg/1920px-Al_Hakim_Mosque_Courtyard.jpg", "Francisco Anzola", "CC BY 2.0", "جامع الحاكم بأمر الله", "شارع المعز · القاهرة", "استخدمه جنود الحملة الفرنسية حصنًا في وقت من الأوقات، ثم رُمّم وعاد مسجدًا جميلًا كما نراه اليوم."],
-    ["جامع الأقمر", "4/43/Al-Aqmar_Mosque_-_entrance_and_minaret_Cairo_Egypt.jpg/1920px-Al-Aqmar_Mosque_-_entrance_and_minaret_Cairo_Egypt.jpg", "Radosław Botev", "CC BY 3.0", "جامع الأقمر", "شارع المعز · القاهرة", "مسجد صغير بُني سنة 1125م، وواجهته الحجرية مليئة بالنقوش والزخارف الجميلة."],
-    ["جامع الأقمر", "6/6d/Aqmar_Mosque_central_facade_DSCF1269.jpg/1920px-Aqmar_Mosque_central_facade_DSCF1269.jpg", "R Prazeres", "CC BY-SA 4.0", "جامع الأقمر", "شارع المعز · القاهرة", "اسمه «الأقمر» يعني المضيء بنور القمر، وفوق بابه نقش يشبه الصَّدَفة تخرج منه أشعة كأشعة الشمس."],
-    ["مجمع السلطان قلاوون", "2/27/Qalawun_complex_08.jpg/1920px-Qalawun_complex_08.jpg", "Marsupium", "CC BY 4.0", "مجمع السلطان قلاوون", "شارع المعز · القاهرة", "كان فيه مستشفى كبير يعالج المرضى مجانًا، فقراء وأغنياء، ويقدم لهم الطعام والدواء."],
-    ["مجمع السلطان قلاوون", "b/b8/Qalawun-Komplex_2015-11-12c.jpg/1920px-Qalawun-Komplex_2015-11-12c.jpg", "Djehouty", "CC BY-SA 4.0", "مجمع السلطان قلاوون", "شارع المعز · القاهرة", "بُني هذا المجمع الضخم في نحو 13 شهرًا فقط سنة 1285م، وفيه مسجد ومدرسة وقبة."],
-    ["مدرسة الناصر محمد", "1/1b/Madrasa_of_al-Nasir_Muhammad_-_Muizz_Street_Cairo_%281%29.jpg/1920px-Madrasa_of_al-Nasir_Muhammad_-_Muizz_Street_Cairo_%281%29.jpg", "Radosław Botev", "CC BY 3.0", "مدرسة الناصر محمد", "شارع المعز · القاهرة", "بابها الرخامي جُلب من مدينة عكا بعد أن حررها المسلمون من الصليبيين، ووُضع هنا ذكرى لهذا النصر."],
-    ["شارع المعز لدين الله", "1/1f/Muizz_Street_-_Egypt.jpg/1920px-Muizz_Street_-_Egypt.jpg", "Mohammed Moussa", "CC BY-SA 4.0", "شارع المعز لدين الله", "القاهرة", "يُوصف بأنه أكبر متحف مفتوح للآثار الإسلامية في العالم، فيه مساجد ومدارس وأسبلة عمرها مئات السنين."],
-    ["مجمع السلطان برقوق", "d/da/Complex_of_Al_Sultan_Al_Zahir_Barquq_006.jpg/1920px-Complex_of_Al_Sultan_Al_Zahir_Barquq_006.jpg", "Mohamedsamir1994", "CC BY-SA 4.0", "مجمع السلطان برقوق", "شارع المعز · القاهرة", "في الليل تُضاء واجهات شارع المعز بالأنوار، فتبدو مآذن برقوق وقلاوون كأنها لوحة مرسومة."],
-    ["باب زويلة", "3/3e/Egypt%2C_Cairo%2C_Mosque_of_Sultan_al-Muayyad_minaret_in_Islamic_Cairo.jpg/1920px-Egypt%2C_Cairo%2C_Mosque_of_Sultan_al-Muayyad_minaret_in_Islamic_Cairo.jpg", "Vyacheslav Argenberg", "CC BY 4.0", "باب زويلة", "القاهرة", "من أبواب القاهرة القديمة، عمره أكثر من 900 سنة، وفوقه مئذنتان لجامع المؤيد شيخ يصعد إليهما الزوار ليروا المدينة من فوق."],
-    ["باب زويلة", "b/b9/Bab_Zuweila%2C_Cairo_%281%29_%2852087518412%29.jpg/1920px-Bab_Zuweila%2C_Cairo_%281%29_%2852087518412%29.jpg", "Richard Mortel", "CC BY 2.0", "باب زويلة", "القاهرة", "كانت القاهرة القديمة محاطة بسور له أبواب تُغلق في الليل، وباب زويلة هو بابها الجنوبي."],
-    ["باب زويلة", "e/ef/Bab_Zuweila_Minaret.jpg/1920px-Bab_Zuweila_Minaret.jpg", "Shandwely", "CC BY-SA 4.0", "باب زويلة", "القاهرة", "بُنيت هاتان المئذنتان فوق برجي الباب نفسه، وهما تابعتان لجامع المؤيد شيخ الملاصق له."],
-    ["جامع المؤيد شيخ", "2/25/Mosque_of_Sultan_Al-Muayyad.jpg/1920px-Mosque_of_Sultan_Al-Muayyad.jpg", "Ahmedfahmy81", "CC BY-SA 3.0", "جامع المؤيد شيخ", "القاهرة", "كان مكانه سجنًا حُبس فيه الأمير شيخ، فنذر إن خرج منه أن يبني مكانه مسجدًا، ولما صار سلطانًا وفّى بنذره."],
-    ["باب الفتوح", "2/21/Cairo%2C_porte_settentrionali%2C_01.JPG/1920px-Cairo%2C_porte_settentrionali%2C_01.JPG", "Sailko", "CC BY 3.0", "باب الفتوح", "القاهرة", "بوابة القاهرة الشمالية، بناها الوزير بدر الجمالي سنة 1087م من الحجر لتحمي المدينة من الأعداء."],
-    ["باب النصر", "4/4f/Bab_al-Nasr_DSCF9983_%28retouched%29.jpg/1920px-Bab_al-Nasr_DSCF9983_%28retouched%29.jpg", "R Prazeres", "CC BY-SA 4.0", "باب النصر", "القاهرة", "بُني مع باب الفتوح في الوقت نفسه، ونقش جنود الحملة الفرنسية أسماء بعض ضباطهم على أبراجه."],
-    ["خان الخليلي", "2/23/Khan_el-Khalili%2C_Old_Cairo%2C_al-Q%C4%81hirah%2C_CG%2C_EGY_%2840944963223%29.jpg/1920px-Khan_el-Khalili%2C_Old_Cairo%2C_al-Q%C4%81hirah%2C_CG%2C_EGY_%2840944963223%29.jpg", "Warren LeMay", "CC0", "خان الخليلي", "القاهرة", "سوق قديم عمره أكثر من 600 سنة، تُباع فيه الفوانيس والتحف والعطور والأواني النحاسية."],
-    ["خان الخليلي", "4/40/Mercado_de_Khan_el-Khalili%2C_El_Cairo%2C_Egipto4.jpg/1920px-Mercado_de_Khan_el-Khalili%2C_El_Cairo%2C_Egipto4.jpg", "Diego Delso", "CC BY-SA 3.0", "خان الخليلي", "القاهرة", "تشتهر محلاته بفوانيس رمضان الملونة المصنوعة من النحاس والزجاج، ويزوره الناس من كل أنحاء العالم."],
-    ["بيت السحيمي", "3/3c/Bayt_Al-Suhaymi_%28_Al-Suhaymi_House_%29.JPG/1920px-Bayt_Al-Suhaymi_%28_Al-Suhaymi_House_%29.JPG", "Yasmeen 94", "CC BY-SA 3.0", "بيت السحيمي", "شارع المعز · القاهرة", "بيت قديم بُني سنة 1648م، ويُرينا كيف كانت تعيش العائلات في القاهرة قبل مئات السنين."],
-    ["بيت السحيمي", "6/69/Flickr_-_Gaspa_-_Cairo%2C_Bayt_es-Suhaimi.jpg/1920px-Flickr_-_Gaspa_-_Cairo%2C_Bayt_es-Suhaimi.jpg", "Francesco Gasparetti", "CC BY 2.0", "بيت السحيمي", "شارع المعز · القاهرة", "نوافذه الخشبية المزخرفة اسمها «المشربية»، تُدخل الهواء البارد إلى البيت، ويرى من بالداخل الشارع دون أن يراه أحد."],
-    ["حديقة الأزهر", "f/f1/Azhar_Park_in_Cairo%2C_Egypt.jpg/1920px-Azhar_Park_in_Cairo%2C_Egypt.jpg", "Synaps commons", "CC BY-SA 4.0", "حديقة الأزهر", "القاهرة", "كان مكانها تلًا من المخلفات لمئات السنين، ثم تحوّل إلى حديقة خضراء جميلة افتُتحت سنة 2005م."],
-    ["حديقة الأزهر", "7/73/Al-Azhar-Park_2016-03-28k.jpg/1920px-Al-Azhar-Park_2016-03-28k.jpg", "Djehouty", "CC BY-SA 4.0", "حديقة الأزهر", "القاهرة", "من فوق تلالها يرى الزوار القاهرة القديمة بمآذنها الكثيرة والقلعة ومسجد محمد علي."],
-    ["قلعة صلاح الدين", "9/93/Flickr_-_HuTect_ShOts_-_Citadel_of_Salah_El.Din_and_Masjid_Muhammad_Ali_%D9%82%D9%84%D8%B9%D8%A9_%D8%B5%D9%84%D8%A7%D8%AD_%D8%A7%D9%84%D8%AF%D9%8A%D9%86_%D8%A7%D9%84%D8%A3%D9%8A%D9%88%D8%A8%D9%8A_%D9%88%D9%85%D8%B3%D8%AC%D8%AF_%D9%85%D8%AD%D9%85%D8%AF_%D8%B9%D9%84%D9%8A_-_Cairo_-_Egypt_-_17_04_2010_%284%29.jpg/1920px-Flickr_-_HuTect_ShOts_-_Citadel_of_Salah_El.Din_and_Masjid_Muhammad_Ali_%D9%82%D9%84%D8%B9%D8%A9_%D8%B5%D9%84%D8%A7%D8%AD_%D8%A7%D9%84%D8%AF%D9%8A%D9%86_%D8%A7%D9%84%D8%A3%D9%8A%D9%88%D8%A8%D9%8A_%D9%88%D9%85%D8%B3%D8%AC%D8%AF_%D9%85%D8%AD%D9%85%D8%AF_%D8%B9%D9%84%D9%8A_-_Cairo_-_Egypt_-_17_04_2010_%284%29.jpg", "Ahmed Al.Badawy", "CC BY-SA 2.0", "قلعة صلاح الدين", "القاهرة", "بدأ بناءها صلاح الدين الأيوبي سنة 1176م لحماية القاهرة، وظلت مقرًا لحكم مصر نحو 700 سنة."],
-    ["القاهرة عند الغروب", "0/08/Late_evening_in_Cairo.jpg/1920px-Late_evening_in_Cairo.jpg", "Frank Schulenburg", "CC BY-SA 3.0", "القاهرة عند الغروب", "القاهرة", "تُلقّب القاهرة بـ«مدينة الألف مئذنة» لكثرة مساجدها ومآذنها الجميلة."],
-    ["برج القاهرة", "e/ec/Cairo%2C_Egypt_%281990284866%29.jpg/1920px-Cairo%2C_Egypt_%281990284866%29.jpg", "John Atherton", "CC BY-SA 2.0", "برج القاهرة", "الزمالك · القاهرة", "ارتفاعه 187 مترًا، أي أعلى من الهرم الأكبر، وشكله مستوحى من زهرة اللوتس المصرية."],
-    ["برج القاهرة", "9/92/Egypt-2A-010_-_Cairo_%282217349050%29.jpg/1920px-Egypt-2A-010_-_Cairo_%282217349050%29.jpg", "Dennis G. Jarvis", "CC BY-SA 2.0", "برج القاهرة", "الزمالك · القاهرة", "افتُتح سنة 1961م، وفي قمته مطعم يدور ببطء حتى يرى الجالسون القاهرة كلها من كل الجهات."],
-    ["نهر النيل", "7/71/Cairo_skyline%2C_Panoramic_view%2C_Egypt.jpg/1920px-Cairo_skyline%2C_Panoramic_view%2C_Egypt.jpg", "Vyacheslav Argenberg", "CC BY 4.0", "نهر النيل", "القاهرة", "من أطول أنهار العالم، يجري في مصر من الجنوب إلى الشمال حتى يصب في البحر المتوسط، وعلى ضفافه قامت حضارة مصر."],
-    ["الفلوكة في النيل", "2/2c/FELUCCA_NILE_TRIP_%282%29.jpg/1920px-FELUCCA_NILE_TRIP_%282%29.jpg", "Myousry6666", "CC BY-SA 4.0", "الفلوكة في النيل", "مصر", "الفلوكة مركب شراعي يتحرك بقوة الريح فقط، واستخدمه المصريون للتنقل في النيل منذ آلاف السنين."],
-    ["المتحف المصري", "d/d1/Facade_of_the_Egyptian_Museum%2C_Tahrir_Square%2C_Cairo%2C_Egypt1.jpg/1920px-Facade_of_the_Egyptian_Museum%2C_Tahrir_Square%2C_Cairo%2C_Egypt1.jpg", "Diego Delso", "CC BY-SA 3.0", "المتحف المصري", "ميدان التحرير · القاهرة", "افتُتح سنة 1902م، ويضم أكثر من مئة ألف قطعة أثرية من حضارة مصر القديمة."],
-    ["المتحف المصري الكبير", "c/cd/Grand_Egyptian_Museum_2025_%2870046%29.jpg/1920px-Grand_Egyptian_Museum_2025_%2870046%29.jpg", "Amr F.Nagy", "ملكية عامة", "المتحف المصري الكبير", "الجيزة", "أكبر متحف في العالم مخصص لحضارة واحدة، ويقع قرب الأهرامات، وتُعرض فيه كنوز توت عنخ آمون كلها معًا."],
-    ["المتحف المصري الكبير", "4/45/Grand_Egyptian_Museum_Grand_Hall.jpg/1920px-Grand_Egyptian_Museum_Grand_Hall.jpg", "Slyronit", "CC BY-SA 4.0", "المتحف المصري الكبير", "الجيزة", "في بهوه الكبير يقف تمثال ضخم للملك رمسيس الثاني، طوله نحو 11 مترًا ووزنه أكثر من 80 طنًا."],
-    ["قصر المنيل", "6/68/Prince_Muhammad_Ali_Palace_Manial_Cairo.jpg/1920px-Prince_Muhammad_Ali_Palace_Manial_Cairo.jpg", "Summering2018", "CC BY-SA 4.0", "قصر المنيل", "جزيرة الروضة · القاهرة", "بناه الأمير محمد علي توفيق، ويجمع في بنائه بين فنون العمارة الإسلامية من بلاد كثيرة."],
-    ["قصر المنيل", "c/c5/Prince_Muhammad_Ali_Palace_Manial_Cairo_101.jpg/1920px-Prince_Muhammad_Ali_Palace_Manial_Cairo_101.jpg", "Summering2018", "CC BY-SA 4.0", "قصر المنيل", "جزيرة الروضة · القاهرة", "سقوفه وجدرانه مزيّنة بالخشب المنقوش والبلاط الملون، وحوله حديقة فيها أشجار نادرة جُلبت من بلاد بعيدة."],
-    ["أهرامات الجيزة", "a/af/All_Gizah_Pyramids.jpg/1920px-All_Gizah_Pyramids.jpg", "Ricardo Liberato", "CC BY-SA 2.0", "أهرامات الجيزة", "الجيزة", "عمرها أكثر من 4500 سنة، والهرم الأكبر هو الوحيد الباقي من عجائب الدنيا السبع القديمة."],
-    ["أهرامات الجيزة", "0/08/Pyramids_of_Giza_and_boat_pit.jpg/1920px-Pyramids_of_Giza_and_boat_pit.jpg", "kallerna", "CC BY-SA 3.0", "أهرامات الجيزة", "الجيزة", "بجوار الهرم الأكبر عُثر سنة 1954م على مركب خشبي ضخم للملك خوفو، عمره أكثر من 4500 سنة."],
-    ["أهرامات الجيزة", "e/e1/Giza_pyramid_complex_4fr.jpg/1920px-Giza_pyramid_complex_4fr.jpg", "Eslam maalky.22", "CC BY-SA 4.0", "أهرامات الجيزة", "الجيزة", "بُني الهرم الأكبر من أكثر من مليوني حجر ضخم، وبجوار الأهرامات الكبيرة أهرامات صغيرة بُنيت للملكات."],
-    ["أبو الهول", "d/db/Great_Sphinx_of_Giza_%28%D8%A3%D8%A8%D9%88_%D8%A7%D9%84%D9%87%D9%88%D9%84%29.jpg/1920px-Great_Sphinx_of_Giza_%28%D8%A3%D8%A8%D9%88_%D8%A7%D9%84%D9%87%D9%88%D9%84%29.jpg", "Petar Milošević", "CC BY-SA 4.0", "أبو الهول", "الجيزة", "تمثال ضخم له رأس إنسان وجسم أسد، منحوت في الصخر، ويقف أمام أهرامات الجيزة منذ آلاف السنين."],
-    ["أبو الهول", "c/ce/Great_Sphinx_%28%D8%A3%D8%A8%D9%88_%D8%A7%D9%84%D9%87%D9%88%D9%84%29.jpg/1920px-Great_Sphinx_%28%D8%A3%D8%A8%D9%88_%D8%A7%D9%84%D9%87%D9%88%D9%84%29.jpg", "Petar Milošević", "CC BY-SA 4.0", "أبو الهول", "الجيزة", "طوله نحو 73 مترًا وارتفاعه نحو 20 مترًا، وهو من أكبر التماثيل المنحوتة من صخرة واحدة في العالم."],
-    ["أبو الهول", "d/d2/The_Great_Sphinx%2C_Pyramids_of_Gizeh-1839%29_by_David_Roberts%2C_RA.jpg/1920px-The_Great_Sphinx%2C_Pyramids_of_Gizeh-1839%29_by_David_Roberts%2C_RA.jpg", "David Roberts", "ملكية عامة", "أبو الهول", "لوحة قديمة · الجيزة", "لوحة رسمها الفنان ديفيد روبرتس سنة 1839م، وكان أبو الهول وقتها مدفونًا في الرمال حتى رقبته."],
-    ["قلعة قايتباي", "7/7a/Citadel_of_Qaitbay%2C_Alexandria%2C_Egypt.jpg/1920px-Citadel_of_Qaitbay%2C_Alexandria%2C_Egypt.jpg", "Argenberg", "CC BY 2.0", "قلعة قايتباي", "الإسكندرية", "بناها السلطان قايتباي سنة 1477م على البحر، في المكان الذي كانت فيه منارة الإسكندرية، إحدى عجائب الدنيا السبع القديمة."],
-    ["قلعة قايتباي", "8/81/%D8%A7%D9%84%D9%82%D9%84%D8%B9%D8%A9_%D8%A7%D8%B3%D9%83%D9%86%D8%AF%D8%B1%D9%8A%D8%A9.jpg/1920px-%D8%A7%D9%84%D9%82%D9%84%D8%B9%D8%A9_%D8%A7%D8%B3%D9%83%D9%86%D8%AF%D8%B1%D9%8A%D8%A9.jpg", "Summering2018", "CC BY-SA 4.0", "قلعة قايتباي", "الإسكندرية", "بُنيت القلعة فوق أنقاض منارة الإسكندرية القديمة بعد أن هدمتها الزلازل، ويُقال إن بعض حجارة المنارة دخلت في بنائها."],
-    ["قلعة قايتباي", "a/a7/EWUG_visit_to_the_Citadel_of_Qaitbay_-_by_Sohila_22.jpg/1920px-EWUG_visit_to_the_Citadel_of_Qaitbay_-_by_Sohila_22.jpg", "Sohilaali869", "ملكية عامة", "قلعة قايتباي", "الإسكندرية", "من فوق أسوارها يرى الزوار البحر المتوسط والميناء الشرقي ومراكب الصيادين الملونة."],
-    ["مسجد أبو العباس المرسي", "4/45/ABU_ABBAS_AL-MURSI_MOSQUE_IN_ALEXANDRIA%2C_EGYPT.jpg/1920px-ABU_ABBAS_AL-MURSI_MOSQUE_IN_ALEXANDRIA%2C_EGYPT.jpg", "Jerrye & Roy Klotz", "CC BY-SA 3.0", "مسجد أبو العباس المرسي", "الإسكندرية", "أشهر مساجد الإسكندرية، يقع قرب البحر في حي بحري، وقبابه ومآذنه مزيّنة بنقوش جميلة."],
-    ["مسجد أبو العباس المرسي", "d/dc/El-Mursi_Abul_Abbas_Mosque_Interior.jpg/1920px-El-Mursi_Abul_Abbas_Mosque_Interior.jpg", "Kaliper1", "CC BY-SA 4.0", "مسجد أبو العباس المرسي", "الإسكندرية", "من الداخل له قبة عالية تحملها أعمدة من الرخام، وجدرانه وسقفه مليئة بالزخارف العربية الدقيقة."],
-    ["مسجد سيدي ياقوت العرشي", "a/a8/Sidi_Yaqut_al-Arshi_Mosque%2C_Alexandria%2C_Egypt%2C_2009-1.jpg/1920px-Sidi_Yaqut_al-Arshi_Mosque%2C_Alexandria%2C_Egypt%2C_2009-1.jpg", "Share Bear", "ملكية عامة", "مسجد سيدي ياقوت العرشي", "الإسكندرية", "يقع بجوار مسجد أبو العباس المرسي، ويحمل اسم ياقوت العرشي الذي كان من تلاميذه."],
-    ["كورنيش الإسكندرية", "4/43/Corniche_of_Alexandria.jpg/1920px-Corniche_of_Alexandria.jpg", "Abdelrhman 1990", "CC BY-SA 4.0", "كورنيش الإسكندرية", "الإسكندرية", "طريق طويل جدًا على شاطئ البحر المتوسط، يحب أهل الإسكندرية التمشي عليه في الصيف والاستمتاع بنسيم البحر."],
-    ["قصر المنتزه", "c/c6/Montaza_Palace%2C_Alexandria%2C_Egypt_-_Murat_%C3%96zsoy_2018.jpg/1920px-Montaza_Palace%2C_Alexandria%2C_Egypt_-_Murat_%C3%96zsoy_2018.jpg", "Murat Özsoy", "CC BY-SA 4.0", "قصر المنتزه", "الإسكندرية", "قصر ملكي قديم على البحر تحيط به حدائق واسعة، بناه حكام مصر ليقضوا فيه أيام الصيف."],
-    ["قصر المنتزه", "f/fc/Montaza_Palace%2C_Alexandria%2C_Egypt_-_Murat_%C3%96zsoy_2018_%282%29.jpg/1920px-Montaza_Palace%2C_Alexandria%2C_Egypt_-_Murat_%C3%96zsoy_2018_%282%29.jpg", "Murat Özsoy", "CC BY-SA 4.0", "قصر المنتزه", "الإسكندرية", "بُني جزؤه الكبير سنة 1932م في عهد الملك فؤاد، ويجمع بين الطراز الإيطالي والطراز التركي، وله برج عالٍ مميز."],
-    ["مكتبة الإسكندرية", "4/41/Bibliotheca_Alexandrina_GLAM_EGY_05.jpg/1920px-Bibliotheca_Alexandrina_GLAM_EGY_05.jpg", "Hassan Hamdy wahidy", "ملكية عامة", "مكتبة الإسكندرية", "الإسكندرية", "افتُتحت سنة 2002م لتُحيي ذكرى مكتبة الإسكندرية القديمة التي كانت أشهر مكتبة في العالم قبل أكثر من ألفي سنة."],
-    ["مكتبة الإسكندرية", "c/c2/Bibliotheca_Alexandrina_34.jpg/1920px-Bibliotheca_Alexandrina_34.jpg", "Cecioka", "CC BY-SA 4.0", "مكتبة الإسكندرية", "الإسكندرية", "سقفها مائل يشبه قرص الشمس وهو يشرق من البحر، وعلى جدارها الخارجي حروف منقوشة من لغات كثيرة في العالم."],
-    ["معبد الكرنك", "4/43/Templo_de_Karnak%2C_Luxor%2C_Egipto%2C_2022-04-03%2C_DD_144.jpg/1920px-Templo_de_Karnak%2C_Luxor%2C_Egipto%2C_2022-04-03%2C_DD_144.jpg", "Diego Delso", "CC BY-SA 4.0", "معبد الكرنك", "الأقصر", "يستقبل الزوار صف طويل من التماثيل لها رأس كبش وجسم أسد، ويُعد الكرنك من أكبر المعابد القديمة في العالم."],
-    ["معبد الكرنك", "e/e7/Karnak_Temple_Complex%2C_Egypt73.jpg/1920px-Karnak_Temple_Complex%2C_Egypt73.jpg", "ولاء", "ملكية عامة", "معبد الكرنك", "الأقصر", "المسلة عمود طويل من حجر الجرانيت منحوت من قطعة واحدة، وفي الكرنك مسلة للملكة حتشبسوت يقترب طولها من 30 مترًا."],
-    ["معبد الأقصر", "e/e0/Luxor_Temple_R04.jpg/1920px-Luxor_Temple_R04.jpg", "Marc Ryckaert", "CC BY 3.0", "معبد الأقصر", "الأقصر", "كان أمام بابه مسلتان، واحدة ما زالت في مكانها، والأخرى نُقلت إلى باريس سنة 1836م وتقف هناك في ميدان كبير."],
-    ["معبد الأقصر", "b/b5/Templo_de_Luxor%2C_Luxor%2C_Egipto%2C_2022-04-01%2C_DD_29.jpg/1920px-Templo_de_Luxor%2C_Luxor%2C_Egipto%2C_2022-04-01%2C_DD_29.jpg", "Diego Delso", "CC BY-SA 4.0", "معبد الأقصر", "الأقصر", "أعمدته الضخمة منحوتة على شكل حزم من نبات البردي، وكان المصريون القدماء يصنعون من البردي الورق."],
-    ["معبد الأقصر", "0/0f/Pylons_and_obelisk_Luxor_temple.JPG/1920px-Pylons_and_obelisk_Luxor_temple.JPG", "Ad Meskens", "CC BY-SA 3.0", "معبد الأقصر", "الأقصر", "في داخل المعبد يقع مسجد أبو الحجاج الأقصري، فترى المئذنة فوق جدران معبد عمره آلاف السنين."],
-    ["معبد حتشبسوت", "4/47/Templo_funerario_de_Hatshepsut%2C_Valle_de_las_Reyes%2C_Luxor%2C_Egipto%2C_2022-04-03%2C_DD_118.jpg/1920px-Templo_funerario_de_Hatshepsut%2C_Valle_de_las_Reyes%2C_Luxor%2C_Egipto%2C_2022-04-03%2C_DD_118.jpg", "Diego Delso", "CC BY-SA 4.0", "معبد حتشبسوت", "الدير البحري · الأقصر", "بنته الملكة حتشبسوت، وهي من النساء القليلات اللاتي حكمن مصر القديمة، وهو مبني في حضن جبل عالٍ."],
-    ["معبد حتشبسوت", "a/a0/Temple_of_Hatshepsut_2%2C_Deir_el-Bahari%2C_Luxor%2C_Egypt.jpg/1920px-Temple_of_Hatshepsut_2%2C_Deir_el-Bahari%2C_Luxor%2C_Egypt.jpg", "Vyacheslav Argenberg", "CC BY 4.0", "معبد حتشبسوت", "الدير البحري · الأقصر", "يتكون من ثلاثة طوابق واسعة يصعد إليها الزوار عبر منحدرات طويلة، وعلى جدرانه رسوم لرحلة بحرية إلى بلاد بعيدة."],
-    ["معبد أبو سمبل", "5/54/Templo_de_Rams%C3%A9s_II%2C_Abu_Simbel%2C_Egipto%2C_2022-04-02%2C_DD_03.jpg/1920px-Templo_de_Rams%C3%A9s_II%2C_Abu_Simbel%2C_Egipto%2C_2022-04-02%2C_DD_03.jpg", "Diego Delso", "CC BY-SA 4.0", "معبد أبو سمبل", "أسوان", "نُقل المعبد كله قطعة قطعة إلى مكان أعلى في ستينيات القرن الماضي لينجو من الغرق في بحيرة ناصر."],
-    ["معبد أبو سمبل", "3/31/Templo_de_Nefertari%2C_Abu_Simbel%2C_Egipto%2C_2022-04-02%2C_DD_153.jpg/1920px-Templo_de_Nefertari%2C_Abu_Simbel%2C_Egipto%2C_2022-04-02%2C_DD_153.jpg", "Diego Delso", "CC BY-SA 4.0", "معبد أبو سمبل", "أسوان", "هذا معبد الملكة نفرتاري زوجة رمسيس الثاني، وتماثيلها على واجهته بنفس حجم تماثيل الملك، وهذا نادر جدًا."],
-    ["معبد فيلة", "8/8d/Philae_Temple_R05.jpg/1920px-Philae_Temple_R05.jpg", "Marc Ryckaert", "CC BY 3.0", "معبد فيلة", "أسوان", "معبد جميل على جزيرة في النيل، نُقل حجرًا حجرًا إلى جزيرة أعلى لينجو من مياه الفيضان."],
-    ["معبد فيلة", "2/2d/Philae_Temple_R01.jpg/1920px-Philae_Temple_R01.jpg", "Marc Ryckaert", "CC BY 3.0", "معبد فيلة", "أسوان", "هذا المبنى ذو الأعمدة يسمّيه الناس «سرير فرعون»، ويطل مباشرة على مياه النيل."],
-    ["معبد فيلة", "7/78/The_Temple_of_Isis_from_Philae%2C_First_pylon%2C_Lake_Nasser%2C_Egypt.jpg/1920px-The_Temple_of_Isis_from_Philae%2C_First_pylon%2C_Lake_Nasser%2C_Egypt.jpg", "Vyacheslav Argenberg", "CC BY 4.0", "معبد فيلة", "أسوان", "يصل الزوار إلى المعبد بالمراكب الصغيرة، لأنه يقع على جزيرة وسط الماء."],
-    ["معبد كوم أمبو", "a/a7/Kom_Ombo_Portal_03.JPG/1920px-Kom_Ombo_Portal_03.JPG", "Olaf Tausch", "CC BY 3.0", "معبد كوم أمبو", "أسوان", "معبد مزدوج له بابان ونصفان متشابهان، وبجواره متحف صغير فيه تماسيح محنّطة عمرها آلاف السنين."],
-    ["النيل في أسوان", "a/a8/Aswan_Nile_R23.jpg/1920px-Aswan_Nile_R23.jpg", "Marc Ryckaert", "CC BY 3.0", "النيل في أسوان", "أسوان", "تشتهر أسوان بمراكب الفلوكة البيضاء، ومن أجمل الرحلات فيها الإبحار بين جزرها الخضراء وقت الغروب."],
-    ["النيل في أسوان", "3/34/Aswan_Nile_R22.jpg/1920px-Aswan_Nile_R22.jpg", "Marc Ryckaert", "CC BY 3.0", "النيل في أسوان", "أسوان", "النيل في أسوان مليء بالجزر الخضراء والصخور الجرانيتية الملساء، ومنها جاء الجرانيت الذي صُنعت منه المسلات والتماثيل."],
-    ["النيل في أسوان", "4/42/Nile_River_in_Aswan.jpg/1920px-Nile_River_in_Aswan.jpg", "Mohammed Moussa", "CC BY-SA 4.0", "النيل في أسوان", "أسوان", "أسوان من أجمل مدن مصر وأكثرها شمسًا، ويعيش فيها النوبيون ولهم بيوت ملونة ولغة وأغانٍ خاصة بهم."],
-    ["وادي الريان", "4/42/Wadi_El-Rayan_Waterfalls.jpg/1920px-Wadi_El-Rayan_Waterfalls.jpg", "Mahmoud Esmat", "CC BY-SA 4.0", "وادي الريان", "الفيوم", "من أشهر الشلالات في مصر، تنساب فيه المياه بين بحيرتين وسط الصحراء."],
-    ["وادي الريان", "5/50/Wadi_El_Rayan_Lake.jpg/1920px-Wadi_El_Rayan_Lake.jpg", "Mohammed Moussa", "CC BY-SA 4.0", "وادي الريان", "الفيوم", "بحيرة زرقاء واسعة وسط الصحراء الذهبية، يحب الناس التخييم بجوارها ومشاهدة الطيور."],
-    ["وادي الحيتان", "3/34/Wadi_Al_Hitan%2C_Fayoum.jpg/1920px-Wadi_Al_Hitan%2C_Fayoum.jpg", "Maaly Saeed", "CC BY-SA 4.0", "وادي الحيتان", "الفيوم", "عُثر فيه على هياكل حيتان قديمة جدًا كانت لها أرجل صغيرة، ما يدل على أن هذه الصحراء كانت بحرًا قبل ملايين السنين."],
-    ["ثعلب الفنك", "4/48/Fennec_FOX_-_Valley_of_the_Whales_-_Wadi_al_Hitan_4.jpg/1920px-Fennec_FOX_-_Valley_of_the_Whales_-_Wadi_al_Hitan_4.jpg", "Khaled Mokhtar", "CC BY-SA 4.0", "ثعلب الفنك", "وادي الحيتان · الفيوم", "أصغر ثعلب في العالم، يعيش في الصحراء، وأذناه الكبيرتان تساعدانه على التخلص من الحرارة وسماع الأصوات البعيدة."],
-    ["الصحراء البيضاء", "8/8d/White_Desert%2C_Egypt.jpg/1920px-White_Desert%2C_Egypt.jpg", "Vyacheslav Argenberg", "CC BY 4.0", "الصحراء البيضاء", "قرب الفرافرة · الوادي الجديد", "صخورها البيضاء من الطباشير، نحتتها الرياح عبر آلاف السنين فصارت بأشكال عجيبة."],
-    ["الصحراء البيضاء", "1/14/White_Desert%2C_Rock_formation%2C_Egypt.jpg/1920px-White_Desert%2C_Rock_formation%2C_Egypt.jpg", "Vyacheslav Argenberg", "CC BY 4.0", "الصحراء البيضاء", "قرب الفرافرة · الوادي الجديد", "بعض صخورها تشبه عيش الغراب (الفطر) أو الدجاجة أو الخيمة، ويحب الزوار التخييم بينها تحت النجوم."],
-    ["واحة سيوة", "6/63/Siwa_Oasis%2C_Sahara_Desert%2C_Egypt.jpg/1920px-Siwa_Oasis%2C_Sahara_Desert%2C_Egypt.jpg", "Vyacheslav Argenberg", "CC BY 4.0", "واحة سيوة", "مطروح", "واحة خضراء وسط الصحراء الغربية، فيها مئات العيون والنخيل، وقلعتها القديمة «شالي» مبنية من الملح والطين."],
-    ["واحة سيوة", "7/74/Siwa_Oasis%2C_Temple_of_the_Oracle_of_Amun%2C_Egypt.jpg/1920px-Siwa_Oasis%2C_Temple_of_the_Oracle_of_Amun%2C_Egypt.jpg", "Vyacheslav Argenberg", "CC BY 4.0", "واحة سيوة", "مطروح", "هذا معبد قديم جدًا فوق صخرة عالية، وقد زاره الإسكندر الأكبر قبل أكثر من ألفي سنة."],
-    ["واحة سيوة", "4/44/Siwa_Oasis%2C_Aftans_Lake.jpg/1920px-Siwa_Oasis%2C_Aftans_Lake.jpg", "Maaly Saeed", "CC BY-SA 4.0", "واحة سيوة", "مطروح", "بحيراتها مالحة جدًا حتى إن الإنسان يطفو فوق مائها بسهولة، وغروب الشمس عندها من أجمل المناظر في مصر."],
-    ["البحر الأحمر", "4/44/Coral_Reef_in_the_Red_Sea.JPG/1920px-Coral_Reef_in_the_Red_Sea.JPG", "Mahmoud Habeeb", "ملكية عامة", "البحر الأحمر", "سواحل مصر", "شعابه المرجانية من أجمل الشعاب في العالم، ويعيش فيه أكثر من ألف نوع من الأسماك الملونة."],
-    ["البحر الأحمر", "7/72/Coral_plato_%28Danafungia_scruposa%29%2C_mar_Rojo%2C_Egipto%2C_2023-04-15%2C_DD_49.jpg/1920px-Coral_plato_%28Danafungia_scruposa%29%2C_mar_Rojo%2C_Egipto%2C_2023-04-15%2C_DD_49.jpg", "Diego Delso", "CC BY-SA 4.0", "البحر الأحمر", "سواحل مصر", "هذا «مرجان الفطر»، وهو لا يلتصق بالصخر مثل غيره، بل يعيش حرًّا على قاع البحر."],
-    ["الحفرة الزرقاء", "8/8c/Blue_Hole_2005.JPG/1920px-Blue_Hole_2005.JPG", "", "ملكية عامة", "الحفرة الزرقاء", "دهب · جنوب سيناء", "حفرة عميقة جدًا في البحر يزيد عمقها على مئة متر، ولونها أزرق داكن، ويأتيها الغواصون من كل العالم."],
-    ["الحفرة الزرقاء", "e/e3/Dahab_Egypt_The_Blue_Hole_Plong%C3%A9e_sous_marine_Diving_Picture_Image_Photo_%2812859990773%29.jpg/1920px-Dahab_Egypt_The_Blue_Hole_Plong%C3%A9e_sous_marine_Diving_Picture_Image_Photo_%2812859990773%29.jpg", "Grand Parc", "CC BY 2.0", "الحفرة الزرقاء", "دهب · جنوب سيناء", "تقع دهب بين جبال سيناء الحمراء ومياه البحر الأحمر الصافية، فتجمع جمال الجبل والبحر معًا."],
-    ["جبل الطور", "2/27/Mount_Sinai_Egypt_1.jpg/1920px-Mount_Sinai_Egypt_1.jpg", "Mohammed Moussa", "CC BY-SA 3.0", "جبل الطور", "جنوب سيناء", "يُعرف أيضًا بجبل موسى، ويُقال إنه الجبل الذي كلّم الله عنده موسى عليه السلام، وقد أقسم الله بطور سيناء في قوله: ﴿وَطُورِ سِينِينَ﴾."],
-    ["جبل الطور", "https://upload.wikimedia.org/wikipedia/commons/d/d8/Mount_sinai_egypt_moses.jpg", "Oxfordus167", "CC BY-SA 4.0", "جبل الطور", "جنوب سيناء", "ارتفاعه أكثر من 2200 متر، ويصعده الزوار ليلًا ليشاهدوا شروق الشمس من قمته."]
-  ];
-  PLACES.forEach((r, i) => {
-    const full = r[1].startsWith('http');
-    const file = full ? r[1].split('/').pop() : r[1].split('/').slice(0, 3).pop();
-    PLACES[i] = { key: r[0], src: full ? r[1] : TH + r[1], alt: 'https://commons.wikimedia.org/wiki/Special:FilePath/' + file + '?width=1920',
-                  by: r[2], lic: r[3], name: r[4], where: r[5], fact: r[6] };
+  // data/places.js: { k: place key, p: thumb path or full URL, by, lic, ar: [name, where, fact], en: [...], ... }
+  const PLACES = (window.PLACES_DATA || []).map(r => {
+    const full = r.p.startsWith('http');
+    const file = full ? r.p.split('/').pop() : r.p.split('/').slice(0, 3).pop();
+    return Object.assign({}, r, { key: r.k, src: full ? r.p : TH + r.p, alt: 'https://commons.wikimedia.org/wiki/Special:FilePath/' + file + '?width=1920' });
   });
+  const placeText = x => x[LANG] || x.en || x.ar;
 
   const PHOTO_MS = 40000;          // each place stays 40 seconds
   const VERSE_PHASE_MS = 2 * 60000; // then 2 minutes of verses on the drawn scene
   const PER_SEGMENT = 20;             // photos per segment (~13 minutes)
   let shownInSegment = 0;
   let phase = 'photos';
-  let order = [], oi = 0, curImg = null, photoMode = false, photoFails = 0, photoTimer = 0;
+  let curPlace = null, order = [], oi = 0, curImg = null, photoMode = false, photoFails = 0, photoTimer = 0;
   function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
   // shuffle so that two photos of the same place never come one after the other
   function spreadShuffle(list, prevKey) {
@@ -1282,15 +1246,17 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
     const box = $('place');
     box.classList.add('out');
     setTimeout(() => {
-      $('placeName').textContent = x.name;
-      $('placeWhere').textContent = x.where;
-      $('placeFact').textContent = x.fact.replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
-      $('placeCredit').textContent = 'صورة: ' + (x.by ? x.by + ' · ' : '') + x.lic + ' · ويكيميديا كومنز';
+      const [name, where, fact] = placeText(x);
+      $('placeName').textContent = name;
+      $('placeWhere').textContent = where;
+      $('placeFact').textContent = t('digits') ? fact.replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]) : fact;
+      $('placeCredit').textContent = t('photoCredit', x.by, tk('licenses', x.lic) || x.lic);
       box.classList.remove('out');
     }, photoMode ? 1700 : 0);
   }
   function startPhotoPhase() {
     clearTimeout(photoTimer);
+    if (!PLACES.length) { startVersePhase(); return; }   // no photo list: verses only
     phase = 'photos';
     shownInSegment = 0; photoFails = 0;
     $('verse').classList.add('off');
@@ -1321,7 +1287,7 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
       nxt.classList.remove('show'); void nxt.offsetWidth; nxt.classList.add('show');
       if (curImg) curImg.classList.remove('show');
       curImg = nxt;
-      showCaption(x);
+      showCaption(x); curPlace = x;
       setPhotoMode(true);
       photoTimer = setTimeout(nextPhoto, PHOTO_MS);
     };
@@ -1337,21 +1303,22 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
   const audio = $('radio');
   let wantPlay = false, si = 0, retryTimer = 0, retryDelay = 3000, lastT = 0, lastProgress = Date.now(), wakeLock = null;
 
-  function setStatus(s, text) { $('status').dataset.s = s; $('statusText').textContent = text; const d = $('dbg'); if (d) d.hidden = (s === 'live') || !d.textContent; }
+  let statusNow = null;
+  function setStatus(s, text) { statusNow = [s, text]; $('status').dataset.s = s; $('statusText').textContent = typeof text === 'function' ? text() : text; const d = $('dbg'); if (d) d.hidden = (s === 'live') || !d.textContent; }
 
   // Inside the TV app, the app plays the stream with Android's own player (window.QuranTV).
   const NATIVE = (typeof window.QuranTV === 'object' && window.QuranTV) ? window.QuranTV : null;
   const TOUCH = !NATIVE && window.matchMedia && matchMedia('(pointer: coarse)').matches;
-  if (TOUCH) $('gateHint').textContent = 'اضغط زر التشغيل لبدء البث';
+  if (TOUCH) $('gateHint').textContent = t('gateHintTouch');
   let errCount = 0, nativeTimer = 0;
   window.__qtvDebug = m => { const d = $('dbg'); d.textContent = m; d.hidden = $('status').dataset.s === 'live'; };
-  if (NATIVE) { try { window.__qtvDebug('نسخة التطبيق ' + NATIVE.version()); } catch (e) {} }
+  if (NATIVE) { try { window.__qtvDebug(t('appVersion', NATIVE.version())); } catch (e) {} }
 
-  function onLive() { clearTimeout(nativeTimer); retryDelay = 3000; errCount = 0; setStatus('live', 'على الهواء مباشرة'); lastProgress = Date.now(); }
+  function onLive() { clearTimeout(nativeTimer); retryDelay = 3000; errCount = 0; setStatus('live', () => tk('st', 'live')); lastProgress = Date.now(); }
 
   function connect() {
     clearTimeout(retryTimer);
-    setStatus('wait', 'جارٍ الاتصال بالبث…');
+    setStatus('wait', () => tk('st', 'connecting'));
     const urls = STATION.urls;
     const url = urls[si % urls.length];
     lastProgress = Date.now();
@@ -1368,7 +1335,7 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
       if (!wantPlay) return;
       if (err && err.name === 'NotAllowedError') { // browser blocked sound until a key press
         wantPlay = false;
-        setStatus('idle', 'جاهز للتشغيل');
+        setStatus('idle', () => tk('st', 'ready'));
         syncPlayBtn();
         return;
       }
@@ -1379,7 +1346,7 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
     if (!wantPlay) return;
     clearTimeout(retryTimer);
     errCount++;
-    setStatus('wait', 'انقطع البث، إعادة المحاولة…' + (code ? ' (' + code + ')' : ''));
+    setStatus('wait', () => t('reconnect', code));
     si++;
     retryTimer = setTimeout(connect, retryDelay);
     retryDelay = Math.min(retryDelay * 1.6, 30000);
@@ -1389,13 +1356,13 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
   window.__qtv = state => {
     if (!wantPlay) return;
     if (state === 'playing') onLive();
-    else if (state === 'waiting') setStatus('wait', 'جارٍ التحميل…');
+    else if (state === 'waiting') setStatus('wait', () => tk('st', 'loading'));
     else if (String(state).indexOf('error') === 0) scheduleRetry(String(state).slice(6));
   };
 
   if (!NATIVE) {
     audio.addEventListener('playing', onLive);
-    audio.addEventListener('waiting', () => { if (wantPlay) setStatus('wait', 'جارٍ التحميل…'); });
+    audio.addEventListener('waiting', () => { if (wantPlay) setStatus('wait', () => tk('st', 'loading')); });
     ['error', 'stalled', 'ended'].forEach(ev => audio.addEventListener(ev, () => {
       if (wantPlay) scheduleRetry(ev === 'error' && audio.error ? 'E' + audio.error.code : '');
     }));
@@ -1416,12 +1383,13 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
   }
 
   /* ---------- Station ---------- */
+  const stationName = st => tk('stations', st.id) || st.name;
   let STATION = STATION_LIST[0];
   try { const saved = localStorage.getItem('qtv-station'); const f = STATION_LIST.find(x => x.id === saved); if (f) STATION = f; } catch (e) {}
   function showStation() {
-    $('nowName').textContent = STATION.name;
+    $('nowName').textContent = stationName(STATION);
     if ('mediaSession' in navigator) {
-      try { navigator.mediaSession.metadata = new MediaMetadata({ title: STATION.name, artist: 'Cairo Quran · بث مباشر' }); } catch (e) {}
+      try { navigator.mediaSession.metadata = new MediaMetadata({ title: stationName(STATION), artist: t('mediaArtist') }); } catch (e) {}
     }
   }
   function chooseStation(id) {
@@ -1440,10 +1408,10 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
   const ALERT_MS = 40000;                      // how long the notice stays on screen
   let ADHAN_ON = true;
   try { ADHAN_ON = localStorage.getItem('qtv-adhan') !== '0'; } catch (e) {}
-  function adhanLabel() { return ADHAN_ON ? 'تنبيه الصلاة: مفعّل ✓' : 'تنبيه الصلاة: متوقف'; }
+  function adhanLabel() { return t('adhanItem', ADHAN_ON); }
   function toggleAdhan() { ADHAN_ON = !ADHAN_ON; try { localStorage.setItem('qtv-adhan', ADHAN_ON ? '1' : '0'); } catch (e) {} if (!ADHAN_ON && adhanActive) endAdhan(); }
   const adhanAudio = new Audio(); adhanAudio.preload = 'auto';
-  let adhanActive = false, chimePlaying = false, resumeAfterAdhan = false, adhanFailsafe = 0, chimeFailsafe = 0, adhanDone = '', adhanReturn = null;
+  let adhanKey = '', adhanActive = false, chimePlaying = false, resumeAfterAdhan = false, adhanFailsafe = 0, chimeFailsafe = 0, adhanDone = '', adhanReturn = null;
   function quietStop() {                       // stop the stream for the chime without showing the start screen
     wantPlay = false; clearTimeout(retryTimer); clearTimeout(nativeTimer);
     if (NATIVE) { try { NATIVE.stop(); } catch (e) {} }
@@ -1462,9 +1430,9 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
     if (window.followHide) window.followHide();
     resumeAfterAdhan = wantPlay;
     if (wantPlay) quietStop();
-    setStatus('idle', 'موعد صلاة ' + NAMES[k]);
-    $('adhanName').textContent = 'صلاة ' + NAMES[k];
-    $('adhanHint').textContent = NATIVE ? 'اضغط OK للإخفاء' : 'اضغط في أي مكان للإخفاء';
+    setStatus('idle', () => tk('st', 'prayerTime', pname(k)));
+    adhanKey = k; $('adhanName').textContent = t('prayerOf', pname(k));
+    $('adhanHint').textContent = NATIVE ? t('adhanHintTv') : t('adhanHintWeb');
     $('adhanOv').hidden = false;
     clearTimeout(adhanFailsafe); adhanFailsafe = setTimeout(endAdhan, ALERT_MS);
     clearTimeout(chimeFailsafe); chimeFailsafe = setTimeout(chimeDone, 15000);   // never keep the radio silent long
@@ -1479,7 +1447,7 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
     if (chimePlaying) chimeDone();
     adhanActive = false; clearTimeout(adhanFailsafe);
     $('adhanOv').hidden = true;
-    if (!wantPlay) setStatus('idle', everPlayed ? 'متوقف مؤقتًا' : 'جاهز للتشغيل');
+    if (!wantPlay) setStatus('idle', everPlayed ? () => tk('st', 'paused') : () => tk('st', 'ready'));
     if (adhanReturn && adhanReturn.focus) adhanReturn.focus();
   }
   $('adhanOv').addEventListener('click', endAdhan);
@@ -1494,15 +1462,22 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
   }
 
   // On the website the play/stop button sits beside the station name; the full-screen gate is for the TV app only.
-  let everPlayed = false;
+  let everPlayed = false, gatePaused = false;
+  function showGateText() {                  // the start screen of the TV app: the basmala, or "paused"
+    $('gateTitle').textContent = gatePaused ? tk('st', 'paused') : 'بسم الله الرحمن الرحيم';
+    $('gateTitle').lang = gatePaused ? LANG : 'ar';
+    $('gateTr').textContent = gatePaused ? '' : (LANG !== 'ar' ? t('gateTr') : '');
+    $('gateTr').hidden = !$('gateTr').textContent;
+    if (gatePaused) $('gateHint').textContent = TOUCH ? t('gateResumeTouch') : t('gateResumeTv');
+  }
   const ICON_PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg>';
   const ICON_STOP = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
   function syncPlayBtn() {
     if (NATIVE) return;
     const b = $('stopBtn');
     b.hidden = false; b.classList.toggle('is-idle', !wantPlay);
-    b.innerHTML = wantPlay ? ICON_STOP + 'إيقاف' : ICON_PLAY + 'تشغيل';
-    b.setAttribute('aria-label', wantPlay ? 'إيقاف البث' : 'تشغيل البث');
+    b.innerHTML = wantPlay ? ICON_STOP + t('stopLabel') : ICON_PLAY + t('playLabel');
+    b.setAttribute('aria-label', wantPlay ? t('stopAria') : t('playAria'));
   }
   function start() {
     wantPlay = true; everPlayed = true;
@@ -1516,10 +1491,9 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
     syncPlayBtn();
     if (NATIVE) { try { NATIVE.stop(); } catch (e) {} }
     else { audio.pause(); audio.removeAttribute('src'); audio.load(); }
-    setStatus('idle', 'متوقف مؤقتًا');
-    if (!NATIVE) return;                       // the website keeps the page open; the button shows «تشغيل» again
-    $('gateTitle').textContent = 'متوقف مؤقتًا';
-    $('gateHint').textContent = TOUCH ? 'اضغط زر التشغيل لاستئناف البث' : 'اضغط OK لاستئناف البث';
+    setStatus('idle', () => tk('st', 'paused'));
+    if (!NATIVE) return;                       // the website keeps the page open; the button shows play again
+    gatePaused = true; showGateText();
     $('gate').classList.remove('hide');
     $('play').focus();
   }
@@ -1545,7 +1519,7 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
     }
     if (typeof updKey === 'function' && updKey(k)) { e.preventDefault(); return; }
     if (typeof updOpen !== 'undefined' && updOpen && $('update').contains(document.activeElement) && (k === 'Enter' || k === ' ')) return;
-    if (document.activeElement && ['shareBtn', 'gateShare', 'tvBtn', 'contactBtn'].indexOf(document.activeElement.id) >= 0 && (k === 'Enter' || k === ' ')) return;
+    if (document.activeElement && ['shareBtn', 'gateShare', 'tvBtn', 'contactBtn', 'langBtn'].indexOf(document.activeElement.id) >= 0 && (k === 'Enter' || k === ' ')) return;
     if (adhanActive) {
       if (k === 'Enter' || k === ' ' || k === 'Escape' || k === 'Backspace' || k === 'GoBack' || k.indexOf('Media') === 0) { e.preventDefault(); endAdhan(); }
       return;
@@ -1582,10 +1556,16 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
   }
   function arNum(v) {
     const n = parseInt(String(v).replace(/[^\d]/g, ''), 10);
-    return isNaN(n) ? null : n.toLocaleString('ar-EG');
+    return isNaN(n) ? null : n.toLocaleString(t('numLocale'));
   }
   const SHOW_TOTAL_FROM = 300;   // counter appears once total visits reach this
   const SHOW_TODAY_FROM = 20;    // "today" part appears once today's visits reach this
+  let visitsNow = null;
+  function renderVisits() {
+    if (!visitsNow) return;
+    const [dayN, allN] = visitsNow;
+    $('visits').innerHTML = (dayN >= SHOW_TODAY_FROM ? '<em>' + t('visitsToday') + '</em> ' + arNum(dayN) + ' · ' : '') + '<em>' + t('visitsTotal') + '</em> ' + arNum(allN);
+  }
   async function showVisits() {
     if (GC_CODE.indexOf('__') === 0) return;
     try {
@@ -1598,14 +1578,13 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
       const allN = t ? parseInt(String(t.count).replace(/[^\d]/g, ''), 10) || 0 : 0;
       if (allN < SHOW_TOTAL_FROM) return;            // stay hidden until there is a real audience
       const el = $('visits');
-      el.innerHTML = (dayN >= SHOW_TODAY_FROM ? '<em>زوار اليوم</em> ' + arNum(dayN) + ' · ' : '') + '<em>إجمالي الزيارات</em> ' + arNum(allN);
+      visitsNow = [dayN, allN]; renderVisits();
       el.hidden = false; $('visitsDot').hidden = false;
     } catch (e) {}
   }
 
   /* ---------- Share ---------- */
   const SHARE_URL = 'https://cairoquran.com/';
-  const SHARE_TEXT = 'Cairo Quran 📻 إذاعة القرآن الكريم وإذاعات كبار القرّاء، مع مواقيت الصلاة لمدينتك وتنبيه بموعدها وأذكار الصباح والمساء.';
   let shareOpen = false, shareReturn = null;
   function trackShare(net) {
     try { new Image().src = GC + '/count?p=' + encodeURIComponent('share-' + net) + '&t=' + encodeURIComponent('مشاركة: ' + net) + '&e=true&rnd=' + Math.random().toString(36).slice(2); } catch (e) {}
@@ -1626,22 +1605,22 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
       try { const t = document.createElement('textarea'); t.value = SHARE_URL; t.style.position = 'fixed'; t.style.opacity = '0';
         document.body.appendChild(t); t.select(); ok = document.execCommand('copy'); t.remove(); } catch (e2) {}
     }
-    const b = $('shareCopy'); b.textContent = ok ? 'تم النسخ ✓' : 'انسخه يدويًا';
-    setTimeout(() => { b.textContent = 'نسخ الرابط'; }, 2200);
+    const b = $('shareCopy'); b.textContent = ok ? t('copied') : t('copyManual');
+    setTimeout(() => { b.textContent = t('copyLink'); }, 2200);
     trackShare('copy');
   }
   function shareTo(net) {
-    const u = encodeURIComponent(SHARE_URL), t = encodeURIComponent(SHARE_TEXT);
+    const u = encodeURIComponent(SHARE_URL), t = encodeURIComponent(t('shareText'));
     const links = {
-      whatsapp: 'https://wa.me/?text=' + encodeURIComponent(SHARE_TEXT + '\n' + SHARE_URL),
+      whatsapp: 'https://wa.me/?text=' + encodeURIComponent(t('shareText') + '\n' + SHARE_URL),
       facebook: 'https://www.facebook.com/sharer/sharer.php?u=' + u,
       telegram: 'https://t.me/share/url?url=' + u + '&text=' + t,
       x: 'https://twitter.com/intent/tweet?text=' + t + '&url=' + u,
-      email: 'mailto:?subject=' + encodeURIComponent('Cairo Quran') + '&body=' + encodeURIComponent(SHARE_TEXT + '\n\n' + SHARE_URL)
+      email: 'mailto:?subject=' + encodeURIComponent('Cairo Quran') + '&body=' + encodeURIComponent(t('shareText') + '\n\n' + SHARE_URL)
     };
     trackShare(net);
     if (net === 'more') {
-      if (navigator.share) navigator.share({ title: 'Cairo Quran', text: SHARE_TEXT, url: SHARE_URL }).catch(() => {});
+      if (navigator.share) navigator.share({ title: 'Cairo Quran', text: t('shareText'), url: SHARE_URL }).catch(() => {});
       return;
     }
     if (net === 'email') { location.href = links.email; return; }
@@ -1678,7 +1657,7 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
   const IN_APP = /FBAN|FBAV|FB_IAB|Instagram|Line\/|; wv\)|Snapchat|TikTok/i.test(UA);
   let installEvt = null;
   window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEvt = e; if (infoOpen === $('appPanel')) showAppWays(); });
-  window.addEventListener('appinstalled', () => { installEvt = null; trackEvent('app-installed', 'تمت إضافة التطبيق للشاشة الرئيسية'); $('appMsg').textContent = 'تمت الإضافة ✓ هتلاقي Cairo Quran على الشاشة الرئيسية.'; $('appInstall').hidden = true; });
+  window.addEventListener('appinstalled', () => { installEvt = null; trackEvent('app-installed', 'تمت إضافة التطبيق للشاشة الرئيسية'); $('appMsg').textContent = t('appAdded'); $('appInstall').hidden = true; });
   function showAppWays() {
     $('appInstall').hidden = !installEvt;
     $('appIos').hidden = !!installEvt || IN_APP || !IS_IOS;
@@ -1688,7 +1667,7 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
   async function promptInstall() {                // the browser's own "Add to home screen" dialog, straight away
     const ev = installEvt; installEvt = null;
     trackEvent('app-prompt', 'نافذة الإضافة للشاشة الرئيسية');
-    try { ev.prompt(); const c = await ev.userChoice; if (c && c.outcome === 'accepted') $('appMsg').textContent = 'تمت الإضافة ✓ هتلاقي Cairo Quran على الشاشة الرئيسية.'; } catch (e) {}
+    try { ev.prompt(); const c = await ev.userChoice; if (c && c.outcome === 'accepted') $('appMsg').textContent = t('appAdded'); } catch (e) {}
     showAppWays();
   }
   // Where the browser allows it (Chrome and Edge on Android and computers), the button adds the app directly.
@@ -1706,8 +1685,8 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
       try { const t = document.createElement('textarea'); t.value = MAIL; t.style.position = 'fixed'; t.style.opacity = '0';
         document.body.appendChild(t); t.select(); ok = document.execCommand('copy'); t.remove(); } catch (e2) {}
     }
-    const b = $('contactCopy'); b.textContent = ok ? 'تم ✓' : 'انسخه يدويًا';
-    setTimeout(() => { b.textContent = 'نسخ'; }, 2200);
+    const b = $('contactCopy'); b.textContent = ok ? t('contactCopied') : t('copyManual');
+    setTimeout(() => { b.textContent = t('contactCopy'); }, 2200);
   });
   if (NATIVE) {                       // inside the TV app: no guide, no mail client; just show the address
     document.querySelectorAll('.web-x').forEach(el => { el.hidden = true; });
@@ -1755,7 +1734,7 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
   let updInfo = null, updOpen = false, updReturn = null, updHideT = 0, updBusy = false;
   function updFocusables() { return [$('updNow'), $('updLater')].filter(b => !b.disabled && !b.hidden); }
   function updMsg(html) { $('updMsg').innerHTML = html || ''; }
-  function codeHint(alt) { return updInfo && updInfo.code ? (alt ? 'أو ' : 'للتحديث: ') + 'افتح تطبيق Downloader واكتب <span class="code">' + updInfo.code + '</span>' : ''; }
+  function codeHint(alt) { return updInfo && updInfo.code ? t('updCodeHint', alt, updInfo.code) : ''; }
   function openUpdate() {
     if (updOpen) return;
     updReturn = document.activeElement;
@@ -1783,24 +1762,24 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
     if (st.indexOf('progress:') === 0) {
       const pct = Math.max(0, Math.min(100, parseInt(st.slice(9), 10) || 0));
       $('updBar').hidden = false; $('updFill').style.width = pct + '%';
-      updMsg('جارٍ تحميل التحديث… ' + arNum(pct) + '٪');
+      updMsg(t('updDownloading', arNum(pct)));
     } else if (st === 'ready') {
-      $('updFill').style.width = '100%'; updMsg('اكتمل التحميل، جارٍ فتح شاشة التثبيت…');
+      $('updFill').style.width = '100%'; updMsg(t('updDone'));
     } else if (st === 'permission') {
-      updMsg('مرة واحدة فقط: فعّل السماح لهذا التطبيق بالتثبيت، ثم اضغط رجوع');
+      updMsg(t('updPermission'));
     } else if (st === 'installing') {
-      updMsg('اضغط «تثبيت» في الشاشة التالية');
+      updMsg(t('updInstall'));
     } else if (st.indexOf('error') === 0) {
       updBusy = false; $('updNow').disabled = false; $('updLater').disabled = false; $('updBar').hidden = true;
-      updMsg('تعذّر التحديث الآن. حاول مرة أخرى، ' + codeHint(true));
-      $('updNow').textContent = 'حاول مرة أخرى'; $('updNow').focus();
+      updMsg(t('updFailed', codeHint(true)));
+      $('updNow').textContent = t('updRetry'); $('updNow').focus();
     }
   };
   function startUpdate() {
     if (!CAN_SELF_UPDATE || updBusy) return;
     updBusy = true; $('updNow').disabled = true; $('updLater').disabled = true;
     $('updBar').hidden = false; $('updFill').style.width = '0%';
-    updMsg('جارٍ تحميل التحديث…');
+    updMsg(t('updDownloadingNoPct'));
     try { NATIVE.startUpdate((updInfo && updInfo.url) || 'https://cairoquran.com/quran.apk'); } catch (e) { window.__qtvUpd('error:bridge'); }
   }
   $('updNow').addEventListener('click', startUpdate);
@@ -1816,7 +1795,58 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
   }
   function checkUpdate() { if (APP_CODE && NATIVE.checkUpdate && !updBusy) { try { NATIVE.checkUpdate(); } catch (e) {} } }
 
+  /* ---------- Switching language without reloading (the radio keeps playing) ---------- */
+  function applyStatic() {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.dataset.i18n;
+      if (!(k in AR_MARKUP)) AR_MARKUP[k] = el.innerHTML;
+      const v = t(k); if (v && el.innerHTML !== v) el.innerHTML = v;
+    });
+    document.querySelectorAll('[data-i18n-attr]').forEach(el => {
+      el.dataset.i18nAttr.split(',').forEach(pair => {
+        const [attr, k] = pair.split(':');
+        if (!(k in AR_MARKUP)) AR_MARKUP[k] = el.getAttribute(attr) || '';
+        const v = t(k); if (v) el.setAttribute(attr, v);
+      });
+    });
+    document.title = t('title');
+    const md = document.querySelector('meta[name="description"]'); if (md) md.setAttribute('content', t('description'));
+  }
+  function nextLang() {
+    const all = (window.QLANGS || ['ar', 'en']).filter(c => I18N[c]);
+    return all[(all.indexOf(LANG) + 1) % all.length] || 'ar';
+  }
+  function langLabel() { return t('langItem', (I18N[nextLang()] || {}).name || ''); }
+  function showLangBtn() {
+    const b = $('langBtn'), nx = I18N[nextLang()] || {};
+    b.textContent = nx.name || ''; b.lang = nextLang(); b.setAttribute('aria-label', t('langAria'));
+    b.hidden = nextLang() === LANG;
+  }
+  function setLang(code) {
+    if (!I18N[code] || code === LANG) return;
+    LANG = code;
+    try { localStorage.setItem('qtv-lang', code); } catch (e) {}
+    const h = document.documentElement; h.lang = code; h.dir = t('dir') || 'ltr';
+    refreshLang();
+  }
+  function refreshLang() {
+    applyStatic(); showLangBtn(); tvChips(); showGateText();
+    if (TOUCH && !gatePaused) $('gateHint').textContent = t('gateHintTouch');
+    buildDateFormats(); todayKey = ''; occKey = ''; tick();
+    showStation(); syncPlayBtn(); renderVisits();
+    if (statusNow) setStatus(statusNow[0], statusNow[1]);
+    if (adhanActive) { $('adhanName').textContent = t('prayerOf', pname(adhanKey)); $('adhanHint').textContent = NATIVE ? t('adhanHintTv') : t('adhanHintWeb'); }
+    setVerse();
+    if (curPlace && photoMode) showCaption(curPlace);
+    if (adhkarMode) { const m = adhkarMode; adhkarMode = null; setAdhkarMode(m); }
+    if (pickerOpen) { const f = pickerButtons[pickerFocus] && pickerButtons[pickerFocus].dataset.id; buildPicker(pickerMode); focusItem(Math.max(0, pickerButtons.findIndex(b => b.dataset.id === f))); }
+  }
+  $('langBtn').addEventListener('click', () => setLang(nextLang()));
+
   /* ---------- Boot ---------- */
+  applyStatic(); showLangBtn(); tvChips(); showGateText(); setStatus('idle', () => tk('st', 'ready'));
+  if (TOUCH) $('gateHint').textContent = t('gateHintTouch');
+  document.documentElement.className = document.documentElement.className.replace(' i18n-wait', '');
   buildPrayers(); setVerse(); tick();
   setInterval(tick, 1000);
   setInterval(nextVerse, 50000);
