@@ -1,0 +1,311 @@
+/* Cairo Quran · English strings (see ar.js for how languages are added).
+   Quran translation: Saheeh International, from the Tanzil Project (tanzil.net), used unchanged and credited
+   on screen, as Tanzil's terms ask. The English of the adhkar and of everything else is by the Cairo Quran team. */
+(function () {
+  var D = window.I18N = window.I18N || {};
+  var en = D.en = {
+    name: 'English',
+    dir: 'ltr',
+    numLocale: 'en-US', dateLocale: 'en-GB', hijriLocale: 'en-u-ca-islamic-umalqura',
+    title: 'Cairo Quran · Quran, Adhan & Adhkar',
+    description: 'Cairo Quran: Quran radio from Cairo and the great reciters, with prayer times, prayer alerts, and morning and evening adhkar.',
+
+    /* ---- markup in index.html (data-i18n) ---- */
+    tagline: 'Quran · Adhan · Adhkar',
+    now: 'Now',
+    chipStation: 'Change<span class="chip-x"> station</span> ▾',
+    chipCity: 'Change city ▾',
+    newBadge: 'New',
+    stop: 'Stop',
+    approx: 'approx.',
+    shareShort: 'Share',
+    shareAria: 'Share Cairo Quran',
+    onPhone: 'On phone',
+    onTv: 'On TV',
+    contactShort: 'Contact',
+    studioShort: 'Make a clip',
+    studioTitle: 'Cairo Quran Studio',
+    facebook: 'Facebook',
+    instagram: 'Instagram',
+    fbAria: 'Cairo Quran on Facebook',
+    igAria: 'Cairo Quran on Instagram',
+    followUs: 'Follow us',
+    scanHint: 'Point your phone camera at the code',
+    pickerHint: 'Use the arrow keys to move, OK to select, Back to close · ▲ stations · ▼ city',
+    updTitle: '🔔 A new version of the app is available',
+    updNow: 'Update now',
+    updLater: 'Later',
+    tvTitle: 'Cairo Quran on TV',
+    tvIntro: 'For Android TV and Google TV · Free',
+    tv1: 'Install the <b>Downloader</b> app from your TV\'s app store.',
+    tv2: 'Open it, enter this code, and press <b>Go</b>:<span class="dl-code">5229519</span>',
+    tv3: 'Press <b>Install</b>. If it asks for permission to install unknown apps, allow it and go back.',
+    tv4: 'If a Play Protect message appears, choose <b>Install anyway</b>. It appears for any app installed from outside the store.',
+    tv5: 'Open Cairo Quran and enjoy. Future updates arrive from inside the app.',
+    tvNote: 'Samsung or LG TV? Open <b>cairoquran.com</b> in your TV\'s browser.',
+    close: 'Close',
+    appTitle: 'Cairo Quran on your phone',
+    appIntro: 'Add it to your home screen and it opens with its own icon like any app, with no download and no store.',
+    appInstall: 'Add to Home Screen',
+    ios1: 'Tap the <b>Share</b> button (the square with an arrow) at the bottom of the screen.',
+    ios2: 'Scroll down and choose <b>“Add to Home Screen”</b>.',
+    ios3: 'Tap <b>“Add”</b>, and the icon will appear on your screen.',
+    inapp1: 'You opened the page from inside Facebook or another app, which does not allow adding it.',
+    inapp2: 'Tap the menu <b>⋯</b> and choose <b>“Open in browser”</b> (Chrome or Safari).',
+    inapp3: 'From there, tap “On phone” again.',
+    other1: 'Open the browser menu <b>⋮</b> (in the top corner).',
+    other2: 'Choose <b>“Install app”</b> or <b>“Add to Home screen”</b>.',
+    appMsg: 'For TV, use the “On TV” button.',
+    contactTitle: 'Contact us',
+    contactIntro: 'To suggest a reciter or a city, or if you run into any problem, we would love to hear from you.',
+    contactSend: 'Send a message',
+    shareTitle: 'Share Cairo Quran',
+    shareIntro: 'Spread the good: the one who points to good is like the one who does it.',
+    whatsapp: 'WhatsApp', telegram: 'Telegram', xNet: 'X', email: 'Email', moreApps: 'More apps',
+    adhanK: 'It is now time for',
+    gateTr: 'In the name of Allah, the Entirely Merciful, the Especially Merciful.',   /* Quran 1:1, Saheeh International */
+    gateHint: 'Press OK on your remote to start the stream',
+    gateShare: 'Share Cairo Quran with your loved ones',
+    playRadioAria: 'Play the radio',
+    langAria: 'Change language',
+
+    /* ---- strings built by the script ---- */
+    prayer: { fajr: 'Fajr', sunrise: 'Sunrise', dhuhr: 'Dhuhr', asr: 'Asr', maghrib: 'Maghrib', isha: 'Isha' },
+    prayerOf: function (name) { return name + ' prayer'; },
+    am: 'AM', pm: 'PM',
+    cityLabel: function (name) { return 'Prayer times · ' + name; },
+    countdown: function (name, hm) { return name + ' in ' + hm; },
+
+    occasion: { arafah: 'the Day of Arafah', eidAdha: 'Eid al-Adha', hijriNewYear: 'the Islamic New Year', ashura: 'the Day of Ashura' },
+    daysWord: function (n, nf) { return n === 1 ? '1 day' : nf(n) + ' days'; },
+    ramadanDay: function (d) { return 'Ramadan Kareem 🌙 · Day ' + d + ' of Ramadan'; },
+    eidFitr: 'Eid al-Fitr Mubarak 🌙',
+    arafahToday: 'Day of Arafah · The best supplication is the supplication of the Day of Arafah',
+    eidAdhaToday: 'Eid al-Adha Mubarak 🌙',
+    newYearToday: 'Happy Islamic New Year · A blessed Hijri year',
+    ashuraToday: 'Day of Ashura',
+    nextOccasion: function (days, name) { return 'About ' + days + ' until ' + name; },
+    rcdTomorrow: '🌙 Ramadan begins tomorrow, God willing',
+    rcdInTwo: '🌙 Ramadan in two days, God willing',
+    rcdUntil: '🌙 Until Ramadan',
+    rcdUnit: function (n) { return n === 1 ? 'day' : 'days'; },
+    imsak: function (t) { return ' · Imsak ' + t; },
+    iftarIn: function (t) { return ' · Iftar in ' + t; },
+
+    pickerStation: 'What would you like to hear?',
+    pickerCity: 'Choose your city',
+    pickerCitySub: 'Times are calculated by each country\'s official method',
+    settings: 'Settings',
+    adhanItem: function (on) { return on ? 'Prayer alert: on ✓' : 'Prayer alert: off'; },
+    adhkarItem: function (on) { return on ? 'Adhkar ticker: shown ✓' : 'Adhkar ticker: hidden'; },
+    langItem: function (nextName) { return 'Language: English · ' + nextName; },
+    tvChipStation: '▲ Change station', tvChipCity: '▼ Change city',
+
+    adhkarLabel: { morning: 'Morning adhkar', evening: 'Evening adhkar', sleep: 'Bedtime adhkar' },
+    counter: function (pass, reps, nf) { return nf(pass) + ' of ' + nf(reps); },
+
+    st: {
+      ready: 'Ready to play', connecting: 'Connecting to the stream…', live: 'Live now', loading: 'Loading…',
+      paused: 'Paused', prayerTime: function (name) { return 'Time for ' + name + ' prayer'; }
+    },
+    reconnect: function (code) { return 'Stream interrupted, retrying…' + (code ? ' (' + code + ')' : ''); },
+    appVersion: function (v) { return 'App version ' + v; },
+    mediaArtist: 'Cairo Quran · Live',
+    playLabel: 'Play', stopLabel: 'Stop', playAria: 'Play the radio', stopAria: 'Stop the stream',
+    gateHintTouch: 'Press the play button to start the stream',
+    gateResumeTouch: 'Press the play button to resume the stream', gateResumeTv: 'Press OK to resume the stream',
+    adhanHintTv: 'Press OK to dismiss', adhanHintWeb: 'Tap anywhere to dismiss',
+
+    visitsToday: 'Visitors today', visitsTotal: 'Total visits',
+    shareText: 'Cairo Quran 📻 Quran radio and the great reciters, with prayer times for your city, prayer alerts, and morning and evening adhkar.',
+    copied: 'Copied ✓', copyManual: 'Copy it manually', copyLink: 'Copy link', contactCopied: 'Done ✓', contactCopy: 'Copy',
+    appAdded: 'Added ✓ You will find Cairo Quran on your home screen.',
+    updCodeHint: function (alt, code) { return (alt ? 'Or: ' : 'To update: ') + 'open the Downloader app and enter <span class="code">' + code + '</span>'; },
+    updDownloading: function (pct) { return 'Downloading the update… ' + pct + '%'; },
+    updDownloadingNoPct: 'Downloading the update…',
+    updDone: 'Download complete, opening the install screen…',
+    updPermission: 'One time only: allow this app to install, then press Back',
+    updInstall: 'Press “Install” on the next screen',
+    updFailed: function (hint) { return 'The update could not be completed now. Try again. ' + hint; },
+    updRetry: 'Try again',
+
+    photoCredit: function (by, lic) { return 'Photo: ' + (by ? by + ' · ' : '') + lic + ' · Wikimedia Commons'; },
+    licenses: { PD: 'Public domain' },
+    digits: false,
+
+    /* ---- Quran verses on the screen: Arabic is kept, this is the line shown under it ---- */
+    verses: [
+  {
+    "t": "Unquestionably, by the remembrance of Allah hearts are assured.",
+    "r": "Ar-Ra'd 13:28 · Saheeh International"
+  },
+  {
+    "t": "and recite the Qur'an with measured recitation.",
+    "r": "Al-Muzzammil 73:4 · Saheeh International"
+  },
+  {
+    "t": "Indeed, this Qur'an guides to that which is most suitable",
+    "r": "Al-Isra' 17:9 · Saheeh International"
+  },
+  {
+    "t": "So when the Qur'an is recited, then listen to it and pay attention that you may receive mercy.",
+    "r": "Al-A'raf 7:204 · Saheeh International"
+  },
+  {
+    "t": "And We send down of the Qur'an that which is healing and mercy for the believers",
+    "r": "Al-Isra' 17:82 · Saheeh International"
+  },
+  {
+    "t": "[This is] a blessed Book which We have revealed to you, [O Muhammad], that they might reflect upon its verses",
+    "r": "Sad 38:29 · Saheeh International"
+  },
+  {
+    "t": "So remember Me; I will remember you. And be grateful to Me and do not deny Me.",
+    "r": "Al-Baqarah 2:152 · Saheeh International"
+  },
+  {
+    "t": "\"My Lord, increase me in knowledge.\"",
+    "r": "Ta-Ha 20:114 · Saheeh International"
+  }
+],
+    /* ---- adhkar: same order as ADHKAR in index.html ---- */
+    adhkar: {
+  "morning": [
+    "I seek refuge in Allah from Satan, the accursed. Allah - there is no deity except Him, the Ever-Living, the Sustainer of [all] existence. Neither drowsiness overtakes Him nor sleep. To Him belongs whatever is in the heavens and whatever is on the earth. Who is it that can intercede with Him except by His permission? He knows what is [presently] before them and what will be after them, and they encompass not a thing of His knowledge except for what He wills. His Kursi extends over the heavens and the earth, and their preservation tires Him not. And He is the Most High, the Most Great.",
+    "In the name of Allah, the Entirely Merciful, the Especially Merciful. Say, \"He is Allah, [who is] One, Allah, the Eternal Refuge. He neither begets nor is born, Nor is there to Him any equivalent.\"",
+    "In the name of Allah, the Entirely Merciful, the Especially Merciful. Say, \"I seek refuge in the Lord of daybreak From the evil of that which He created And from the evil of darkness when it settles And from the evil of the blowers in knots And from the evil of an envier when he envies.\"",
+    "In the name of Allah, the Entirely Merciful, the Especially Merciful. Say, \"I seek refuge in the Lord of mankind, The Sovereign of mankind. The God of mankind, From the evil of the retreating whisperer - Who whispers [evil] into the breasts of mankind - From among the jinn and mankind.\"",
+    "We have reached the morning and at this very time all sovereignty belongs to Allah, and all praise is for Allah. There is no god but Allah alone, without partner. To Him belongs all sovereignty and all praise, and He is over all things capable. My Lord, I ask You for the good of this day and the good of what follows it, and I seek refuge in You from the evil of this day and the evil of what follows it. My Lord, I seek refuge in You from laziness and the helplessness of old age. My Lord, I seek refuge in You from punishment in the Fire and punishment in the grave.",
+    "O Allah, by You we have reached the morning, and by You we reach the evening; by You we live and by You we die, and to You is the resurrection.",
+    "O Allah, You are my Lord; there is no god but You. You created me and I am Your servant, and I hold to Your covenant and Your promise as far as I am able. I seek refuge in You from the evil of what I have done. I acknowledge Your favor upon me, and I acknowledge my sin, so forgive me, for none forgives sins but You.",
+    "O Allah, I have reached the morning calling on You, and on the bearers of Your Throne, Your angels, and all of Your creation, to witness that You are Allah, there is no god but You alone, without partner, and that Muhammad is Your servant and Messenger.",
+    "O Allah, whatever blessing has come to me or to any of Your creation this morning is from You alone, without partner. All praise and thanks are Yours.",
+    "O Allah, grant me health in my body. O Allah, grant me health in my hearing. O Allah, grant me health in my sight. There is no god but You. O Allah, I seek refuge in You from disbelief and poverty, and I seek refuge in You from the punishment of the grave. There is no god but You.",
+    "Allah is sufficient for me; there is no god but Him. On Him I have relied, and He is the Lord of the Great Throne.",
+    "O Allah, I ask You for pardon and well-being in this world and the next. O Allah, I ask You for pardon and well-being in my religion, my worldly affairs, my family, and my wealth. O Allah, conceal my faults and calm my fears. O Allah, protect me from before me and behind me, from my right and my left, and from above me, and I seek refuge in Your greatness from being swallowed up from beneath me.",
+    "O Allah, Knower of the unseen and the seen, Originator of the heavens and the earth, Lord and Sovereign of everything, I bear witness that there is no god but You. I seek refuge in You from the evil of my own soul, from the evil of Satan and his call to associate others with You, and from doing wrong to myself or bringing it upon another Muslim.",
+    "In the name of Allah, with whose name nothing on earth or in heaven can cause harm, and He is the All-Hearing, the All-Knowing.",
+    "I am pleased with Allah as my Lord, with Islam as my religion, and with Muhammad, peace and blessings be upon him, as my Prophet.",
+    "O Ever-Living, O Sustainer, in Your mercy I seek relief. Set right all my affairs, and do not leave me to myself even for the blink of an eye.",
+    "We have reached the morning and all sovereignty belongs to Allah, Lord of the worlds. O Allah, I ask You for the good of this day: its opening, its victory, its light, its blessing and its guidance; and I seek refuge in You from the evil of what is in it and the evil of what follows it.",
+    "We have reached the morning upon the natural faith of Islam, the word of sincerity, the religion of our Prophet Muhammad, peace and blessings be upon him, and the creed of our father Abraham, upright and submitting to Allah, and he was not of the polytheists.",
+    "Glory be to Allah and praise be to Him.",
+    "There is no god but Allah alone, without partner. His is the dominion and His is the praise, and He is over all things capable.",
+    "Glory be to Allah and praise be to Him, as many times as the number of His creation, as much as pleases Him, as much as the weight of His Throne, and as much as the ink of His words.",
+    "O Allah, I ask You for beneficial knowledge, good provision, and accepted deeds.",
+    "I seek Allah's forgiveness and turn to Him in repentance.",
+    "O Allah, send prayers and peace upon our Prophet Muhammad."
+  ],
+  "evening": [
+    "I seek refuge in Allah from Satan, the accursed. Allah - there is no deity except Him, the Ever-Living, the Sustainer of [all] existence. Neither drowsiness overtakes Him nor sleep. To Him belongs whatever is in the heavens and whatever is on the earth. Who is it that can intercede with Him except by His permission? He knows what is [presently] before them and what will be after them, and they encompass not a thing of His knowledge except for what He wills. His Kursi extends over the heavens and the earth, and their preservation tires Him not. And He is the Most High, the Most Great.",
+    "In the name of Allah, the Entirely Merciful, the Especially Merciful. Say, \"He is Allah, [who is] One, Allah, the Eternal Refuge. He neither begets nor is born, Nor is there to Him any equivalent.\"",
+    "In the name of Allah, the Entirely Merciful, the Especially Merciful. Say, \"I seek refuge in the Lord of daybreak From the evil of that which He created And from the evil of darkness when it settles And from the evil of the blowers in knots And from the evil of an envier when he envies.\"",
+    "In the name of Allah, the Entirely Merciful, the Especially Merciful. Say, \"I seek refuge in the Lord of mankind, The Sovereign of mankind. The God of mankind, From the evil of the retreating whisperer - Who whispers [evil] into the breasts of mankind - From among the jinn and mankind.\"",
+    "We have reached the evening and at this very time all sovereignty belongs to Allah, and all praise is for Allah. There is no god but Allah alone, without partner. To Him belongs all sovereignty and all praise, and He is over all things capable. My Lord, I ask You for the good of this night and the good of what follows it, and I seek refuge in You from the evil of this night and the evil of what follows it. My Lord, I seek refuge in You from laziness and the helplessness of old age. My Lord, I seek refuge in You from punishment in the Fire and punishment in the grave.",
+    "O Allah, by You we have reached the evening, and by You we reach the morning; by You we live and by You we die, and to You is the final return.",
+    "O Allah, You are my Lord; there is no god but You. You created me and I am Your servant, and I hold to Your covenant and Your promise as far as I am able. I seek refuge in You from the evil of what I have done. I acknowledge Your favor upon me, and I acknowledge my sin, so forgive me, for none forgives sins but You.",
+    "O Allah, I have reached the evening calling on You, and on the bearers of Your Throne, Your angels, and all of Your creation, to witness that You are Allah, there is no god but You alone, without partner, and that Muhammad is Your servant and Messenger.",
+    "O Allah, whatever blessing has come to me or to any of Your creation this evening is from You alone, without partner. All praise and thanks are Yours.",
+    "O Allah, grant me health in my body. O Allah, grant me health in my hearing. O Allah, grant me health in my sight. There is no god but You. O Allah, I seek refuge in You from disbelief and poverty, and I seek refuge in You from the punishment of the grave. There is no god but You.",
+    "Allah is sufficient for me; there is no god but Him. On Him I have relied, and He is the Lord of the Great Throne.",
+    "O Allah, I ask You for pardon and well-being in this world and the next. O Allah, I ask You for pardon and well-being in my religion, my worldly affairs, my family, and my wealth. O Allah, conceal my faults and calm my fears. O Allah, protect me from before me and behind me, from my right and my left, and from above me, and I seek refuge in Your greatness from being swallowed up from beneath me.",
+    "O Allah, Knower of the unseen and the seen, Originator of the heavens and the earth, Lord and Sovereign of everything, I bear witness that there is no god but You. I seek refuge in You from the evil of my own soul, from the evil of Satan and his call to associate others with You, and from doing wrong to myself or bringing it upon another Muslim.",
+    "In the name of Allah, with whose name nothing on earth or in heaven can cause harm, and He is the All-Hearing, the All-Knowing.",
+    "I am pleased with Allah as my Lord, with Islam as my religion, and with Muhammad, peace and blessings be upon him, as my Prophet.",
+    "O Ever-Living, O Sustainer, in Your mercy I seek relief. Set right all my affairs, and do not leave me to myself even for the blink of an eye.",
+    "We have reached the evening and all sovereignty belongs to Allah, Lord of the worlds. O Allah, I ask You for the good of this night: its opening, its victory, its light, its blessing and its guidance; and I seek refuge in You from the evil of what is in it and the evil of what follows it.",
+    "We have reached the evening upon the natural faith of Islam, the word of sincerity, the religion of our Prophet Muhammad, peace and blessings be upon him, and the creed of our father Abraham, upright and submitting to Allah, and he was not of the polytheists.",
+    "Glory be to Allah and praise be to Him.",
+    "There is no god but Allah alone, without partner. His is the dominion and His is the praise, and He is over all things capable.",
+    "I seek Allah's forgiveness and turn to Him in repentance.",
+    "I seek refuge in the perfect words of Allah from the evil of what He created.",
+    "O Allah, send prayers and peace upon our Prophet Muhammad."
+  ],
+  "sleep": [
+    "He would cup his hands together, blow into them, and recite: Say, \"He is Allah, [who is] One\"; Say, \"I seek refuge in the Lord of daybreak\"; and Say, \"I seek refuge in the Lord of mankind\"; then wipe with them whatever he could of his body.",
+    "I seek refuge in Allah from Satan, the accursed. Allah - there is no deity except Him, the Ever-Living, the Sustainer of [all] existence. Neither drowsiness overtakes Him nor sleep. To Him belongs whatever is in the heavens and whatever is on the earth. Who is it that can intercede with Him except by His permission? He knows what is [presently] before them and what will be after them, and they encompass not a thing of His knowledge except for what He wills. His Kursi extends over the heavens and the earth, and their preservation tires Him not. And He is the Most High, the Most Great.",
+    "The Messenger has believed in what was revealed to him from his Lord, and [so have] the believers. All of them have believed in Allah and His angels and His books and His messengers, [saying], \"We make no distinction between any of His messengers.\" And they say, \"We hear and we obey. [We seek] Your forgiveness, our Lord, and to You is the [final] destination.\" Allah does not charge a soul except [with that within] its capacity. It will have [the consequence of] what [good] it has gained, and it will bear [the consequence of] what [evil] it has earned. \"Our Lord, do not impose blame upon us if we have forgotten or erred. Our Lord, and lay not upon us a burden like that which You laid upon those before us. Our Lord, and burden us not with that which we have no ability to bear. And pardon us; and forgive us; and have mercy upon us. You are our protector, so give us victory over the disbelieving people.\"",
+    "In Your name, my Lord, I lay down my side, and by You I raise it. If You take my soul, have mercy on it, and if You release it, protect it as You protect Your righteous servants.",
+    "O Allah, You created my soul and You take it back. To You belong its death and its life. If You give it life, protect it, and if You cause it to die, forgive it. O Allah, I ask You for well-being.",
+    "O Allah, protect me from Your punishment on the Day You resurrect Your servants.",
+    "In Your name, O Allah, I die and I live.",
+    "Glory be to Allah, praise be to Allah, Allah is the Greatest.",
+    "O Allah, I have submitted myself to You, entrusted my affairs to You, turned my face to You, and relied on You for support, out of hope and fear of You. There is no refuge and no escape from You except to You. I believe in Your Book which You revealed and in Your Prophet whom You sent.",
+    "Praise be to Allah, who fed us, gave us drink, sufficed us, and gave us shelter, for how many have none to suffice them or to shelter them."
+  ]
+},
+    adhkarCounts: {
+      'مرة واحدة': 'Once', 'مرتين': 'Twice', 'ثلاث مرات': '3 times', 'أربع مرات': '4 times', 'سبع مرات': '7 times',
+      'عشر مرات': '10 times', 'مائة مرة': '100 times', 'مائة مرة في اليوم': '100 times a day', '٣٣ و٣٣ و٣٤ مرة': '33, 33 and 34 times'
+    },
+
+    /* ---- names of stations and cities ---- */
+    groups: {
+      'إذاعات مباشرة': 'Live radio', 'قرّاء مصر': 'Reciters of Egypt',
+      'قرّاء الحرمين والخليج': 'Reciters of the Two Holy Mosques and the Gulf', 'برامج وتلاوات': 'Programs and recitations'
+    },
+    stations: {
+  "cairo": "Holy Quran Radio · Cairo",
+  "saudi": "Holy Quran Radio · Saudi Arabia",
+  "mix": "Great Reciters · Mixed Recitations",
+  "abdulbasit": "Abdul Basit Abdus-Samad · Murattal",
+  "abdulbasit_m": "Abdul Basit Abdus-Samad · Mujawwad",
+  "minshawi": "Mohamed Siddiq al-Minshawi · Murattal",
+  "minshawi_m": "Mohamed Siddiq al-Minshawi · Mujawwad",
+  "husary": "Mahmoud Khalil Al-Husary · Murattal",
+  "husary_m": "Mahmoud Khalil Al-Husary · Mujawwad",
+  "banna": "Mahmoud Ali al-Banna",
+  "mustafa": "Mustafa Ismail",
+  "tablawi": "Mohamed Mahmoud al-Tablawi",
+  "naina": "Ahmed Naina",
+  "maher": "Maher Al-Muaiqly",
+  "sudais": "Abdul Rahman Al-Sudais",
+  "shuraim": "Saud Al-Shuraim",
+  "ghamdi": "Saad Al-Ghamdi",
+  "afasy": "Mishary Alafasy",
+  "dosari": "Yasser Al-Dosari",
+  "qatami": "Nasser Al-Qatami",
+  "ajmy": "Ahmad Al-Ajmy",
+  "abbad": "Fares Abbad",
+  "ayyub": "Muhammad Ayyub",
+  "jaber": "Ali Jaber",
+  "abkr": "Idris Abkar",
+  "basfer": "Abdullah Basfar",
+  "jibreel": "Muhammad Jibreel",
+  "salma": "Soothing Recitations",
+  "sakeenah": "Verses of Tranquility",
+  "baqarah": "Surah Al-Baqarah",
+  "mulk": "Surah Al-Mulk",
+  "tafsir": "Concise Commentary on the Quran",
+  "anbiya": "Stories of the Prophets",
+  "siyra": "Concise Biography of the Prophet",
+  "athkar_sabah": "Morning Adhkar · Audio",
+  "athkar_masa": "Evening Adhkar · Audio"
+},
+    countries: { 'الكويت': 'Kuwait', 'مصر': 'Egypt', 'السعودية': 'Saudi Arabia', 'الإمارات': 'United Arab Emirates', 'قطر': 'Qatar' },
+    cities: {
+  "kuwait": "Kuwait",
+  "cairo": "Cairo",
+  "giza": "Giza",
+  "alex": "Alexandria",
+  "mansoura": "Mansoura",
+  "tanta": "Tanta",
+  "portsaid": "Port Said",
+  "suez": "Suez",
+  "assiut": "Asyut",
+  "luxor": "Luxor",
+  "aswan": "Aswan",
+  "hurghada": "Hurghada",
+  "sharm": "Sharm El-Sheikh",
+  "makkah": "Makkah",
+  "madinah": "Madinah",
+  "riyadh": "Riyadh",
+  "jeddah": "Jeddah",
+  "dammam": "Dammam",
+  "dubai": "Dubai",
+  "abudhabi": "Abu Dhabi",
+  "sharjah": "Sharjah",
+  "doha": "Doha"
+}
+  };
+})();
