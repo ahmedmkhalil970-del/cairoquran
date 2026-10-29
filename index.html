@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>/* language, set before the first paint: the saved choice, else the browser's language if the site has it, else Arabic */
+<script>/* language, set before the first paint: the saved choice, else the browser's language if the site has it, else Arabic.
+   The TV app always starts in Arabic: many TVs run an English system whatever their owner reads. */
 (function () {
   var LANGS = ['ar', 'en'], L = 'ar', s = null;
   try { s = localStorage.getItem('qtv-lang'); } catch (e) {}
   if (s && LANGS.indexOf(s) >= 0) L = s;
-  else { var n = String(navigator.language || '').toLowerCase().slice(0, 2); if (n !== 'ar' && LANGS.indexOf(n) >= 0) L = n; }
+  else if (!(typeof window.QuranTV === 'object' && window.QuranTV)) { var n = String(navigator.language || '').toLowerCase().slice(0, 2); if (n !== 'ar' && LANGS.indexOf(n) >= 0) L = n; }
   window.QLANG = L; window.QLANGS = LANGS;
   var h = document.documentElement; h.lang = L; h.dir = L === 'ar' ? 'rtl' : 'ltr';
   if (L !== 'ar') h.className += ' i18n-wait';
