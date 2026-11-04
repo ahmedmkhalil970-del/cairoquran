@@ -116,7 +116,7 @@
     gateResumeTouch: 'Press the play button to resume the stream', gateResumeTv: 'Press OK to resume the stream',
     adhanHintTv: 'Press OK to dismiss', adhanHintWeb: 'Tap anywhere to dismiss',
 
-    visitsToday: 'Visitors today', visitsTotal: 'Total visits',
+    wx: { clear: 'Clear', partly: 'Partly cloudy', cloudy: 'Cloudy', fog: 'Fog', drizzle: 'Drizzle', rain: 'Rain', snow: 'Snow', storm: 'Thunderstorm' },
     shareText: 'Cairo Quran 📻 Quran radio and the great reciters, with prayer times for your city, prayer alerts, and morning and evening adhkar.',
     copied: 'Copied ✓', copyManual: 'Copy it manually', copyLink: 'Copy link', contactCopied: 'Done ✓', contactCopy: 'Copy',
     appAdded: 'Added ✓ You will find Cairo Quran on your home screen.',

@@ -65,7 +65,7 @@
     gateResumeTouch: 'اضغط زر التشغيل لاستئناف البث', gateResumeTv: 'اضغط OK لاستئناف البث',
     adhanHintTv: 'اضغط OK للإخفاء', adhanHintWeb: 'اضغط في أي مكان للإخفاء',
 
-    visitsToday: 'زوار اليوم', visitsTotal: 'إجمالي الزيارات',
+    wx: { clear: 'صافٍ', partly: 'غائم جزئيًا', cloudy: 'غائم', fog: 'ضباب', drizzle: 'رذاذ', rain: 'أمطار', snow: 'ثلوج', storm: 'عاصفة رعدية' },
     shareText: 'Cairo Quran 📻 إذاعة القرآن الكريم وإذاعات كبار القرّاء، مع مواقيت الصلاة لمدينتك وتنبيه بموعدها وأذكار الصباح والمساء.',
     copied: 'تم النسخ ✓', copyManual: 'انسخه يدويًا', copyLink: 'نسخ الرابط', contactCopied: 'تم ✓', contactCopy: 'نسخ',
     appAdded: 'تمت الإضافة ✓ هتلاقي Cairo Quran على الشاشة الرئيسية.',
