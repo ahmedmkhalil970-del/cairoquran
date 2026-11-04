@@ -74,8 +74,6 @@ body.idle{cursor:none}
 .sig b{font-weight:400;color:var(--gold);opacity:.85}
 .sig{display:flex;align-items:baseline;gap:1.1vw}
 .sig .vsep{color:var(--ink-faint)}
-.visits{direction:rtl;unicode-bidi:isolate;letter-spacing:0;font-variant-numeric:tabular-nums}
-.visits em{font-style:normal;color:var(--ink-soft)}
 .top{display:flex;justify-content:space-between;align-items:flex-start;gap:3vw}
 .station h1{margin:0;font-family:var(--f-title);font-weight:700;font-size:3.6vw;line-height:1.15;
   text-shadow:0 .2vw 1.2vw rgba(0,0,0,.55)}
@@ -93,6 +91,8 @@ body.idle{cursor:none}
 .time small{font-size:1.8vw;font-weight:400;color:var(--ink-soft);margin-inline-start:.6vw}
 .dates{margin-top:1vh;font-size:1.25vw;color:var(--ink-soft);line-height:1.7}
 .dates .hijri{color:var(--gold)}
+.wx{margin-top:.4vh;font-size:1.25vw;color:var(--ink-soft);line-height:1.7;font-variant-numeric:tabular-nums;text-shadow:0 .1vw .6vw rgba(0,0,0,.6)}
+.wx[hidden]{display:none}
 
 .verse{align-self:start;margin-top:7vh;justify-self:center;text-align:center;max-width:70vw;transition:opacity 2.5s ease}
 .verse.out{opacity:0}
@@ -129,7 +129,7 @@ body.idle{cursor:none}
 
 @media (max-width:700px){
   .station h1{font-size:7vw}.station .from{font-size:4vw}.status{font-size:3vw}.dot{width:2vw;height:2vw}
-  .time{font-size:11vw}.time small{font-size:4vw}.dates{font-size:3vw}
+  .time{font-size:11vw}.time small{font-size:4vw}.dates{font-size:3vw}.wx{font-size:3vw}
   .verse{max-width:92vw}.verse p{font-size:7vw}.verse cite{font-size:3.2vw}
   .prayers{grid-template-columns:repeat(3,1fr)}.p-head{grid-column:1/-1;border:0;flex-direction:row;justify-content:space-between}
   .p-head b,.p-head span{font-size:3.4vw}.p .n{font-size:3vw}.p .t{font-size:4.4vw}
@@ -325,7 +325,7 @@ html[dir="ltr"] .clock{text-align:right;direction:ltr}
 html[dir="ltr"] .station h1.brand{text-align:left}
 html[dir="ltr"] .place{right:auto;left:4.2vw}
 html[dir="ltr"] .follow{left:auto;right:4.2vw}
-html[dir="ltr"] .fw-row,html[dir="ltr"] .share-btn,html[dir="ltr"] .rcd,html[dir="ltr"] .visits,html[dir="ltr"] .place-credit,html[dir="ltr"] .dbg{direction:ltr}
+html[dir="ltr"] .fw-row,html[dir="ltr"] .share-btn,html[dir="ltr"] .rcd,html[dir="ltr"] .place-credit,html[dir="ltr"] .dbg{direction:ltr}
 html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
 @media (max-width:700px){html[dir="ltr"] .place{left:4vw;right:4vw}html:not([lang="ar"]) .place-name{font-size:6vw}html:not([lang="ar"]) .place-fact{font-size:3.4vw}}
 .ar-text{direction:rtl;unicode-bidi:isolate}
@@ -379,6 +379,7 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
       <button class="lang-btn" id="langBtn" type="button" aria-label="تغيير اللغة"></button>
       <div class="time" id="time">--:--</div>
       <div class="dates"><div id="greg"></div><div class="hijri" id="hijri"></div><div class="occasion" id="occasion" hidden></div></div>
+      <div class="wx" id="wx" hidden></div>
       <div class="rcd" id="ramadanCd" hidden><span class="rcd-k" id="rcdLabel">🌙 باقٍ على رمضان</span><b id="rcdNum"></b><span id="rcdUnit"></span><small data-i18n="approx">تقريبًا</small></div>
     </div>
   </header>
@@ -394,7 +395,7 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
     <div class="p-head"><button class="city" id="cityBtn" type="button"><b id="cityLabel">مواقيت الصلاة · الكويت</b><span class="city-row"><i class="chip" id="cityChip" data-i18n="chipCity">تغيير المدينة ▾</i><em class="new-badge" id="cityNew" hidden data-i18n="newBadge">جديد</em></span></button><span id="countdown"></span></div>
   </footer>
   </div>
-  <div class="sig"><span>By-<b>Ahmed Khalil</b></span><span class="vsep" id="visitsDot" hidden>·</span><span class="visits" id="visits" hidden></span><span class="vsep share-sep" id="shareSep">·</span><button class="share-btn" id="shareBtn" type="button" aria-label="شارك Cairo Quran" data-i18n-attr="aria-label:shareAria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span data-i18n="shareShort">شارك مع أحبابك</span></button><span class="vsep web-x app-x">·</span><button class="share-btn web-x app-x" id="appBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg><span data-i18n="onPhone">على الموبايل</span></button><span class="vsep web-x">·</span><button class="share-btn web-x" id="tvBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span data-i18n="onTv">على التليفزيون</span></button><span class="vsep web-x">·</span><button class="share-btn web-x" id="contactBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span data-i18n="contactShort">تواصل معنا</span></button><span class="vsep web-x">·</span><a class="share-btn web-x" id="studioLink" href="studio/" title="استوديو Cairo Quran" data-i18n-attr="title:studioTitle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="M17 10l5-3v10l-5-3"/></svg><span data-i18n="studioShort">اصنع مقطعك</span></a><span class="vsep web-x">·</span><a class="share-btn web-x" id="fbLink" href="https://www.facebook.com/cairoquran" target="_blank" rel="noopener" aria-label="Cairo Quran على فيسبوك" title="فيسبوك" data-i18n-attr="aria-label:fbAria,title:facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21z"/></svg><span data-i18n="facebook">فيسبوك</span></a><span class="vsep web-x">·</span><a class="share-btn web-x" id="igLink" href="https://www.instagram.com/cairoquran.radio" target="_blank" rel="noopener" aria-label="Cairo Quran على إنستغرام" title="إنستغرام" data-i18n-attr="aria-label:igAria,title:instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg><span data-i18n="instagram">إنستغرام</span></a><span class="vsep" id="sigMailSep" hidden>·</span><span class="sig-mail" id="sigMail" hidden></span></div>
+  <div class="sig"><span>By-<b>Ahmed Khalil</b></span><span class="vsep share-sep" id="shareSep">·</span><button class="share-btn" id="shareBtn" type="button" aria-label="شارك Cairo Quran" data-i18n-attr="aria-label:shareAria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span data-i18n="shareShort">شارك مع أحبابك</span></button><span class="vsep web-x app-x">·</span><button class="share-btn web-x app-x" id="appBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg><span data-i18n="onPhone">على الموبايل</span></button><span class="vsep web-x">·</span><button class="share-btn web-x" id="tvBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span data-i18n="onTv">على التليفزيون</span></button><span class="vsep web-x">·</span><button class="share-btn web-x" id="contactBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span data-i18n="contactShort">تواصل معنا</span></button><span class="vsep web-x">·</span><a class="share-btn web-x" id="studioLink" href="studio/" title="استوديو Cairo Quran" data-i18n-attr="title:studioTitle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="M17 10l5-3v10l-5-3"/></svg><span data-i18n="studioShort">اصنع مقطعك</span></a><span class="vsep web-x">·</span><a class="share-btn web-x" id="fbLink" href="https://www.facebook.com/cairoquran" target="_blank" rel="noopener" aria-label="Cairo Quran على فيسبوك" title="فيسبوك" data-i18n-attr="aria-label:fbAria,title:facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21z"/></svg><span data-i18n="facebook">فيسبوك</span></a><span class="vsep web-x">·</span><a class="share-btn web-x" id="igLink" href="https://www.instagram.com/cairoquran.radio" target="_blank" rel="noopener" aria-label="Cairo Quran على إنستغرام" title="إنستغرام" data-i18n-attr="aria-label:igAria,title:instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg><span data-i18n="instagram">إنستغرام</span></a><span class="vsep" id="sigMailSep" hidden>·</span><span class="sig-mail" id="sigMail" hidden></span></div>
 </main>
 
 <div class="picker" id="picker" hidden role="dialog" aria-modal="true" aria-labelledby="pickerTitle">
@@ -1559,29 +1560,62 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
     const n = parseInt(String(v).replace(/[^\d]/g, ''), 10);
     return isNaN(n) ? null : n.toLocaleString(t('numLocale'));
   }
-  const SHOW_TOTAL_FROM = 300;   // counter appears once total visits reach this
-  const SHOW_TODAY_FROM = 20;    // "today" part appears once today's visits reach this
-  let visitsNow = null;
-  function renderVisits() {
-    if (!visitsNow) return;
-    const [dayN, allN] = visitsNow;
-    $('visits').innerHTML = (dayN >= SHOW_TODAY_FROM ? '<em>' + t('visitsToday') + '</em> ' + arNum(dayN) + ' · ' : '') + '<em>' + t('visitsTotal') + '</em> ' + arNum(allN);
+  /* ---------- Weather: for the country the app is opened from (found from the IP address, no permission prompt) ---------- */
+  const WX_EVERY = 30 * 60000;
+  let wxNow = null;                       // { temp, code, day, cc, fallback }
+  function jsonFrom(url, ms) {
+    return Promise.race([
+      fetch(url).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
+      new Promise((_, no) => setTimeout(() => no(new Error('timeout')), ms || 8000))
+    ]);
   }
-  async function showVisits() {
-    if (GC_CODE.indexOf('__') === 0) return;
+  function wxGroup(c) {
+    if (c === 0) return 'clear';
+    if (c <= 2) return 'partly';
+    if (c === 3) return 'cloudy';
+    if (c === 45 || c === 48) return 'fog';
+    if (c >= 51 && c <= 57) return 'drizzle';
+    if ((c >= 61 && c <= 67) || (c >= 80 && c <= 82)) return 'rain';
+    if ((c >= 71 && c <= 77) || c === 85 || c === 86) return 'snow';
+    if (c >= 95) return 'storm';
+    return 'cloudy';
+  }
+  const WX_ICON = { clear: ['☀️', '🌙'], partly: ['⛅', '☁️'], cloudy: ['☁️', '☁️'], fog: ['🌫️', '🌫️'], drizzle: ['🌦️', '🌧️'],
+    rain: ['🌧️', '🌧️'], snow: ['❄️', '❄️'], storm: ['⛈️', '⛈️'] };
+  function wxCountry(w) {
+    if (w.fallback) return countryName(w.fallback);                       // location lookup failed: the selected city's country
+    try { const n = new Intl.DisplayNames([LANG], { type: 'region' }).of(w.cc); if (n) return n; } catch (e) {}
+    return w.cc;
+  }
+  function renderWeather() {
+    const el = $('wx');
+    if (!wxNow) { el.hidden = true; return; }
+    const g = wxGroup(wxNow.code), deg = Math.round(wxNow.temp);
+    el.textContent = WX_ICON[g][wxNow.day ? 0 : 1] + ' ' + (deg < 0 ? '−' : '') + num(Math.abs(deg)) + '° · ' + (tk('wx', g) || '') + ' · ' + wxCountry(wxNow);
+    el.hidden = false;
+  }
+  async function wxLocate() {
+    let g = null;
+    try { g = JSON.parse(localStorage.getItem('qtv-geo')); } catch (e) {}
+    if (g && g.cc && Date.now() - g.at < 12 * 3600e3) return g;         // the visitor can travel: look again after 12 hours
+    const j = await jsonFrom('https://get.geojs.io/v1/ip/geo.json');
+    const lat = parseFloat(j.latitude), lon = parseFloat(j.longitude), cc = String(j.country_code || '').toUpperCase();
+    if (isNaN(lat) || isNaN(lon) || cc.length !== 2) throw new Error('no location');
+    g = { lat: lat, lon: lon, cc: cc, at: Date.now() };
+    try { localStorage.setItem('qtv-geo', JSON.stringify(g)); } catch (e) {}
+    return g;
+  }
+  async function showWeather() {
     try {
-      const today = dayKey(cityParts(new Date()));
-      const [d, t] = await Promise.all([
-        fetch(GC + '/counter/TOTAL.json?start=' + today).then(r => r.ok ? r.json() : null),
-        fetch(GC + '/counter/TOTAL.json').then(r => r.ok ? r.json() : null)
-      ]);
-      const dayN = d ? parseInt(String(d.count).replace(/[^\d]/g, ''), 10) || 0 : 0;
-      const allN = t ? parseInt(String(t.count).replace(/[^\d]/g, ''), 10) || 0 : 0;
-      if (allN < SHOW_TOTAL_FROM) return;            // stay hidden until there is a real audience
-      const el = $('visits');
-      visitsNow = [dayN, allN]; renderVisits();
-      el.hidden = false; $('visitsDot').hidden = false;
-    } catch (e) {}
+      let where, fallback = null;
+      try { where = await wxLocate(); } catch (e) { where = { lat: CITY.lat, lon: CITY.lng, cc: '' }; fallback = CITY.country; }
+      const j = await jsonFrom('https://api.open-meteo.com/v1/forecast?latitude=' + where.lat.toFixed(2) + '&longitude=' + where.lon.toFixed(2) +
+        '&current=temperature_2m,weather_code,is_day&timezone=auto');
+      const c = j && j.current;
+      if (!c || typeof c.temperature_2m !== 'number') throw new Error('no weather');
+      wxNow = { temp: c.temperature_2m, code: c.weather_code, day: c.is_day !== 0, cc: where.cc, fallback: fallback };
+      renderWeather();
+    } catch (e) {}                                                        // nothing to show: the line simply stays hidden
   }
 
   /* ---------- Share ---------- */
@@ -1834,7 +1868,7 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
     applyStatic(); showLangBtn(); tvChips(); showGateText();
     if (TOUCH && !gatePaused) $('gateHint').textContent = t('gateHintTouch');
     buildDateFormats(); todayKey = ''; occKey = ''; tick();
-    showStation(); syncPlayBtn(); renderVisits();
+    showStation(); syncPlayBtn(); renderWeather();
     if (statusNow) setStatus(statusNow[0], statusNow[1]);
     if (adhanActive) { $('adhanName').textContent = t('prayerOf', pname(adhanKey)); $('adhanHint').textContent = NATIVE ? t('adhanHintTv') : t('adhanHintWeb'); }
     setVerse();
@@ -1854,7 +1888,8 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
   setInterval(() => { if (!photoMode) showScene(); }, 180000);
   startPhotoPhase();
   if (!startCity.chosen) setTimeout(() => { if (!pickerOpen) openPicker('city'); }, 1500);
-  countVisit(); showVisits(); setInterval(showVisits, 30 * 60000);
+  countVisit();
+  showWeather(); setInterval(showWeather, WX_EVERY);
   setTimeout(checkUpdate, 20000); setInterval(checkUpdate, 6 * 3600000);
   let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { drawScene(front, PAL[currentPeriod], variant * 7919); }, 300); });
   $('play').focus();
