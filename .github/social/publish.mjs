@@ -47,7 +47,11 @@ async function direct(url) {
 async function facebook(it) {
   if (it.type === 'post') {
     const j = await graph(`${FB_PAGE_ID}/photos`, { url: await direct(it.url), caption: it.caption });
-    if (it.first_comment?.facebook) await graph(`${j.post_id || j.id}/comments`, { message: it.first_comment.facebook });
+    // The post is already live here. A failed first comment must not fail the item, or the next run would post it again.
+    if (it.first_comment?.facebook) {
+      try { await graph(`${j.post_id || j.id}/comments`, { message: it.first_comment.facebook }); }
+      catch (e) { log(`WARNING: first comment not added to ${j.post_id || j.id}: ${e.message}`); }
+    }
     return j.post_id || j.id;
   }
   const s = await graph(`${FB_PAGE_ID}/video_reels`, { upload_phase: 'start' });
