@@ -5,12 +5,33 @@ on:
 jobs:
   probe:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
-      - run: sudo apt-get -qq update >/dev/null && sudo apt-get -qq install -y ffmpeg >/dev/null
       - run: |
-          for u in https://stream.radiojar.com/8s5u5tpdtwzuv https://n12.radiojar.com/8s5u5tpdtwzuv https://n0c.radiojar.com/8s5u5tpdtwzuv https://stream.radiojar.com/0tpy1h0kxtzuv; do
-            echo "=================== $u"
-            curl -sS -m 10 -o /dev/null -L -D - -r 0-2000 "$u" | grep -iE "^HTTP|^location|^content-type|^icy|^server" || true
-            timeout 60 ffmpeg -hide_banner -nostdin -t 25 -i "$u" -af volumedetect -f null - 2>&1 | grep -E "Stream #|mean_volume|max_volume|Error|error|Duration|icy" | head -8 || true
+          UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0 Safari/537.36'
+          for u in https://stream.radiojar.com/8s5u5tpdtwzuv https://stream.radiojar.com/0tpy1h0kxtzuv; do
+            echo "=== browser UA $u"; curl -sS -m 10 -o /dev/null -A "$UA" -D - -r 0-100 "$u" | grep -iE "^HTTP|^location" || true
+            loc=$(curl -sS -m 10 -o /dev/null -A "$UA" -w '%{redirect_url}' "$u")
+            h=$(echo "$loc" | sed 's#^http://#https://#')
+            echo "=== https upgrade $h"; curl -sS -m 10 -o /dev/null -w 'code=%{http_code} bytes=%{size_download}\n' --max-time 6 "$h" 2>&1 | tail -1
+            host=$(echo "$loc" | sed -E 's#^https?://([^/]+)/.*#\1#'); echo "=== tls $host"; curl -sS -m 6 -o /dev/null -w 'code=%{http_code}\n' "https://$host/" 2>&1 | tail -1
           done
+      - run: |
+          mkdir p && cd p && npm init -y >/dev/null && npm i -s playwright@1.48.2 >/dev/null && npx playwright install --with-deps chromium >/dev/null 2>&1
+          cat > t.js <<'JS'
+          const { chromium } = require('playwright');
+          (async () => {
+            const b = await chromium.launch({ args: ['--autoplay-policy=no-user-gesture-required'] });
+            const p = await b.newPage();
+            p.on('console', m => { if (/mixed|blocked|insecure/i.test(m.text())) console.log('CONSOLE', m.text()); });
+            p.on('requestfailed', r => { if (/radiojar/.test(r.url())) console.log('FAILED', r.url().slice(0,90), r.failure() && r.failure().errorText); });
+            p.on('response', r => { if (/radiojar/.test(r.url())) console.log('RESP', r.status(), r.url().slice(0,90)); });
+            await p.goto('https://cairoquran.com/', { waitUntil: 'domcontentloaded' });
+            await p.waitForTimeout(3000);
+            await p.evaluate(() => { const b = document.getElementById('play'); b && b.click(); });
+            await p.waitForTimeout(25000);
+            console.log('STATUS', await p.evaluate(() => document.getElementById('status').dataset.s + ' | ' + document.getElementById('statusText').textContent + ' | t=' + document.getElementById('radio').currentTime.toFixed(1) + ' err=' + (document.getElementById('radio').error && document.getElementById('radio').error.code) + ' src=' + document.getElementById('radio').currentSrc));
+            await b.close();
+          })();
+          JS
+          node t.js
