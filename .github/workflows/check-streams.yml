@@ -1,4 +1,4 @@
-# Checks every six hours that all radio streams on the site are working.
+# Checks every two hours, on GitHub itself (no Claude session needed), that all radio streams on the site are working.
 # When a station is down it opens an issue (or comments on the open one) so the owner is notified,
 # and closes it once every station is back. A station outage is a result, not a failure of this tool,
 # so the run stays green; the run turns red only when the check itself cannot run. It only reads index.html; it never deploys or edits the site.
@@ -6,7 +6,7 @@ name: فحص روابط البث
 
 on:
   schedule:
-    - cron: '17 */6 * * *'
+    - cron: '17 */2 * * *'
   workflow_dispatch:
 
 permissions:
