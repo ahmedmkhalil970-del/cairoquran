@@ -42,8 +42,9 @@
     iftarIn: function (t) { return ' · الإفطار بعد ' + t; },
 
     pickerStation: 'ماذا تحب أن تسمع؟',
+    autoGroup: 'تلقائي', autoCity: 'موقعي الحالي',
     pickerCity: 'اختر مدينتك',
-    pickerCitySub: 'تُحسب المواقيت بالطريقة الرسمية لكل دولة',
+    pickerCitySub: 'تُحدَّد مدينتك تلقائيًا من موقعك، ويمكنك اختيار غيرها',
     settings: 'الإعدادات',
     adhanItem: function (on) { return on ? 'تنبيه الصلاة: مفعّل ✓' : 'تنبيه الصلاة: متوقف'; },
     adhkarItem: function (on) { return on ? 'شريط الأذكار: ظاهر ✓' : 'شريط الأذكار: مخفي'; },

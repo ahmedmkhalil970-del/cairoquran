@@ -46,7 +46,10 @@ async function probeOnce(url) {
     }
     reader.cancel().catch(() => {});
     if (bytes < MIN_BYTES) return { ok: false, reason: `توقف البث بعد ${bytes} بايت` };
-    return { ok: true };
+    // a secure link that ends on a plain http server works in Chrome (it upgrades the request) but can fail
+    // in other browsers and players, so it is reported as a warning
+    const insecure = url.startsWith('https:') && String(res.url || '').startsWith('http:');
+    return { ok: true, insecure, final: res.url };
   } catch (e) {
     return { ok: false, reason: ctrl.signal.aborted ? 'انتهت مهلة الاتصال' : (e.cause?.code || e.message) };
   } finally {
@@ -101,8 +104,10 @@ if (failedFirst.length) {
   (await mapLimited(failedFirst, CONCURRENCY, probe)).forEach((r, i) => results.set(failedFirst[i], r));
 }
 
-const down = [], degraded = [];
+const down = [], degraded = [], insecure = [];
 for (const s of stations) {
+  const ins = s.urls.filter(u => results.get(u).ok && results.get(u).insecure);
+  if (ins.length) insecure.push({ s, ins });
   const failed = s.urls.filter(u => !results.get(u).ok);
   if (failed.length === s.urls.length) down.push({ s, failed });
   else if (failed.length) degraded.push({ s, failed });
@@ -115,6 +120,7 @@ const table = rows => `| الإذاعة | القسم | السبب | الرابط
 let text = `## نتيجة فحص روابط البث\n\n- وقت الفحص: ${when} (بتوقيت القاهرة)\n- عدد الإذاعات: ${stations.length}، وعدد الروابط: ${urls.length}\n- الإذاعات المتوقفة: ${down.length}\n- الإذاعات التي تعطّل أحد روابطها الاحتياطية: ${degraded.length}\n`;
 if (down.length) text += `\n### إذاعات متوقفة بالكامل\nلن يسمع الزائر أي صوت عند اختيار هذه الإذاعات.\n\n${table(down)}`;
 if (degraded.length) text += `\n### روابط احتياطية متعطّلة\nالإذاعة تعمل من رابط آخر، لكن الاحتياطي غير متاح.\n\n${table(degraded)}`;
+if (insecure.length) text += `\n### روابط تتحول إلى اتصال غير آمن (http)\nالإذاعة تعمل في Chrome، لكنها قد تتوقف في متصفحات أو أجهزة أخرى.\n\n| الإذاعة | الرابط | يتحول إلى |\n|---|---|---|\n${insecure.flatMap(({ s, ins }) => ins.map(u => `| ${s.name} | ${u} | ${String(results.get(u).final).split('?')[0]} |`)).join('\n')}\n`;
 if (!down.length && !degraded.length) text += `\nجميع الإذاعات تعمل بصورة سليمة.\n`;
 
 await report(text, 0, down.length ? 'down' : 'ok');

@@ -93,8 +93,9 @@
     iftarIn: function (t) { return ' · Iftar in ' + t; },
 
     pickerStation: 'What would you like to hear?',
+    autoGroup: 'Automatic', autoCity: 'My current location',
     pickerCity: 'Choose your city',
-    pickerCitySub: 'Times are calculated by each country\'s official method',
+    pickerCitySub: 'Your city is set automatically from your location; you can pick another',
     settings: 'Settings',
     adhanItem: function (on) { return on ? 'Prayer alert: on ✓' : 'Prayer alert: off'; },
     adhkarItem: function (on) { return on ? 'Adhkar ticker: shown ✓' : 'Adhkar ticker: hidden'; },

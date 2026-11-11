@@ -679,7 +679,11 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
     ['doha', 'الدوحة', 'قطر', 25.2854, 51.5310, 'Asia/Qatar', 'Qatar', 3]
   ].map(([id, name, country, lat, lng, tz, method, off]) => ({ id, name, country, lat, lng, tz, method, off }));
   const byId = id => CITIES.find(c => c.id === id);
-  const cityName = c => tk('cities', c.id) || c.name;
+  function regionName(cc) {
+    try { const n = new Intl.DisplayNames([LANG], { type: 'region' }).of(cc); if (n) return n; } catch (e) {}
+    return cc;
+  }
+  const cityName = c => c.auto ? (c.name || regionName(c.cc)) : (tk('cities', c.id) || c.name);
   const countryName = c => tk('countries', c) || c;
 
   function loadCity() {
@@ -693,6 +697,7 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
   }
   const startCity = loadCity();
   let CITY = startCity.city;
+  let cityPicked = startCity.chosen && (function () { try { return !!byId(localStorage.getItem('qtv-city')); } catch (e) { return false; } })();
 
   /* ---------- Local time in the selected city (works whatever the device's own zone) ---------- */
   const partFmt = {};
@@ -719,8 +724,10 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
   // Prayer times for a city-local date, as minutes after the city's midnight.
   function prayerTimes(y, mo, d) {
     const params = adhan.CalculationMethod[CITY.method]();
-    params.madhab = adhan.Madhab.Shafi;
-    const pt = new adhan.PrayerTimes(new adhan.Coordinates(CITY.lat, CITY.lng), new Date(y, mo - 1, d), params);
+    params.madhab = CITY.madhab === 'Hanafi' ? adhan.Madhab.Hanafi : adhan.Madhab.Shafi;
+    const coords = new adhan.Coordinates(CITY.lat, CITY.lng);
+    if (Math.abs(CITY.lat) > 48) params.highLatitudeRule = adhan.HighLatitudeRule.recommended(coords);
+    const pt = new adhan.PrayerTimes(coords, new Date(y, mo - 1, d), params);
     const out = {};
     ['fajr', 'sunrise', 'dhuhr', 'asr', 'maghrib', 'isha'].forEach(k => {
       const p = cityParts(pt[k]);
@@ -877,8 +884,9 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
   function citySections() {
     const countries = [];
     CITIES.forEach(c => { if (countries.indexOf(c.country) < 0) countries.push(c.country); });
-    const out = countries.map(country => ({ title: countryName(country), items: CITIES.filter(c => c.country === country).map(c => ({
-      id: c.id, label: cityName(c), cur: c.id === CITY.id, choose: () => chooseCity(c.id) })) }));
+    const out = [{ title: t('autoGroup'), items: [{ id: 'auto', label: t('autoCity'), cur: !cityPicked, choose: () => useAutoCity() }] }]
+      .concat(countries.map(country => ({ title: countryName(country), items: CITIES.filter(c => c.country === country).map(c => ({
+      id: c.id, label: cityName(c), cur: cityPicked && c.id === CITY.id, choose: () => chooseCity(c.id) })) })));
     out.push({ title: t('settings'), items: [{ id: 'adhan', label: adhanLabel(), cur: false, keep: true,
       choose: b => { toggleAdhan(); b.textContent = adhanLabel(); } },
       { id: 'adhkar', label: adhkarLabel(), cur: false, keep: true,
@@ -939,8 +947,21 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
     const c = byId(id); if (!c) return;
     CITY = c;
     try { localStorage.setItem('qtv-city', id); } catch (e) {}
+    cityPicked = true;
     buildDateFormats(); todayKey = ''; currentPeriod = '';
-    closePicker(); tick();
+    closePicker(); tick(); showWeather();
+  }
+  function applyCity(c) {                          // automatic location: shown, never saved
+    CITY = c;
+    buildDateFormats(); todayKey = ''; currentPeriod = '';
+    tick();
+  }
+  function useAutoCity() {                         // back to the location of the connection
+    cityPicked = false;
+    try { localStorage.removeItem('qtv-city'); } catch (e) {}
+    closePicker();
+    if (lastGeo) applyCity(cityFromGeo(lastGeo));
+    showWeather();
   }
   // move focus on the grid: rows follow the visual layout (right-to-left)
   function moveFocus(key) {
@@ -1560,9 +1581,37 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
     const n = parseInt(String(v).replace(/[^\d]/g, ''), 10);
     return isNaN(n) ? null : n.toLocaleString(t('numLocale'));
   }
-  /* ---------- Weather: for the country the app is opened from (found from the IP address, no permission prompt) ---------- */
+  /* ---------- Location and weather ----------
+     Until the viewer picks a city by hand, everything (city, prayer times, date, weather) follows the location of the
+     connection, found from the IP address on every refresh (no permission prompt), so travel or a VPN shows at once.
+     A city picked by hand overrides it and is remembered; "My current location" in the city menu goes back to automatic. */
   const WX_EVERY = 30 * 60000;
-  let wxNow = null;                       // { temp, code, day, cc, fallback }
+  let wxNow = null;                       // { temp, code, day, city }
+  let wxSeq = 0, wxAt = 0;                 // a newer request always wins; time of the last refresh
+  let lastGeo = null, autoOK = false;
+  try { localStorage.removeItem('qtv-geo'); } catch (e) {}            // old 12-hour location cache: no longer used
+  // each country's official method where adhan.js has one, Muslim World League elsewhere
+  const COUNTRY_METHOD = { KW: 'Kuwait', EG: 'Egyptian', SA: 'UmmAlQura', AE: 'Dubai', QA: 'Qatar', TR: 'Turkey', IR: 'Tehran',
+    PK: 'Karachi', IN: 'Karachi', BD: 'Karachi', AF: 'Karachi', SG: 'Singapore', MY: 'Singapore', ID: 'Singapore', BN: 'Singapore',
+    US: 'NorthAmerica', CA: 'NorthAmerica' };
+  const HANAFI_ASR = ['PK', 'IN', 'BD', 'AF', 'TR'];
+  const NEAR_KM = 60;                                                     // closer than this to a city on the list: use that city
+  function distKm(a1, o1, a2, o2) {
+    const r = Math.PI / 180, x = Math.sin((a2 - a1) * r / 2), y = Math.sin((o2 - o1) * r / 2);
+    return 12742 * Math.asin(Math.sqrt(x * x + Math.cos(a1 * r) * Math.cos(a2 * r) * y * y));
+  }
+  function cityFromGeo(g) {
+    let best = null, bestKm = Infinity;
+    CITIES.forEach(c => { const k = distKm(g.lat, g.lon, c.lat, c.lng); if (k < bestKm) { bestKm = k; best = c; } });
+    if (best && bestKm <= NEAR_KM) return best;
+    let tz = g.tz || '';
+    try { if (tz) new Intl.DateTimeFormat('en-US', { timeZone: tz }); } catch (e) { tz = ''; }
+    if (!tz) { try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC'; } catch (e) { tz = 'UTC'; } }
+    return { id: 'auto', auto: true, name: g.city, cc: g.cc, country: '', lat: g.lat, lng: g.lon, tz: tz,
+      method: COUNTRY_METHOD[g.cc] || 'MuslimWorldLeague', madhab: HANAFI_ASR.indexOf(g.cc) >= 0 ? 'Hanafi' : 'Shafi',
+      off: -new Date().getTimezoneOffset() / 60 };
+  }
+  const sameCity = (a, b) => a.id === b.id && (!a.auto || (Math.abs(a.lat - b.lat) < 0.05 && Math.abs(a.lng - b.lng) < 0.05 && a.tz === b.tz));
   function jsonFrom(url, ms) {
     return Promise.race([
       fetch(url).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
@@ -1582,41 +1631,44 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
   }
   const WX_ICON = { clear: ['☀️', '🌙'], partly: ['⛅', '☁️'], cloudy: ['☁️', '☁️'], fog: ['🌫️', '🌫️'], drizzle: ['🌦️', '🌧️'],
     rain: ['🌧️', '🌧️'], snow: ['❄️', '❄️'], storm: ['⛈️', '⛈️'] };
-  function wxCountry(w) {
-    if (w.fallback) return countryName(w.fallback);                       // location lookup failed: the selected city's country
-    try { const n = new Intl.DisplayNames([LANG], { type: 'region' }).of(w.cc); if (n) return n; } catch (e) {}
-    return w.cc;
-  }
   function renderWeather() {
     const el = $('wx');
     if (!wxNow) { el.hidden = true; return; }
     const g = wxGroup(wxNow.code), deg = Math.round(wxNow.temp);
-    el.textContent = WX_ICON[g][wxNow.day ? 0 : 1] + ' ' + (deg < 0 ? '−' : '') + num(Math.abs(deg)) + '° · ' + (tk('wx', g) || '') + ' · ' + wxCountry(wxNow);
+    el.textContent = WX_ICON[g][wxNow.day ? 0 : 1] + ' ' + (deg < 0 ? '−' : '') + num(Math.abs(deg)) + '° · ' + (tk('wx', g) || '') + ' · ' + cityName(wxNow.city);
     el.hidden = false;
   }
   async function wxLocate() {
-    let g = null;
-    try { g = JSON.parse(localStorage.getItem('qtv-geo')); } catch (e) {}
-    if (g && g.cc && Date.now() - g.at < 12 * 3600e3) return g;         // the visitor can travel: look again after 12 hours
-    const j = await jsonFrom('https://get.geojs.io/v1/ip/geo.json');
+    const j = await jsonFrom('https://get.geojs.io/v1/ip/geo.json?_=' + Date.now());    // never a cached answer
     const lat = parseFloat(j.latitude), lon = parseFloat(j.longitude), cc = String(j.country_code || '').toUpperCase();
     if (isNaN(lat) || isNaN(lon) || cc.length !== 2) throw new Error('no location');
-    g = { lat: lat, lon: lon, cc: cc, at: Date.now() };
-    try { localStorage.setItem('qtv-geo', JSON.stringify(g)); } catch (e) {}
-    return g;
+    return { lat: lat, lon: lon, cc: cc, city: String(j.city || '').trim(), tz: String(j.timezone || '') };
   }
   async function showWeather() {
+    const seq = ++wxSeq; wxAt = Date.now();
+    if (!cityPicked) {
+      try {
+        const g = await wxLocate();
+        if (seq !== wxSeq) return;
+        lastGeo = g; autoOK = true;
+        const c = cityFromGeo(g);
+        if (!sameCity(c, CITY)) applyCity(c);
+      } catch (e) {}                                                      // no location: keep the current city
+    }
     try {
-      let where, fallback = null;
-      try { where = await wxLocate(); } catch (e) { where = { lat: CITY.lat, lon: CITY.lng, cc: '' }; fallback = CITY.country; }
-      const j = await jsonFrom('https://api.open-meteo.com/v1/forecast?latitude=' + where.lat.toFixed(2) + '&longitude=' + where.lon.toFixed(2) +
+      const at = CITY;
+      const j = await jsonFrom('https://api.open-meteo.com/v1/forecast?latitude=' + at.lat.toFixed(2) + '&longitude=' + at.lng.toFixed(2) +
         '&current=temperature_2m,weather_code,is_day&timezone=auto');
       const c = j && j.current;
       if (!c || typeof c.temperature_2m !== 'number') throw new Error('no weather');
-      wxNow = { temp: c.temperature_2m, code: c.weather_code, day: c.is_day !== 0, cc: where.cc, fallback: fallback };
+      if (seq !== wxSeq) return;                                          // the city changed meanwhile
+      wxNow = { temp: c.temperature_2m, code: c.weather_code, day: c.is_day !== 0, city: at };
       renderWeather();
-    } catch (e) {}                                                        // nothing to show: the line simply stays hidden
+    } catch (e) {}                                                        // nothing to show: the line keeps its last value or stays hidden
   }
+  document.addEventListener('visibilitychange', () => {                   // phone or tab back in view: refresh if older than 5 minutes
+    if (document.visibilityState === 'visible' && Date.now() - wxAt > 5 * 60000) showWeather();
+  });
 
   /* ---------- Share ---------- */
   const SHARE_URL = 'https://cairoquran.com/';
@@ -1887,9 +1939,11 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
   setInterval(nextVerse, 50000);
   setInterval(() => { if (!photoMode) showScene(); }, 180000);
   startPhotoPhase();
-  if (!startCity.chosen) setTimeout(() => { if (!pickerOpen) openPicker('city'); }, 1500);
   countVisit();
-  showWeather(); setInterval(showWeather, WX_EVERY);
+  showWeather().then(() => {                       // ask for a city only when the location could not be found at all
+    if (!cityPicked && !autoOK && !startCity.chosen && !pickerOpen) openPicker('city');
+  });
+  setInterval(showWeather, WX_EVERY);
   setTimeout(checkUpdate, 20000); setInterval(checkUpdate, 6 * 3600000);
   let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { drawScene(front, PAL[currentPeriod], variant * 7919); }, 300); });
   $('play').focus();
