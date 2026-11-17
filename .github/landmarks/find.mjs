@@ -54,5 +54,5 @@ for (const [cat, key, q] of rows) {
 await mkdir('.github/landmarks/out', { recursive: true });
 await writeFile('.github/landmarks/out/found.json', JSON.stringify(out, null, 1));
 const lines = [];
-out.forEach((o, i) => o.picks.forEach((p, k) => lines.push(`${String(i + 1).padStart(3, '0')}_${k + 1}\t${p.thumb.replace('/1920px-', '/400px-')}\t${i + 1}.${k + 1} ${o.key} ${p.tier}`)));
+out.forEach((o, i) => o.picks.forEach((p, k) => lines.push(`${String(i + 1).padStart(3, '0')}_${k + 1}\t${p.thumb.replace('/1920px-', '/330px-')}\t${i + 1}.${k + 1} ${o.key} ${p.tier}`)));
 await writeFile('.github/landmarks/out/thumbs.tsv', lines.join('\n') + '\n');

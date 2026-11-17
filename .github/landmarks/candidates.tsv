@@ -1,25 +1,8 @@
-nature	Mount Fuji	Mount Fuji
-nature	Ha Long Bay	Ha Long Bay
-nature	Zhangjiajie	Zhangjiajie National Forest Park
-nature	Li River	Li River Guilin karst
 nature	Jiuzhaigou	Jiuzhaigou
-nature	Huangshan	Huangshan mountains
-nature	Plitvice Lakes	Plitvice Lakes
-nature	Lake Bled	Lake Bled
-nature	Matterhorn	Matterhorn
 nature	Lauterbrunnen Valley	Lauterbrunnen valley
-nature	Tre Cime di Lavaredo	Tre Cime di Lavaredo
-nature	Lake Como	Lake Como
-nature	Cliffs of Moher	Cliffs of Moher
-nature	Giant's Causeway	Giant's Causeway
 nature	Seven Sisters	Seven Sisters cliffs
 nature	Old Man of Storr	Old Man of Storr
-nature	Geirangerfjord	Geirangerfjord
-nature	Preikestolen	Preikestolen
-nature	Lofoten	Lofoten Reine
 nature	Kirkjufell	Kirkjufell
-nature	Skógafoss	Skógafoss
-nature	Jökulsárlón	Jökulsárlón
 nature	Gullfoss	Gullfoss
 nature	Seljalandsfoss	Seljalandsfoss
 nature	Mont Blanc	Mont Blanc massif
@@ -29,7 +12,6 @@ nature	Aletsch Glacier	Aletsch Glacier
 nature	Morskie Oko	Morskie Oko
 nature	Lake Ohrid	Lake Ohrid
 nature	Bay of Kotor	Bay of Kotor
-nature	Navagio Beach	Navagio beach
 nature	Mount Ararat	Mount Ararat
 nature	Uzungöl	Uzungöl
 nature	Mount Damavand	Mount Damavand
@@ -47,12 +29,9 @@ nature	Band-e Amir	Band-e Amir
 nature	Iskanderkul	Iskanderkul
 nature	Issyk-Kul	Issyk-Kul
 nature	Kaindy Lake	Kaindy Lake
-nature	Mount Bromo	Mount Bromo
 nature	Raja Ampat	Raja Ampat
 nature	Padar Island	Padar Island
-nature	Tegallalang	Tegallalang rice terraces
 nature	Banaue Rice Terraces	Banaue Rice Terraces
-nature	Chocolate Hills	Chocolate Hills Bohol
 nature	Mount Kinabalu	Mount Kinabalu
 nature	Cameron Highlands	Cameron Highlands tea plantation
 nature	Seongsan Ilchulbong	Seongsan Ilchulbong
@@ -72,17 +51,9 @@ nature	Mount Rainier	Mount Rainier
 nature	Zabriskie Point	Zabriskie Point
 nature	Twelve Apostles	Twelve Apostles Victoria
 nature	Lake Wanaka	Lake Wanaka
-city	Tower Bridge	Tower Bridge London
-city	Palace of Westminster	Palace of Westminster
-city	Eiffel Tower	Eiffel Tower
 city	Arc de Triomphe	Arc de Triomphe
-city	Neuschwanstein Castle	Neuschwanstein Castle
-city	Brandenburg Gate	Brandenburg Gate
-city	Grand Canal of Venice	Grand Canal Venice
 city	Amsterdam Canals	Amsterdam canals
 city	Oia	Oia Santorini
-city	Hallstatt	Hallstatt
-city	Dubrovnik	Dubrovnik old town
 city	Gamla stan	Gamla stan Stockholm
 city	Øresund Bridge	Øresund Bridge
 city	Millau Viaduct	Millau Viaduct
@@ -97,12 +68,8 @@ city	Bahrain World Trade Center	Bahrain World Trade Center
 city	Museum of Islamic Art	Museum of Islamic Art Doha
 city	Liberation Tower	Liberation Tower Kuwait
 city	Sheikh Jaber Causeway	Sheikh Jaber Al-Ahmad Al-Sabah Causeway
-city	Marina Bay Sands	Marina Bay Sands
 city	Gardens by the Bay	Gardens by the Bay Supertree
-city	Petronas Towers	Petronas Towers
 city	Seri Wawasan Bridge	Seri Wawasan Bridge
-city	Pudong	Pudong skyline
-city	Victoria Harbour	Victoria Harbour Hong Kong
 city	Tokyo Skytree	Tokyo Skytree
 city	Rainbow Bridge	Rainbow Bridge Tokyo
 city	Akashi Kaikyō Bridge	Akashi Kaikyō Bridge
@@ -116,13 +83,10 @@ city	Heydar Aliyev Center	Heydar Aliyev Center
 city	Bayterek	Bayterek Tower Astana
 city	Si-o-se-pol	Si-o-se-pol
 city	Khaju Bridge	Khaju Bridge
-city	Plaza de España	Plaza de España Seville
 city	Erasmus Bridge	Erasmus Bridge
 city	Edinburgh Castle	Edinburgh Castle
 city	Château de Chambord	Château de Chambord
 city	25 de Abril Bridge	25 de Abril Bridge Lisbon
-city	Belém Tower	Belém Tower
-city	Hungarian Parliament	Hungarian Parliament Building
 city	Széchenyi Chain Bridge	Széchenyi Chain Bridge
 city	Rialto Bridge	Rialto Bridge
 city	Ponte Vecchio	Ponte Vecchio
@@ -141,8 +105,6 @@ hist	Kul Sharif Mosque	Kul Sharif Mosque
 hist	Jama Masjid	Jama Masjid Delhi
 hist	Grand Mosque of Kuwait	Grand Mosque Kuwait
 hist	Bibi-Khanym Mosque	Bibi-Khanym Mosque
-hist	Colosseum	Colosseum Rome
-hist	Great Wall of China	Great Wall of China Mutianyu
 hist	Forbidden City	Forbidden City
 hist	Persepolis	Persepolis
 hist	Jerash	Jerash
@@ -173,8 +135,55 @@ hist	Citadel of Aleppo	Citadel of Aleppo
 hist	Krak des Chevaliers	Krak des Chevaliers
 hist	Gur-e-Amir	Gur-e-Amir
 hist	Stonehenge	Stonehenge
-hist	Pont du Gard	Pont du Gard
 hist	Aqueduct of Segovia	Aqueduct of Segovia
-hist	Himeji Castle	Himeji Castle
 hist	Galle Fort	Galle Fort
 hist	Alcázar of Seville	Alcázar of Seville
+nature	Lake Tahoe	Lake Tahoe
+nature	The Wave	The Wave Arizona Coyote Buttes
+nature	Trolltunga	Trolltunga
+nature	Lago di Braies	Lago di Braies
+nature	Oeschinensee	Oeschinensee
+nature	Durmitor	Durmitor
+nature	Ennedi Plateau	Ennedi Plateau
+nature	Blue Nile Falls	Blue Nile Falls
+nature	Lake Natron	Lake Natron
+nature	Mount Roraima	Mount Roraima
+nature	Kaieteur Falls	Kaieteur Falls
+nature	Tam Coc	Tam Coc Ninh Binh
+nature	Phang Nga Bay	Phang Nga Bay
+nature	Zhangye Danxia	Zhangye Danxia
+nature	Yuanyang Rice Terraces	Yuanyang rice terraces
+nature	Wadi Mujib	Wadi Mujib
+nature	Al Soudah	Al Soudah Asir
+nature	Jebel Akhdar	Jebel Akhdar Oman
+nature	Wadi Bani Khalid	Wadi Bani Khalid
+nature	Deosai Plains	Deosai
+nature	Valley of Flowers	Valley of Flowers National Park
+nature	Lake Sevan	Lake Sevan
+nature	Mount Elbrus	Mount Elbrus
+nature	Kelimutu	Kelimutu
+nature	Lake Toba	Lake Toba
+city	Sheikh Zayed Bridge	Sheikh Zayed Bridge Abu Dhabi
+city	Etihad Towers	Etihad Towers
+city	Kuala Lumpur Tower	Kuala Lumpur Tower
+city	Maiden's Tower	Maiden's Tower Istanbul
+city	Taipei 101	Taipei 101
+city	Tallinn Old Town	Tallinn Old Town
+city	Bruges	Bruges canal
+city	Colmar	Colmar Petite Venise
+hist	Medina Azahara	Medina Azahara
+hist	Chellah	Chellah Rabat
+hist	Hassan Tower	Hassan Tower Rabat
+hist	Bab Mansour	Bab Mansour Meknes
+hist	Ghadames	Ghadames old town
+hist	Leptis Magna	Leptis Magna
+hist	Amphitheatre of El Jem	Amphitheatre of El Jem
+hist	Palmyra	Palmyra ruins
+hist	Taq Kasra	Taq Kasra
+hist	Malwiya Minaret	Malwiya Minaret Samarra
+hist	Ani	Ani ruins Kars
+hist	Library of Celsus	Library of Celsus Ephesus
+hist	Ishak Pasha Palace	Ishak Pasha Palace
+hist	Shah-i-Zinda	Shah-i-Zinda
+hist	Ark of Bukhara	Ark of Bukhara
+hist	Humayun's Tomb	Humayun's Tomb
