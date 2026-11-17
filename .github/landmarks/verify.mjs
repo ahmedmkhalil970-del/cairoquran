@@ -9,12 +9,12 @@ for (const [i, p] of P.entries()) {
   if (i < 250) continue;                                     // only the new photos
   const url = /^https?:/.test(p.p) ? p.p : ROOT + p.p;
   let code = 0, type = '';
-  for (let t = 0; t < 3 && code !== 200; t++) {
+  for (let t = 0; t < 5 && code !== 200; t++) {
     try { const r = await fetch(url, { headers: { 'User-Agent': UA } }); code = r.status; type = r.headers.get('content-type') || ''; await r.arrayBuffer(); } catch (e) { code = -1; }
-    if (code !== 200) await new Promise(r => setTimeout(r, 3000));
+    if (code !== 200) await new Promise(r => setTimeout(r, 15000));
   }
   if (code !== 200 || !/^image\//.test(type)) bad.push(`${i} ${p.k} ${code} ${type} ${url}`);
-  await new Promise(r => setTimeout(r, 250));
+  await new Promise(r => setTimeout(r, 1200));
 }
 await mkdir('.github/landmarks/out', { recursive: true });
 await writeFile('.github/landmarks/out/verify.txt', `checked ${P.length - 250}, failed ${bad.length}\n` + bad.join('\n') + '\n');
