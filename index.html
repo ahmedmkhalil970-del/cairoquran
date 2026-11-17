@@ -341,6 +341,19 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
   color:var(--ink-soft);background:var(--glass);border:1px solid var(--edge);transition:background .2s,color .2s}
 .lang-btn:hover,.lang-btn:focus-visible{color:var(--ink);background:rgba(232,194,122,.22)}
 @media (max-width:700px){.lang-btn{font-size:3.2vw;padding:.4vh 2.6vw}.verse .verse-tr{font-size:3.6vw;max-width:88vw}.ab-tr{font-size:2.8vw}.gate-tr{font-size:3.6vw;max-width:86vw}}
+/* phones: the station name wraps instead of shrinking to "Holy…", the adhkar label sits on its own row above the text,
+   and the Ramadan chip stays on one line */
+@media (max-width:700px){
+  .now-row .now{flex-wrap:wrap;row-gap:.7vh}
+  .now b{flex:1 1 100%;white-space:normal;overflow:visible;text-overflow:clip;line-height:1.35}
+  .rcd{max-width:none;white-space:nowrap;flex-wrap:nowrap}
+  .adhkar-bar{flex-direction:column}
+  .ab-k{justify-content:center;padding:.7vh 3vw;font-size:3.2vw}
+  .ab-main .ab-view{min-height:5.6vh}
+  .ab-tr{max-height:4.6em;padding:0 3.4vw 1.1vh;font-size:3.3vw}
+  body.has-adhkar .place{bottom:47vh}
+  html:not([lang="ar"]) body.has-adhkar .place{bottom:44vh}
+}
 </style>
 </head>
 <body>
