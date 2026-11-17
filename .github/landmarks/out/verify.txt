@@ -1,15 +1,2 @@
-checked 150, failed 14
-260 Lake Ohrid 429 text/html; charset=utf-8 https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/OhridskoEzeroKarpaSvNikola.jpg/1920px-OhridskoEzeroKarpaSvNikola.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail
-270 Nanga Parbat 429 text/html; charset=utf-8 https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Nanga_Parbat_2.jpg/1920px-Nanga_Parbat_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail
-280 Dallol 429 text/html; charset=utf-8 https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Ethiopia_-_Dallol.jpg/1920px-Ethiopia_-_Dallol.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail
-291 Lake Wanaka 429 text/html; charset=utf-8 https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Lake_Wanaka_19.jpg/1920px-Lake_Wanaka_19.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail
-302 Museum of Islamic Art 429 text/html; charset=utf-8 https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Museum_of_Islamic_Art_Park%2C_Doha.jpg/1920px-Museum_of_Islamic_Art_Park%2C_Doha.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail
-312 Galata Tower 429 text/html; charset=utf-8 https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Istanbul_Galata_Tower_IMG_8211_1920.jpg/1920px-Istanbul_Galata_Tower_IMG_8211_1920.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail
-323 Ponte Vecchio 429 text/html; charset=utf-8 https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Ponte_Vecchio_at_dusk_1.JPG/1920px-Ponte_Vecchio_at_dusk_1.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail
-333 Hagia Sophia 429 text/html; charset=utf-8 https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Hagia_Sophia_Mars_2013.jpg/1920px-Hagia_Sophia_Mars_2013.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail
-344 Nizwa Fort 429 text/html; charset=utf-8 https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Oman%2C_Nizwa%2C_Fort_Nizwa_%28at_night%29.jpg/1920px-Oman%2C_Nizwa%2C_Fort_Nizwa_%28at_night%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail
-354 Fatehpur Sikri 429 text/html; charset=utf-8 https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Panch_Mahal-Fatehpur-Fatehpur_Sikri_India0014.JPG/1920px-Panch_Mahal-Fatehpur-Fatehpur_Sikri_India0014.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail
-364 Trolltunga 429 text/html; charset=utf-8 https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Trolltunga_2.jpg/1920px-Trolltunga_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail
-374 Zhangye Danxia 429 text/html; charset=utf-8 https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Danxia-landform-1562852.jpg/1920px-Danxia-landform-1562852.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail
-384 Taipei 101 429 text/html; charset=utf-8 https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Taipei%2C_November_25%2C_2024_-_008.jpg/1920px-Taipei%2C_November_25%2C_2024_-_008.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail
-395 Library of Celsus 429 text/html; charset=utf-8 https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Library_of_Celsus_6242.jpg/1920px-Library_of_Celsus_6242.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail
+checked 150, failed 0
+
