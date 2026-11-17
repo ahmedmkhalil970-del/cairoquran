@@ -10,8 +10,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunrise",
-    "background_n": 0,
+    "background": "file:Sunrise Over the Ocean.jpg",
     "series": "آية الصباح",
     "reciter": "مشاري راشد العفاسي",
     "label": "مرتّل",
@@ -39,8 +38,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunrise clouds",
-    "background_n": 0,
+    "background": "file:Sunrise in Jammu.jpg",
     "series": "آية الصباح",
     "reciter": "محمد صديق المنشاوي",
     "label": "مرتّل",
@@ -72,8 +70,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:dawn sky",
-    "background_n": 0,
+    "background": "file:Sunrise on the lake.jpg",
     "series": "آية الصباح",
     "reciter": "محمود خليل الحصري",
     "label": "مرتّل",
@@ -101,8 +98,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:morning fog",
-    "background_n": 0,
+    "background": "file:Sunrise May Radès.jpg",
     "series": "آية الصباح",
     "reciter": "عبد الباسط عبد الصمد",
     "label": "مرتّل",
@@ -130,8 +126,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunrise over sea",
-    "background_n": 0,
+    "background": "file:Sea sky and clouds, Ibiza, Spain.jpg",
     "series": "آية الصباح",
     "reciter": "مشاري راشد العفاسي",
     "label": "مرتّل",
@@ -158,8 +153,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunrise mountains",
-    "background_n": 0,
+    "background": "file:Sky Clouds and Atmosphere.jpg",
     "series": "آية الصباح",
     "reciter": "محمد صديق المنشاوي",
     "label": "مرتّل",
@@ -190,8 +184,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:morning sun field",
-    "background_n": 0,
+    "background": "file:CLOUDS AND SKY.jpg",
     "series": "آية الصباح",
     "reciter": "محمود خليل الحصري",
     "label": "مرتّل",
@@ -219,8 +212,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sun rays clouds",
-    "background_n": 0,
+    "background": "file:Sky Clouds Sea.jpg",
     "series": "آية الصباح",
     "reciter": "عبد الباسط عبد الصمد",
     "label": "مرتّل",
@@ -252,8 +244,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunrise",
-    "background_n": 1,
+    "background": "file:Sea sky and clouds, Ibiza, Spain.jpg",
     "series": "آية الصباح",
     "reciter": "مشاري راشد العفاسي",
     "label": "مرتّل",
@@ -285,8 +276,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunrise clouds",
-    "background_n": 1,
+    "background": "file:Waves in sea.jpg",
     "series": "آية الصباح",
     "reciter": "محمد صديق المنشاوي",
     "label": "مرتّل",
@@ -314,8 +304,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:dawn sky",
-    "background_n": 1,
+    "background": "file:Giant ocean wave.jpg",
     "series": "آية الصباح",
     "reciter": "عبد الباسط عبد الصمد",
     "label": "مرتّل",
@@ -343,8 +332,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:morning fog",
-    "background_n": 1,
+    "background": "file:Ocean and waves (Unsplash).jpg",
     "series": "آية الصباح",
     "reciter": "مشاري راشد العفاسي",
     "label": "مرتّل",
@@ -371,8 +359,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunrise over sea",
-    "background_n": 1,
+    "background": "file:Big ocean surf wave (Unsplash).jpg",
     "series": "آية الصباح",
     "reciter": "محمود خليل الحصري",
     "label": "مرتّل",
@@ -403,8 +390,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunrise mountains",
-    "background_n": 1,
+    "background": "file:California Desert.jpg",
     "series": "آية الصباح",
     "reciter": "محمد صديق المنشاوي",
     "label": "مرتّل",

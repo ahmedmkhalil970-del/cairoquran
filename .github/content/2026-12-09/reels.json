@@ -10,8 +10,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunrise mountains",
-    "background_n": 2,
+    "background": "file:Lake Kaurapataka - 06.jpg",
     "series": "آية الصباح",
     "reciter": "محمد صديق المنشاوي",
     "label": "مرتّل",
@@ -39,8 +38,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:twilight lake",
-    "background_n": 0,
+    "background": "file:Sky Clouds Sun.jpg",
     "series": "آية وتدبّر",
     "reciter": "مشاري راشد العفاسي",
     "label": "مرتّل",
@@ -68,8 +66,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:morning sun field",
-    "background_n": 2,
+    "background": "file:Spruce forest at Holma.jpg",
     "series": "آية الصباح",
     "reciter": "مشاري راشد العفاسي",
     "label": "مرتّل",
@@ -98,8 +95,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunset",
-    "background_n": 1,
+    "background": "file:Night Sky Stars Silverthorne (Unsplash).jpg",
     "series": "من أذكار المساء",
     "reciter": "عبد الباسط عبد الصمد",
     "label": "مرتّل",
@@ -127,8 +123,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sun rays clouds",
-    "background_n": 2,
+    "background": "file:2021 Forest church Równica.jpg",
     "series": "آية الصباح",
     "reciter": "محمود خليل الحصري",
     "label": "مرتّل",
@@ -157,8 +152,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunset sea",
-    "background_n": 1,
+    "background": "file:Stars in the sky (Unsplash).jpg",
     "series": "جمعة مباركة",
     "reciter": "محمد صديق المنشاوي",
     "label": "مرتّل",
@@ -186,8 +180,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunrise",
-    "background_n": 3,
+    "background": "file:Peaceful waterfall (Unsplash).jpg",
     "series": "آية الصباح",
     "reciter": "عبد الباسط عبد الصمد",
     "label": "مرتّل",
@@ -218,8 +211,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:night sky stars",
-    "background_n": 1,
+    "background": "file:Moving stars above Fryeburg (Unsplash).jpg",
     "series": "آية وتدبّر",
     "reciter": "محمود خليل الحصري",
     "label": "مرتّل",
@@ -247,8 +239,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunrise clouds",
-    "background_n": 3,
+    "background": "file:Rangamati Shuvolong Waterfall natural Bangladesh.jpg",
     "series": "آية الصباح",
     "reciter": "محمد صديق المنشاوي",
     "label": "مرتّل",
@@ -276,8 +267,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:milky way",
-    "background_n": 1,
+    "background": "file:Waterfall in forest.jpg",
     "series": "دعاء من القرآن",
     "reciter": "مشاري راشد العفاسي",
     "label": "مرتّل",
@@ -304,8 +294,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:dawn sky",
-    "background_n": 3,
+    "background": "file:Hongjecheon Artificial Waterfall 2023-10-31.jpg",
     "series": "آية الصباح",
     "reciter": "مشاري راشد العفاسي",
     "label": "مرتّل",
@@ -336,8 +325,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:desert sunset",
-    "background_n": 1,
+    "background": "file:Waxing half moon over Brofjorden 1.jpg",
     "series": "قارئ الأسبوع",
     "reciter": "محمد صديق المنشاوي",
     "label": "مرتّل",
@@ -368,8 +356,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:morning fog",
-    "background_n": 3,
+    "background": "file:Marina beach Chennai.jpg",
     "series": "آية الصباح",
     "reciter": "محمود خليل الحصري",
     "label": "مرتّل",
@@ -397,8 +384,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:dusk clouds",
-    "background_n": 1,
+    "background": "file:Full moon in Sagittarius.jpg",
     "series": "آية وتدبّر",
     "reciter": "عبد الباسط عبد الصمد",
     "label": "مرتّل",

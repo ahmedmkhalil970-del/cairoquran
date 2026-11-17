@@ -10,8 +10,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunrise over sea",
-    "background_n": 3,
+    "background": "file:Crystal Beach 5.jpg",
     "series": "آية الصباح",
     "reciter": "عبد الباسط عبد الصمد",
     "label": "مرتّل",
@@ -41,8 +40,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:full moon",
-    "background_n": 1,
+    "background": "file:Crescent moon 2025.jpg",
     "series": "آية وتدبّر",
     "reciter": "مشاري راشد العفاسي",
     "label": "مرتّل",
@@ -69,8 +67,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunrise mountains",
-    "background_n": 3,
+    "background": "file:Crystal Beach 3.jpg",
     "series": "آية الصباح",
     "reciter": "محمد صديق المنشاوي",
     "label": "مرتّل",
@@ -98,8 +95,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:twilight lake",
-    "background_n": 1,
+    "background": "file:Monument Valley Arizona Panoramic.jpg",
     "series": "من أذكار المساء",
     "reciter": "محمود خليل الحصري",
     "label": "مرتّل",
@@ -127,8 +123,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:morning sun field",
-    "background_n": 3,
+    "background": "file:Kayaker on the Speed River in Riverside Park 2.jpg",
     "series": "آية الصباح",
     "reciter": "مشاري راشد العفاسي",
     "label": "مرتّل",
@@ -155,8 +150,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunset",
-    "background_n": 2,
+    "background": "file:The Caucasus Mountains, Georgia - CaucasusMts7990.jpg",
     "series": "جمعة مباركة",
     "reciter": "عبد الباسط عبد الصمد",
     "label": "مرتّل",
@@ -184,8 +178,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sun rays clouds",
-    "background_n": 3,
+    "background": "file:Tamor River in Taplejung District.jpg",
     "series": "آية الصباح",
     "reciter": "محمود خليل الحصري",
     "label": "مرتّل",
@@ -217,8 +210,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunset sea",
-    "background_n": 2,
+    "background": "file:Grand Canyon South Rim at Sunset.jpg",
     "series": "آية وتدبّر",
     "reciter": "محمد صديق المنشاوي",
     "label": "مرتّل",
@@ -246,8 +238,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunrise",
-    "background_n": 4,
+    "background": "file:Aberfeldy valley 03 panorama.jpg",
     "series": "آية الصباح",
     "reciter": "عبد الباسط عبد الصمد",
     "label": "مرتّل",
@@ -275,8 +266,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:night sky stars",
-    "background_n": 2,
+    "background": "file:Moon on Buddha purnima.jpg",
     "series": "دعاء من القرآن",
     "reciter": "مشاري راشد العفاسي",
     "label": "مرتّل",
@@ -305,8 +295,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunrise clouds",
-    "background_n": 4,
+    "background": "file:Malbach valley, Ehrenbach, looking north.jpg",
     "series": "آية الصباح",
     "reciter": "عبد الباسط عبد الصمد",
     "label": "مجوّد",
@@ -335,8 +324,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:milky way",
-    "background_n": 2,
+    "background": "file:Sky Clouds Sea.jpg",
     "series": "قارئ الأسبوع",
     "reciter": "مشاري راشد العفاسي",
     "label": "مرتّل",
@@ -367,8 +355,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:dawn sky",
-    "background_n": 4,
+    "background": "file:Frenchman River Valley Jones Peak.jpg",
     "series": "آية الصباح",
     "reciter": "محمد صديق المنشاوي",
     "label": "مرتّل",
@@ -396,8 +383,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:desert sunset",
-    "background_n": 2,
+    "background": "file:Sunrise on the lake.jpg",
     "series": "آية وتدبّر",
     "reciter": "محمود خليل الحصري",
     "label": "مرتّل",

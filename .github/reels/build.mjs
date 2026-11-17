@@ -60,6 +60,16 @@ async function commons(q, n = 0) {
   const by = (x.i.extmetadata?.Artist?.value || '').replace(/<[^>]+>/g, '').trim().slice(0, 40);
   return { src: x.i.thumburl || x.i.url, by, lic: x.i.extmetadata.LicenseShortName.value, key: x.t.replace(/^File:/, '') };
 }
+// A chosen photo by its exact Commons file name: "file:<name>"; its licence must still be CC0 or public domain.
+async function commonsFile(name) {
+  const u = 'https://commons.wikimedia.org/w/api.php?' + new URLSearchParams({ action: 'query', format: 'json', titles: 'File:' + name,
+    prop: 'imageinfo', iiprop: 'url|extmetadata|size|mime', iiurlwidth: '1920' });
+  const i = Object.values((await getJSON(u)).query?.pages || {})[0]?.imageinfo?.[0];
+  if (!i) throw new Error(`no Commons file "${name}"`);
+  const lic = i.extmetadata?.LicenseShortName?.value || '';
+  if (!FREE.test(lic)) throw new Error(`"${name}" is ${lic || 'not licensed'}, not CC0 or public domain`);
+  return { src: i.thumburl || i.url, by: '', lic, key: name };
+}
 const getJSON = async u => { const r = await fetch(u, { headers: UA }); if (!r.ok) throw new Error(`${r.status} ${u}`); return r.json(); };
 const getBuf = async u => { const r = await fetch(u, { headers: UA }); if (!r.ok) throw new Error(`${r.status} ${u}`); return Buffer.from(await r.arrayBuffer()); };
 const sh = (cmd, args) => execFileSync(cmd, args, { stdio: ['ignore', 'pipe', 'inherit'], maxBuffer: 1 << 28 });
@@ -131,7 +141,8 @@ async function build(s, browser) {
 
   let bg = null, credit = null;
   if (s.background) {
-    const pl = s.background.startsWith('commons:') ? await commons(s.background.slice(8), s.background_n || 0) : place(s.background, s.background_n || 0);
+    const pl = s.background.startsWith('file:') ? await commonsFile(s.background.slice(5))
+      : s.background.startsWith('commons:') ? await commons(s.background.slice(8), s.background_n || 0) : place(s.background, s.background_n || 0);
     if (!pl) throw new Error(`no place "${s.background}" in index.html`);
     bg = 'data:image/jpeg;base64,' + (await getBuf(pl.src)).toString('base64');
     credit = null;                                  // no photographer line on the video (decision of 12 November 2026)

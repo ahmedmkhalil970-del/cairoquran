@@ -10,8 +10,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:dawn sky",
-    "background_n": 5,
+    "background": "file:20190417 Taroko Gorge-25.jpg",
     "series": "آية الصباح",
     "reciter": "عبد الباسط عبد الصمد",
     "label": "مرتّل",
@@ -40,8 +39,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:desert sunset",
-    "background_n": 3,
+    "background": "file:Sky Clouds Atmosphere.jpg",
     "series": "آية وتدبّر",
     "reciter": "محمود خليل الحصري",
     "label": "مرتّل",
@@ -69,8 +67,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:morning fog",
-    "background_n": 5,
+    "background": "file:Sunrise, Outer Banks.jpg",
     "series": "آية الصباح",
     "reciter": "محمد صديق المنشاوي",
     "label": "مرتّل",
@@ -99,8 +96,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:dusk clouds",
-    "background_n": 3,
+    "background": "file:Stars in the sky (Unsplash).jpg",
     "series": "من أذكار المساء",
     "reciter": "مشاري راشد العفاسي",
     "label": "مرتّل",
@@ -127,8 +123,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunrise over sea",
-    "background_n": 5,
+    "background": "file:Ocean waves rippling (Unsplash).jpg",
     "series": "آية الصباح",
     "reciter": "مشاري راشد العفاسي",
     "label": "مرتّل",
@@ -155,8 +150,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:full moon",
-    "background_n": 3,
+    "background": "file:Waxing half moon over Brofjorden 1.jpg",
     "series": "جمعة مباركة",
     "reciter": "محمد صديق المنشاوي",
     "label": "مرتّل",
@@ -184,8 +178,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunrise mountains",
-    "background_n": 5,
+    "background": "file:Alone in the unspoilt wilderness (Unsplash).jpg",
     "series": "آية الصباح",
     "reciter": "محمود خليل الحصري",
     "label": "مرتّل",
@@ -214,8 +207,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:twilight lake",
-    "background_n": 3,
+    "background": "file:Crescent moon 2025.jpg",
     "series": "آية وتدبّر",
     "reciter": "عبد الباسط عبد الصمد",
     "label": "مرتّل",
@@ -243,8 +235,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:morning sun field",
-    "background_n": 5,
+    "background": "file:Matterhorn sunset 2016 (Unsplash).jpg",
     "series": "آية الصباح",
     "reciter": "عبد الباسط عبد الصمد",
     "label": "مرتّل",
@@ -272,8 +263,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunset",
-    "background_n": 4,
+    "background": "file:Monument Valley Arizona Panoramic.jpg",
     "series": "دعاء من القرآن",
     "reciter": "مشاري راشد العفاسي",
     "label": "مرتّل",

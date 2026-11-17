@@ -10,8 +10,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:morning sun field",
-    "background_n": 1,
+    "background": "file:Great Sand Dunes - Candido 200 7.jpg",
     "series": "آية الصباح",
     "reciter": "مشاري راشد العفاسي",
     "label": "مرتّل",
@@ -38,8 +37,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunset",
-    "background_n": 0,
+    "background": "file:Juan Griego Sunset.jpg",
     "series": "آية وتدبّر",
     "reciter": "مشاري راشد العفاسي",
     "label": "مرتّل",
@@ -66,8 +64,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sun rays clouds",
-    "background_n": 1,
+    "background": "file:Dune footprints at Great Sand Dunes National Park.jpg",
     "series": "آية الصباح",
     "reciter": "عبد الباسط عبد الصمد",
     "label": "مرتّل",
@@ -96,8 +93,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunset sea",
-    "background_n": 0,
+    "background": "file:Grand Canyon South Rim at Sunset.jpg",
     "series": "من أذكار المساء",
     "reciter": "محمد صديق المنشاوي",
     "label": "مرتّل",
@@ -125,8 +121,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunrise",
-    "background_n": 2,
+    "background": "file:Suzuka Mountains from Mount Fujiwara 2011-02-19.jpg",
     "series": "آية الصباح",
     "reciter": "محمود خليل الحصري",
     "label": "مرتّل",
@@ -154,8 +149,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:night sky stars",
-    "background_n": 0,
+    "background": "file:Sunset in Mali.jpg",
     "series": "جمعة مباركة",
     "reciter": "عبد الباسط عبد الصمد",
     "label": "مرتّل",
@@ -183,8 +177,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunrise clouds",
-    "background_n": 2,
+    "background": "file:Mountains 736886.jpg",
     "series": "آية الصباح",
     "reciter": "محمد صديق المنشاوي",
     "label": "مرتّل",
@@ -216,8 +209,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:milky way",
-    "background_n": 0,
+    "background": "file:Sunset tree Woodingdean.jpg",
     "series": "آية وتدبّر",
     "reciter": "محمود خليل الحصري",
     "label": "مرتّل",
@@ -245,8 +237,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:dawn sky",
-    "background_n": 2,
+    "background": "file:Lake Sutherland.jpg",
     "series": "آية الصباح",
     "reciter": "مشاري راشد العفاسي",
     "label": "مرتّل",
@@ -273,8 +264,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:desert sunset",
-    "background_n": 0,
+    "background": "file:Sunset from Dresser Hill, Charlton MA 2026-05-10.jpg",
     "series": "دعاء من القرآن",
     "reciter": "مشاري راشد العفاسي",
     "label": "مرتّل",
@@ -301,8 +291,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:morning fog",
-    "background_n": 2,
+    "background": "file:Lake Kaurapataka - 05.jpg",
     "series": "آية الصباح",
     "reciter": "محمود خليل الحصري",
     "label": "مرتّل",
@@ -332,8 +321,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:dusk clouds",
-    "background_n": 0,
+    "background": "file:Sunset in Ladthlaboh, Jowai , Meghalaya India.jpg",
     "series": "قارئ الأسبوع",
     "reciter": "محمود خليل الحصري",
     "label": "مرتّل",
@@ -364,8 +352,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:sunrise over sea",
-    "background_n": 2,
+    "background": "file:Lake Kaurapataka - 07.jpg",
     "series": "آية الصباح",
     "reciter": "عبد الباسط عبد الصمد",
     "label": "مرتّل",
@@ -393,8 +380,7 @@
       "youtube"
     ],
     "style": "place",
-    "background": "commons:full moon",
-    "background_n": 0,
+    "background": "file:Sky Clouds Atmosphere.jpg",
     "series": "آية وتدبّر",
     "reciter": "محمد صديق المنشاوي",
     "label": "مرتّل",
