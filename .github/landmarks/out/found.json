@@ -1,154 +1,6 @@
 [
  {
   "cat": "nature",
-  "key": "Mount Fuji",
-  "q": "Mount Fuji",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:Grumman E-2C Hawkeyes of VAW-115 fly past Mount Fuji on 15 February 2007 (070215-N-2604L-024).jpg",
-    "w": 3008,
-    "h": 2000,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Grumman_E-2C_Hawkeyes_of_VAW-115_fly_past_Mount_Fuji_on_15_February_2007_%28070215-N-2604L-024%29.jpg/1920px-Grumman_E-2C_Hawkeyes_of_VAW-115_fly_past_Mount_Fuji_on_15_February_2007_%28070215-N-2604L-024%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "Public domain",
-    "by": "U.S. Navy photo by Lt. j.g. Andrew Leatherwood",
-    "desc": "Two U.S. Navy Grumman E-2C Hawkeye (BuNo 164107, 165296) assigned to Carrier Airborne Early Warning Squadron 115 (VAW-115) \"Liberty Bells\" conduct a flyby of Mo"
-   },
-   {
-    "tier": "FP",
-    "title": "File:Mount Fuji at sunset, March 2025.jpg",
-    "w": 11650,
-    "h": 7767,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Mount_Fuji_at_sunset%2C_March_2025.jpg/1920px-Mount_Fuji_at_sunset%2C_March_2025.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC0",
-    "by": "Romain Guy from San Francisco, USA",
-    "desc": "Mount Fuji"
-   },
-   {
-    "tier": "FP",
-    "title": "File:Katsushika Hokusai, published by Nishimuraya Yohachi (Eijudō) - Fine Wind, Clear Weather (Gaifū kaisei), also known as Red Fuji, from the series Thirty-six Views o... - Google Art Project - Cropped.jpg",
-    "w": 5196,
-    "h": 3520,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Katsushika_Hokusai%2C_published_by_Nishimuraya_Yohachi_%28Eijud%C5%8D%29_-_Fine_Wind%2C_Clear_Weather_%28Gaif%C5%AB_kaisei%29%2C_also_known_as_Red_Fuji%2C_from_the_series_Thirty-six_Views_o..._-_Google_Art_Project_-_Cropped.jpg/1920px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "Public domain",
-    "by": "Katsushika Hokusai, published by Nishimuraya Yohachi (Eijudō) (1760 - 1849) – Artist (Japanese) Details on Google Art Project",
-    "desc": ""
-   }
-  ]
- },
- {
-  "cat": "nature",
-  "key": "Ha Long Bay",
-  "q": "Ha Long Bay",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:Minard.png",
-    "w": 2003,
-    "h": 955,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Minard.png/1920px-Minard.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "Public domain",
-    "by": "Charles Minard (1781–1870)",
-    "desc": "Charles Minard's 1869 chart showing the number of men in Napoleon’s 1812 Russian campaign army, their movements, as well as the temperature they encountered on "
-   },
-   {
-    "tier": "QI",
-    "title": "File:View of sea from Titov Island, Ha Long Bay, Vietnam, 20240128 1337 3732.jpg",
-    "w": 5616,
-    "h": 3749,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/View_of_sea_from_Titov_Island%2C_Ha_Long_Bay%2C_Vietnam%2C_20240128_1337_3732.jpg/1920px-View_of_sea_from_Titov_Island%2C_Ha_Long_Bay%2C_Vietnam%2C_20240128_1337_3732.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY 4.0",
-    "by": "Jakub Hałun",
-    "desc": "View of sea and tourist boats from Titov Island, Ha Long Bay, Vietnam"
-   },
-   {
-    "tier": "QI",
-    "title": "File:Bai Chay beach, Ha Long, Vietnam, 20240129 0915 3958.jpg",
-    "w": 5683,
-    "h": 3794,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Bai_Chay_beach%2C_Ha_Long%2C_Vietnam%2C_20240129_0915_3958.jpg/1920px-Bai_Chay_beach%2C_Ha_Long%2C_Vietnam%2C_20240129_0915_3958.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY 4.0",
-    "by": "Jakub Hałun",
-    "desc": "Bai Chay beach, Ha Long, Vietnam"
-   }
-  ]
- },
- {
-  "cat": "nature",
-  "key": "Zhangjiajie",
-  "q": "Zhangjiajie National Forest Park",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:1 tianzishan wulingyuan zhangjiajie 2012.jpg",
-    "w": 8841,
-    "h": 4415,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/1_tianzishan_wulingyuan_zhangjiajie_2012.jpg/1920px-1_tianzishan_wulingyuan_zhangjiajie_2012.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "chensiyuan",
-    "desc": "Panoramic view from Mount Tianzi Shan, Wulingyuan Zhangjiajie hunan China tujia miao 2012"
-   },
-   {
-    "tier": "",
-    "title": "File:Zhangjiajie National Forest Park.jpg",
-    "w": 3648,
-    "h": 2736,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Zhangjiajie_National_Forest_Park.jpg/1920px-Zhangjiajie_National_Forest_Park.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY 2.0",
-    "by": "Kuruman from Tokyo, Japan",
-    "desc": "Zhangjiajie National Forest Park"
-   },
-   {
-    "tier": "",
-    "title": "File:Zhangjiajie National Forest Park 38023-Zhangjiajie (48757574461).jpg",
-    "w": 3000,
-    "h": 1816,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Zhangjiajie_National_Forest_Park_38023-Zhangjiajie_%2848757574461%29.jpg/1920px-Zhangjiajie_National_Forest_Park_38023-Zhangjiajie_%2848757574461%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY 2.0",
-    "by": "xiquinhosilva",
-    "desc": "38023-Zhangjiajie"
-   }
-  ]
- },
- {
-  "cat": "nature",
-  "key": "Li River",
-  "q": "Li River Guilin karst",
-  "picks": [
-   {
-    "tier": "QI",
-    "title": "File:1 li jiang guilin yangshuo 2011.jpg",
-    "w": 3983,
-    "h": 2640,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/1_li_jiang_guilin_yangshuo_2011.jpg/1920px-1_li_jiang_guilin_yangshuo_2011.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "chensiyuan",
-    "desc": "li jiang li river guilin yangshuo china 2011 karst raft"
-   },
-   {
-    "tier": "",
-    "title": "File:Yangshuo-Li-River-2019-Luka-Peternel.jpg",
-    "w": 5472,
-    "h": 3648,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Yangshuo-Li-River-2019-Luka-Peternel.jpg/1920px-Yangshuo-Li-River-2019-Luka-Peternel.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Luka Peternel",
-    "desc": "View of Li River from Yangshuo County, in the northeast of Guangxi. Karst peaks are visible in the background."
-   },
-   {
-    "tier": "",
-    "title": "File:Lijiang River, Guilin, 1988.jpg",
-    "w": 3588,
-    "h": 2395,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Lijiang_River%2C_Guilin%2C_1988.jpg/1920px-Lijiang_River%2C_Guilin%2C_1988.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY 2.0",
-    "by": "Nicholas Kenrick",
-    "desc": "The Lijiang River, Guilin, China, 1988."
-   }
-  ]
- },
- {
-  "cat": "nature",
   "key": "Jiuzhaigou",
   "q": "Jiuzhaigou",
   "picks": [
@@ -186,154 +38,6 @@
  },
  {
   "cat": "nature",
-  "key": "Huangshan",
-  "q": "Huangshan mountains",
-  "picks": [
-   {
-    "tier": "QI",
-    "title": "File:Tulpe \"Yellow Mountain\" im botanischen Garten in München 03.jpg",
-    "w": 5472,
-    "h": 3648,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Tulpe_%22Yellow_Mountain%22_im_botanischen_Garten_in_M%C3%BCnchen_03.jpg/1920px-Tulpe_%22Yellow_Mountain%22_im_botanischen_Garten_in_M%C3%BCnchen_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Kritzolina",
-    "desc": "Tulipa cultivar \"Yellow Mountain\" in the botanical garden in Munich, Germany"
-   },
-   {
-    "tier": "QI",
-    "title": "File:Fetthennen-Steinbrech (Saxifraga aizoides) 03.jpg",
-    "w": 4452,
-    "h": 3339,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Fetthennen-Steinbrech_%28Saxifraga_aizoides%29_03.jpg/1920px-Fetthennen-Steinbrech_%28Saxifraga_aizoides%29_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY 4.0",
-    "by": "Stephan Sprinz",
-    "desc": "Yellow mountain saxifrage (saxifraga aizoides)"
-   },
-   {
-    "tier": "QI",
-    "title": "File:Fetthennen-Steinbrech (Saxifraga aizoides) 01.jpg",
-    "w": 5262,
-    "h": 3501,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Fetthennen-Steinbrech_%28Saxifraga_aizoides%29_01.jpg/1920px-Fetthennen-Steinbrech_%28Saxifraga_aizoides%29_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY 4.0",
-    "by": "Stephan Sprinz",
-    "desc": "Yellow mountain saxifrage (saxifraga aizoides)"
-   }
-  ]
- },
- {
-  "cat": "nature",
-  "key": "Plitvice Lakes",
-  "q": "Plitvice Lakes",
-  "picks": [
-   {
-    "tier": "QI",
-    "title": "File:Plitvice Lakes1.jpg",
-    "w": 5472,
-    "h": 3648,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Plitvice_Lakes1.jpg/1920px-Plitvice_Lakes1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Tesla Delacroix",
-    "desc": "Waterfalls in the Plitvice Lakes National Park in Croatia."
-   },
-   {
-    "tier": "QI",
-    "title": "File:Plitvice Lakes National Park BW 2014-10-13 13-29-14.jpg",
-    "w": 3850,
-    "h": 2562,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Plitvice_Lakes_National_Park_BW_2014-10-13_13-29-14.jpg/1920px-Plitvice_Lakes_National_Park_BW_2014-10-13_13-29-14.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "Berthold Werner",
-    "desc": "Croatia, Plitvice Lakes National Park"
-   },
-   {
-    "tier": "QI",
-    "title": "File:Plitvice Lakes National Park BW 2014-10-13 14-08-48.jpg",
-    "w": 3872,
-    "h": 2592,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Plitvice_Lakes_National_Park_BW_2014-10-13_14-08-48.jpg/1920px-Plitvice_Lakes_National_Park_BW_2014-10-13_14-08-48.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "Berthold Werner",
-    "desc": "Croatia, Plitvice Lakes National Park"
-   }
-  ]
- },
- {
-  "cat": "nature",
-  "key": "Lake Bled",
-  "q": "Lake Bled",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:SloveeniaBled.jpg",
-    "w": 3600,
-    "h": 2403,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/SloveeniaBled.jpg/1920px-SloveeniaBled.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "Abrget47j",
-    "desc": "Assumption of Mary Church, Bled, Slovenia."
-   },
-   {
-    "tier": "FP",
-    "title": "File:Bled Island 05.jpg",
-    "w": 4833,
-    "h": 3639,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/Bled_Island_05.jpg/1920px-Bled_Island_05.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Krzysztof Golik",
-    "desc": "Bled Island in Bled, Upper Carniola, Slovenia"
-   },
-   {
-    "tier": "QI",
-    "title": "File:Bled Overview.JPG",
-    "w": 3088,
-    "h": 2056,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Bled_Overview.JPG/1920px-Bled_Overview.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "Adiel lo",
-    "desc": "Overview of Lake Bled, island, castle and town in Slovenia."
-   }
-  ]
- },
- {
-  "cat": "nature",
-  "key": "Matterhorn",
-  "q": "Matterhorn",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:Matterhorn, March 2019 (01).jpg",
-    "w": 5827,
-    "h": 3885,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Matterhorn%2C_March_2019_%2801%29.jpg/1920px-Matterhorn%2C_March_2019_%2801%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Liridon",
-    "desc": "Matterhorn"
-   },
-   {
-    "tier": "FP",
-    "title": "File:Matterhorn sunset 2016 (Unsplash).jpg",
-    "w": 3840,
-    "h": 2560,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Matterhorn_sunset_2016_%28Unsplash%29.jpg/1920px-Matterhorn_sunset_2016_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC0",
-    "by": "Sam Ferrara samferrara",
-    "desc": "The Matterhorn at sunset in 2016."
-   },
-   {
-    "tier": "FP",
-    "title": "File:GGB Bhe 2-4 Gornergrat.jpg",
-    "w": 5383,
-    "h": 3589,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/GGB_Bhe_2-4_Gornergrat.jpg/1920px-GGB_Bhe_2-4_Gornergrat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "Kabelleger / David Gubler (http://www.bahnbilder.ch)",
-    "desc": "Gornergratbahn Bhe 2/4 electric railcar just below the top station Gornergrat, Switzerland."
-   }
-  ]
- },
- {
-  "cat": "nature",
   "key": "Lauterbrunnen Valley",
   "q": "Lauterbrunnen valley",
   "picks": [
@@ -366,154 +70,6 @@
     "lic": "CC BY-SA 4.0",
     "by": "Ximonic (Simo Räsänen)",
     "desc": "A resting point with a view towards Bernese Alps and Lauterbrunnen valley at Mürren, Bernese Oberland, Switzerland in 2012 August."
-   }
-  ]
- },
- {
-  "cat": "nature",
-  "key": "Tre Cime di Lavaredo",
-  "q": "Tre Cime di Lavaredo",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:Drei Zinnen Tre Cime di Lavaredo Dolomites.jpg",
-    "w": 8256,
-    "h": 5504,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Drei_Zinnen_Tre_Cime_di_Lavaredo_Dolomites.jpg/1920px-Drei_Zinnen_Tre_Cime_di_Lavaredo_Dolomites.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "This Photo was taken by Wolfgang Moroder. Feel free to use my photos, but please mention me as the author and send me a message. This image is not in the public domain. Please respect the copyright protection. It may only be used according to the rules mentioned here. This specifically excludes use in social media, if applicable terms of the licenses listed here are not appropriate. Please do not upload an updated image here without consultation with the Author. The author would like to make corrections only at his own source. This ensures that the changes are preserved.Please if you think that any changes should be required, please inform the author.Otherwise you can upload a new image with a new name. Please use one of the templates derivative or extract.",
-    "desc": "The Tre Cime di Lavaredo in the Dolomites - Aerial view from a helicopter of the Northern face - Dolomites UNESCO World Heritage Site."
-   },
-   {
-    "tier": "FP",
-    "title": "File:Valle della Rienza and Tre Cime di Lavaredo from Alpe Specie, Val Pusteria, Trentino-Alto Adige, Italy, 2025 October.jpg",
-    "w": 5460,
-    "h": 3030,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Valle_della_Rienza_and_Tre_Cime_di_Lavaredo_from_Alpe_Specie%2C_Val_Pusteria%2C_Trentino-Alto_Adige%2C_Italy%2C_2025_October.jpg/1920px-Valle_della_Rienza_and_Tre_Cime_di_Lavaredo_from_Alpe_Specie%2C_Val_Pusteria%2C_Trentino-Alto_Adige%2C_Italy%2C_2025_October.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Ximonic (Simo Räsänen)",
-    "desc": "A view to Valle della Rienza and Tre Cime di Lavaredo from Alpe Specie, Val Pusteria, Trentino-Alto Adige, Italy in 2025 October."
-   },
-   {
-    "tier": "FP",
-    "title": "File:Parco Naturale Tre Cime horses 3.jpg",
-    "w": 4200,
-    "h": 2800,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Parco_Naturale_Tre_Cime_horses_3.jpg/1920px-Parco_Naturale_Tre_Cime_horses_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "kallerna",
-    "desc": "Horses on pasture at Parco Naturale Tre Cime, the Dolomites, South Tyrol, Italy."
-   }
-  ]
- },
- {
-  "cat": "nature",
-  "key": "Lake Como",
-  "q": "Lake Como",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:Shiva shrine, Gangabal Lake.jpg",
-    "w": 6159,
-    "h": 3849,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Shiva_shrine%2C_Gangabal_Lake.jpg/1920px-Shiva_shrine%2C_Gangabal_Lake.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "UnpetitproleX",
-    "desc": "A small shrine dedicated to Hindu god Shiva carved into a boulder near the high-altitude glacial Gangabal Lake in the Himalayas of the northern Indian territory"
-   },
-   {
-    "tier": "FP",
-    "title": "File:Св. Никола Маврово.jpg",
-    "w": 3814,
-    "h": 2542,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/%D0%A1%D0%B2._%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0_%D0%9C%D0%B0%D0%B2%D1%80%D0%BE%D0%B2%D0%BE.jpg/1920px-%D0%A1%D0%B2._%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0_%D0%9C%D0%B0%D0%B2%D1%80%D0%BE%D0%B2%D0%BE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Daniela Stefanoska",
-    "desc": "The submerged St. Nicholas Church in Mavrovo, North Macedonia. Built in 1850, the church served as the main village church of Mavrovo. With the construction of "
-   },
-   {
-    "tier": "FP",
-    "title": "File:Mount-Yamnuska2-Szmurlo.jpg",
-    "w": 2810,
-    "h": 1873,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Mount-Yamnuska2-Szmurlo.jpg/1920px-Mount-Yamnuska2-Szmurlo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY 3.0",
-    "by": "Chuck Szmurlo (talk · contribs)",
-    "desc": "Officially known as Mount John Laurie, Yamnuska is the popular name for this mountain in Kananaskis Country west of Calgary, Alberta, Canada."
-   }
-  ]
- },
- {
-  "cat": "nature",
-  "key": "Cliffs of Moher",
-  "q": "Cliffs of Moher",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:Ireland Cliffs of Moher BW 2025-09-11 14-27-51.jpg",
-    "w": 6016,
-    "h": 3384,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Ireland_Cliffs_of_Moher_BW_2025-09-11_14-27-51.jpg/1920px-Ireland_Cliffs_of_Moher_BW_2025-09-11_14-27-51.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Berthold Werner",
-    "desc": "Ireland, Cliffs of Moher, O'Brien's Tower"
-   },
-   {
-    "tier": "QI",
-    "title": "File:Ireland Cliffs of Moher BW 2025-09-11 14-26-55.jpg",
-    "w": 5974,
-    "h": 3361,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Ireland_Cliffs_of_Moher_BW_2025-09-11_14-26-55.jpg/1920px-Ireland_Cliffs_of_Moher_BW_2025-09-11_14-26-55.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Berthold Werner",
-    "desc": "Ireland, Cliffs of Moher, O'Brien's Tower"
-   },
-   {
-    "tier": "QI",
-    "title": "File:Ireland Cliffs of Moher BW 2025-09-11 14-48-01.jpg",
-    "w": 6016,
-    "h": 3384,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Ireland_Cliffs_of_Moher_BW_2025-09-11_14-48-01.jpg/1920px-Ireland_Cliffs_of_Moher_BW_2025-09-11_14-48-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Berthold Werner",
-    "desc": "Ireland, Cliffs of Moher, O'Brien's Tower"
-   }
-  ]
- },
- {
-  "cat": "nature",
-  "key": "Giant's Causeway",
-  "q": "Giant's Causeway",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:Giant's Causeway (14).JPG",
-    "w": 3840,
-    "h": 2543,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Giant%27s_Causeway_%2814%29.JPG/1920px-Giant%27s_Causeway_%2814%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY 3.0",
-    "by": "Chmee2",
-    "desc": "Giant’s Causeway, Northern Ireland. Hexagonal basalts."
-   },
-   {
-    "tier": "",
-    "title": "File:Giant's Causeway (36834542085).jpg",
-    "w": 3374,
-    "h": 2276,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Giant%27s_Causeway_%2836834542085%29.jpg/1920px-Giant%27s_Causeway_%2836834542085%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY 2.0",
-    "by": "Lindy Buckley from Nanjing, China",
-    "desc": "Giant's Causeway"
-   },
-   {
-    "tier": "",
-    "title": "File:A keen photographer, Giant's Causeway - geograph.org.uk - 3791384.jpg",
-    "w": 2560,
-    "h": 1920,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/A_keen_photographer%2C_Giant%27s_Causeway_-_geograph.org.uk_-_3791384.jpg/1920px-A_keen_photographer%2C_Giant%27s_Causeway_-_geograph.org.uk_-_3791384.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 2.0",
-    "by": "Kenneth Allen",
-    "desc": "A keen photographer, Giant's Causeway"
    }
   ]
  },
@@ -593,117 +149,6 @@
  },
  {
   "cat": "nature",
-  "key": "Geirangerfjord",
-  "q": "Geirangerfjord",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:Geirangerfjord from Ørnesvingen, 2013 June.jpg",
-    "w": 6520,
-    "h": 3660,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/Geirangerfjord_from_%C3%98rnesvingen%2C_2013_June.jpg/1920px-Geirangerfjord_from_%C3%98rnesvingen%2C_2013_June.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "Ximonic (Simo Räsänen)",
-    "desc": "A view to Geirangerfjord from Ørnesvingen, Stranda, Møre og Romsdal, Norway in 2013 June."
-   },
-   {
-    "tier": "FP",
-    "title": "File:Fiordo de Geiranger desde Flydalsjuvet, Noruega, 2019-09-07, DD 59.jpg",
-    "w": 7580,
-    "h": 5064,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Fiordo_de_Geiranger_desde_Flydalsjuvet%2C_Noruega%2C_2019-09-07%2C_DD_59.jpg/1920px-Fiordo_de_Geiranger_desde_Flydalsjuvet%2C_Noruega%2C_2019-09-07%2C_DD_59.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Diego Delso",
-    "desc": "Geirangerfjorden from Flydalsjuvet‎, Norway"
-   },
-   {
-    "tier": "FP",
-    "title": "File:View to Geiranger from Flydalsjuvet, 2013 June.jpg",
-    "w": 3072,
-    "h": 1516,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/View_to_Geiranger_from_Flydalsjuvet%2C_2013_June.jpg/1920px-View_to_Geiranger_from_Flydalsjuvet%2C_2013_June.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "Ximonic (Simo Räsänen)",
-    "desc": "A view to Geiranger and Geirangerfjorden from Flydalsjuvet in Stranda municipality, Møre og Romsdal, Norway in 2013 June."
-   }
-  ]
- },
- {
-  "cat": "nature",
-  "key": "Preikestolen",
-  "q": "Preikestolen",
-  "picks": [
-   {
-    "tier": "QI",
-    "title": "File:Fjordn surface wave boat.jpg",
-    "w": 3328,
-    "h": 1872,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/Fjordn_surface_wave_boat.jpg/1920px-Fjordn_surface_wave_boat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "Edmont",
-    "desc": "Boat sailing the Lyse fjord in Norway. Picture taken from the Preikestolen."
-   },
-   {
-    "tier": "",
-    "title": "File:Preikestolen - Pulpit Rock fog.jpg",
-    "w": 2000,
-    "h": 1136,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Preikestolen_-_Pulpit_Rock_fog.jpg/1920px-Preikestolen_-_Pulpit_Rock_fog.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY 2.0",
-    "by": "Åsmund Heimark",
-    "desc": "preikestolen - Pulpit Rock"
-   },
-   {
-    "tier": "",
-    "title": "File:Pulpit Rock, Preekstoel, Preikestolen - panoramio.jpg",
-    "w": 4320,
-    "h": 3240,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Pulpit_Rock%2C_Preekstoel%2C_Preikestolen_-_panoramio.jpg/1920px-Pulpit_Rock%2C_Preekstoel%2C_Preikestolen_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "jace48",
-    "desc": "Pulpit Rock, Preekstoel, Preikestolen"
-   }
-  ]
- },
- {
-  "cat": "nature",
-  "key": "Lofoten",
-  "q": "Lofoten Reine",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:Reine i Lofoten LC0148.jpg",
-    "w": 2261,
-    "h": 1600,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/Reine_i_Lofoten_LC0148.jpg/1920px-Reine_i_Lofoten_LC0148.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 2.0 de",
-    "by": "Jörg Hempel",
-    "desc": "Reine on the Lofoten island Moskenesøy"
-   },
-   {
-    "tier": "FP",
-    "title": "File:Houses of Reine by Gravdalsbukta, Moskenes, Nordland, Norway, 2022 June.jpg",
-    "w": 5000,
-    "h": 3334,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Houses_of_Reine_by_Gravdalsbukta%2C_Moskenes%2C_Nordland%2C_Norway%2C_2022_June.jpg/1920px-Houses_of_Reine_by_Gravdalsbukta%2C_Moskenes%2C_Nordland%2C_Norway%2C_2022_June.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Ximonic (Simo Räsänen)",
-    "desc": "Houses of Reine village by Gravdalsbukta in Moskenes, Nordland, Norway in a summer night of 2022 June."
-   },
-   {
-    "tier": "FP",
-    "title": "File:0688 Norway Lofoten bridge between Sakrisoya and Andoya.jpg",
-    "w": 7609,
-    "h": 4280,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/0688_Norway_Lofoten_bridge_between_Sakrisoya_and_Andoya.jpg/1920px-0688_Norway_Lofoten_bridge_between_Sakrisoya_and_Andoya.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Virtual-Pano",
-    "desc": "Bridge connecting Sakrisoya &amp; Andoya (two small islands in the Lofoten, Norway)"
-   }
-  ]
- },
- {
-  "cat": "nature",
   "key": "Kirkjufell",
   "q": "Kirkjufell",
   "picks": [
@@ -736,80 +181,6 @@
     "lic": "CC BY 4.0",
     "by": "Jakub Hałun",
     "desc": "Kirkjufell Mountain, Kirkjufellsfoss waterfall and a rainbow caused by the sun and heavy rain at the same time"
-   }
-  ]
- },
- {
-  "cat": "nature",
-  "key": "Skógafoss",
-  "q": "Skógafoss",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:Skógafoss July 2014.JPG",
-    "w": 4238,
-    "h": 2265,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Sk%C3%B3gafoss_July_2014.JPG/1920px-Sk%C3%B3gafoss_July_2014.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Martin Falbisoner",
-    "desc": "Skógafoss, Iceland, July 2014"
-   },
-   {
-    "tier": "QI",
-    "title": "File:Skógafoss Waterfall, Iceland, 20240720 1330 2993.jpg",
-    "w": 5700,
-    "h": 3786,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Sk%C3%B3gafoss_Waterfall%2C_Iceland%2C_20240720_1330_2993.jpg/1920px-Sk%C3%B3gafoss_Waterfall%2C_Iceland%2C_20240720_1330_2993.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY 4.0",
-    "by": "Jakub Hałun",
-    "desc": "Skógafoss Waterfall, Iceland"
-   },
-   {
-    "tier": "QI",
-    "title": "File:Skógafoss Waterfall, Iceland, 20240720 1411 3075.jpg",
-    "w": 6016,
-    "h": 4016,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Sk%C3%B3gafoss_Waterfall%2C_Iceland%2C_20240720_1411_3075.jpg/1920px-Sk%C3%B3gafoss_Waterfall%2C_Iceland%2C_20240720_1411_3075.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY 4.0",
-    "by": "Jakub Hałun",
-    "desc": "Skógafoss Waterfall, Iceland"
-   }
-  ]
- },
- {
-  "cat": "nature",
-  "key": "Jökulsárlón",
-  "q": "Jökulsárlón",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:021 Wild smiling harbor seal at Jökulsárlón (Iceland) Photo by Giles Laurent.jpg",
-    "w": 5014,
-    "h": 3345,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/021_Wild_smiling_harbor_seal_at_J%C3%B6kuls%C3%A1rl%C3%B3n_%28Iceland%29_Photo_by_Giles_Laurent.jpg/1920px-021_Wild_smiling_harbor_seal_at_J%C3%B6kuls%C3%A1rl%C3%B3n_%28Iceland%29_Photo_by_Giles_Laurent.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Giles Laurent",
-    "desc": "Smiling wild harbor seal (Phoca vitulina) at Jökulsárlón (Iceland). Jökulsárlón is a glacier lagoon connected to the Atlantic ocean. The fish go to the lagoon t"
-   },
-   {
-    "tier": "FP",
-    "title": "File:Jokulsarlon lake, Iceland.jpg",
-    "w": 2921,
-    "h": 1931,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Jokulsarlon_lake%2C_Iceland.jpg/1920px-Jokulsarlon_lake%2C_Iceland.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY 2.0",
-    "by": "Kenny Muir",
-    "desc": "Jökulsárlón, a glacial lake in Iceland. To the right, the mouth of the glacier Vatnajökull."
-   },
-   {
-    "tier": "FP",
-    "title": "File:IceBlockNearJoekullsarlon.jpg",
-    "w": 2971,
-    "h": 1984,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/IceBlockNearJoekullsarlon.jpg/1920px-IceBlockNearJoekullsarlon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Andreas Tille",
-    "desc": "Ice block at beach near Jökulsárlón, Iceland. See the URL below how the image was shot ..."
    }
   ]
  },
@@ -1148,43 +519,6 @@
  },
  {
   "cat": "nature",
-  "key": "Navagio Beach",
-  "q": "Navagio beach",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:Navagio, Zante 02.jpg",
-    "w": 3895,
-    "h": 2886,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Navagio%2C_Zante_02.jpg/1920px-Navagio%2C_Zante_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Wilnel José Verdú Guerrero",
-    "desc": "Navagio Beach at Zakynthos (Greece)"
-   },
-   {
-    "tier": "QI",
-    "title": "File:Navagio beach Zakynthos 3.jpg",
-    "w": 5100,
-    "h": 3400,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Navagio_beach_Zakynthos_3.jpg/1920px-Navagio_beach_Zakynthos_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "kallerna",
-    "desc": "Navagio beach (Shipwreck beach) in Zakynthos, Greece"
-   },
-   {
-    "tier": "",
-    "title": "File:Navagio, Zante 01.jpg",
-    "w": 4032,
-    "h": 3024,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Navagio%2C_Zante_01.jpg/1920px-Navagio%2C_Zante_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Wilnel José Verdú Guerrero",
-    "desc": "Navagio Beach at Zakynthos (Greece)"
-   }
-  ]
- },
- {
-  "cat": "nature",
   "key": "Mount Ararat",
   "q": "Mount Ararat",
   "picks": [
@@ -1444,10 +778,10 @@
    },
    {
     "tier": "QI",
-    "title": "File:Desierto de Wahiba, Omán, 2024-08-17, DD 18.jpg",
+    "title": "File:Desierto de Wahiba, Omán, 2024-08-17, DD 06.jpg",
     "w": 8688,
     "h": 5792,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Desierto_de_Wahiba%2C_Om%C3%A1n%2C_2024-08-17%2C_DD_18.jpg/1920px-Desierto_de_Wahiba%2C_Om%C3%A1n%2C_2024-08-17%2C_DD_18.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Desierto_de_Wahiba%2C_Om%C3%A1n%2C_2024-08-17%2C_DD_06.jpg/1920px-Desierto_de_Wahiba%2C_Om%C3%A1n%2C_2024-08-17%2C_DD_06.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "lic": "CC BY-SA 4.0",
     "by": "Diego Delso",
     "desc": "Wahiba Desert, Oman"
@@ -1752,43 +1086,6 @@
  },
  {
   "cat": "nature",
-  "key": "Mount Bromo",
-  "q": "Mount Bromo",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:Mount Bromo at sunrise, showing its volcanoes and Mount Semeru (background).jpg",
-    "w": 2272,
-    "h": 1205,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Mount_Bromo_at_sunrise%2C_showing_its_volcanoes_and_Mount_Semeru_%28background%29.jpg/1920px-Mount_Bromo_at_sunrise%2C_showing_its_volcanoes_and_Mount_Semeru_%28background%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "Thomas Hirsch (= user Ravn)",
-    "desc": "The Tengger massif in Java, Indonesia, at sunrise, showing the volcanoes Mt. Bromo (large crater, smoking), Mt. Semeru (background, smoking), Mount Batok in the"
-   },
-   {
-    "tier": "FP",
-    "title": "File:Pesona Kabut Bromo.jpg",
-    "w": 4680,
-    "h": 3120,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Pesona_Kabut_Bromo.jpg/1920px-Pesona_Kabut_Bromo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Muhammad Iqbal",
-    "desc": "Tourists enjoy the charm of the morning mist on Mount Bromo, East Java, Indonesia. Bromo Tengger Semeru National Park (Indonesian: Taman Nasional Bromo Tengger "
-   },
-   {
-    "tier": "FP",
-    "title": "File:Batok, view from Bromo volcano, Java, Indonesia, 20220820 0539 9409.jpg",
-    "w": 5648,
-    "h": 3770,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Batok%2C_view_from_Bromo_volcano%2C_Java%2C_Indonesia%2C_20220820_0539_9409.jpg/1920px-Batok%2C_view_from_Bromo_volcano%2C_Java%2C_Indonesia%2C_20220820_0539_9409.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Jakub Hałun",
-    "desc": "Mount Batok in the early morning light - view from the peak of the volcanic cone of Mount Bromo, East Java, Indonesia"
-   }
-  ]
- },
- {
-  "cat": "nature",
   "key": "Raja Ampat",
   "q": "Raja Ampat",
   "picks": [
@@ -1863,43 +1160,6 @@
  },
  {
   "cat": "nature",
-  "key": "Tegallalang",
-  "q": "Tegallalang rice terraces",
-  "picks": [
-   {
-    "tier": "QI",
-    "title": "File:Rice terraces, Bali.jpg",
-    "w": 4032,
-    "h": 2688,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Rice_terraces%2C_Bali.jpg/1920px-Rice_terraces%2C_Bali.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY 4.0",
-    "by": "Vyacheslav Argenberg",
-    "desc": "Rice terraces in Bali. Rice fields. Traditional rice farming in Bali. This is probably one of the most photographed in-land places in Bali. Tegallalang, Ubud. B"
-   },
-   {
-    "tier": "",
-    "title": "File:Tegallalang rice terraces SF0001.jpg",
-    "w": 4032,
-    "h": 2268,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Tegallalang_rice_terraces_SF0001.jpg/1920px-Tegallalang_rice_terraces_SF0001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Stefan Fussan",
-    "desc": "Tegallalang rice terraces"
-   },
-   {
-    "tier": "",
-    "title": "File:Tegallalang Rice Terraces Bali.jpg",
-    "w": 6016,
-    "h": 4000,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Tegallalang_Rice_Terraces_Bali.jpg/1920px-Tegallalang_Rice_Terraces_Bali.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY 4.0",
-    "by": "Philip Nalangan",
-    "desc": "The Tegallalang Rice Terraces are famous for their beautiful scenes of rice paddies and their innovative irrigation system."
-   }
-  ]
- },
- {
-  "cat": "nature",
   "key": "Banaue Rice Terraces",
   "q": "Banaue Rice Terraces",
   "picks": [
@@ -1932,43 +1192,6 @@
     "lic": "CC BY-SA 3.0",
     "by": "CEphoto, Uwe Aranas",
     "desc": "Banaue, Philippines: Banaue Rice Terraces"
-   }
-  ]
- },
- {
-  "cat": "nature",
-  "key": "Chocolate Hills",
-  "q": "Chocolate Hills Bohol",
-  "picks": [
-   {
-    "tier": "",
-    "title": "File:Chocolate Hills Bohol 2.jpg",
-    "w": 4032,
-    "h": 3024,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/Chocolate_Hills_Bohol_2.jpg/1920px-Chocolate_Hills_Bohol_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Lady01v",
-    "desc": "chocolate hills in bohol"
-   },
-   {
-    "tier": "",
-    "title": "File:Chocolate Hills Bohol 1.jpg",
-    "w": 4032,
-    "h": 3024,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Chocolate_Hills_Bohol_1.jpg/1920px-Chocolate_Hills_Bohol_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Lady01v",
-    "desc": "Chocolate Hills in Bohol"
-   },
-   {
-    "tier": "",
-    "title": "File:Chocolate Hills Carmen Bohol 2019.jpg",
-    "w": 5184,
-    "h": 3456,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Chocolate_Hills_Carmen_Bohol_2019.jpg/1920px-Chocolate_Hills_Carmen_Bohol_2019.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Wolfgang Hägele",
-    "desc": "Uniquely shaped hill formation, known as the \"Chocolate Hills\", in Carmen, Bohol, Philippines"
    }
   ]
  },
@@ -2332,13 +1555,13 @@
    },
    {
     "tier": "QI",
-    "title": "File:Isla de San Cristóbal, islas Galápagos, Ecuador, 2015-07-24, DD 88.JPG",
-    "w": 8545,
-    "h": 5697,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Isla_de_San_Crist%C3%B3bal%2C_islas_Gal%C3%A1pagos%2C_Ecuador%2C_2015-07-24%2C_DD_88.JPG/1920px-Isla_de_San_Crist%C3%B3bal%2C_islas_Gal%C3%A1pagos%2C_Ecuador%2C_2015-07-24%2C_DD_88.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "File:Paisaje de isla Santa Cruz, islas Galápagos, Ecuador, 2015-07-26, DD 71.JPG",
+    "w": 8156,
+    "h": 4157,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Paisaje_de_isla_Santa_Cruz%2C_islas_Gal%C3%A1pagos%2C_Ecuador%2C_2015-07-26%2C_DD_71.JPG/1920px-Paisaje_de_isla_Santa_Cruz%2C_islas_Gal%C3%A1pagos%2C_Ecuador%2C_2015-07-26%2C_DD_71.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "lic": "CC BY-SA 4.0",
     "by": "Diego Delso",
-    "desc": "San Cristobal Island, Galapagos Islands, Ecuador"
+    "desc": "Landscape in Santa Cruz Island, Galapagos Islands, Ecuador"
    }
   ]
  },
@@ -2645,20 +1868,20 @@
   "picks": [
    {
     "tier": "QI",
-    "title": "File:Lake Wanaka 19.jpg",
-    "w": 3898,
-    "h": 2599,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Lake_Wanaka_19.jpg/1920px-Lake_Wanaka_19.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "File:Lake Wanaka 15.jpg",
+    "w": 3240,
+    "h": 2160,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Lake_Wanaka_15.jpg/1920px-Lake_Wanaka_15.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "lic": "CC BY-SA 4.0",
     "by": "Krzysztof Golik",
     "desc": "Lake Wanaka in Otago Region, South Island of New Zealand"
    },
    {
     "tier": "QI",
-    "title": "File:Lake Wanaka 15.jpg",
-    "w": 3240,
-    "h": 2160,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Lake_Wanaka_15.jpg/1920px-Lake_Wanaka_15.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "File:Lake Wanaka 19.jpg",
+    "w": 3898,
+    "h": 2599,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Lake_Wanaka_19.jpg/1920px-Lake_Wanaka_19.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "lic": "CC BY-SA 4.0",
     "by": "Krzysztof Golik",
     "desc": "Lake Wanaka in Otago Region, South Island of New Zealand"
@@ -2672,117 +1895,6 @@
     "lic": "CC BY-SA 4.0",
     "by": "Krzysztof Golik",
     "desc": "Lake Wanaka in Otago Region, South Island of New Zealand"
-   }
-  ]
- },
- {
-  "cat": "city",
-  "key": "Tower Bridge",
-  "q": "Tower Bridge London",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:Tower Bridge London Dusk Feb 2006.jpg",
-    "w": 6589,
-    "h": 2922,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Tower_Bridge_London_Dusk_Feb_2006.jpg/1920px-Tower_Bridge_London_Dusk_Feb_2006.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "Diliff",
-    "desc": "A high resolution image of Tower Bridge in London at dusk. This image is a mosaic of around twenty 12.8 megapixel segments stitched with PTGui. They were taken "
-   },
-   {
-    "tier": "FP",
-    "title": "File:Tower Bridge London Feb 2006.jpg",
-    "w": 9462,
-    "h": 4734,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Tower_Bridge_London_Feb_2006.jpg/1920px-Tower_Bridge_London_Feb_2006.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "Diliff",
-    "desc": "An extremely high resolution image of Tower Bridge in London. This image is a mosaic of 53 12.8 megapixel segments stitched with PTGui. They were taken with a C"
-   },
-   {
-    "tier": "FP",
-    "title": "File:Tower Bridge from London City Hall 2015.jpg",
-    "w": 14258,
-    "h": 8021,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Tower_Bridge_from_London_City_Hall_2015.jpg/1920px-Tower_Bridge_from_London_City_Hall_2015.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Colin",
-    "desc": "Tower Bridge viewed from the balcony at City Hall. The skyscrapers of Canary Wharf are visible."
-   }
-  ]
- },
- {
-  "cat": "city",
-  "key": "Palace of Westminster",
-  "q": "Palace of Westminster",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:Palace of Westminster from the dome on Methodist Central Hall.jpg",
-    "w": 7888,
-    "h": 5259,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Palace_of_Westminster_from_the_dome_on_Methodist_Central_Hall.jpg/1920px-Palace_of_Westminster_from_the_dome_on_Methodist_Central_Hall.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Colin",
-    "desc": "The Palace of Westminster (Houses of Parliament) from the dome on Methodist Central Hall, which is only open to the public once a year on Open House London week"
-   },
-   {
-    "tier": "FP",
-    "title": "File:Palace of Westminster from the dome on Methodist Central Hall - 1000 piece jigsaw puzzle.jpg",
-    "w": 4380,
-    "h": 3269,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Palace_of_Westminster_from_the_dome_on_Methodist_Central_Hall_-_1000_piece_jigsaw_puzzle.jpg/1920px-Palace_of_Westminster_from_the_dome_on_Methodist_Central_Hall_-_1000_piece_jigsaw_puzzle.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Colin",
-    "desc": "A 1000 piece jigsaw puzzle. The photo is of the Palace of Westminster (Houses of Parliament) from the dome on Methodist Central Hall, which is only open to the "
-   },
-   {
-    "tier": "FP",
-    "title": "File:Catedral de Westminster, Londres, Inglaterra, 2022-11-23, DD 55-57 HDR.jpg",
-    "w": 8183,
-    "h": 5455,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Catedral_de_Westminster%2C_Londres%2C_Inglaterra%2C_2022-11-23%2C_DD_55-57_HDR.jpg/1920px-Catedral_de_Westminster%2C_Londres%2C_Inglaterra%2C_2022-11-23%2C_DD_55-57_HDR.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Diego Delso",
-    "desc": "Main nave of the Westminster Cathedral, City of Westminster, London, England. This cathedral is the mother church of the Catholic Church in England and Wales. I"
-   }
-  ]
- },
- {
-  "cat": "city",
-  "key": "Eiffel Tower",
-  "q": "Eiffel Tower",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:Paris - The Eiffel Tower in spring - 2307.jpg",
-    "w": 4368,
-    "h": 2912,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Paris_-_The_Eiffel_Tower_in_spring_-_2307.jpg/1920px-Paris_-_The_Eiffel_Tower_in_spring_-_2307.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "Jorge Royan",
-    "desc": "The Eiffel Tower in spring, Paris, France."
-   },
-   {
-    "tier": "FP",
-    "title": "File:Eiffel Tower and Pont Alexandre III at night.jpg",
-    "w": 4288,
-    "h": 2748,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Eiffel_Tower_and_Pont_Alexandre_III_at_night.jpg/1920px-Eiffel_Tower_and_Pont_Alexandre_III_at_night.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY 2.0",
-    "by": "Getfunky Paris",
-    "desc": "Eiffel Tower and Pont Alexandre III at night."
-   },
-   {
-    "tier": "FP",
-    "title": "File:Eiffel Tower in 2022 02.jpg",
-    "w": 5898,
-    "h": 3932,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Eiffel_Tower_in_2022_02.jpg/1920px-Eiffel_Tower_in_2022_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Maksim Sokolov (maxergon.com)",
-    "desc": "Eiffel Tower in 2022"
    }
   ]
  },
@@ -2820,117 +1932,6 @@
     "lic": "CC0",
     "by": "Willem van de Poll",
     "desc": "A car at Place de l'Étoile with the Arc de Triomphe reflected in the headlamp."
-   }
-  ]
- },
- {
-  "cat": "city",
-  "key": "Neuschwanstein Castle",
-  "q": "Neuschwanstein Castle",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:Neuschwanstein Castle 2024-02.jpg",
-    "w": 15083,
-    "h": 10270,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Neuschwanstein_Castle_2024-02.jpg/1920px-Neuschwanstein_Castle_2024-02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC0",
-    "by": "Wilfredor",
-    "desc": "Neuschwanstein Castle at Schwangau, Bavaria, Germany."
-   },
-   {
-    "tier": "FP",
-    "title": "File:Schloss Neuschwanstein 2013.jpg",
-    "w": 5979,
-    "h": 4468,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Schloss_Neuschwanstein_2013.jpg/1920px-Schloss_Neuschwanstein_2013.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0 de",
-    "by": "Thomas Wolf, www.foto-tw.de",
-    "desc": "Neuschwanstein Castle at Schwangau, Bavaria, Germany."
-   },
-   {
-    "tier": "FP",
-    "title": "File:Neuschwanstein Castle from Marienbrücke, 2011 May.jpg",
-    "w": 3600,
-    "h": 2400,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Neuschwanstein_Castle_from_Marienbr%C3%BCcke%2C_2011_May.jpg/1920px-Neuschwanstein_Castle_from_Marienbr%C3%BCcke%2C_2011_May.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "Ximonic, Simo Räsänen (post-processing) &amp; Tauno Räsänen (photograph)",
-    "desc": "Neuschwanstein Castle, Bavaria, Germany in 2011 May."
-   }
-  ]
- },
- {
-  "cat": "city",
-  "key": "Brandenburg Gate",
-  "q": "Brandenburg Gate",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:Brandenburg Gate Quadriga at Night.jpg",
-    "w": 3032,
-    "h": 2274,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Brandenburg_Gate_Quadriga_at_Night.jpg/1920px-Brandenburg_Gate_Quadriga_at_Night.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 2.5",
-    "by": "א (Aleph) Creator: Johann Gottfried Schadow",
-    "desc": "This picture is a close-up of the quadriga on top of the Brandenburg Gate in Berlin (Germany) at night. The sculpture was produced by Johann Gottfried Schadow i"
-   },
-   {
-    "tier": "FP",
-    "title": "File:Brandenburger Tor morgens.jpg",
-    "w": 5009,
-    "h": 3347,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/Brandenburger_Tor_morgens.jpg/1920px-Brandenburger_Tor_morgens.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "Thomas Wolf, www.foto-tw.de",
-    "desc": "The Brandenburg Gate in Berlin, Germany"
-   },
-   {
-    "tier": "FP",
-    "title": "File:Brandenburger Tor nachts 2012-07.jpg",
-    "w": 5421,
-    "h": 2718,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Brandenburger_Tor_nachts_2012-07.jpg/1920px-Brandenburger_Tor_nachts_2012-07.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "Thomas Wolf, www.foto-tw.de",
-    "desc": "The Brandenburg Gate in Berlin, Germany"
-   }
-  ]
- },
- {
-  "cat": "city",
-  "key": "Grand Canal of Venice",
-  "q": "Grand Canal Venice",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:Panorama of Canal Grande and Ponte di Rialto, Venice - September 2017.jpg",
-    "w": 5387,
-    "h": 2394,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/Panorama_of_Canal_Grande_and_Ponte_di_Rialto%2C_Venice_-_September_2017.jpg/1920px-Panorama_of_Canal_Grande_and_Ponte_di_Rialto%2C_Venice_-_September_2017.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Martin Falbisoner",
-    "desc": "Canal Grande and Rialto Bridge, Venice - part of UNESCO World Heritage Site Ref. Number 394."
-   },
-   {
-    "tier": "FP",
-    "title": "File:Canal Grande Chiesa della Salute e Dogana dal ponte dell Accademia.jpg",
-    "w": 7307,
-    "h": 4912,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Canal_Grande_Chiesa_della_Salute_e_Dogana_dal_ponte_dell_Accademia.jpg/1920px-Canal_Grande_Chiesa_della_Salute_e_Dogana_dal_ponte_dell_Accademia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "This Photo was taken by Wolfgang Moroder. Feel free to use my photos, but please mention me as the author and send me a message. This image is not in the public domain. Please respect the copyright protection. It may only be used according to the rules mentioned here. This specifically excludes use in social media, if applicable terms of the licenses listed here are not appropriate. Please do not upload an updated image here without consultation with the Author. The author would like to make corrections only at his own source. This ensures that the changes are preserved.Please if you think that any changes should be required, please inform the author.Otherwise you can upload a new image with a new name. Please use one of the templates derivative or extract.",
-    "desc": "The Grand Canal in Venice. View from the Accademia bridge. The operation performed by the gondolier is called \"va stagando\" in Venetian."
-   },
-   {
-    "tier": "FP",
-    "title": "File:Ponte di Rialto Venice 1.jpg",
-    "w": 5100,
-    "h": 3385,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Ponte_di_Rialto_Venice_1.jpg/1920px-Ponte_di_Rialto_Venice_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "kallerna",
-    "desc": "Ponte di Rialto, Venice."
    }
   ]
  },
@@ -3005,80 +2006,6 @@
     "lic": "CC BY-SA 3.0",
     "by": "Norbert Nagel",
     "desc": "Rowing boat on a house roof, Fira, Santorini, Greece."
-   }
-  ]
- },
- {
-  "cat": "city",
-  "key": "Hallstatt",
-  "q": "Hallstatt",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:Europe in 1923.jpg",
-    "w": 7097,
-    "h": 5456,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/Europe_in_1923.jpg/1920px-Europe_in_1923.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "Public domain",
-    "by": "Bacon, George Washington (1830-1921)",
-    "desc": "Bacon's standard map of Europe, 1923. Relief shown by hachures and spot heights. Shows steamship routes and time zones. Published by Weber Costello Co., 84 x 11"
-   },
-   {
-    "tier": "QI",
-    "title": "File:Hallstatt - Zentrum .JPG",
-    "w": 3937,
-    "h": 2717,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/Hallstatt_-_Zentrum_.JPG/1920px-Hallstatt_-_Zentrum_.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "C.Stadler/Bwag",
-    "desc": "Northeast view of Hallstatt, Upper Austria."
-   },
-   {
-    "tier": "QI",
-    "title": "File:Hallstatt kath. Kirche Marienaltar Gesprenge 01.jpg",
-    "w": 5982,
-    "h": 3988,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Hallstatt_kath._Kirche_Marienaltar_Gesprenge_01.jpg/1920px-Hallstatt_kath._Kirche_Marienaltar_Gesprenge_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Uoaei1",
-    "desc": "Crown of the Altar of Our Lady at the Catholic parish church Hallstatt, Upper Austria. Lienhart Astl (signed), 1510–1520."
-   }
-  ]
- },
- {
-  "cat": "city",
-  "key": "Dubrovnik",
-  "q": "Dubrovnik old town",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:Casco viejo de Dubrovnik, Croacia, 2014-04-14, DD 07.JPG",
-    "w": 5556,
-    "h": 3574,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Casco_viejo_de_Dubrovnik%2C_Croacia%2C_2014-04-14%2C_DD_07.JPG/1920px-Casco_viejo_de_Dubrovnik%2C_Croacia%2C_2014-04-14%2C_DD_07.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "Diego Delso",
-    "desc": "Early morning view of the Old Town of Dubrovnik and its city walls, an UNESCO Heritage Site since 1979. The former Republic of Ragusa was a maritime republic ce"
-   },
-   {
-    "tier": "FP",
-    "title": "File:Casco viejo de Dubrovnik, Croacia, 2014-04-14, DD 04.JPG",
-    "w": 5218,
-    "h": 2840,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Casco_viejo_de_Dubrovnik%2C_Croacia%2C_2014-04-14%2C_DD_04.JPG/1920px-Casco_viejo_de_Dubrovnik%2C_Croacia%2C_2014-04-14%2C_DD_04.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "Diego Delso",
-    "desc": "Early morning view of the Old Town of Dubrovnik and its city walls, an UNESCO Heritage Site since 1979. The former Republic of Ragusa was a maritime republic ce"
-   },
-   {
-    "tier": "QI",
-    "title": "File:Dubrovnik Old Town 1.jpg",
-    "w": 5100,
-    "h": 3140,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Dubrovnik_Old_Town_1.jpg/1920px-Dubrovnik_Old_Town_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "kallerna",
-    "desc": "Morning view of the Old Town of Dubrovnik and its city walls, an UNESCO Heritage Site since 1979."
    }
   ]
  },
@@ -3553,13 +2480,13 @@
    },
    {
     "tier": "",
-    "title": "File:Kuwait City skyline (39710595225).jpg",
-    "w": 5897,
-    "h": 3921,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Kuwait_City_skyline_%2839710595225%29.jpg/1920px-Kuwait_City_skyline_%2839710595225%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY 2.0",
-    "by": "Francisco Anzola from United States",
-    "desc": "Kuwait City skyline"
+    "title": "File:Kuwait City (8287172359).jpg",
+    "w": 2160,
+    "h": 1217,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Kuwait_City_%288287172359%29.jpg/1920px-Kuwait_City_%288287172359%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 2.0",
+    "by": "Abdullah Alqattan from Tempe, United States",
+    "desc": "Kuwait City"
    }
   ]
  },
@@ -3587,43 +2514,6 @@
     "lic": "Public domain",
     "by": "NASA Johnson Space Center",
     "desc": "iss064e021961 (Jan. 9, 2021) --- Kuwait City is pictured during a night time pass from the International Space Station as it orbited 261 miles above the Iraq-Sa"
-   }
-  ]
- },
- {
-  "cat": "city",
-  "key": "Marina Bay Sands",
-  "q": "Marina Bay Sands",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:ArtScience Museum, Marina Bay Sands, Singapore.jpg",
-    "w": 5911,
-    "h": 3941,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/ArtScience_Museum%2C_Marina_Bay_Sands%2C_Singapore.jpg/1920px-ArtScience_Museum%2C_Marina_Bay_Sands%2C_Singapore.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Basile Morin",
-    "desc": "ArtScience Museum, Marina Bay Sands, in the late afternoon, in front of the skyline of the Central Business District, Singapore. Architect : Moshe Safdie."
-   },
-   {
-    "tier": "FP",
-    "title": "File:Puente Helix, museo ArtScience y hotel Marina Bay Sands, Marina Bay, Singapur, 2023-08-17, DD 67-69 HDR.jpg",
-    "w": 7533,
-    "h": 4279,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Puente_Helix%2C_museo_ArtScience_y_hotel_Marina_Bay_Sands%2C_Marina_Bay%2C_Singapur%2C_2023-08-17%2C_DD_67-69_HDR.jpg/1920px-Puente_Helix%2C_museo_ArtScience_y_hotel_Marina_Bay_Sands%2C_Marina_Bay%2C_Singapur%2C_2023-08-17%2C_DD_67-69_HDR.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Diego Delso",
-    "desc": "View of the Helix Bridge, the Marina Bay Sands Hotel and the ArtScience Museum during the blue hour, Marina Bay, Singapore."
-   },
-   {
-    "tier": "FP",
-    "title": "File:Cricket match and Marina Bay Sands Hotel in Singapore.jpg",
-    "w": 5703,
-    "h": 3802,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Cricket_match_and_Marina_Bay_Sands_Hotel_in_Singapore.jpg/1920px-Cricket_match_and_Marina_Bay_Sands_Hotel_in_Singapore.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Basile Morin",
-    "desc": "Cricket match with players from the cricket club in Padang park with the Marina Bays Sands Hotel in the background, view from the stairs of the Singapore Nation"
    }
   ]
  },
@@ -3666,43 +2556,6 @@
  },
  {
   "cat": "city",
-  "key": "Petronas Towers",
-  "q": "Petronas Towers",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:The Twins SE Asia 2019 (49171985716).jpg",
-    "w": 8472,
-    "h": 5648,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/The_Twins_SE_Asia_2019_%2849171985716%29.jpg/1920px-The_Twins_SE_Asia_2019_%2849171985716%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY 2.0",
-    "by": "James Kerwin from Tbilisi",
-    "desc": "Petronas Towers in December 2019"
-   },
-   {
-    "tier": "QI",
-    "title": "File:2016 Kuala Lumpur, Petronas Towers (27).jpg",
-    "w": 4465,
-    "h": 2977,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/2016_Kuala_Lumpur%2C_Petronas_Towers_%2827%29.jpg/1920px-2016_Kuala_Lumpur%2C_Petronas_Towers_%2827%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Marcin Konsek",
-    "desc": "Petronas Towers. Kuala Lumpur, Malaysia."
-   },
-   {
-    "tier": "QI",
-    "title": "File:Kuala Lumpur Malaysia Petronas-Twin-Towers-01.jpg",
-    "w": 5234,
-    "h": 3489,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/Kuala_Lumpur_Malaysia_Petronas-Twin-Towers-01.jpg/1920px-Kuala_Lumpur_Malaysia_Petronas-Twin-Towers-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "CEphoto, Uwe Aranas",
-    "desc": "Kuala Lumpur, Malaysia:Petronas Towers, seen from Jalan Semarak."
-   }
-  ]
- },
- {
-  "cat": "city",
   "key": "Seri Wawasan Bridge",
   "q": "Seri Wawasan Bridge",
   "picks": [
@@ -3735,80 +2588,6 @@
     "lic": "CC BY 2.0",
     "by": "notsogoodphotography",
     "desc": "Jambatan Seri Wawasan"
-   }
-  ]
- },
- {
-  "cat": "city",
-  "key": "Pudong",
-  "q": "Pudong skyline",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:Pudong Shanghai November 2017 panorama.jpg",
-    "w": 10200,
-    "h": 5100,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Pudong_Shanghai_November_2017_panorama.jpg/1920px-Pudong_Shanghai_November_2017_panorama.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "King of Hearts",
-    "desc": "Four-segment panorama of Pudong, Shanghai, China."
-   },
-   {
-    "tier": "FP",
-    "title": "File:Pudong Shanghai November 2017 HDR panorama.jpg",
-    "w": 10200,
-    "h": 5100,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Pudong_Shanghai_November_2017_HDR_panorama.jpg/1920px-Pudong_Shanghai_November_2017_HDR_panorama.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "King of Hearts",
-    "desc": "HDR panorama of Pudong, Shanghai, China. Stitched from 12 individual images (4 vertical segments x 3 exposures per segment at 1/2, 2, and 8 sec)."
-   },
-   {
-    "tier": "QI",
-    "title": "File:Shanghai skyline waterfront pudong A235423.jpg",
-    "w": 3648,
-    "h": 2736,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Shanghai_skyline_waterfront_pudong_A235423.jpg/1920px-Shanghai_skyline_waterfront_pudong_A235423.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Ermell",
-    "desc": "Pudong Skyline 2007"
-   }
-  ]
- },
- {
-  "cat": "city",
-  "key": "Victoria Harbour",
-  "q": "Victoria Harbour Hong Kong",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:Hong Kong Harbour Night 2019-06-11.jpg",
-    "w": 10439,
-    "h": 4936,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Hong_Kong_Harbour_Night_2019-06-11.jpg/1920px-Hong_Kong_Harbour_Night_2019-06-11.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Benh LIEU SONG (Flickr)",
-    "desc": "50 mpix panorama of Hong Kong's harbour and skyline, as seen from Victoria Peak on a rainy night of June 2019."
-   },
-   {
-    "tier": "FP",
-    "title": "File:International Commerce Centre on Victoria Harbour.jpg",
-    "w": 3500,
-    "h": 2045,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/International_Commerce_Centre_on_Victoria_Harbour.jpg/1920px-International_Commerce_Centre_on_Victoria_Harbour.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC0",
-    "by": "Wilfredor",
-    "desc": "Hong Kong Victoria Harbour. International Commerce Centre (ICC)"
-   },
-   {
-    "tier": "FP",
-    "title": "File:Vista del Puerto de Victoria desde Sky100, Hong Kong, 2013-08-09, DD 10.JPG",
-    "w": 5011,
-    "h": 3326,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Vista_del_Puerto_de_Victoria_desde_Sky100%2C_Hong_Kong%2C_2013-08-09%2C_DD_10.JPG/1920px-Vista_del_Puerto_de_Victoria_desde_Sky100%2C_Hong_Kong%2C_2013-08-09%2C_DD_10.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "Diego Delso",
-    "desc": "View of the Victoria Harbour from the Sky100, the 100th floor of the International Commerce Centre skyscraper in Kowloon, Hong Kong, China."
    }
   ]
  },
@@ -4295,43 +3074,6 @@
  },
  {
   "cat": "city",
-  "key": "Plaza de España",
-  "q": "Plaza de España Seville",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:Pergola - Plaza de España - Tazacorte 03.jpg",
-    "w": 5470,
-    "h": 3924,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7f/Pergola_-_Plaza_de_Espa%C3%B1a_-_Tazacorte_03.jpg/1920px-Pergola_-_Plaza_de_Espa%C3%B1a_-_Tazacorte_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "H. Zell",
-    "desc": "Pergola on the Plaza de España, Tazacorte, La Palma, Canary Islands, Spain."
-   },
-   {
-    "tier": "QI",
-    "title": "File:Plaza de España (Sevilla) - 01.jpg",
-    "w": 3888,
-    "h": 2592,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Plaza_de_Espa%C3%B1a_%28Sevilla%29_-_01.jpg/1920px-Plaza_de_Espa%C3%B1a_%28Sevilla%29_-_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Carlos Delgado",
-    "desc": "Plaza de España (Spain Square), Seville, Andalusia, Spain."
-   },
-   {
-    "tier": "QI",
-    "title": "File:Plaza de España, Seville 4.jpg",
-    "w": 5000,
-    "h": 3333,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Plaza_de_Espa%C3%B1a%2C_Seville_4.jpg/1920px-Plaza_de_Espa%C3%B1a%2C_Seville_4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "kallerna",
-    "desc": "Plaza de España, Seville."
-   }
-  ]
- },
- {
-  "cat": "city",
   "key": "Erasmus Bridge",
   "q": "Erasmus Bridge",
   "picks": [
@@ -4480,80 +3222,6 @@
  },
  {
   "cat": "city",
-  "key": "Belém Tower",
-  "q": "Belém Tower",
-  "picks": [
-   {
-    "tier": "QI",
-    "title": "File:Torre de Belém and wooden bridge - landscape view - Lisbon - 2026-05-14.jpg",
-    "w": 5787,
-    "h": 3870,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Torre_de_Bel%C3%A9m_and_wooden_bridge_-_landscape_view_-_Lisbon_-_2026-05-14.jpg/1920px-Torre_de_Bel%C3%A9m_and_wooden_bridge_-_landscape_view_-_Lisbon_-_2026-05-14.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Norbert Nagel",
-    "desc": "Torre de Belém and its wooden bridge on the Tagus, Lisbon, Portugal. The landscape view shows the wooden bridge approaching from the right and the tree-lined ri"
-   },
-   {
-    "tier": "QI",
-    "title": "File:Torre de Belém por Rodrigo Tetsuo Argenton (2).jpg",
-    "w": 6000,
-    "h": 4000,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Torre_de_Bel%C3%A9m_por_Rodrigo_Tetsuo_Argenton_%282%29.jpg/1920px-Torre_de_Bel%C3%A9m_por_Rodrigo_Tetsuo_Argenton_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Rodrigo.Argenton",
-    "desc": "Torre de Belém - torre fortificada na freguesia de Santa Maria de Belém em Lisboa, Portugal"
-   },
-   {
-    "tier": "QI",
-    "title": "File:Torre de Belém, Lisboa, Portugal, 2012-05-12, DD 16.JPG",
-    "w": 4490,
-    "h": 3443,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Torre_de_Bel%C3%A9m%2C_Lisboa%2C_Portugal%2C_2012-05-12%2C_DD_16.JPG/1920px-Torre_de_Bel%C3%A9m%2C_Lisboa%2C_Portugal%2C_2012-05-12%2C_DD_16.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "Diego Delso",
-    "desc": "Belém Tower, Lisbon, Portugal"
-   }
-  ]
- },
- {
-  "cat": "city",
-  "key": "Hungarian Parliament",
-  "q": "Hungarian Parliament Building",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:HUN-2015-Budapest-Hungarian Parliament (Budapest) 2015-02.jpg",
-    "w": 8328,
-    "h": 4685,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/HUN-2015-Budapest-Hungarian_Parliament_%28Budapest%29_2015-02.jpg/1920px-HUN-2015-Budapest-Hungarian_Parliament_%28Budapest%29_2015-02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Godot13",
-    "desc": "Hungarian Parliament Building, Budapest, Hungary, 2015."
-   },
-   {
-    "tier": "FP",
-    "title": "File:Hungarian Parliament Building 2023-9.jpg",
-    "w": 5078,
-    "h": 2856,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Hungarian_Parliament_Building_2023-9.jpg/1920px-Hungarian_Parliament_Building_2023-9.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC0",
-    "by": "Pierre Blaché",
-    "desc": "Hungarian Parliament Building is the seat of the National Assembly of Hungary, a notable landmark of Hungary"
-   },
-   {
-    "tier": "FP",
-    "title": "File:Széchenyi Chain Bridge in Budapest at night.jpg",
-    "w": 3580,
-    "h": 2000,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Sz%C3%A9chenyi_Chain_Bridge_in_Budapest_at_night.jpg/1920px-Sz%C3%A9chenyi_Chain_Bridge_in_Budapest_at_night.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC0",
-    "by": "Wilfredor",
-    "desc": "Night view of The Széchenyi Chain Bridge from Buda Castle in Budapest, Hungary"
-   }
-  ]
- },
- {
-  "cat": "city",
   "key": "Széchenyi Chain Bridge",
   "q": "Széchenyi Chain Bridge",
   "picks": [
@@ -4690,10 +3358,10 @@
    },
    {
     "tier": "QI",
-    "title": "File:Nyhavn, Copenhagen, 20220618 1725 7350.jpg",
-    "w": 5304,
-    "h": 2945,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Nyhavn%2C_Copenhagen%2C_20220618_1725_7350.jpg/1920px-Nyhavn%2C_Copenhagen%2C_20220618_1725_7350.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "File:Nyhavn, Copenhagen, 20220618 1728 7354.jpg",
+    "w": 5860,
+    "h": 3172,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Nyhavn%2C_Copenhagen%2C_20220618_1728_7354.jpg/1920px-Nyhavn%2C_Copenhagen%2C_20220618_1728_7354.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "lic": "CC BY-SA 4.0",
     "by": "Jakub Hałun",
     "desc": "Nyhavn, Copenhagen"
@@ -5077,20 +3745,20 @@
   "picks": [
    {
     "tier": "QI",
-    "title": "File:Kazan Kul Sharif Mosque 2024-07-13 1341.jpg",
-    "w": 6005,
-    "h": 4003,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Kazan_Kul_Sharif_Mosque_2024-07-13_1341.jpg/1920px-Kazan_Kul_Sharif_Mosque_2024-07-13_1341.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "File:Kazan Kul Sharif Mosque 2024-07-13 1322.jpg",
+    "w": 5616,
+    "h": 3744,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Kazan_Kul_Sharif_Mosque_2024-07-13_1322.jpg/1920px-Kazan_Kul_Sharif_Mosque_2024-07-13_1322.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "lic": "CC BY-SA 3.0",
     "by": "Mike1979 Russia",
     "desc": "Kul Sharif Mosque, Kremlin, Kazan."
    },
    {
     "tier": "QI",
-    "title": "File:Kazan Kul Sharif Mosque 2024-07-13 1322.jpg",
-    "w": 5616,
-    "h": 3744,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Kazan_Kul_Sharif_Mosque_2024-07-13_1322.jpg/1920px-Kazan_Kul_Sharif_Mosque_2024-07-13_1322.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "File:Kazan Kul Sharif Mosque 2024-07-13 1341.jpg",
+    "w": 6005,
+    "h": 4003,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Kazan_Kul_Sharif_Mosque_2024-07-13_1341.jpg/1920px-Kazan_Kul_Sharif_Mosque_2024-07-13_1341.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "lic": "CC BY-SA 3.0",
     "by": "Mike1979 Russia",
     "desc": "Kul Sharif Mosque, Kremlin, Kazan."
@@ -5171,10 +3839,10 @@
    },
    {
     "tier": "",
-    "title": "File:Kuwait City Grand Mosque Interior 01.jpg",
-    "w": 4574,
-    "h": 3242,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Kuwait_City_Grand_Mosque_Interior_01.jpg/1920px-Kuwait_City_Grand_Mosque_Interior_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "title": "File:Kuwait City Grand Mosque Interior 16.jpg",
+    "w": 4554,
+    "h": 3398,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Kuwait_City_Grand_Mosque_Interior_16.jpg/1920px-Kuwait_City_Grand_Mosque_Interior_16.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "lic": "CC BY 4.0",
     "by": "Zairon",
     "desc": "Interior of the Grand Mosque, Kuwait City, Kuwait"
@@ -5215,80 +3883,6 @@
     "lic": "CC BY-SA 4.0",
     "by": "Екатерина Борисова",
     "desc": "Northern dome of Bibi-Khanym Mosque, Samarkand, Uzbekistan"
-   }
-  ]
- },
- {
-  "cat": "hist",
-  "key": "Colosseum",
-  "q": "Colosseum Rome",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:Colosseum in Rome-April 2007-1- copie 2B.jpg",
-    "w": 4827,
-    "h": 2833,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Colosseum_in_Rome-April_2007-1-_copie_2B.jpg/1920px-Colosseum_in_Rome-April_2007-1-_copie_2B.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 2.5",
-    "by": "Diliff",
-    "desc": "A 4×4 segment panorama of the Colosseum at dusk. Taken by myself with a Canon 5D and 50mm f/1.8 lens at f/5.6."
-   },
-   {
-    "tier": "FP",
-    "title": "File:Colosseo di Roma panoramic.jpg",
-    "w": 7335,
-    "h": 3854,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Colosseo_di_Roma_panoramic.jpg/1920px-Colosseo_di_Roma_panoramic.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "Paolo Costa Baldi",
-    "desc": "10 × 2 images panoramic of Rome Colosseum."
-   },
-   {
-    "tier": "FP",
-    "title": "File:Rom (IT), Kolosseum -- 2024 -- 0610.jpg",
-    "w": 5327,
-    "h": 3551,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Rom_%28IT%29%2C_Kolosseum_--_2024_--_0610.jpg/1920px-Rom_%28IT%29%2C_Kolosseum_--_2024_--_0610.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY 4.0",
-    "by": "Anil Öztas",
-    "desc": "Colosseum in Rome, Italy at late blue hour"
-   }
-  ]
- },
- {
-  "cat": "hist",
-  "key": "Great Wall of China",
-  "q": "Great Wall of China Mutianyu",
-  "picks": [
-   {
-    "tier": "QI",
-    "title": "File:Great Wall of China July 2006.JPG",
-    "w": 2288,
-    "h": 1712,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Great_Wall_of_China_July_2006.JPG/1920px-Great_Wall_of_China_July_2006.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC0",
-    "by": "Velatrix",
-    "desc": "The Great Wall of China at Mutianyu, near Beijing, in July 2006."
-   },
-   {
-    "tier": "QI",
-    "title": "File:Mur chiński 2010.JPG",
-    "w": 2504,
-    "h": 1421,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Mur_chi%C5%84ski_2010.JPG/1920px-Mur_chi%C5%84ski_2010.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "Marcin Białek",
-    "desc": "Great Wall of China"
-   },
-   {
-    "tier": "QI",
-    "title": "File:Mur chiński 2010 5.JPG",
-    "w": 3008,
-    "h": 2000,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Mur_chi%C5%84ski_2010_5.JPG/1920px-Mur_chi%C5%84ski_2010_5.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "Marcin Białek",
-    "desc": "Great Wall of China at Mutianyu"
    }
   ]
  },
@@ -5615,13 +4209,13 @@
    },
    {
     "tier": "",
-    "title": "File:Nizwa (5).jpg",
-    "w": 4368,
-    "h": 2912,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Nizwa_%285%29.jpg/1920px-Nizwa_%285%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 2.0",
-    "by": "Andries Oudshoorn",
-    "desc": "Nizwa, Oman"
+    "title": "File:Oman, Nizwa, Fort Nizwa.jpg",
+    "w": 5184,
+    "h": 3456,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Oman%2C_Nizwa%2C_Fort_Nizwa.jpg/1920px-Oman%2C_Nizwa%2C_Fort_Nizwa.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Dr. Thomas Liptak",
+    "desc": "Oman: Nizwa Fort"
    }
   ]
  },
@@ -5689,10 +4283,10 @@
    },
    {
     "tier": "",
-    "title": "File:At-Turaif District in ad-Dir'iyah (5).jpg",
+    "title": "File:At-Turaif District in ad-Dir'iyah (9).jpg",
     "w": 4000,
     "h": 3000,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/At-Turaif_District_in_ad-Dir%27iyah_%285%29.jpg/1920px-At-Turaif_District_in_ad-Dir%27iyah_%285%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/At-Turaif_District_in_ad-Dir%27iyah_%289%29.jpg/1920px-At-Turaif_District_in_ad-Dir%27iyah_%289%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "lic": "CC BY 3.0 pl",
     "by": "Radosław Botev",
     "desc": "At-Turaif District in ad-Dir'iyah, Riyadh, Saudi Arabia"
@@ -6404,43 +4998,6 @@
  },
  {
   "cat": "hist",
-  "key": "Pont du Gard",
-  "q": "Pont du Gard",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:Pont du Gard (30).jpg",
-    "w": 4485,
-    "h": 2726,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Pont_du_Gard_%2830%29.jpg/1920px-Pont_du_Gard_%2830%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Krzysztof Golik",
-    "desc": "Pont du Gard, commune of Vers-Pont-du-Gard, Gard, France This place is a UNESCO World Heritage Site, listed as “Pont du Gard”. asturianu · avañe'ẽ · bahasa Indo"
-   },
-   {
-    "tier": "QI",
-    "title": "File:Pont du Gard 004.jpg",
-    "w": 2578,
-    "h": 1926,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Pont_du_Gard_004.jpg/1920px-Pont_du_Gard_004.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY 2.5",
-    "by": "Marc Ryckaert",
-    "desc": "Pont du Gard, France"
-   },
-   {
-    "tier": "QI",
-    "title": "File:Pont du Gard 2017.jpg",
-    "w": 15000,
-    "h": 6663,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Pont_du_Gard_2017.jpg/1920px-Pont_du_Gard_2017.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "This Photo was taken by Wolfgang Moroder. Feel free to use my photos, but please mention me as the author and send me a message. This image is not in the public domain. Please respect the copyright protection. It may only be used according to the rules mentioned here. This specifically excludes use in social media, if applicable terms of the licenses listed here are not appropriate. Please do not upload an updated image here without consultation with the Author. The author would like to make corrections only at his own source. This ensures that the changes are preserved.Please if you think that any changes should be required, please inform the author.Otherwise you can upload a new image with a new name. Please use one of the templates derivative or extract.",
-    "desc": "The roman aqueduct bridge Pont du Gard in France."
-   }
-  ]
- },
- {
-  "cat": "hist",
   "key": "Aqueduct of Segovia",
   "q": "Aqueduct of Segovia",
   "picks": [
@@ -6473,43 +5030,6 @@
     "lic": "CC BY-SA 4.0",
     "by": "Benjamin Smith",
     "desc": "Segovia (Spain) - Roman aqueduct, with a view on snowy mountains and the churches of San Justo (to the left) and El Salvador (to the right)"
-   }
-  ]
- },
- {
-  "cat": "hist",
-  "key": "Himeji Castle",
-  "q": "Himeji Castle",
-  "picks": [
-   {
-    "tier": "FP",
-    "title": "File:Château de Himeji02.jpg",
-    "w": 2592,
-    "h": 1944,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Ch%C3%A2teau_de_Himeji02.jpg/1920px-Ch%C3%A2teau_de_Himeji02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 3.0",
-    "by": "Bernard Gagnon",
-    "desc": "Himeji Castle, Himeji, Hyogo Prefecture, Japan"
-   },
-   {
-    "tier": "FP",
-    "title": "File:Himeji Castle, November 2016 -02.jpg",
-    "w": 5179,
-    "h": 2688,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Himeji_Castle%2C_November_2016_-02.jpg/1920px-Himeji_Castle%2C_November_2016_-02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "CC BY-SA 4.0",
-    "by": "Martin Falbisoner",
-    "desc": "Himeji Castle, UNESCO World Heritage Site Ref. Number 661, is a hilltop Japanese castle complex located in Himeji, Hyōgo Prefecture. The castle is regarded as t"
-   },
-   {
-    "tier": "QI",
-    "title": "File:Himeji Castle 0804 1.jpg",
-    "w": 2256,
-    "h": 1684,
-    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Himeji_Castle_0804_1.jpg/1920px-Himeji_Castle_0804_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "lic": "Public domain",
-    "by": "Gorgo",
-    "desc": "Himeji Castle, Japan."
    }
   ]
  },
@@ -6584,6 +5104,1788 @@
     "lic": "CC BY-SA 3.0",
     "by": "CEphoto, Uwe Aranas",
     "desc": "Sevilla, Spain: An Azulejo in the Alcázar of Seville, made in 1894"
+   }
+  ]
+ },
+ {
+  "cat": "nature",
+  "key": "Lake Tahoe",
+  "q": "Lake Tahoe",
+  "picks": [
+   {
+    "tier": "FP",
+    "title": "File:Lake Tahoe at morning - 7-2023.jpg",
+    "w": 9504,
+    "h": 5028,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Lake_Tahoe_at_morning_-_7-2023.jpg/1920px-Lake_Tahoe_at_morning_-_7-2023.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY 2.0",
+    "by": "John D.",
+    "desc": "Lake Tahoe at morning, Speedboat beach, 2023."
+   },
+   {
+    "tier": "FP",
+    "title": "File:Squaw Valley Gondola.jpg",
+    "w": 4946,
+    "h": 3365,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Squaw_Valley_Gondola.jpg/1920px-Squaw_Valley_Gondola.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 3.0",
+    "by": "Frank Schulenburg",
+    "desc": "Gondel zum Winter Olympics High Camp von 1960 im Palisades Tahoe Ferienort in Kalifornien."
+   },
+   {
+    "tier": "QI",
+    "title": "File:South Lake Tahoe (CA, USA), Blick nach Stateline -- 2022 -- 162945.jpg",
+    "w": 4480,
+    "h": 3360,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/South_Lake_Tahoe_%28CA%2C_USA%29%2C_Blick_nach_Stateline_--_2022_--_162945.jpg/1920px-South_Lake_Tahoe_%28CA%2C_USA%29%2C_Blick_nach_Stateline_--_2022_--_162945.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Dietmar Rabich",
+    "desc": "View across the state line at Harrah’s in Stateline (Nevada), South Lake Tahoe, California, USA"
+   }
+  ]
+ },
+ {
+  "cat": "nature",
+  "key": "The Wave",
+  "q": "The Wave Arizona Coyote Buttes",
+  "picks": [
+   {
+    "tier": "FP",
+    "title": "File:Aivazovsky, Ivan - The Ninth Wave.jpg",
+    "w": 5815,
+    "h": 3840,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Aivazovsky%2C_Ivan_-_The_Ninth_Wave.jpg/1920px-Aivazovsky%2C_Ivan_-_The_Ninth_Wave.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "Public domain",
+    "by": "Ivan Aivazovsky",
+    "desc": ""
+   },
+   {
+    "tier": "FP",
+    "title": "File:Great Wave off Kanagawa2.jpg",
+    "w": 8242,
+    "h": 5640,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Great_Wave_off_Kanagawa2.jpg/1920px-Great_Wave_off_Kanagawa2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "Public domain",
+    "by": "After Katsushika Hokusai",
+    "desc": "The Great Wave at Kanagawa. Designed by Hokusai"
+   },
+   {
+    "tier": "FP",
+    "title": "File:La horde - Surfers riding a wave in Paea, Tahiti.jpg",
+    "w": 4969,
+    "h": 3247,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/La_horde_-_Surfers_riding_a_wave_in_Paea%2C_Tahiti.jpg/1920px-La_horde_-_Surfers_riding_a_wave_in_Paea%2C_Tahiti.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Brigittebourger Brigitte Bourger",
+    "desc": "Surfing is part of the Polynesian way of life. The legendary wave in Teahupo'o is known worldwide, but there are also locations in small towns where the surfers"
+   }
+  ]
+ },
+ {
+  "cat": "nature",
+  "key": "Trolltunga",
+  "q": "Trolltunga",
+  "picks": [
+   {
+    "tier": "QI",
+    "title": "File:Signs warning tourists about the risk associated with going out to Trolltunga.jpg",
+    "w": 4896,
+    "h": 3264,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Signs_warning_tourists_about_the_risk_associated_with_going_out_to_Trolltunga.jpg/1920px-Signs_warning_tourists_about_the_risk_associated_with_going_out_to_Trolltunga.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Frankemann",
+    "desc": "Trolltunga (Troll tongue) is a rock formation situated about 1,100 metres above sea level in the municipality of Odda in Hordaland county, Norway. On a nice sum"
+   },
+   {
+    "tier": "",
+    "title": "File:Trolltunga 2.jpg",
+    "w": 5184,
+    "h": 3456,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Trolltunga_2.jpg/1920px-Trolltunga_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 3.0",
+    "by": "Steinar Talmoen",
+    "desc": "Trolltunga is at 1,100 meters above sea level, and is a spectacular rock formation that stands horizontally out of the mountain about 700 meters above Ringedal "
+   },
+   {
+    "tier": "",
+    "title": "File:Trolltunga At Sunset (165701191).jpeg",
+    "w": 2048,
+    "h": 1267,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Trolltunga_At_Sunset_%28165701191%29.jpeg/1920px-Trolltunga_At_Sunset_%28165701191%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY 3.0",
+    "by": "Robin Stumm",
+    "desc": "500px provided description: After a day with many tourists there was a calm time at sunset on the Trolltunga. [#lake ,#sunset ,#travel ,#view ,#Norge ,#Norway ,"
+   }
+  ]
+ },
+ {
+  "cat": "nature",
+  "key": "Lago di Braies",
+  "q": "Lago di Braies",
+  "picks": [
+   {
+    "tier": "FP",
+    "title": "File:Lago di Braies South Tyrol 3.jpg",
+    "w": 5400,
+    "h": 3600,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Lago_di_Braies_South_Tyrol_3.jpg/1920px-Lago_di_Braies_South_Tyrol_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "kallerna",
+    "desc": "Stacked rocks, false cairns, on the shore of Lake Braies, South Tyrol, Italy. Stacks like this are discouraged since they are often considered harmful to the en"
+   },
+   {
+    "tier": "QI",
+    "title": "File:Lago di Braies South Tyrol 6.jpg",
+    "w": 5020,
+    "h": 3300,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Lago_di_Braies_South_Tyrol_6.jpg/1920px-Lago_di_Braies_South_Tyrol_6.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "kallerna",
+    "desc": "Rowing boats on Lake Braies, South Tyrol"
+   },
+   {
+    "tier": "QI",
+    "title": "File:Lago di Braies South Tyrol 5.jpg",
+    "w": 5400,
+    "h": 3600,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/Lago_di_Braies_South_Tyrol_5.jpg/1920px-Lago_di_Braies_South_Tyrol_5.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "kallerna",
+    "desc": "Southern shore of Lake Braies, South Tyrol"
+   }
+  ]
+ },
+ {
+  "cat": "nature",
+  "key": "Oeschinensee",
+  "q": "Oeschinensee",
+  "picks": [
+   {
+    "tier": "FP",
+    "title": "File:Cow (Fleckvieh breed) Oeschinensee Slaunger 2009-07-07.jpg",
+    "w": 3872,
+    "h": 2592,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Cow_%28Fleckvieh_breed%29_Oeschinensee_Slaunger_2009-07-07.jpg/1920px-Cow_%28Fleckvieh_breed%29_Oeschinensee_Slaunger_2009-07-07.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 3.0",
+    "by": "Kim Hansen",
+    "desc": "A dual breed (beef and milk) cow near Oeschinen Lake, Switzerland at an altitude of 1575 m. The breed is most likely Swiss Fleckvieh, alternatively Simmentaler-"
+   },
+   {
+    "tier": "FP",
+    "title": "File:018 Human looking at the stars during Perseids with the Milky Way in the background Photo by Giles Laurent.jpg",
+    "w": 7612,
+    "h": 5075,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/018_Human_looking_at_the_stars_during_Perseids_with_the_Milky_Way_in_the_background_Photo_by_Giles_Laurent.jpg/1920px-018_Human_looking_at_the_stars_during_Perseids_with_the_Milky_Way_in_the_background_Photo_by_Giles_Laurent.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Giles Laurent",
+    "desc": "A human, aligned with the Milky Way, looks at the stars from Oeschinensee (Switzerland) during Perseids in search of shooting stars."
+   },
+   {
+    "tier": "QI",
+    "title": "File:Oeschinensee 0437.jpg",
+    "w": 3456,
+    "h": 2304,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Oeschinensee_0437.jpg/1920px-Oeschinensee_0437.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Martin Thurnherr",
+    "desc": "Lake of Oeschinen"
+   }
+  ]
+ },
+ {
+  "cat": "nature",
+  "key": "Durmitor",
+  "q": "Durmitor",
+  "picks": [
+   {
+    "tier": "QI",
+    "title": "File:Durmitor mountains (by Pudelek) 01.jpg",
+    "w": 4608,
+    "h": 3072,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Durmitor_mountains_%28by_Pudelek%29_01.jpg/1920px-Durmitor_mountains_%28by_Pudelek%29_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Pudelek",
+    "desc": "Durmitor mountains, Montenegro"
+   },
+   {
+    "tier": "QI",
+    "title": "File:Durmitor mountains (by Pudelek) 07.jpg",
+    "w": 4008,
+    "h": 2672,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Durmitor_mountains_%28by_Pudelek%29_07.jpg/1920px-Durmitor_mountains_%28by_Pudelek%29_07.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Pudelek",
+    "desc": "Durmitor mountains, Montenegro - Uvita greda"
+   },
+   {
+    "tier": "QI",
+    "title": "File:Durmitor mountains (by Pudelek) 02.jpg",
+    "w": 4008,
+    "h": 2672,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Durmitor_mountains_%28by_Pudelek%29_02.jpg/1920px-Durmitor_mountains_%28by_Pudelek%29_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Pudelek",
+    "desc": "Durmitor mountains, Montenegro. Road P-14"
+   }
+  ]
+ },
+ {
+  "cat": "nature",
+  "key": "Ennedi Plateau",
+  "q": "Ennedi Plateau",
+  "picks": [
+   {
+    "tier": "",
+    "title": "File:Guelta Maya, Ennedi, Tschad.jpg",
+    "w": 3888,
+    "h": 2592,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Guelta_Maya%2C_Ennedi%2C_Tschad.jpg/1920px-Guelta_Maya%2C_Ennedi%2C_Tschad.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Sven.oehm",
+    "desc": "Blick auf die Guelta Maya, aufgenommen 2013, Sven Oehm"
+   },
+   {
+    "tier": "",
+    "title": "File:Ennedi Plateau (39815457451).jpg",
+    "w": 5472,
+    "h": 3648,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Ennedi_Plateau_%2839815457451%29.jpg/1920px-Ennedi_Plateau_%2839815457451%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 2.0",
+    "by": "anmede",
+    "desc": "Ennedi Plateau"
+   },
+   {
+    "tier": "",
+    "title": "File:Camels in the Labyrinthe (Maze) sandstone area of the Ennedi, Chad (42405451704).jpg",
+    "w": 4570,
+    "h": 3046,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Camels_in_the_Labyrinthe_%28Maze%29_sandstone_area_of_the_Ennedi%2C_Chad_%2842405451704%29.jpg/1920px-Camels_in_the_Labyrinthe_%28Maze%29_sandstone_area_of_the_Ennedi%2C_Chad_%2842405451704%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY 2.0",
+    "by": "Valerian Guillot from Cambridge, United Kingdom",
+    "desc": "Camels in the Labyrinthe (Maze) sandstone area of the Ennedi, Chad"
+   }
+  ]
+ },
+ {
+  "cat": "nature",
+  "key": "Blue Nile Falls",
+  "q": "Blue Nile Falls",
+  "picks": [
+   {
+    "tier": "",
+    "title": "File:Blue Nile Falls 03.jpg",
+    "w": 2848,
+    "h": 2136,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Blue_Nile_Falls_03.jpg/1920px-Blue_Nile_Falls_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY 2.0",
+    "by": "by Giustino",
+    "desc": "Blue Nile Falls"
+   },
+   {
+    "tier": "",
+    "title": "File:Blue Nile falls in 2018 dry season.jpg",
+    "w": 4954,
+    "h": 3303,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Blue_Nile_falls_in_2018_dry_season.jpg/1920px-Blue_Nile_falls_in_2018_dry_season.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Geertchaos",
+    "desc": "Blue Nile falls in 2018 dry season"
+   },
+   {
+    "tier": "",
+    "title": "File:Blue Nile Falls (8).jpg",
+    "w": 4000,
+    "h": 3000,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Blue_Nile_Falls_%288%29.jpg/1920px-Blue_Nile_Falls_%288%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY 3.0 pl",
+    "by": "Radosław Botev",
+    "desc": "Blue Nile Falls, Tis Issat, Ethiopia"
+   }
+  ]
+ },
+ {
+  "cat": "nature",
+  "key": "Lake Natron",
+  "q": "Lake Natron",
+  "picks": [
+   {
+    "tier": "",
+    "title": "File:Rays of Light Lake Natron (7234170258).jpg",
+    "w": 5129,
+    "h": 3420,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Rays_of_Light_Lake_Natron_%287234170258%29.jpg/1920px-Rays_of_Light_Lake_Natron_%287234170258%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 2.0",
+    "by": "Benh LIEU SONG from Torcy, France",
+    "desc": "Rays of light falling on lake Natron. Taken nearby Torosei village, south Kenya."
+   },
+   {
+    "tier": "",
+    "title": "File:Lake Natron, Tanzania.jpg",
+    "w": 7353,
+    "h": 4136,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Lake_Natron%2C_Tanzania.jpg/1920px-Lake_Natron%2C_Tanzania.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 2.0",
+    "by": "Christoph Strässler",
+    "desc": "Lake Natron"
+   },
+   {
+    "tier": "",
+    "title": "File:Around Lake Natron Camp (7) (27971827153).jpg",
+    "w": 6000,
+    "h": 4000,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Around_Lake_Natron_Camp_%287%29_%2827971827153%29.jpg/1920px-Around_Lake_Natron_Camp_%287%29_%2827971827153%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY 2.0",
+    "by": "Richard Mortel from Riyadh, Saudi Arabia",
+    "desc": "Around Lake Natron Camp (7)"
+   }
+  ]
+ },
+ {
+  "cat": "nature",
+  "key": "Mount Roraima",
+  "q": "Mount Roraima",
+  "picks": [
+   {
+    "tier": "QI",
+    "title": "File:Monte Roraima, ponto mais alto.jpg",
+    "w": 5496,
+    "h": 3670,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Monte_Roraima%2C_ponto_mais_alto.jpg/1920px-Monte_Roraima%2C_ponto_mais_alto.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Tinhojv",
+    "desc": "Highest point of Mount Roraima in the Venezuelan side"
+   },
+   {
+    "tier": "QI",
+    "title": "File:Monte Roraima e Kukenan Tepui no retorno a casa.jpg",
+    "w": 5467,
+    "h": 3644,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/Monte_Roraima_e_Kukenan_Tepui_no_retorno_a_casa.jpg/1920px-Monte_Roraima_e_Kukenan_Tepui_no_retorno_a_casa.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Ney Teixeira de Freitas Guimarães Filho",
+    "desc": "Estrada de retorno a casa, olhando para trás, deixando o Monte Roraima e o Kukenan Tepui."
+   },
+   {
+    "tier": "",
+    "title": "File:Roraima3 (79).JPG",
+    "w": 4253,
+    "h": 2246,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Roraima3_%2879%29.JPG/1920px-Roraima3_%2879%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 3.0",
+    "by": "Paolo Costa Baldi",
+    "desc": "Clear morning at Mount Roraima, as seen from the road leading there from Paraitepuy pemon community, in Gran Sabana Venezuela."
+   }
+  ]
+ },
+ {
+  "cat": "nature",
+  "key": "Kaieteur Falls",
+  "q": "Kaieteur Falls",
+  "picks": [
+   {
+    "tier": "",
+    "title": "File:Kaieteur Falls Guyana (2) 2007.jpg",
+    "w": 3844,
+    "h": 2020,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Kaieteur_Falls_Guyana_%282%29_2007.jpg/1920px-Kaieteur_Falls_Guyana_%282%29_2007.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 3.0",
+    "by": "Bill Cameron",
+    "desc": "Kaieteur Falls is a high-volume waterfall on the Potaro River in central Guyana."
+   },
+   {
+    "tier": "",
+    "title": "File:Kaieteur Falls, Guyana (23035888153).jpg",
+    "w": 6000,
+    "h": 4000,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/Kaieteur_Falls%2C_Guyana_%2823035888153%29.jpg/1920px-Kaieteur_Falls%2C_Guyana_%2823035888153%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 2.0",
+    "by": "Dan Sloan",
+    "desc": "Kaieteur Falls, Guyana"
+   },
+   {
+    "tier": "",
+    "title": "File:Kaieteur Falls Aerial 02.jpg",
+    "w": 4896,
+    "h": 3672,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Kaieteur_Falls_Aerial_02.jpg/1920px-Kaieteur_Falls_Aerial_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY 2.0",
+    "by": "Amanda",
+    "desc": "Flying by Kaieteur Falls on the plane Guyana"
+   }
+  ]
+ },
+ {
+  "cat": "nature",
+  "key": "Tam Coc",
+  "q": "Tam Coc Ninh Binh",
+  "picks": [
+   {
+    "tier": "QI",
+    "title": "File:Goats in Ninh Hải, Ninh Binh province, Vietnam, 20240201 1521 4871.jpg",
+    "w": 3816,
+    "h": 2547,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Goats_in_Ninh_H%E1%BA%A3i%2C_Ninh_Binh_province%2C_Vietnam%2C_20240201_1521_4871.jpg/1920px-Goats_in_Ninh_H%E1%BA%A3i%2C_Ninh_Binh_province%2C_Vietnam%2C_20240201_1521_4871.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY 4.0",
+    "by": "Jakub Hałun",
+    "desc": "Goats in Ninh Hải village, Ninh Binh province, Vietnam"
+   },
+   {
+    "tier": "",
+    "title": "File:Tam Coc, Ninh Binh ,Vietnam.jpg",
+    "w": 4000,
+    "h": 3000,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Tam_Coc%2C_Ninh_Binh_%2CVietnam.jpg/1920px-Tam_Coc%2C_Ninh_Binh_%2CVietnam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 3.0",
+    "by": "GilVon",
+    "desc": ""
+   },
+   {
+    "tier": "",
+    "title": "File:Tam Coc Ninh Binh (29079).jpg",
+    "w": 4032,
+    "h": 1960,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Tam_Coc_Ninh_Binh_%2829079%29.jpg/1920px-Tam_Coc_Ninh_Binh_%2829079%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY 4.0",
+    "by": "Andre Hospers",
+    "desc": "Tam Coc Ninh Binh"
+   }
+  ]
+ },
+ {
+  "cat": "nature",
+  "key": "Phang Nga Bay",
+  "q": "Phang Nga Bay",
+  "picks": [
+   {
+    "tier": "FP",
+    "title": "File:Isla Tapu, Phuket, Tailandia, 2013-08-20, DD 36.JPG",
+    "w": 4976,
+    "h": 3271,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Isla_Tapu%2C_Phuket%2C_Tailandia%2C_2013-08-20%2C_DD_36.JPG/1920px-Isla_Tapu%2C_Phuket%2C_Tailandia%2C_2013-08-20%2C_DD_36.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 3.0",
+    "by": "Diego Delso",
+    "desc": "Ko Tapu (Tapu Island) is a 20 m tall islet in front of the Khao Phing Kan islands, in the Phang Nga Bay, in Thailand. The island belongs to the Phang Nga Nation"
+   },
+   {
+    "tier": "QI",
+    "title": "File:Sunrise, Koh Yao Noi (island), Phang Nga Bay, Thailand.jpg",
+    "w": 3072,
+    "h": 2048,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Sunrise%2C_Koh_Yao_Noi_%28island%29%2C_Phang_Nga_Bay%2C_Thailand.jpg/1920px-Sunrise%2C_Koh_Yao_Noi_%28island%29%2C_Phang_Nga_Bay%2C_Thailand.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY 4.0",
+    "by": "Vyacheslav Argenberg",
+    "desc": "Dreamy ethereal sunrise on the shores of tropical Koh Yao Noi island. The islands of Krabi and Phang Nga Bay were formed by the movements of massive plates of E"
+   },
+   {
+    "tier": "QI",
+    "title": "File:Crab sand balls, Koh Yao Noi, Phang Nga Bay, Thailand.jpg",
+    "w": 3072,
+    "h": 2048,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Crab_sand_balls%2C_Koh_Yao_Noi%2C_Phang_Nga_Bay%2C_Thailand.jpg/1920px-Crab_sand_balls%2C_Koh_Yao_Noi%2C_Phang_Nga_Bay%2C_Thailand.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY 4.0",
+    "by": "Vyacheslav Argenberg",
+    "desc": "Sand balls made by sand bubbler crab (Dotillidae) on the beach of Koh Yao Noi island. Sand bubbler crabs (sand-bubblers) are crabs of the genera Scopimera and D"
+   }
+  ]
+ },
+ {
+  "cat": "nature",
+  "key": "Zhangye Danxia",
+  "q": "Zhangye Danxia",
+  "picks": [
+   {
+    "tier": "",
+    "title": "File:Zhangye Danxia.JPG",
+    "w": 2816,
+    "h": 2112,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Zhangye_Danxia.JPG/1920px-Zhangye_Danxia.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "YubYub41",
+    "desc": "View from within the Zhangye Danxia National Geological Park."
+   },
+   {
+    "tier": "",
+    "title": "File:Danxia-landform-1562852.jpg",
+    "w": 4368,
+    "h": 2912,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Danxia-landform-1562852.jpg/1920px-Danxia-landform-1562852.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC0",
+    "by": "iamangela9",
+    "desc": "Zhangye Danxia National Geological Park"
+   },
+   {
+    "tier": "",
+    "title": "File:Zhangye Danxia 2016.jpg",
+    "w": 5111,
+    "h": 3407,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Zhangye_Danxia_2016.jpg/1920px-Zhangye_Danxia_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Marcus Hsu",
+    "desc": "A shot from within the Zhangye Danxia National Geological Park, China. Sep 9 2016."
+   }
+  ]
+ },
+ {
+  "cat": "nature",
+  "key": "Yuanyang Rice Terraces",
+  "q": "Yuanyang rice terraces",
+  "picks": [
+   {
+    "tier": "FP",
+    "title": "File:Terrace field yunnan china denoised.jpg",
+    "w": 2000,
+    "h": 1295,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Terrace_field_yunnan_china_denoised.jpg/1920px-Terrace_field_yunnan_china_denoised.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 3.0",
+    "by": "Jialiang Gao, www.peace-on-earth.org",
+    "desc": "(Honghe Hani Rice Terraces) in Yunnan Province, China."
+   },
+   {
+    "tier": "",
+    "title": "File:Yuanyang Hani Rice Terraces at Sunrise.jpg",
+    "w": 4896,
+    "h": 2752,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Yuanyang_Hani_Rice_Terraces_at_Sunrise.jpg/1920px-Yuanyang_Hani_Rice_Terraces_at_Sunrise.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 2.0",
+    "by": "Chiu Ho-yang",
+    "desc": "Yuanyang Hani Rice Terraces at Sunrise"
+   },
+   {
+    "tier": "",
+    "title": "File:Hani Rice Terraces (53696480740).jpg",
+    "w": 2560,
+    "h": 1690,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Hani_Rice_Terraces_%2853696480740%29.jpg/1920px-Hani_Rice_Terraces_%2853696480740%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY 2.0",
+    "by": "xiquinhosilva",
+    "desc": "The Honghe Hani Rice Terraces, situated in Yuanyang County of Honghe Prefecture in Yunnan, China, represent a system of rice-growing terraces built by the Hani "
+   }
+  ]
+ },
+ {
+  "cat": "nature",
+  "key": "Wadi Mujib",
+  "q": "Wadi Mujib",
+  "picks": [
+   {
+    "tier": "QI",
+    "title": "File:Wadi Mujib BW 1.JPG",
+    "w": 3872,
+    "h": 2592,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Wadi_Mujib_BW_1.JPG/1920px-Wadi_Mujib_BW_1.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY 3.0",
+    "by": "Berthold Werner",
+    "desc": "Wadi Mujib"
+   },
+   {
+    "tier": "",
+    "title": "File:Wadi Mujib 1 Jordan.jpg",
+    "w": 2048,
+    "h": 1536,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Wadi_Mujib_1_Jordan.jpg/1920px-Wadi_Mujib_1_Jordan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC0",
+    "by": "Salwa Farwaneh Dameh",
+    "desc": "Wadi Mujib Jordan"
+   },
+   {
+    "tier": "",
+    "title": "File:Wadi al Mujib view.jpg",
+    "w": 5146,
+    "h": 3778,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Wadi_al_Mujib_view.jpg/1920px-Wadi_al_Mujib_view.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "AliAbuRas",
+    "desc": "Wadi al Mujib view"
+   }
+  ]
+ },
+ {
+  "cat": "nature",
+  "key": "Al Soudah",
+  "q": "Al Soudah Asir",
+  "picks": []
+ },
+ {
+  "cat": "nature",
+  "key": "Jebel Akhdar",
+  "q": "Jebel Akhdar Oman",
+  "picks": [
+   {
+    "tier": "FP",
+    "title": "File:Jebel Akhdar view.jpg",
+    "w": 7625,
+    "h": 3758,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Jebel_Akhdar_view.jpg/1920px-Jebel_Akhdar_view.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY 3.0",
+    "by": "Philipp Weigell",
+    "desc": "Terraces in en:Jebel Akhdar (Oman)"
+   },
+   {
+    "tier": "FP",
+    "title": "File:Landscape of Luang Prabang with a temporary wooden footbridge.jpg",
+    "w": 6506,
+    "h": 4337,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Landscape_of_Luang_Prabang_with_a_temporary_wooden_footbridge.jpg/1920px-Landscape_of_Luang_Prabang_with_a_temporary_wooden_footbridge.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Basile Morin",
+    "desc": "Landscape of Luang Prabang (Laos) showing a temporary wooden footbridge crossing the Nam Khan river meeting the Mekong, and green mountains in the background. V"
+   },
+   {
+    "tier": "QI",
+    "title": "File:Acer saccharum 'Green Mountain' Trunk Bark.JPG",
+    "w": 4928,
+    "h": 3264,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Acer_saccharum_%27Green_Mountain%27_Trunk_Bark.JPG/1920px-Acer_saccharum_%27Green_Mountain%27_Trunk_Bark.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Photo by and (c)2014 Derek Ramsey (Ram-Man)",
+    "desc": "Trunk bark of the Sugar Maple (Acer saccharum en 'Green Mountain'). Identified by tag at the Hershey Gardens"
+   }
+  ]
+ },
+ {
+  "cat": "nature",
+  "key": "Wadi Bani Khalid",
+  "q": "Wadi Bani Khalid",
+  "picks": [
+   {
+    "tier": "FP",
+    "title": "File:Wadi Bani Khalid East RB.jpg",
+    "w": 11628,
+    "h": 6000,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Wadi_Bani_Khalid_East_RB.jpg/1920px-Wadi_Bani_Khalid_East_RB.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 3.0",
+    "by": "Richard Bartz",
+    "desc": "Wadi Bani Khalid, Sharqiyah region, Muscat, Oman"
+   },
+   {
+    "tier": "QI",
+    "title": "File:Wadi Bani Khalid, Omán, 2024-08-17, DD 51.jpg",
+    "w": 8454,
+    "h": 5636,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Wadi_Bani_Khalid%2C_Om%C3%A1n%2C_2024-08-17%2C_DD_51.jpg/1920px-Wadi_Bani_Khalid%2C_Om%C3%A1n%2C_2024-08-17%2C_DD_51.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Diego Delso",
+    "desc": "Wadi Bani Khalid, Oman"
+   },
+   {
+    "tier": "QI",
+    "title": "File:Wadi Bani Khalid, Omán, 2024-08-17, DD 25.jpg",
+    "w": 8606,
+    "h": 4498,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Wadi_Bani_Khalid%2C_Om%C3%A1n%2C_2024-08-17%2C_DD_25.jpg/1920px-Wadi_Bani_Khalid%2C_Om%C3%A1n%2C_2024-08-17%2C_DD_25.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Diego Delso",
+    "desc": "Wadi Bani Khalid, Oman"
+   }
+  ]
+ },
+ {
+  "cat": "nature",
+  "key": "Deosai Plains",
+  "q": "Deosai",
+  "picks": [
+   {
+    "tier": "",
+    "title": "File:The Land of Giants, Deosai.jpg",
+    "w": 6000,
+    "h": 3925,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/The_Land_of_Giants%2C_Deosai.jpg/1920px-The_Land_of_Giants%2C_Deosai.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Qammer Wazir",
+    "desc": "Deosai, Gilgit Baltistan, Pakistan."
+   },
+   {
+    "tier": "",
+    "title": "File:Way to Deosai.jpg",
+    "w": 7360,
+    "h": 4912,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Way_to_Deosai.jpg/1920px-Way_to_Deosai.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Aamir Ashraf Ch",
+    "desc": "Road to Deosai world's 2nd highest Plateau"
+   },
+   {
+    "tier": "",
+    "title": "File:Deosai National Park Skardu - Ali Malik Top Ali Rajai.jpg",
+    "w": 3984,
+    "h": 2656,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Deosai_National_Park_Skardu_-_Ali_Malik_Top_Ali_Rajai.jpg/1920px-Deosai_National_Park_Skardu_-_Ali_Malik_Top_Ali_Rajai.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC0",
+    "by": "Aleerajai",
+    "desc": "Deosai National Park Skardu - Ali Malik Top Ali Rajai"
+   }
+  ]
+ },
+ {
+  "cat": "nature",
+  "key": "Valley of Flowers",
+  "q": "Valley of Flowers National Park",
+  "picks": [
+   {
+    "tier": "FP",
+    "title": "File:Valley of flowers national park, Uttarakhand, India 03 (edit).jpg",
+    "w": 6000,
+    "h": 4000,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Valley_of_flowers_national_park%2C_Uttarakhand%2C_India_03_%28edit%29.jpg/1920px-Valley_of_flowers_national_park%2C_Uttarakhand%2C_India_03_%28edit%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Original: Rohit Sharma Derivative work: UnpetitproleX",
+    "desc": "Valley of Flowers National Park in Uttarakhand, India, is a vibrant alpine paradise bursting with rare Himalayan flora and breathtaking natural beauty."
+   },
+   {
+    "tier": "FP",
+    "title": "File:Pareronia hippia-Silent Valley-2016-08-15-001.jpg",
+    "w": 6000,
+    "h": 4000,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Pareronia_hippia-Silent_Valley-2016-08-15-001.jpg/1920px-Pareronia_hippia-Silent_Valley-2016-08-15-001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Jeevan Jose, Kerala, India",
+    "desc": "Pareronia hippia, Indian Wanderer, is a medium-sized butterfly of the family Pieridae, that is, the Yellows and Whites, and is found in India. The female exists"
+   },
+   {
+    "tier": "FP",
+    "title": "File:Vanessa indica-Silent Valley-2016-08-14-001.jpg",
+    "w": 6000,
+    "h": 4000,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Vanessa_indica-Silent_Valley-2016-08-14-001.jpg/1920px-Vanessa_indica-Silent_Valley-2016-08-14-001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Jeevan Jose, Kerala, India",
+    "desc": "Vanessa indica, Indian Red Admiral, is a butterfly found in the higher altitude regions of India. Males commonly imbibe mineralised moisture from damp ground, a"
+   }
+  ]
+ },
+ {
+  "cat": "nature",
+  "key": "Lake Sevan",
+  "q": "Lake Sevan",
+  "picks": [
+   {
+    "tier": "FP",
+    "title": "File:Sourp Astvatsatsin (also Saint Araqelots church), Sevanank complex.jpg",
+    "w": 7704,
+    "h": 5360,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Sourp_Astvatsatsin_%28also_Saint_Araqelots_church%29%2C_Sevanank_complex.jpg/1920px-Sourp_Astvatsatsin_%28also_Saint_Araqelots_church%29%2C_Sevanank_complex.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Petar Milošević",
+    "desc": "This is a photo of a monument in Armenia identified by the ID"
+   },
+   {
+    "tier": "FP",
+    "title": "File:2014 Prowincja Gegharkunik, Sewanawank, Kościół Świętych Apostołów (07).jpg",
+    "w": 4093,
+    "h": 2729,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/2014_Prowincja_Gegharkunik%2C_Sewanawank%2C_Ko%C5%9Bci%C3%B3%C5%82_%C5%9Awi%C4%99tych_Aposto%C5%82%C3%B3w_%2807%29.jpg/1920px-2014_Prowincja_Gegharkunik%2C_Sewanawank%2C_Ko%C5%9Bci%C3%B3%C5%82_%C5%9Awi%C4%99tych_Aposto%C5%82%C3%B3w_%2807%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Marcin Konsek",
+    "desc": "This is a photo of a monument in Armenia identified by the ID"
+   },
+   {
+    "tier": "QI",
+    "title": "File:Sevan Monastey 2019-05-13.jpg",
+    "w": 4059,
+    "h": 2598,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Sevan_Monastey_2019-05-13.jpg/1920px-Sevan_Monastey_2019-05-13.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Սարո Հովհաննիսյան",
+    "desc": "This is a photo of a monument in Armenia identified by the ID"
+   }
+  ]
+ },
+ {
+  "cat": "nature",
+  "key": "Mount Elbrus",
+  "q": "Mount Elbrus",
+  "picks": [
+   {
+    "tier": "FP",
+    "title": "File:Вид на Эльбрус по пути в Джилы-Су.jpg",
+    "w": 5440,
+    "h": 3627,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/%D0%92%D0%B8%D0%B4_%D0%BD%D0%B0_%D0%AD%D0%BB%D1%8C%D0%B1%D1%80%D1%83%D1%81_%D0%BF%D0%BE_%D0%BF%D1%83%D1%82%D0%B8_%D0%B2_%D0%94%D0%B6%D0%B8%D0%BB%D1%8B-%D0%A1%D1%83.jpg/1920px-%D0%92%D0%B8%D0%B4_%D0%BD%D0%B0_%D0%AD%D0%BB%D1%8C%D0%B1%D1%80%D1%83%D1%81_%D0%BF%D0%BE_%D0%BF%D1%83%D1%82%D0%B8_%D0%B2_%D0%94%D0%B6%D0%B8%D0%BB%D1%8B-%D0%A1%D1%83.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Ted.ns",
+    "desc": "National Park „Prielbrusye“: Central Caucasus, mid-mountain and high-mountain zones (1400-5642 m) within the Main Caucasian and Side ridges; inthe territory of "
+   },
+   {
+    "tier": "QI",
+    "title": "File:National Park of Elbrus region. View from the foot of Elbrus from the altitude of 4000 meters.jpg",
+    "w": 6016,
+    "h": 4016,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/National_Park_of_Elbrus_region._View_from_the_foot_of_Elbrus_from_the_altitude_of_4000_meters.jpg/1920px-National_Park_of_Elbrus_region._View_from_the_foot_of_Elbrus_from_the_altitude_of_4000_meters.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Александр Байдуков",
+    "desc": "Category \"Specially protected natural territories of Russia\". National Park of Elbrus region. View from the foot of Elbrus from the altitude of 4000 meters."
+   },
+   {
+    "tier": "QI",
+    "title": "File:National Park of Elbrus region. Panorama from the foot of Elbrus from the altitude of 4100 meters.jpg",
+    "w": 6016,
+    "h": 4016,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/National_Park_of_Elbrus_region._Panorama_from_the_foot_of_Elbrus_from_the_altitude_of_4100_meters.jpg/1920px-National_Park_of_Elbrus_region._Panorama_from_the_foot_of_Elbrus_from_the_altitude_of_4100_meters.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Александр Байдуков",
+    "desc": "Category \"Specially protected natural territories of Russia\". National Park of Elbrus region. Panorama from the foot of Elbrus from the altitude of 4100 meters."
+   }
+  ]
+ },
+ {
+  "cat": "nature",
+  "key": "Kelimutu",
+  "q": "Kelimutu",
+  "picks": [
+   {
+    "tier": "",
+    "title": "File:Kelimutu 2007-07-21.jpg",
+    "w": 2615,
+    "h": 1961,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Kelimutu_2007-07-21.jpg/1920px-Kelimutu_2007-07-21.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 2.0",
+    "by": "Rosino",
+    "desc": "Kelimutu, Flores, Indonesia, Location: Flores (Indonesia)"
+   },
+   {
+    "tier": "",
+    "title": "File:Beautiful Kelimutu at Sunrise.jpg",
+    "w": 5360,
+    "h": 3560,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Beautiful_Kelimutu_at_Sunrise.jpg/1920px-Beautiful_Kelimutu_at_Sunrise.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Bagus Pinandoyo Basuki",
+    "desc": "This photo was taken at around 5 a.m. After a long journey from the city of Ende we arrived at the gate of the Kelimutu mountain climb, at least it took approxi"
+   },
+   {
+    "tier": "",
+    "title": "File:Danau Kelimutu 2013.jpg",
+    "w": 3888,
+    "h": 2592,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Danau_Kelimutu_2013.jpg/1920px-Danau_Kelimutu_2013.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Ignas Kunda",
+    "desc": "Danau Kelimutu di gunung kelimutu, berada di kabupaten Ende, Pulau Flores, NTT. Pada danau terdapat dua kawah yang berdampingan dengan tebing pembatas di tengah"
+   }
+  ]
+ },
+ {
+  "cat": "nature",
+  "key": "Lake Toba",
+  "q": "Lake Toba",
+  "picks": [
+   {
+    "tier": "FP",
+    "title": "File:Bergtocht van S-charl naar Alp Sesvenna. 10-09-2019. (d.j.b) 25.jpg",
+    "w": 5184,
+    "h": 3456,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Bergtocht_van_S-charl_naar_Alp_Sesvenna._10-09-2019._%28d.j.b%29_25.jpg/1920px-Bergtocht_van_S-charl_naar_Alp_Sesvenna._10-09-2019._%28d.j.b%29_25.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Dominicus Johannes Bergsma",
+    "desc": "Mountain tour from S-charl a place in the Swiss canton Graubünden to Alp Sesvenna. Mountain stream Aval S-charl, tributary of the Clemgia. Walking tours from Va"
+   },
+   {
+    "tier": "FP",
+    "title": "File:Neutral density filter demonstration.jpg",
+    "w": 3504,
+    "h": 2336,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Neutral_density_filter_demonstration.jpg/1920px-Neutral_density_filter_demonstration.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 2.0",
+    "by": "Robert Emperley from Strasbourg, Alsace, France",
+    "desc": "Hoya HMC Pro1 Neutral Density (ND) ND4 filter used to increase exposure time and accentuate water flow in daylight. This filter reduces the amount of light by 2"
+   },
+   {
+    "tier": "FP",
+    "title": "File:Hverfjall July 2014.JPG",
+    "w": 5468,
+    "h": 2550,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Hverfjall_July_2014.JPG/1920px-Hverfjall_July_2014.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Martin Falbisoner",
+    "desc": "Hverfjall, located in northern Iceland's Mývatn region, is a rare example of a tuff ring volcano. The diameter of its crater spans approx. 1 km. A glimpse of La"
+   }
+  ]
+ },
+ {
+  "cat": "city",
+  "key": "Sheikh Zayed Bridge",
+  "q": "Sheikh Zayed Bridge Abu Dhabi",
+  "picks": [
+   {
+    "tier": "",
+    "title": "File:Shore view.jpg",
+    "w": 4160,
+    "h": 3120,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Shore_view.jpg/1920px-Shore_view.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Akhilmohan89",
+    "desc": "i like photography of nature and travel photography"
+   },
+   {
+    "tier": "",
+    "title": "File:جسر الشيخ زايد.jpg",
+    "w": 3264,
+    "h": 2448,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/%D8%AC%D8%B3%D8%B1_%D8%A7%D9%84%D8%B4%D9%8A%D8%AE_%D8%B2%D8%A7%D9%8A%D8%AF.jpg/1920px-%D8%AC%D8%B3%D8%B1_%D8%A7%D9%84%D8%B4%D9%8A%D8%AE_%D8%B2%D8%A7%D9%8A%D8%AF.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY 2.0",
+    "by": "Ali from Riyadh : )",
+    "desc": "جسر الشيخ زايد"
+   },
+   {
+    "tier": "",
+    "title": "File:Grand mosque in Abu Dhabi - P1030160.jpg",
+    "w": 3072,
+    "h": 2304,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/Grand_mosque_in_Abu_Dhabi_-_P1030160.jpg/1920px-Grand_mosque_in_Abu_Dhabi_-_P1030160.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 2.0",
+    "by": "Lars Plougmann",
+    "desc": "Seems to be in final stages of construction but I don't know the name of it"
+   }
+  ]
+ },
+ {
+  "cat": "city",
+  "key": "Etihad Towers",
+  "q": "Etihad Towers",
+  "picks": [
+   {
+    "tier": "",
+    "title": "File:Skyline Abu Dhabi.jpg",
+    "w": 2048,
+    "h": 1152,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Skyline_Abu_Dhabi.jpg/1920px-Skyline_Abu_Dhabi.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 3.0",
+    "by": "Kimmyuandooo",
+    "desc": "Skyline of Abu Dhabi with ADNOC Headquarters, Etihad Towers and Emirates Palace Hotel"
+   },
+   {
+    "tier": "",
+    "title": "File:A6-AFA Airbus A330 Etihad in Visit Abu Dhabi C-s (7921678684).jpg",
+    "w": 2304,
+    "h": 1536,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/A6-AFA_Airbus_A330_Etihad_in_Visit_Abu_Dhabi_C-s_%287921678684%29.jpg/1920px-A6-AFA_Airbus_A330_Etihad_in_Visit_Abu_Dhabi_C-s_%287921678684%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 3.0",
+    "by": "Aeroprints.com",
+    "desc": "A6-AFA Airbus A330 Etihad in Visit Abu Dhabi C-s."
+   },
+   {
+    "tier": "",
+    "title": "File:Etihad Airways Airbus A330-200 at Brussels Airport.jpg",
+    "w": 2918,
+    "h": 1577,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Etihad_Airways_Airbus_A330-200_at_Brussels_Airport.jpg/1920px-Etihad_Airways_Airbus_A330-200_at_Brussels_Airport.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 2.0",
+    "by": "Brussels Airport from Belgium",
+    "desc": "Etihad Airways Airbus A330-200 at Brussels Airport"
+   }
+  ]
+ },
+ {
+  "cat": "city",
+  "key": "Kuala Lumpur Tower",
+  "q": "Kuala Lumpur Tower",
+  "picks": [
+   {
+    "tier": "FP",
+    "title": "File:The Twins SE Asia 2019 (49171985716).jpg",
+    "w": 8472,
+    "h": 5648,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/The_Twins_SE_Asia_2019_%2849171985716%29.jpg/1920px-The_Twins_SE_Asia_2019_%2849171985716%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY 2.0",
+    "by": "James Kerwin from Tbilisi",
+    "desc": "Petronas Towers in December 2019"
+   },
+   {
+    "tier": "FP",
+    "title": "File:Worm's-eye view of Tokyo Skytree with vertical symmetry impression, a sunny day, in Japan.jpg",
+    "w": 6241,
+    "h": 4161,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Worm%27s-eye_view_of_Tokyo_Skytree_with_vertical_symmetry_impression%2C_a_sunny_day%2C_in_Japan.jpg/1920px-Worm%27s-eye_view_of_Tokyo_Skytree_with_vertical_symmetry_impression%2C_a_sunny_day%2C_in_Japan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Basile Morin",
+    "desc": "Worm's-eye view of Tokyo Skytree, with vertical symmetry impression. A sunny day, at 8 o'clock, in Japan."
+   },
+   {
+    "tier": "QI",
+    "title": "File:Kuala Lumpur Malaysia Skyline-03.jpg",
+    "w": 3526,
+    "h": 2351,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/Kuala_Lumpur_Malaysia_Skyline-03.jpg/1920px-Kuala_Lumpur_Malaysia_Skyline-03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 3.0",
+    "by": "CEphoto, Uwe Aranas",
+    "desc": "Kuala Lumpur, Malaysia: Skyline of KL, seen from the pedestrian flyover over Jalan Tun Razak next to Perpustakaan Negara Malaysia (National Library of Malaysia)"
+   }
+  ]
+ },
+ {
+  "cat": "city",
+  "key": "Maiden's Tower",
+  "q": "Maiden's Tower Istanbul",
+  "picks": [
+   {
+    "tier": "QI",
+    "title": "File:Maiden tower, Istanbul (P1100207).jpg",
+    "w": 3760,
+    "h": 2820,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Maiden_tower%2C_Istanbul_%28P1100207%29.jpg/1920px-Maiden_tower%2C_Istanbul_%28P1100207%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Matti Blume",
+    "desc": "View from the Bosphorus ferry in Istanbul"
+   },
+   {
+    "tier": "QI",
+    "title": "File:Maiden tower, Istanbul (P1100206).jpg",
+    "w": 4000,
+    "h": 3000,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Maiden_tower%2C_Istanbul_%28P1100206%29.jpg/1920px-Maiden_tower%2C_Istanbul_%28P1100206%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Matti Blume",
+    "desc": "Maiden's Tower, Istanbul"
+   },
+   {
+    "tier": "QI",
+    "title": "File:Maiden tower, Istanbul (P1100204).jpg",
+    "w": 4000,
+    "h": 3000,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Maiden_tower%2C_Istanbul_%28P1100204%29.jpg/1920px-Maiden_tower%2C_Istanbul_%28P1100204%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Matti Blume",
+    "desc": "View from the Bosphorus ferry in Istanbul"
+   }
+  ]
+ },
+ {
+  "cat": "city",
+  "key": "Taipei 101",
+  "q": "Taipei 101",
+  "picks": [
+   {
+    "tier": "FP",
+    "title": "File:Taipei Taiwan Taipei-101-Tower-01.jpg",
+    "w": 5760,
+    "h": 3840,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Taipei_Taiwan_Taipei-101-Tower-01.jpg/1920px-Taipei_Taiwan_Taipei-101-Tower-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 3.0",
+    "by": "CEphoto, Uwe Aranas",
+    "desc": "Taipei, Taiwan: Taipei 101 tower at sunset"
+   },
+   {
+    "tier": "FP",
+    "title": "File:1 taipei sunrise panorama dxr edit pangen 141215 1.jpg",
+    "w": 8871,
+    "h": 5003,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/1_taipei_sunrise_panorama_dxr_edit_pangen_141215_1.jpg/1920px-1_taipei_sunrise_panorama_dxr_edit_pangen_141215_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Chensiyuan, edit by DXR",
+    "desc": "Taipei sunrise panorama. This image was stiched in Hugin using panini general projection."
+   },
+   {
+    "tier": "QI",
+    "title": "File:Taipei, November 25, 2024 - 008.jpg",
+    "w": 4032,
+    "h": 3024,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Taipei%2C_November_25%2C_2024_-_008.jpg/1920px-Taipei%2C_November_25%2C_2024_-_008.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Another Believer",
+    "desc": "Taipei 101"
+   }
+  ]
+ },
+ {
+  "cat": "city",
+  "key": "Tallinn Old Town",
+  "q": "Tallinn Old Town",
+  "picks": [
+   {
+    "tier": "FP",
+    "title": "File:Tallinna vanalinn päikesetõusu ajal.jpg",
+    "w": 5701,
+    "h": 3806,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Tallinna_vanalinn_p%C3%A4ikeset%C3%B5usu_ajal.jpg/1920px-Tallinna_vanalinn_p%C3%A4ikeset%C3%B5usu_ajal.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Hendrik Mändla",
+    "desc": "Tallinn old town during sunrise. View from Patkul viewing platform in September 2018."
+   },
+   {
+    "tier": "FP",
+    "title": "File:Vanalinn Patkuli platvormilt 2013.jpg",
+    "w": 8000,
+    "h": 3550,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Vanalinn_Patkuli_platvormilt_2013.jpg/1920px-Vanalinn_Patkuli_platvormilt_2013.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 3.0 ee",
+    "by": "Ivar Leidus",
+    "desc": "Old Town of Tallinn, Estonia, from Patkuli viewing platform. Includes the city walls"
+   },
+   {
+    "tier": "FP",
+    "title": "File:Tallinna Raekoda 11-06-2013.jpg",
+    "w": 6491,
+    "h": 4486,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Tallinna_Raekoda_11-06-2013.jpg/1920px-Tallinna_Raekoda_11-06-2013.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 3.0 ee",
+    "by": "Ivar Leidus",
+    "desc": "Tallinn Town Hall, built in 1402–1404, is oldest town hall in Scandinavia and Baltic states. Gothic pyramidal spire was replaced by a Late-Renaissance spire in "
+   }
+  ]
+ },
+ {
+  "cat": "city",
+  "key": "Bruges",
+  "q": "Bruges canal",
+  "picks": [
+   {
+    "tier": "FP",
+    "title": "File:Brügge (B), Groenerei -- 2018 -- 8493-7.jpg",
+    "w": 6716,
+    "h": 4475,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Br%C3%BCgge_%28B%29%2C_Groenerei_--_2018_--_8493-7.jpg/1920px-Br%C3%BCgge_%28B%29%2C_Groenerei_--_2018_--_8493-7.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Dietmar Rabich",
+    "desc": "This is a photograph of Beschermd erfgoed number"
+   },
+   {
+    "tier": "FP",
+    "title": "File:Brugge Langerei R02.jpg",
+    "w": 3743,
+    "h": 2463,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Brugge_Langerei_R02.jpg/1920px-Brugge_Langerei_R02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY 3.0",
+    "by": "Marc Ryckaert (MJJR)",
+    "desc": "Bruges (Belgium): the Lange Rei."
+   },
+   {
+    "tier": "FP",
+    "title": "File:Brugge Sashuis R01.jpg",
+    "w": 4695,
+    "h": 3215,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Brugge_Sashuis_R01.jpg/1920px-Brugge_Sashuis_R01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Marc Ryckaert",
+    "desc": "Bruges (Belgium): the lock-keeper's house of the Minnewater"
+   }
+  ]
+ },
+ {
+  "cat": "city",
+  "key": "Colmar",
+  "q": "Colmar Petite Venise",
+  "picks": [
+   {
+    "tier": "FP",
+    "title": "File:Petite Venise depuis le pont de la rue des Écoles (Colmar) (8).jpg",
+    "w": 4930,
+    "h": 3648,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Petite_Venise_depuis_le_pont_de_la_rue_des_%C3%89coles_%28Colmar%29_%288%29.jpg/1920px-Petite_Venise_depuis_le_pont_de_la_rue_des_%C3%89coles_%28Colmar%29_%288%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Gzen92",
+    "desc": "Little Venice from the bridge on rue des Écoles in Colmar (Haut-Rhin, France)."
+   },
+   {
+    "tier": "FP",
+    "title": "File:Little Venice in Colmar 01.jpg",
+    "w": 5281,
+    "h": 3385,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Little_Venice_in_Colmar_01.jpg/1920px-Little_Venice_in_Colmar_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Krzysztof Golik",
+    "desc": "Little Venice in Colmar, Haut-Rhin, France"
+   },
+   {
+    "tier": "FP",
+    "title": "File:Cygne tuberculé juvénile (Cygnus olor) - tête (1).jpg",
+    "w": 5472,
+    "h": 3648,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Cygne_tubercul%C3%A9_juv%C3%A9nile_%28Cygnus_olor%29_-_t%C3%AAte_%281%29.jpg/1920px-Cygne_tubercul%C3%A9_juv%C3%A9nile_%28Cygnus_olor%29_-_t%C3%AAte_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Gzen92",
+    "desc": "Head of a juvenile mute swan (Cygnus olor) in Colmar (Haut-Rhin, France)."
+   }
+  ]
+ },
+ {
+  "cat": "hist",
+  "key": "Medina Azahara",
+  "q": "Medina Azahara",
+  "picks": [
+   {
+    "tier": "QI",
+    "title": "File:Portico - Madinat al-Zahra (3).JPG",
+    "w": 3072,
+    "h": 2048,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Portico_-_Madinat_al-Zahra_%283%29.JPG/1920px-Portico_-_Madinat_al-Zahra_%283%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 3.0",
+    "by": "José Luiz",
+    "desc": "Arco no Pórtico"
+   },
+   {
+    "tier": "",
+    "title": "File:Delimitación de Madinat al-Zahra 3.jpg",
+    "w": 4608,
+    "h": 3456,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Delimitaci%C3%B3n_de_Madinat_al-Zahra_3.jpg/1920px-Delimitaci%C3%B3n_de_Madinat_al-Zahra_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Naza28",
+    "desc": "Delimitación de Madinat al-Zahra"
+   },
+   {
+    "tier": "",
+    "title": "File:Delimitacion de Madinat al-Zahra 2.jpg",
+    "w": 4608,
+    "h": 3456,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/Delimitacion_de_Madinat_al-Zahra_2.jpg/1920px-Delimitacion_de_Madinat_al-Zahra_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Naza28",
+    "desc": "Delimitación de Madinat al-Zahra"
+   }
+  ]
+ },
+ {
+  "cat": "hist",
+  "key": "Chellah",
+  "q": "Chellah Rabat",
+  "picks": [
+   {
+    "tier": "QI",
+    "title": "File:Main Gate Chellah Rabat Nov25 A7CR 08921.jpg",
+    "w": 5721,
+    "h": 4291,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/61/Main_Gate_Chellah_Rabat_Nov25_A7CR_08921.jpg/1920px-Main_Gate_Chellah_Rabat_Nov25_A7CR_08921.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "This Photo was taken by Timothy A. Gonsalves. Feel free to use my photos, but please mention me as the author. I would much appreciate if you send me an email tagooty@yahoo.com or write on my talk page, for my information. Please contact me before commercial use. Please do not upload an edited image here without consulting me. I would like to make corrections only at my own source to ensure that the changes improve the image and are preserved.Otherwise you may upload an edited image with a new name. Please use one of the templates derivative or extract.",
+    "desc": "The main gate of Chellah, completed in 1339 by Abu al-Hasan. Rabat, Morocco"
+   },
+   {
+    "tier": "QI",
+    "title": "File:Roman Ruins Zawiya Chellah Rabat Nov25 A7CR 08989.jpg",
+    "w": 8097,
+    "h": 5061,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Roman_Ruins_Zawiya_Chellah_Rabat_Nov25_A7CR_08989.jpg/1920px-Roman_Ruins_Zawiya_Chellah_Rabat_Nov25_A7CR_08989.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "This Photo was taken by Timothy A. Gonsalves. Feel free to use my photos, but please mention me as the author. I would much appreciate if you send me an email tagooty@yahoo.com or write on my talk page, for my information. Please contact me before commercial use. Please do not upload an edited image here without consulting me. I would like to make corrections only at my own source to ensure that the changes improve the image and are preserved.Otherwise you may upload an edited image with a new name. Please use one of the templates derivative or extract.",
+    "desc": "Roman ruins (foreground); minaret and Mosque of the Zawiya; white storks (Ciconia ciconia) perched on vantage points. Chellah, Rabat, Morocco"
+   },
+   {
+    "tier": "QI",
+    "title": "File:Detail Inside Main Entrance Chellah Nov25 A7CR 08991.jpg",
+    "w": 3377,
+    "h": 2251,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Detail_Inside_Main_Entrance_Chellah_Nov25_A7CR_08991.jpg/1920px-Detail_Inside_Main_Entrance_Chellah_Nov25_A7CR_08991.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "This Photo was taken by Timothy A. Gonsalves. Feel free to use my photos, but please mention me as the author. I would much appreciate if you send me an email tagooty@yahoo.com or write on my talk page, for my information. Please contact me before commercial use. Please do not upload an edited image here without consulting me. I would like to make corrections only at my own source to ensure that the changes improve the image and are preserved.Otherwise you may upload an edited image with a new name. Please use one of the templates derivative or extract.",
+    "desc": "Detail of relief above the inside entrance to the main gate of Chellah, completed in 1339 by Abu al-Hasan. Rabat, Morocco"
+   }
+  ]
+ },
+ {
+  "cat": "hist",
+  "key": "Hassan Tower",
+  "q": "Hassan Tower Rabat",
+  "picks": [
+   {
+    "tier": "QI",
+    "title": "File:Hassan Tower 01.jpg",
+    "w": 2288,
+    "h": 1712,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Hassan_Tower_01.jpg/1920px-Hassan_Tower_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 3.0",
+    "by": "Bernard Gagnon",
+    "desc": "Hassan Tower, Rabat, Morocco"
+   },
+   {
+    "tier": "QI",
+    "title": "File:Hassan Tower Columns Rabat Nov25 A7CR 08839.jpg",
+    "w": 8626,
+    "h": 5955,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Hassan_Tower_Columns_Rabat_Nov25_A7CR_08839.jpg/1920px-Hassan_Tower_Columns_Rabat_Nov25_A7CR_08839.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "This Photo was taken by Timothy A. Gonsalves. Feel free to use my photos, but please mention me as the author. I would much appreciate if you send me an email tagooty@yahoo.com or write on my talk page, for my information. Please contact me before commercial use. Please do not upload an edited image here without consulting me. I would like to make corrections only at my own source to ensure that the changes improve the image and are preserved.Otherwise you may upload an edited image with a new name. Please use one of the templates derivative or extract.",
+    "desc": "Hassan Tower and columns of incomplete mosque, Rabat, Morocco"
+   },
+   {
+    "tier": "QI",
+    "title": "File:SW SE Top Hassan Tower Morocco Nov25 A7CR 08873.jpg",
+    "w": 7892,
+    "h": 5919,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/SW_SE_Top_Hassan_Tower_Morocco_Nov25_A7CR_08873.jpg/1920px-SW_SE_Top_Hassan_Tower_Morocco_Nov25_A7CR_08873.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "This Photo was taken by Timothy A. Gonsalves. Feel free to use my photos, but please mention me as the author. I would much appreciate if you send me an email tagooty@yahoo.com or write on my talk page, for my information. Please contact me before commercial use. Please do not upload an edited image here without consulting me. I would like to make corrections only at my own source to ensure that the changes improve the image and are preserved.Otherwise you may upload an edited image with a new name. Please use one of the templates derivative or extract.",
+    "desc": "Detail of top of southwest and southeast facades, Hassan Tower, Rabat, Morocco"
+   }
+  ]
+ },
+ {
+  "cat": "hist",
+  "key": "Bab Mansour",
+  "q": "Bab Mansour Meknes",
+  "picks": [
+   {
+    "tier": "",
+    "title": "File:Bab Mansour gate.jpg",
+    "w": 3000,
+    "h": 1928,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Bab_Mansour_gate.jpg/1920px-Bab_Mansour_gate.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY 3.0",
+    "by": "Jerzy Strzelecki",
+    "desc": "Bab el Mansour gate, Meknes, Morocco"
+   },
+   {
+    "tier": "",
+    "title": "File:Bab Mansour Meknes 2018 2.jpg",
+    "w": 4928,
+    "h": 3264,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Bab_Mansour_Meknes_2018_2.jpg/1920px-Bab_Mansour_Meknes_2018_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Steven Lek",
+    "desc": "The Bab Mansour gate in Moroccan city Meknes."
+   },
+   {
+    "tier": "",
+    "title": "File:Bab Mansour Meknes 2018 1.jpg",
+    "w": 4928,
+    "h": 3264,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Bab_Mansour_Meknes_2018_1.jpg/1920px-Bab_Mansour_Meknes_2018_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Steven Lek",
+    "desc": "The Bab Mansour gate in Moroccan city Meknes."
+   }
+  ]
+ },
+ {
+  "cat": "hist",
+  "key": "Ghadames",
+  "q": "Ghadames old town",
+  "picks": [
+   {
+    "tier": "",
+    "title": "File:Ghadames - Altstadt, Thermalquelle.jpg",
+    "w": 3961,
+    "h": 2927,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Ghadames_-_Altstadt%2C_Thermalquelle.jpg/1920px-Ghadames_-_Altstadt%2C_Thermalquelle.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 3.0",
+    "by": "Franzfoto",
+    "desc": "Ghadames - Altstadt, Thermalquelle"
+   },
+   {
+    "tier": "",
+    "title": "File:Ghadames Old city from the air.jpg",
+    "w": 3992,
+    "h": 2242,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Ghadames_Old_city_from_the_air.jpg/1920px-Ghadames_Old_city_from_the_air.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Mohamed alazrak",
+    "desc": "غدامس مدينة ليبية تقع قرب مثلث حدود ليبيا مع كل من تونس والجزائر في الجزء الغربي من البلاد على خط عرض 30,08 شمالاً وخط طول 9,03 شرقاً، وترتفع عن مستوى سطح البحر"
+   },
+   {
+    "tier": "",
+    "title": "File:Ghadames - Altstadt mit Palmenhain.jpg",
+    "w": 4000,
+    "h": 3000,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Ghadames_-_Altstadt_mit_Palmenhain.jpg/1920px-Ghadames_-_Altstadt_mit_Palmenhain.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 3.0",
+    "by": "Franzfoto",
+    "desc": "Ghadames - Altstadt mit Palmenhain"
+   }
+  ]
+ },
+ {
+  "cat": "hist",
+  "key": "Leptis Magna",
+  "q": "Leptis Magna",
+  "picks": [
+   {
+    "tier": "QI",
+    "title": "File:Ulpia Traiana Sarmizegetusa (by Pudelek) 01.jpg",
+    "w": 3456,
+    "h": 2304,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Ulpia_Traiana_Sarmizegetusa_%28by_Pudelek%29_01.jpg/1920px-Ulpia_Traiana_Sarmizegetusa_%28by_Pudelek%29_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Pudelek",
+    "desc": "Ulpia Traiana Sarmizegetusa, Romania"
+   },
+   {
+    "tier": "QI",
+    "title": "File:Ulpia Traiana Sarmizegetusa (by Pudelek) 02.jpg",
+    "w": 3380,
+    "h": 2304,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Ulpia_Traiana_Sarmizegetusa_%28by_Pudelek%29_02.jpg/1920px-Ulpia_Traiana_Sarmizegetusa_%28by_Pudelek%29_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Pudelek",
+    "desc": "Ulpia Traiana Sarmizegetusa, Romania"
+   },
+   {
+    "tier": "QI",
+    "title": "File:Ulpia Traiana Sarmizegetusa (by Pudelek) 03.jpg",
+    "w": 3415,
+    "h": 2304,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Ulpia_Traiana_Sarmizegetusa_%28by_Pudelek%29_03.jpg/1920px-Ulpia_Traiana_Sarmizegetusa_%28by_Pudelek%29_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Pudelek",
+    "desc": "Ulpia Traiana Sarmizegetusa, Romania"
+   }
+  ]
+ },
+ {
+  "cat": "hist",
+  "key": "Amphitheatre of El Jem",
+  "q": "Amphitheatre of El Jem",
+  "picks": [
+   {
+    "tier": "FP",
+    "title": "File:Anfiteatro, El Jem, Túnez, 2016-09-04, DD 38-40 HDR.jpg",
+    "w": 8379,
+    "h": 4632,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Anfiteatro%2C_El_Jem%2C_T%C3%BAnez%2C_2016-09-04%2C_DD_38-40_HDR.jpg/1920px-Anfiteatro%2C_El_Jem%2C_T%C3%BAnez%2C_2016-09-04%2C_DD_38-40_HDR.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Diego Delso",
+    "desc": "Hypogeum of the Amphitheatre of El Jem, an archeological site in the city of El Djem, Tunisia. At both sides of this tunnel are located the cells where the beas"
+   },
+   {
+    "tier": "FP",
+    "title": "File:Anfiteatro, El Jem, Túnez, 2016-09-04, DD 35-37 HDR.jpg",
+    "w": 6739,
+    "h": 5098,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Anfiteatro%2C_El_Jem%2C_T%C3%BAnez%2C_2016-09-04%2C_DD_35-37_HDR.jpg/1920px-Anfiteatro%2C_El_Jem%2C_T%C3%BAnez%2C_2016-09-04%2C_DD_35-37_HDR.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Diego Delso",
+    "desc": "Hypogeum of the Amphitheatre of El Jem, an archeological site in the city of El Djem, Tunisia. At both sides of this tunnel are located the cells where the beas"
+   },
+   {
+    "tier": "FP",
+    "title": "File:Amphithéâtre d’El Jem vue aerienne (2023) 1.jpg",
+    "w": 5850,
+    "h": 3900,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Amphith%C3%A9%C3%A2tre_d%E2%80%99El_Jem_vue_aerienne_%282023%29_1.jpg/1920px-Amphith%C3%A9%C3%A2tre_d%E2%80%99El_Jem_vue_aerienne_%282023%29_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Skander zarrad",
+    "desc": "Roman The El Jem Amphitheater, also 'Colosseum of Thysdrus', present-day El Jem, Tunisia"
+   }
+  ]
+ },
+ {
+  "cat": "hist",
+  "key": "Palmyra",
+  "q": "Palmyra ruins",
+  "picks": [
+   {
+    "tier": "QI",
+    "title": "File:Temple of Bel, Palmyra 02.jpg",
+    "w": 3278,
+    "h": 2384,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Temple_of_Bel%2C_Palmyra_02.jpg/1920px-Temple_of_Bel%2C_Palmyra_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 3.0",
+    "by": "Bernard Gagnon",
+    "desc": "Temple of Bel, Palmyra, Syria"
+   },
+   {
+    "tier": "QI",
+    "title": "File:City of Tadmor, Syria.jpg",
+    "w": 3456,
+    "h": 2592,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/City_of_Tadmor%2C_Syria.jpg/1920px-City_of_Tadmor%2C_Syria.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 3.0",
+    "by": "Bernard Gagnon",
+    "desc": "City of Tadmor beside the site of Palmyra in Syria"
+   },
+   {
+    "tier": "QI",
+    "title": "File:Temple of Bel, Palmyra 03.jpg",
+    "w": 3338,
+    "h": 2265,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Temple_of_Bel%2C_Palmyra_03.jpg/1920px-Temple_of_Bel%2C_Palmyra_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 3.0",
+    "by": "Bernard Gagnon",
+    "desc": "Temple of Bel, Palmyra, Syria"
+   }
+  ]
+ },
+ {
+  "cat": "hist",
+  "key": "Taq Kasra",
+  "q": "Taq Kasra",
+  "picks": [
+   {
+    "tier": "",
+    "title": "File:001125-TaqKasra-Iraq-IMG 7914-2.jpg",
+    "w": 4500,
+    "h": 3000,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/001125-TaqKasra-Iraq-IMG_7914-2.jpg/1920px-001125-TaqKasra-Iraq-IMG_7914-2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Safa.daneshvar",
+    "desc": "Taq Kasra, Madain, Iraq - February 2022 - Photo by: Safa Daneshvar طاق کسری، مدائن،‌عراق - بهمن ۱۴۰۰ - عکس از صفا دانشور"
+   },
+   {
+    "tier": "",
+    "title": "File:001125-TaqKasra-Iraq-IMG 7960-2.jpg",
+    "w": 4800,
+    "h": 3200,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/001125-TaqKasra-Iraq-IMG_7960-2.jpg/1920px-001125-TaqKasra-Iraq-IMG_7960-2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Safa.daneshvar",
+    "desc": "Taq Kasra, Madain, Iraq - February 2022 - Photo by: Safa Daneshvar طاق کسری، مدائن،‌عراق - بهمن ۱۴۰۰ - عکس از صفا دانشور"
+   },
+   {
+    "tier": "",
+    "title": "File:001125-TaqKasra-Iraq-IMG 7989-2.jpg",
+    "w": 5400,
+    "h": 3600,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/001125-TaqKasra-Iraq-IMG_7989-2.jpg/1920px-001125-TaqKasra-Iraq-IMG_7989-2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Safa.daneshvar",
+    "desc": "Taq Kasra, Madain, Iraq - February 2022 - Photo by: Safa Daneshvar طاق کسری، مدائن،‌عراق - بهمن ۱۴۰۰ - عکس از صفا دانشور"
+   }
+  ]
+ },
+ {
+  "cat": "hist",
+  "key": "Malwiya Minaret",
+  "q": "Malwiya Minaret Samarra",
+  "picks": [
+   {
+    "tier": "",
+    "title": "File:مأذنة الملوية في سامراء Malwiya Minaret Samarra.jpg",
+    "w": 6016,
+    "h": 4016,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/%D9%85%D8%A3%D8%B0%D9%86%D8%A9_%D8%A7%D9%84%D9%85%D9%84%D9%88%D9%8A%D8%A9_%D9%81%D9%8A_%D8%B3%D8%A7%D9%85%D8%B1%D8%A7%D8%A1_Malwiya_Minaret_Samarra.jpg/1920px-%D9%85%D8%A3%D8%B0%D9%86%D8%A9_%D8%A7%D9%84%D9%85%D9%84%D9%88%D9%8A%D8%A9_%D9%81%D9%8A_%D8%B3%D8%A7%D9%85%D8%B1%D8%A7%D8%A1_Malwiya_Minaret_Samarra.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "حكمت العياشي",
+    "desc": "مئذنة حلزونية فريدة ارتفاعها 52 متر بنيت عام 848 م Unique spiral minaret 52 meters high built in 848 AD"
+   },
+   {
+    "tier": "",
+    "title": "File:Vue vers la mosquée al-Mutawakkil ou Grande Mosquée et la Malwiya (minaret hélicoïdal) - A54367S.jpg",
+    "w": 2560,
+    "h": 1899,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/Vue_vers_la_mosqu%C3%A9e_al-Mutawakkil_ou_Grande_Mosqu%C3%A9e_et_la_Malwiya_%28minaret_h%C3%A9lico%C3%AFdal%29_-_A54367S.jpg/1920px-Vue_vers_la_mosqu%C3%A9e_al-Mutawakkil_ou_Grande_Mosqu%C3%A9e_et_la_Malwiya_%28minaret_h%C3%A9lico%C3%AFdal%29_-_A54367S.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Gadmer Frédéric",
+    "desc": "Lieu : Samarra Lieu : Samarra, Irak Mission : 1927 - Irak, Iran (Perse) - Frédéric Gadmer - (3 avril-1er juillet) Thème : Religion Thème : Habitat / Architectur"
+   },
+   {
+    "tier": "",
+    "title": "File:Vue vers la mosquée al-Mutawakkil ou Grande Mosquée et la Malwiya (minaret hélicoïdal) - A54377S.jpg",
+    "w": 2560,
+    "h": 1899,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Vue_vers_la_mosqu%C3%A9e_al-Mutawakkil_ou_Grande_Mosqu%C3%A9e_et_la_Malwiya_%28minaret_h%C3%A9lico%C3%AFdal%29_-_A54377S.jpg/1920px-Vue_vers_la_mosqu%C3%A9e_al-Mutawakkil_ou_Grande_Mosqu%C3%A9e_et_la_Malwiya_%28minaret_h%C3%A9lico%C3%AFdal%29_-_A54377S.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Gadmer Frédéric",
+    "desc": "Lieu : Samarra Lieu : Samarra, Irak Mission : 1927 - Irak, Iran (Perse) - Frédéric Gadmer - (3 avril-1er juillet) Thème : Habitat / Architecture Thème : Religio"
+   }
+  ]
+ },
+ {
+  "cat": "hist",
+  "key": "Ani",
+  "q": "Ani ruins Kars",
+  "picks": [
+   {
+    "tier": "",
+    "title": "File:Ani ruins and rainbow.jpg",
+    "w": 4288,
+    "h": 2848,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Ani_ruins_and_rainbow.jpg/1920px-Ani_ruins_and_rainbow.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 2.0",
+    "by": "Panegyrics of Granovetter",
+    "desc": "Ani Haraberinde gökkuşağı, Kars İli, Türkiye."
+   },
+   {
+    "tier": "",
+    "title": "File:Ruins with Church at Rear - Ani (Ancient Armenian Capital) - Near Kars - Turkey (5812406144).jpg",
+    "w": 3456,
+    "h": 2304,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Ruins_with_Church_at_Rear_-_Ani_%28Ancient_Armenian_Capital%29_-_Near_Kars_-_Turkey_%285812406144%29.jpg/1920px-Ruins_with_Church_at_Rear_-_Ani_%28Ancient_Armenian_Capital%29_-_Near_Kars_-_Turkey_%285812406144%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 2.0",
+    "by": "Adam Jones from Kelowna, BC, Canada",
+    "desc": "Ruins with Church at Rear - Ani (Ancient Armenian Capital) - Near Kars - Turkey"
+   },
+   {
+    "tier": "",
+    "title": "File:Excavated Ruins of Ancient Houses - Viewed from Minaret of Menucer Camii Mosque - Ani (Ancient Armenian Capital) - Near Kars - Turkey (5811824793).jpg",
+    "w": 3456,
+    "h": 2304,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Excavated_Ruins_of_Ancient_Houses_-_Viewed_from_Minaret_of_Menucer_Camii_Mosque_-_Ani_%28Ancient_Armenian_Capital%29_-_Near_Kars_-_Turkey_%285811824793%29.jpg/1920px-Excavated_Ruins_of_Ancient_Houses_-_Viewed_from_Minaret_of_Menucer_Camii_Mosque_-_Ani_%28Ancient_Armenian_Capital%29_-_Near_Kars_-_Turkey_%285811824793%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 2.0",
+    "by": "Adam Jones from Kelowna, BC, Canada",
+    "desc": "Excavated Ruins of Ancient Houses - Viewed from Minaret of Menucer Camii Mosque - Ani (Ancient Armenian Capital) - Near Kars - Turkey"
+   }
+  ]
+ },
+ {
+  "cat": "hist",
+  "key": "Library of Celsus",
+  "q": "Library of Celsus Ephesus",
+  "picks": [
+   {
+    "tier": "QI",
+    "title": "File:TR.IZ.Selcuk Ephesus Celsus-Library 32 3x2-R 5K.jpg",
+    "w": 5100,
+    "h": 3400,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/TR.IZ.Selcuk_Ephesus_Celsus-Library_32_3x2-R_5K.jpg/1920px-TR.IZ.Selcuk_Ephesus_Celsus-Library_32_3x2-R_5K.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Roy Egloff",
+    "desc": "many people visit the ancient Celsus Library in Ephesus, Turkey"
+   },
+   {
+    "tier": "QI",
+    "title": "File:Ephesus - Celsus Library.jpg",
+    "w": 4280,
+    "h": 2951,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Ephesus_-_Celsus_Library.jpg/1920px-Ephesus_-_Celsus_Library.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 3.0",
+    "by": "Bernard Gagnon",
+    "desc": "Celsus Library in Ephesus, Turkey"
+   },
+   {
+    "tier": "QI",
+    "title": "File:Library of Celsus 6242.jpg",
+    "w": 5165,
+    "h": 3444,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Library_of_Celsus_6242.jpg/1920px-Library_of_Celsus_6242.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Herbert Weber",
+    "desc": "Roman building in Ephesus, Anatolia, now part of Selçuk, Turkey. Only one visitor."
+   }
+  ]
+ },
+ {
+  "cat": "hist",
+  "key": "Ishak Pasha Palace",
+  "q": "Ishak Pasha Palace",
+  "picks": [
+   {
+    "tier": "",
+    "title": "File:00 3411 İshak Paşa Sarayı - Turkey.jpg",
+    "w": 3000,
+    "h": 2000,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/00_3411_%C4%B0shak_Pa%C5%9Fa_Saray%C4%B1_-_Turkey.jpg/1920px-00_3411_%C4%B0shak_Pa%C5%9Fa_Saray%C4%B1_-_Turkey.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "W. Bulach",
+    "desc": "Der Ishak-Pascha-Palast ( İshak Paşa Sarayı), ein zwischen 1685 und 1784 erbauter burgähnlicher Palast eines osmanischen Emirs. Die Anlage befindet sich im äuße"
+   },
+   {
+    "tier": "",
+    "title": "File:00 2404 Ishak Pasha Palace - Turkey.jpg",
+    "w": 3751,
+    "h": 2500,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/00_2404_Ishak_Pasha_Palace_-_Turkey.jpg/1920px-00_2404_Ishak_Pasha_Palace_-_Turkey.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "W. Bulach",
+    "desc": "The Ishak Pasha Palace (İshak Paşa Sarayı), a castle-like palace built by an Ottoman emir between 1685 and 1784. The facility is located in the far east of Turk"
+   },
+   {
+    "tier": "",
+    "title": "File:Doğubayazıt, cimitero e moschea del palazzo di ishak pasha, xviii secolo, 10.jpg",
+    "w": 6720,
+    "h": 4480,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Do%C4%9Fubayaz%C4%B1t%2C_cimitero_e_moschea_del_palazzo_di_ishak_pasha%2C_xviii_secolo%2C_10.jpg/1920px-Do%C4%9Fubayaz%C4%B1t%2C_cimitero_e_moschea_del_palazzo_di_ishak_pasha%2C_xviii_secolo%2C_10.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Francesco Bini",
+    "desc": "Ishak Pasha Palace"
+   }
+  ]
+ },
+ {
+  "cat": "hist",
+  "key": "Shah-i-Zinda",
+  "q": "Shah-i-Zinda",
+  "picks": [
+   {
+    "tier": "FP",
+    "title": "File:Tuman Oko complex, Samarkand (комплекс Туман Око, Самарканд, 2025).jpg",
+    "w": 8160,
+    "h": 6120,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Tuman_Oko_complex%2C_Samarkand_%28%D0%BA%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81_%D0%A2%D1%83%D0%BC%D0%B0%D0%BD_%D0%9E%D0%BA%D0%BE%2C_%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4%2C_2025%29.jpg/1920px-Tuman_Oko_complex%2C_Samarkand_%28%D0%BA%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81_%D0%A2%D1%83%D0%BC%D0%B0%D0%BD_%D0%9E%D0%BA%D0%BE%2C_%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4%2C_2025%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Petar Milošević",
+    "desc": "Tuman Oko complex, Samarkand, Uzbekistan"
+   },
+   {
+    "tier": "QI",
+    "title": "File:Shah-i-Zinda 02.jpg",
+    "w": 5102,
+    "h": 3280,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Shah-i-Zinda_02.jpg/1920px-Shah-i-Zinda_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC0",
+    "by": "Bgag",
+    "desc": "Shah-i-Zinda, Samarkand, Uzbekistan"
+   },
+   {
+    "tier": "QI",
+    "title": "File:Shah-i-Zinda 01.jpg",
+    "w": 4568,
+    "h": 2983,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/Shah-i-Zinda_01.jpg/1920px-Shah-i-Zinda_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC0",
+    "by": "Bgag",
+    "desc": "Shah-i-Zinda, Samarkand, Uzbekistan"
+   }
+  ]
+ },
+ {
+  "cat": "hist",
+  "key": "Ark of Bukhara",
+  "q": "Ark of Bukhara",
+  "picks": [
+   {
+    "tier": "FP",
+    "title": "File:Ark of Bukhara (Цитадель Арк. Buxoro arki).jpg",
+    "w": 7136,
+    "h": 4707,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Ark_of_Bukhara_%28%D0%A6%D0%B8%D1%82%D0%B0%D0%B4%D0%B5%D0%BB%D1%8C_%D0%90%D1%80%D0%BA._Buxoro_arki%29.jpg/1920px-Ark_of_Bukhara_%28%D0%A6%D0%B8%D1%82%D0%B0%D0%B4%D0%B5%D0%BB%D1%8C_%D0%90%D1%80%D0%BA._Buxoro_arki%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Petar Milošević",
+    "desc": "Ark of Bukhara, Uzbekistan"
+   },
+   {
+    "tier": "QI",
+    "title": "File:Miss Kamola. Buxoro Arkidan Poi Kalon majmuasining koʻrinishi.jpg",
+    "w": 3936,
+    "h": 2624,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Miss_Kamola._Buxoro_Arkidan_Poi_Kalon_majmuasining_ko%CA%BBrinishi.jpg/1920px-Miss_Kamola._Buxoro_Arkidan_Poi_Kalon_majmuasining_ko%CA%BBrinishi.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Jamshid Nurkulov",
+    "desc": "Miss Kamola. Buxoro Arkidan Poi Kalon majmuasining koʻrinishi."
+   },
+   {
+    "tier": "QI",
+    "title": "File:Бухара, Арк, тронный зал.jpg",
+    "w": 5472,
+    "h": 3078,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/%D0%91%D1%83%D1%85%D0%B0%D1%80%D0%B0%2C_%D0%90%D1%80%D0%BA%2C_%D1%82%D1%80%D0%BE%D0%BD%D0%BD%D1%8B%D0%B9_%D0%B7%D0%B0%D0%BB.jpg/1920px-%D0%91%D1%83%D1%85%D0%B0%D1%80%D0%B0%2C_%D0%90%D1%80%D0%BA%2C_%D1%82%D1%80%D0%BE%D0%BD%D0%BD%D1%8B%D0%B9_%D0%B7%D0%B0%D0%BB.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Nikolai Bulykin",
+    "desc": "Throne courtyard in the Ark fortress. Bukhara, Uzbekistan."
+   }
+  ]
+ },
+ {
+  "cat": "hist",
+  "key": "Humayun's Tomb",
+  "q": "Humayun's Tomb",
+  "picks": [
+   {
+    "tier": "QI",
+    "title": "File:20191205 Grobowiec Humajuna w Delhi 1055 6794.jpg",
+    "w": 5421,
+    "h": 3604,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/20191205_Grobowiec_Humajuna_w_Delhi_1055_6794.jpg/1920px-20191205_Grobowiec_Humajuna_w_Delhi_1055_6794.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Jakub Hałun",
+    "desc": "Main monument of Humayun's Tomb, Delhi"
+   },
+   {
+    "tier": "QI",
+    "title": "File:20191205 Grobowiec Humajuna w Delhi 1054 6792.jpg",
+    "w": 3720,
+    "h": 2473,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/20191205_Grobowiec_Humajuna_w_Delhi_1054_6792.jpg/1920px-20191205_Grobowiec_Humajuna_w_Delhi_1054_6792.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Jakub Hałun",
+    "desc": "Main monument of Humayun's Tomb, Delhi"
+   },
+   {
+    "tier": "QI",
+    "title": "File:Parallel world.jpg",
+    "w": 4025,
+    "h": 2939,
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Parallel_world.jpg/1920px-Parallel_world.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "lic": "CC BY-SA 4.0",
+    "by": "Sunil109097",
+    "desc": "Illuminated humayun tomb and it's reflection in the water . During night time ASI monuments sites available for its night visuals . I made this moment from cent"
    }
   ]
  }
