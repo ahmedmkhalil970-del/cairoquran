@@ -33,7 +33,10 @@ const PLACES = (() => { try {
 const place = (key, n = 0) => PLACES.filter(p => p.key === key)[n];
 // A background from anywhere: "commons:<search>" picks a freely licensed photo from Wikimedia Commons (n-th match),
 // with its author and licence for the credit line. Any other value is a key of the site's PLACES table.
-const FREE = /^(cc0|public domain|pd|cc by(-sa)? [\d.]+)/i;
+// Decision of 12 November 2026: new videos use only CC0 or public-domain photos, so no credit line is drawn on them.
+const FREE = /^(cc0|public domain|pd\b)/i;
+// When a search finds no such photo, these general scenes are tried in turn (most have many public-domain photos).
+const FALLBACK = ['sunrise clouds', 'sunset sea', 'night sky stars', 'desert dunes', 'mountain lake', 'forest fog', 'ocean waves', 'clouds sky'];
 // Searched first among Commons' reviewed photos (Quality images, then Featured pictures), so a search does not land on
 // a map, a plan or an advert; titles that look like such are skipped anyway.
 const NOT_PHOTO = /plan|map|diagram|drawing|logo|sign|poster|advert|stamp|coin|banknote|flag|chart|scheme|svg/i;
@@ -47,8 +50,13 @@ async function commons(q, n = 0) {
       && !NOT_PHOTO.test(x.t) && FREE.test(x.i.extmetadata?.LicenseShortName?.value || ''));
     if (ok.length > n) break;
   }
-  const x = ok[n];
-  if (!x) throw new Error(`no freely licensed photo for "${q}"`);
+  const x = ok[n] || ok[0];
+  if (!x) {
+    const next = FALLBACK[FALLBACK.indexOf(q) + 1];
+    if (next === undefined) throw new Error(`no public-domain photo for "${q}"`);
+    console.log(`  no public-domain photo for "${q}", trying "${next}"`);
+    return commons(next, n);
+  }
   const by = (x.i.extmetadata?.Artist?.value || '').replace(/<[^>]+>/g, '').trim().slice(0, 40);
   return { src: x.i.thumburl || x.i.url, by, lic: x.i.extmetadata.LicenseShortName.value, key: x.t.replace(/^File:/, '') };
 }
@@ -126,7 +134,7 @@ async function build(s, browser) {
     const pl = s.background.startsWith('commons:') ? await commons(s.background.slice(8), s.background_n || 0) : place(s.background, s.background_n || 0);
     if (!pl) throw new Error(`no place "${s.background}" in index.html`);
     bg = 'data:image/jpeg;base64,' + (await getBuf(pl.src)).toString('base64');
-    credit = `${pl.by ? pl.by + ' · ' : ''}${pl.lic} · Wikimedia Commons`;
+    credit = null;                                  // no photographer line on the video (decision of 12 November 2026)
     console.log(`  background: ${pl.key} (${pl.lic})`);
   }
   const img = await getBuf(s.photo);

@@ -1,0 +1,424 @@
+[
+  {
+    "id": "1-am-alafasy-30-17",
+    "at": "2026-11-18T07:00:00+03:00",
+    "when": "الأربعاء 18 نوفمبر · 7:00 صباحًا",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:sunrise",
+    "background_n": 0,
+    "series": "آية الصباح",
+    "reciter": "مشاري راشد العفاسي",
+    "label": "مرتّل",
+    "recitation": 7,
+    "expect": [
+      "afasy"
+    ],
+    "verses": [
+      "30:17",
+      "30:18"
+    ],
+    "surah": "سورة الروم",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/2/24/%D0%9C%D0%B8%D1%88%D0%B0%D1%80%D0%B8_%D0%A0%D0%B0%D1%88%D0%B8%D0%B4.jpg",
+    "title": "﴿فسبحان الله حين تمسون وحين تصبحون﴾ | آية الصباح | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ مشاري راشد العفاسي\n\nتسبيحة تفتتح بها يومك وتختمه.\n\n#آية_الصباح #سورة_الروم #العفاسي #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "2-am-minshawi-93-1",
+    "at": "2026-11-19T07:00:00+03:00",
+    "when": "الخميس 19 نوفمبر · 7:00 صباحًا",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:sunrise clouds",
+    "background_n": 0,
+    "series": "آية الصباح",
+    "reciter": "محمد صديق المنشاوي",
+    "label": "مرتّل",
+    "recitation": 9,
+    "expect": [
+      "minshaw",
+      "murattal"
+    ],
+    "verses": [
+      "93:1",
+      "93:2",
+      "93:3",
+      "93:4",
+      "93:5"
+    ],
+    "surah": "سورة الضحى",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Elminshwey.jpg",
+    "title": "﴿والضحى﴾ | آية الصباح | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمد صديق المنشاوي\n\nنزلت تطمئن قلب النبي ﷺ: ما ودّعك ربك وما قلى.\n\n#آية_الصباح #سورة_الضحى #المنشاوي #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "3-am-husary-33-56",
+    "at": "2026-11-20T07:00:00+03:00",
+    "when": "الجمعة 20 نوفمبر · 7:00 صباحًا",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:dawn sky",
+    "background_n": 0,
+    "series": "آية الصباح",
+    "reciter": "محمود خليل الحصري",
+    "label": "مرتّل",
+    "recitation": 6,
+    "expect": [
+      "husar",
+      "murattal"
+    ],
+    "verses": [
+      "33:56"
+    ],
+    "surah": "سورة الأحزاب",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/7/70/Hussary.jpg",
+    "title": "﴿إن الله وملائكته يصلون على النبي﴾ | آية الصباح | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمود خليل الحصري\n\nأكثروا من الصلاة على النبي ﷺ يوم الجمعة.\n\n#آية_الصباح #سورة_الأحزاب #الحصري #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "4-am-abdulbasit-65-3",
+    "at": "2026-11-21T07:00:00+03:00",
+    "when": "السبت 21 نوفمبر · 7:00 صباحًا",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:morning fog",
+    "background_n": 0,
+    "series": "آية الصباح",
+    "reciter": "عبد الباسط عبد الصمد",
+    "label": "مرتّل",
+    "recitation": 2,
+    "expect": [
+      "bas",
+      "murattal"
+    ],
+    "verses": [
+      "65:3"
+    ],
+    "surah": "سورة الطلاق",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Abdul_Basit_Abd_us-Samad_in_South_Africa_in_1966_%283%29_%28cropped%29.jpg",
+    "title": "﴿ومن يتوكل على الله فهو حسبه﴾ | آية الصباح | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ عبد الباسط عبد الصمد\n\nمن فوّض أمره إلى الله كفاه ما أهمّه.\n\n#آية_الصباح #سورة_الطلاق #عبد_الباسط_عبد_الصمد #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "5-am-alafasy-40-60",
+    "at": "2026-11-22T07:00:00+03:00",
+    "when": "الأحد 22 نوفمبر · 7:00 صباحًا",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:sunrise over sea",
+    "background_n": 0,
+    "series": "آية الصباح",
+    "reciter": "مشاري راشد العفاسي",
+    "label": "مرتّل",
+    "recitation": 7,
+    "expect": [
+      "afasy"
+    ],
+    "verses": [
+      "40:60"
+    ],
+    "surah": "سورة غافر",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/2/24/%D0%9C%D0%B8%D1%88%D0%B0%D1%80%D0%B8_%D0%A0%D0%B0%D1%88%D0%B8%D0%B4.jpg",
+    "title": "﴿ادعوني أستجب لكم﴾ | آية الصباح | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ مشاري راشد العفاسي\n\nوعد من الله لكل من يدعوه.\n\n#آية_الصباح #سورة_غافر #العفاسي #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "6-am-minshawi-94-1",
+    "at": "2026-11-23T07:00:00+03:00",
+    "when": "الاثنين 23 نوفمبر · 7:00 صباحًا",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:sunrise mountains",
+    "background_n": 0,
+    "series": "آية الصباح",
+    "reciter": "محمد صديق المنشاوي",
+    "label": "مرتّل",
+    "recitation": 9,
+    "expect": [
+      "minshaw",
+      "murattal"
+    ],
+    "verses": [
+      "94:1",
+      "94:2",
+      "94:3",
+      "94:4"
+    ],
+    "surah": "سورة الشرح",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Elminshwey.jpg",
+    "title": "﴿ألم نشرح لك صدرك﴾ | آية الصباح | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمد صديق المنشاوي\n\nتذكير بنعمة الله في انشراح الصدر ورفع الذكر.\n\n#آية_الصباح #سورة_الشرح #المنشاوي #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "7-am-husary-2-153",
+    "at": "2026-11-24T07:00:00+03:00",
+    "when": "الثلاثاء 24 نوفمبر · 7:00 صباحًا",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:morning sun field",
+    "background_n": 0,
+    "series": "آية الصباح",
+    "reciter": "محمود خليل الحصري",
+    "label": "مرتّل",
+    "recitation": 6,
+    "expect": [
+      "husar",
+      "murattal"
+    ],
+    "verses": [
+      "2:153"
+    ],
+    "surah": "سورة البقرة",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/7/70/Hussary.jpg",
+    "title": "﴿استعينوا بالصبر والصلاة﴾ | آية الصباح | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمود خليل الحصري\n\nالصبر والصلاة عون المؤمن في كل يوم، والله مع الصابرين.\n\n#آية_الصباح #سورة_البقرة #الحصري #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "8-am-abdulbasit-113-1",
+    "at": "2026-11-25T07:00:00+03:00",
+    "when": "الأربعاء 25 نوفمبر · 7:00 صباحًا",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:sun rays clouds",
+    "background_n": 0,
+    "series": "آية الصباح",
+    "reciter": "عبد الباسط عبد الصمد",
+    "label": "مرتّل",
+    "recitation": 2,
+    "expect": [
+      "bas",
+      "murattal"
+    ],
+    "verses": [
+      "113:1",
+      "113:2",
+      "113:3",
+      "113:4",
+      "113:5"
+    ],
+    "surah": "سورة الفلق",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Abdul_Basit_Abd_us-Samad_in_South_Africa_in_1966_%283%29_%28cropped%29.jpg",
+    "title": "﴿قل أعوذ برب الفلق﴾ | آية الصباح | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ عبد الباسط عبد الصمد\n\nمن أذكار الصباح والمساء، يستعيذ بها المسلم من كل شر.\n\n#آية_الصباح #سورة_الفلق #عبد_الباسط_عبد_الصمد #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "9-am-alafasy-114-1",
+    "at": "2026-11-26T07:00:00+03:00",
+    "when": "الخميس 26 نوفمبر · 7:00 صباحًا",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:sunrise",
+    "background_n": 1,
+    "series": "آية الصباح",
+    "reciter": "مشاري راشد العفاسي",
+    "label": "مرتّل",
+    "recitation": 7,
+    "expect": [
+      "afasy"
+    ],
+    "verses": [
+      "114:1",
+      "114:2",
+      "114:3",
+      "114:4",
+      "114:5",
+      "114:6"
+    ],
+    "surah": "سورة الناس",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/2/24/%D0%9C%D0%B8%D1%88%D0%B0%D1%80%D0%B8_%D0%A0%D0%B0%D1%88%D0%B8%D0%B4.jpg",
+    "title": "﴿قل أعوذ برب الناس﴾ | آية الصباح | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ مشاري راشد العفاسي\n\nخاتمة المصحف، ومن أذكار الصباح والمساء.\n\n#آية_الصباح #سورة_الناس #العفاسي #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "10-am-minshawi-18-13",
+    "at": "2026-11-27T07:00:00+03:00",
+    "when": "الجمعة 27 نوفمبر · 7:00 صباحًا",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:sunrise clouds",
+    "background_n": 1,
+    "series": "آية الصباح",
+    "reciter": "محمد صديق المنشاوي",
+    "label": "مرتّل",
+    "recitation": 9,
+    "expect": [
+      "minshaw",
+      "murattal"
+    ],
+    "verses": [
+      "18:13"
+    ],
+    "surah": "سورة الكهف",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Elminshwey.jpg",
+    "title": "﴿إنهم فتية آمنوا بربهم وزدناهم هدى﴾ | آية الصباح | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمد صديق المنشاوي\n\nمن سورة الكهف التي يُستحب قراءتها يوم الجمعة.\n\n#آية_الصباح #سورة_الكهف #المنشاوي #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "11-am-abdulbasit-3-173",
+    "at": "2026-11-28T07:00:00+03:00",
+    "when": "السبت 28 نوفمبر · 7:00 صباحًا",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:dawn sky",
+    "background_n": 1,
+    "series": "آية الصباح",
+    "reciter": "عبد الباسط عبد الصمد",
+    "label": "مرتّل",
+    "recitation": 2,
+    "expect": [
+      "bas",
+      "murattal"
+    ],
+    "verses": [
+      "3:173"
+    ],
+    "surah": "سورة آل عمران",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Abdul_Basit_Abd_us-Samad_in_South_Africa_in_1966_%283%29_%28cropped%29.jpg",
+    "title": "﴿حسبنا الله ونعم الوكيل﴾ | آية الصباح | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ عبد الباسط عبد الصمد\n\nكلمة قالها المؤمنون حين خُوّفوا، فزادتهم إيمانًا.\n\n#آية_الصباح #سورة_آل_عمران #عبد_الباسط_عبد_الصمد #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "12-am-alafasy-20-114",
+    "at": "2026-11-29T07:00:00+03:00",
+    "when": "الأحد 29 نوفمبر · 7:00 صباحًا",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:morning fog",
+    "background_n": 1,
+    "series": "آية الصباح",
+    "reciter": "مشاري راشد العفاسي",
+    "label": "مرتّل",
+    "recitation": 7,
+    "expect": [
+      "afasy"
+    ],
+    "verses": [
+      "20:114"
+    ],
+    "surah": "سورة طه",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/2/24/%D0%9C%D0%B8%D1%88%D0%B0%D1%80%D0%B8_%D0%A0%D0%B0%D1%88%D0%B8%D0%B4.jpg",
+    "title": "﴿وقل رب زدني علما﴾ | آية الصباح | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ مشاري راشد العفاسي\n\nدعاء أمر الله به نبيه ﷺ: أن يسأله المزيد من العلم.\n\n#آية_الصباح #سورة_طه #العفاسي #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "13-am-husary-89-1",
+    "at": "2026-11-30T07:00:00+03:00",
+    "when": "الاثنين 30 نوفمبر · 7:00 صباحًا",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:sunrise over sea",
+    "background_n": 1,
+    "series": "آية الصباح",
+    "reciter": "محمود خليل الحصري",
+    "label": "مرتّل",
+    "recitation": 6,
+    "expect": [
+      "husar",
+      "murattal"
+    ],
+    "verses": [
+      "89:1",
+      "89:2",
+      "89:3",
+      "89:4"
+    ],
+    "surah": "سورة الفجر",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/7/70/Hussary.jpg",
+    "title": "﴿والفجر وليال عشر﴾ | آية الصباح | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمود خليل الحصري\n\nأقسم الله بالفجر، بداية كل يوم جديد.\n\n#آية_الصباح #سورة_الفجر #الحصري #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "14-am-minshawi-50-39",
+    "at": "2026-12-01T07:00:00+03:00",
+    "when": "الثلاثاء 1 ديسمبر · 7:00 صباحًا",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:sunrise mountains",
+    "background_n": 1,
+    "series": "آية الصباح",
+    "reciter": "محمد صديق المنشاوي",
+    "label": "مرتّل",
+    "recitation": 9,
+    "expect": [
+      "minshaw",
+      "murattal"
+    ],
+    "verses": [
+      "50:39"
+    ],
+    "surah": "سورة ق",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Elminshwey.jpg",
+    "title": "﴿وسبح بحمد ربك قبل طلوع الشمس﴾ | آية الصباح | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمد صديق المنشاوي\n\nالتسبيح في أول النهار وآخره.\n\n#آية_الصباح #سورة_ق #المنشاوي #قرآن_كريم #CairoQuran"
+  }
+]

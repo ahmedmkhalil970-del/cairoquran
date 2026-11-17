@@ -1,0 +1,414 @@
+[
+  {
+    "id": "1-am-alafasy-12-87",
+    "at": "2026-12-02T07:00:00+03:00",
+    "when": "الأربعاء 2 ديسمبر · 7:00 صباحًا",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:morning sun field",
+    "background_n": 1,
+    "series": "آية الصباح",
+    "reciter": "مشاري راشد العفاسي",
+    "label": "مرتّل",
+    "recitation": 7,
+    "expect": [
+      "afasy"
+    ],
+    "verses": [
+      "12:87"
+    ],
+    "surah": "سورة يوسف",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/2/24/%D0%9C%D0%B8%D1%88%D0%B0%D1%80%D0%B8_%D0%A0%D0%B0%D1%88%D0%B8%D0%B4.jpg",
+    "title": "﴿ولا تيأسوا من روح الله﴾ | آية الصباح | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ مشاري راشد العفاسي\n\nرجاء لا ينقطع مهما طال الانتظار.\n\n#آية_الصباح #سورة_يوسف #العفاسي #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "2-pm-alafasy-2-216",
+    "at": "2026-12-02T21:00:00+03:00",
+    "when": "الأربعاء 2 ديسمبر · 9:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:sunset",
+    "background_n": 0,
+    "series": "آية وتدبّر",
+    "reciter": "مشاري راشد العفاسي",
+    "label": "مرتّل",
+    "recitation": 7,
+    "expect": [
+      "afasy"
+    ],
+    "verses": [
+      "2:216"
+    ],
+    "surah": "سورة البقرة",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/2/24/%D0%9C%D0%B8%D1%88%D0%B0%D1%80%D0%B8_%D0%A0%D0%B0%D1%88%D0%B8%D0%B4.jpg",
+    "title": "﴿وعسى أن تكرهوا شيئا وهو خير لكم﴾ | آية وتدبّر | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ مشاري راشد العفاسي\n\nقد يكون الخير فيما نكره، والله يعلم ما لا نعلم.\n\n#آية_وتدبّر #سورة_البقرة #العفاسي #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "3-am-abdulbasit-76-25",
+    "at": "2026-12-03T07:00:00+03:00",
+    "when": "الخميس 3 ديسمبر · 7:00 صباحًا",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:sun rays clouds",
+    "background_n": 1,
+    "series": "آية الصباح",
+    "reciter": "عبد الباسط عبد الصمد",
+    "label": "مرتّل",
+    "recitation": 2,
+    "expect": [
+      "bas",
+      "murattal"
+    ],
+    "verses": [
+      "76:25",
+      "76:26"
+    ],
+    "surah": "سورة الإنسان",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Abdul_Basit_Abd_us-Samad_in_South_Africa_in_1966_%283%29_%28cropped%29.jpg",
+    "title": "﴿واذكر اسم ربك بكرة وأصيلا﴾ | آية الصباح | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ عبد الباسط عبد الصمد\n\nذكر الله في الصباح والمساء، والسجود له في الليل.\n\n#آية_الصباح #سورة_الإنسان #عبد_الباسط_عبد_الصمد #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "4-pm-minshawi-59-22",
+    "at": "2026-12-03T21:00:00+03:00",
+    "when": "الخميس 3 ديسمبر · 9:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:sunset sea",
+    "background_n": 0,
+    "series": "من أذكار المساء",
+    "reciter": "محمد صديق المنشاوي",
+    "label": "مرتّل",
+    "recitation": 9,
+    "expect": [
+      "minshaw",
+      "murattal"
+    ],
+    "verses": [
+      "59:22"
+    ],
+    "surah": "سورة الحشر",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Elminshwey.jpg",
+    "title": "﴿هو الله الذي لا إله إلا هو﴾ | من أذكار المساء | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمد صديق المنشاوي\n\nمن أواخر سورة الحشر، وفيها من أسماء الله الحسنى.\n\n#من_أذكار_المساء #سورة_الحشر #المنشاوي #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "5-am-husary-62-9",
+    "at": "2026-12-04T07:00:00+03:00",
+    "when": "الجمعة 4 ديسمبر · 7:00 صباحًا",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:sunrise",
+    "background_n": 2,
+    "series": "آية الصباح",
+    "reciter": "محمود خليل الحصري",
+    "label": "مرتّل",
+    "recitation": 6,
+    "expect": [
+      "husar",
+      "murattal"
+    ],
+    "verses": [
+      "62:9"
+    ],
+    "surah": "سورة الجمعة",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/7/70/Hussary.jpg",
+    "title": "﴿إذا نودي للصلاة من يوم الجمعة﴾ | آية الصباح | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمود خليل الحصري\n\nنداء الجمعة: سعي إلى ذكر الله وترك للبيع.\n\n#آية_الصباح #سورة_الجمعة #الحصري #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "6-pm-abdulbasit-18-45",
+    "at": "2026-12-04T21:00:00+03:00",
+    "when": "الجمعة 4 ديسمبر · 9:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:night sky stars",
+    "background_n": 0,
+    "series": "جمعة مباركة",
+    "reciter": "عبد الباسط عبد الصمد",
+    "label": "مرتّل",
+    "recitation": 2,
+    "expect": [
+      "bas",
+      "murattal"
+    ],
+    "verses": [
+      "18:45"
+    ],
+    "surah": "سورة الكهف",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Abdul_Basit_Abd_us-Samad_in_South_Africa_in_1966_%283%29_%28cropped%29.jpg",
+    "title": "﴿واضرب لهم مثل الحياة الدنيا﴾ | جمعة مباركة | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ عبد الباسط عبد الصمد\n\nالدنيا كنبات أخضر يذهب سريعًا.\n\n#جمعة_مباركة #سورة_الكهف #عبد_الباسط_عبد_الصمد #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "7-am-minshawi-87-1",
+    "at": "2026-12-05T07:00:00+03:00",
+    "when": "السبت 5 ديسمبر · 7:00 صباحًا",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:sunrise clouds",
+    "background_n": 2,
+    "series": "آية الصباح",
+    "reciter": "محمد صديق المنشاوي",
+    "label": "مرتّل",
+    "recitation": 9,
+    "expect": [
+      "minshaw",
+      "murattal"
+    ],
+    "verses": [
+      "87:1",
+      "87:2",
+      "87:3",
+      "87:4",
+      "87:5"
+    ],
+    "surah": "سورة الأعلى",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Elminshwey.jpg",
+    "title": "﴿سبح اسم ربك الأعلى﴾ | آية الصباح | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمد صديق المنشاوي\n\nسورة كان النبي ﷺ يقرؤها في الجمعة والعيدين.\n\n#آية_الصباح #سورة_الأعلى #المنشاوي #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "8-pm-husary-39-10",
+    "at": "2026-12-05T21:00:00+03:00",
+    "when": "السبت 5 ديسمبر · 9:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:milky way",
+    "background_n": 0,
+    "series": "آية وتدبّر",
+    "reciter": "محمود خليل الحصري",
+    "label": "مرتّل",
+    "recitation": 6,
+    "expect": [
+      "husar",
+      "murattal"
+    ],
+    "verses": [
+      "39:10"
+    ],
+    "surah": "سورة الزمر",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/7/70/Hussary.jpg",
+    "title": "﴿إنما يوفى الصابرون أجرهم بغير حساب﴾ | آية وتدبّر | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمود خليل الحصري\n\nأجر الصابرين بلا حدود.\n\n#آية_وتدبّر #سورة_الزمر #الحصري #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "9-am-alafasy-21-89",
+    "at": "2026-12-06T07:00:00+03:00",
+    "when": "الأحد 6 ديسمبر · 7:00 صباحًا",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:dawn sky",
+    "background_n": 2,
+    "series": "آية الصباح",
+    "reciter": "مشاري راشد العفاسي",
+    "label": "مرتّل",
+    "recitation": 7,
+    "expect": [
+      "afasy"
+    ],
+    "verses": [
+      "21:89"
+    ],
+    "surah": "سورة الأنبياء",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/2/24/%D0%9C%D0%B8%D1%88%D0%B0%D1%80%D0%B8_%D0%A0%D0%B0%D1%88%D0%B8%D0%B4.jpg",
+    "title": "﴿رب لا تذرني فردا وأنت خير الوارثين﴾ | آية الصباح | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ مشاري راشد العفاسي\n\nدعاء زكريا عليه السلام، فاستجاب الله له.\n\n#آية_الصباح #سورة_الأنبياء #العفاسي #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "10-pm-alafasy-3-38",
+    "at": "2026-12-06T21:00:00+03:00",
+    "when": "الأحد 6 ديسمبر · 9:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:desert sunset",
+    "background_n": 0,
+    "series": "دعاء من القرآن",
+    "reciter": "مشاري راشد العفاسي",
+    "label": "مرتّل",
+    "recitation": 7,
+    "expect": [
+      "afasy"
+    ],
+    "verses": [
+      "3:38"
+    ],
+    "surah": "سورة آل عمران",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/2/24/%D0%9C%D0%B8%D1%88%D0%B0%D1%80%D0%B8_%D0%A0%D0%B0%D1%88%D0%B8%D0%B4.jpg",
+    "title": "﴿رب هب لي من لدنك ذرية طيبة﴾ | دعاء من القرآن | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ مشاري راشد العفاسي\n\nدعاء زكريا عليه السلام.\n\n#دعاء_من_القرآن #سورة_آل_عمران #العفاسي #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "11-am-husary-103-1",
+    "at": "2026-12-07T07:00:00+03:00",
+    "when": "الاثنين 7 ديسمبر · 7:00 صباحًا",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:morning fog",
+    "background_n": 2,
+    "series": "آية الصباح",
+    "reciter": "محمود خليل الحصري",
+    "label": "مرتّل",
+    "recitation": 6,
+    "expect": [
+      "husar",
+      "murattal"
+    ],
+    "verses": [
+      "103:1",
+      "103:2",
+      "103:3"
+    ],
+    "surah": "سورة العصر",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/7/70/Hussary.jpg",
+    "title": "﴿والعصر﴾ | آية الصباح | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمود خليل الحصري\n\nسورة قصيرة تجمع طريق النجاة: الإيمان والعمل الصالح والتواصي بالحق والصبر.\n\n#آية_الصباح #سورة_العصر #الحصري #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "12-pm-husary-19-1",
+    "at": "2026-12-07T21:00:00+03:00",
+    "when": "الاثنين 7 ديسمبر · 9:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:dusk clouds",
+    "background_n": 0,
+    "series": "قارئ الأسبوع",
+    "reciter": "محمود خليل الحصري",
+    "label": "مرتّل",
+    "recitation": 6,
+    "expect": [
+      "husar",
+      "murattal"
+    ],
+    "verses": [
+      "19:1",
+      "19:2",
+      "19:3",
+      "19:4"
+    ],
+    "surah": "سورة مريم",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/7/70/Hussary.jpg",
+    "title": "﴿كهيعص ذكر رحمة ربك عبده زكريا﴾ | قارئ الأسبوع | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمود خليل الحصري\n\nمطلع سورة مريم.\n\n#قارئ_الأسبوع #سورة_مريم #الحصري #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "13-am-abdulbasit-16-97",
+    "at": "2026-12-08T07:00:00+03:00",
+    "when": "الثلاثاء 8 ديسمبر · 7:00 صباحًا",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:sunrise over sea",
+    "background_n": 2,
+    "series": "آية الصباح",
+    "reciter": "عبد الباسط عبد الصمد",
+    "label": "مرتّل",
+    "recitation": 2,
+    "expect": [
+      "bas",
+      "murattal"
+    ],
+    "verses": [
+      "16:97"
+    ],
+    "surah": "سورة النحل",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Abdul_Basit_Abd_us-Samad_in_South_Africa_in_1966_%283%29_%28cropped%29.jpg",
+    "title": "﴿من عمل صالحا من ذكر أو أنثى وهو مؤمن﴾ | آية الصباح | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ عبد الباسط عبد الصمد\n\nوعد بالحياة الطيبة لكل من آمن وعمل صالحًا.\n\n#آية_الصباح #سورة_النحل #عبد_الباسط_عبد_الصمد #قرآن_كريم #CairoQuran"
+  },
+  {
+    "id": "14-pm-minshawi-22-46",
+    "at": "2026-12-08T21:00:00+03:00",
+    "when": "الثلاثاء 8 ديسمبر · 9:00 مساءً",
+    "type": "reel",
+    "platforms": [
+      "facebook",
+      "instagram",
+      "youtube"
+    ],
+    "style": "place",
+    "background": "commons:full moon",
+    "background_n": 0,
+    "series": "آية وتدبّر",
+    "reciter": "محمد صديق المنشاوي",
+    "label": "مرتّل",
+    "recitation": 9,
+    "expect": [
+      "minshaw",
+      "murattal"
+    ],
+    "verses": [
+      "22:46"
+    ],
+    "surah": "سورة الحج",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Elminshwey.jpg",
+    "title": "﴿فإنها لا تعمى الأبصار ولكن تعمى القلوب﴾ | آية وتدبّر | Cairo Quran",
+    "caption": "{{verse}}\n\n{{ref}}\nبصوت الشيخ محمد صديق المنشاوي\n\nالعمى الحقيقي عمى القلب عن الحق.\n\n#آية_وتدبّر #سورة_الحج #المنشاوي #قرآن_كريم #CairoQuran"
+  }
+]
