@@ -48,6 +48,12 @@
     settings: 'الإعدادات',
     adhanItem: function (on) { return on ? 'تنبيه الصلاة: مفعّل ✓' : 'تنبيه الصلاة: متوقف'; },
     adhkarItem: function (on) { return on ? 'شريط الأذكار: ظاهر ✓' : 'شريط الأذكار: مخفي'; },
+    photosItem: function (name) { return 'صور الخلفية: ' + name; },
+    pickerPhotos: 'صور البلدان',
+    pickerPhotosSub: 'اختر بلدًا لتعرض الخلفية صور معالمه وحده، أو عُد إلى كل البلدان',
+    allGroup: 'الكل', allCountries: 'كل البلدان',
+    countryItem: function (name, n) { return name + ' (' + n + ')'; },
+    regions: { arab: 'العالم العربي', asia: 'آسيا', europe: 'أوروبا', africa: 'أفريقيا', americas: 'الأمريكتان', oceania: 'أوقيانوسيا' },
     langItem: function (nextName) { return 'اللغة: العربية · ' + nextName; },
     tvChipStation: '▲ تغيير المحطة', tvChipCity: '▼ تغيير المدينة',
 

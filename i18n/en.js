@@ -99,6 +99,12 @@
     settings: 'Settings',
     adhanItem: function (on) { return on ? 'Prayer alert: on ✓' : 'Prayer alert: off'; },
     adhkarItem: function (on) { return on ? 'Adhkar ticker: shown ✓' : 'Adhkar ticker: hidden'; },
+    photosItem: function (name) { return 'Background photos: ' + name; },
+    pickerPhotos: 'Photos by country',
+    pickerPhotosSub: 'Pick a country to show only its landmarks in the background, or go back to all countries',
+    allGroup: 'All', allCountries: 'All countries',
+    countryItem: function (name, n) { return name + ' (' + n + ')'; },
+    regions: { arab: 'Arab world', asia: 'Asia', europe: 'Europe', africa: 'Africa', americas: 'Americas', oceania: 'Oceania' },
     langItem: function (nextName) { return 'Language: English · ' + nextName; },
     tvChipStation: '▲ Change station', tvChipCity: '▼ Change city',
 
