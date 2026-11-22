@@ -131,6 +131,10 @@ body.idle{cursor:none}
   .station h1{font-size:7vw}.station .from{font-size:4vw}.status{font-size:3vw}.dot{width:2vw;height:2vw}
   .time{font-size:11vw}.time small{font-size:4vw}.dates{font-size:3vw}.wx{font-size:3vw}
   .verse{max-width:92vw}.verse p{font-size:7vw}.verse cite{font-size:3.2vw}
+  /* Phones: the prayer times and the buttons always come first. The verse takes only the room left over and steps
+     aside when it does not fit; on very short screens the page scrolls instead of cutting the bottom off. */
+  .frame{grid-template-rows:auto minmax(0,1fr) auto auto;overflow-y:auto;overscroll-behavior:contain;pointer-events:auto}
+  .verse.nofit{visibility:hidden}
   .prayers{grid-template-columns:repeat(3,1fr)}.p-head{grid-column:1/-1;border:0;flex-direction:row;justify-content:space-between}
   .p-head b,.p-head span{font-size:3.4vw}.p .n{font-size:3vw}.p .t{font-size:4.4vw}
   .gate-title{font-size:6vw}.gate-hint{font-size:3.4vw}.sig{font-size:3vw}
@@ -1092,6 +1096,18 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
     $('verseRef').textContent = LANG !== 'ar' && tr ? tr.r : ref;
     $('verseTr').textContent = LANG !== 'ar' && tr ? tr.t : '';
     $('verseTr').hidden = !(LANG !== 'ar' && tr);
+  }
+  // Phones: hide the verse when it would run into the adhkar or the prayer times (checked whenever any of them resizes).
+  const PHONE = window.matchMedia ? matchMedia('(max-width:700px)') : null;
+  function verseFit() {
+    const v = $('verse'), b = document.querySelector('.frame > .bottom');
+    if (!v || !b) return;
+    v.classList.toggle('nofit', !!(PHONE && PHONE.matches) && v.getBoundingClientRect().bottom > b.getBoundingClientRect().top - 6);
+  }
+  if (window.ResizeObserver) {
+    const ro = new ResizeObserver(verseFit);
+    ['verse', 'verseText', 'verseTr'].forEach(id => $(id) && ro.observe($(id)));
+    ['.frame', '.frame > .bottom', '.frame > .sig'].forEach(q => { const el = document.querySelector(q); if (el) ro.observe(el); });
   }
   function nextVerse() {
     const v = $('verse');
