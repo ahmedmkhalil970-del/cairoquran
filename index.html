@@ -1256,28 +1256,38 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
   const REGIONS = ['arab', 'asia', 'europe', 'africa', 'americas', 'oceania'];   // Egypt opens the Arab world
   const countryCount = {};
   PLACES.forEach(x => { if (x.c) countryCount[x.c] = (countryCount[x.c] || 0) + 1; });
-  let PHOTO_C = '';
-  try { PHOTO_C = localStorage.getItem('qtv-photos') || ''; } catch (e) {}
-  if (!countryCount[PHOTO_C] || !COUNTRIES[PHOTO_C]) PHOTO_C = '';
+  // the chosen countries (none = all countries, the default). Saved as "JP,TR"; an older single code still reads.
+  let PHOTO_SET = new Set();
+  try { (localStorage.getItem('qtv-photos') || '').split(',').forEach(c => { if (countryCount[c] && COUNTRIES[c]) PHOTO_SET.add(c); }); } catch (e) {}
   const countryLabel = c => (COUNTRIES[c] && (COUNTRIES[c][LANG] || COUNTRIES[c].en)) || c;
-  function activePlaces() { return PHOTO_C ? PLACES.filter(x => x.c === PHOTO_C) : PLACES; }
-  function photosLabel() { return t('photosItem', PHOTO_C ? countryLabel(PHOTO_C) : t('allCountries')); }
+  function activePlaces() { return PHOTO_SET.size ? PLACES.filter(x => PHOTO_SET.has(x.c)) : PLACES; }
+  function photosLabel() {
+    const n = PHOTO_SET.size;
+    return t('photosItem', !n ? t('allCountries') : n === 1 ? countryLabel([...PHOTO_SET][0]) : t('nCountries', n, num(n)));
+  }
+  const countryText = c => (PHOTO_SET.has(c) ? '✓ ' : '') + t('countryItem', countryLabel(c), num(countryCount[c]));
   function photoSections() {
-    const item = (c, label, n) => ({ id: 'c-' + (c || 'all'), label: t('countryItem', label, num(n)), cur: c === PHOTO_C, choose: () => choosePhotoCountry(c) });
-    const out = [{ title: t('allGroup'), items: [item('', t('allCountries'), PLACES.length)] }];
+    const out = [{ title: t('allGroup'), items: [
+      { id: 'c-all', label: t('countryItem', t('allCountries'), num(PLACES.length)), cur: !PHOTO_SET.size, choose: () => { PHOTO_SET.clear(); savePhotoSet(); closePicker(); } },
+      { id: 'c-done', label: t('photosDone'), cur: false, choose: () => closePicker() }] }];
     REGIONS.forEach(r => {
       const codes = Object.keys(countryCount).filter(c => COUNTRIES[c] && (COUNTRIES[c].r === r || (r === 'arab' && COUNTRIES[c].r === 'egypt')))
         .sort((a, b) => (b === 'EG') - (a === 'EG') || countryLabel(a).localeCompare(countryLabel(b), LANG));
-      if (codes.length) out.push({ title: tk('regions', r) || r, items: codes.map(c => item(c, countryLabel(c), countryCount[c])) });
+      if (codes.length) out.push({ title: tk('regions', r) || r, items: codes.map(c => ({ id: 'c-' + c, label: countryText(c), cur: PHOTO_SET.has(c), choose: b => toggleCountry(c, b) })) });
     });
     return out;
   }
-  function choosePhotoCountry(c) {
-    PHOTO_C = c;
-    try { c ? localStorage.setItem('qtv-photos', c) : localStorage.removeItem('qtv-photos'); } catch (e) {}
-    closePicker();
+  // a country is added or removed and the list stays open; the slideshow follows straight away
+  function toggleCountry(c, b) {
+    PHOTO_SET.has(c) ? PHOTO_SET.delete(c) : PHOTO_SET.add(c);
+    b.textContent = countryText(c); b.classList.toggle('cur', PHOTO_SET.has(c));
+    const all = pickerButtons.find(x => x.dataset.id === 'c-all'); if (all) all.classList.toggle('cur', !PHOTO_SET.size);
+    savePhotoSet();
+  }
+  function savePhotoSet() {
+    try { PHOTO_SET.size ? localStorage.setItem('qtv-photos', [...PHOTO_SET].join(',')) : localStorage.removeItem('qtv-photos'); } catch (e) {}
     order = []; oi = 0;
-    startPhotoPhase();                   // show the chosen country straight away
+    startPhotoPhase();                   // show the chosen countries straight away
   }
 
   const PHOTO_MS = 40000;          // each place stays 40 seconds
