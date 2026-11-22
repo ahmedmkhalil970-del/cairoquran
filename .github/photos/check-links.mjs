@@ -1,5 +1,6 @@
 // Monthly check of the slideshow photos: every photo in data/places.js is requested (HEAD) at the address the site
-// uses, then at the Special:FilePath fallback. Photos that fail both are listed in broken.json and broken.md.
+// uses, then at the Special:FilePath fallback. Photos that fail both are listed in broken.json and broken.md
+// (and printed as BROKEN lines in the log).
 import fs from 'node:fs';
 import vm from 'node:vm';
 
