@@ -1,0 +1,40 @@
+# Monthly check of the slideshow photos (data/places.js): every photo is requested once; if any fail, a comment listing
+# them goes to issue #4. Runs on the 1st of each month at 08:17 Kuwait time, by hand, and when the check itself changes.
+name: photo-links
+on:
+  schedule:
+    - cron: '17 5 1 * *'
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/photo-links.yml'
+      - '.github/photos/check-links.mjs'
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: photo-links
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check every photo
+        run: node .github/photos/check-links.mjs
+      - name: Report broken photos to issue 4
+        if: ${{ github.event_name != 'push' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -s broken.md ]; then gh issue comment 4 -F broken.md -R "$GITHUB_REPOSITORY"; else echo "All photos load."; fi
+      - name: Keep the result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: photo-links
+          path: broken.*
+          if-no-files-found: ignore
