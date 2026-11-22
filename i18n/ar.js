@@ -48,6 +48,8 @@
     settings: 'الإعدادات',
     adhanItem: function (on) { return on ? 'تنبيه الصلاة: مفعّل ✓' : 'تنبيه الصلاة: متوقف'; },
     adhkarItem: function (on) { return on ? 'شريط الأذكار: ظاهر ✓' : 'شريط الأذكار: مخفي'; },
+    sleepItem: function (n) { return n ? 'مؤقّت الإيقاف: ' + n + ' دقيقة ✓' : 'مؤقّت الإيقاف: متوقف'; },
+    sleepLeft: function (s) { return 'يتوقف بعد ' + s; },
     photosItem: function (name) { return 'صور الخلفية: ' + name; },
     pickerPhotos: 'صور البلدان',
     qiblaChip: 'القبلة',

@@ -103,6 +103,8 @@
     settings: 'Settings',
     adhanItem: function (on) { return on ? 'Prayer alert: on ✓' : 'Prayer alert: off'; },
     adhkarItem: function (on) { return on ? 'Adhkar ticker: shown ✓' : 'Adhkar ticker: hidden'; },
+    sleepItem: function (n) { return n ? 'Sleep timer: ' + n + ' min ✓' : 'Sleep timer: off'; },
+    sleepLeft: function (s) { return 'stops in ' + s; },
     photosItem: function (name) { return 'Background photos: ' + name; },
     pickerPhotos: 'Photos by country',
     qiblaChip: 'Qibla',

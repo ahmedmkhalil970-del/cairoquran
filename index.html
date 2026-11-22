@@ -81,6 +81,7 @@ body.idle{cursor:none}
 .status{display:inline-flex;align-items:center;gap:.7vw;margin-top:1.6vh;padding:.6vh 1.2vw;border-radius:999px;
   background:var(--glass);border:1px solid var(--edge);font-size:1.15vw;color:var(--ink-soft);backdrop-filter:blur(6px)}
 .dot{width:.75vw;height:.75vw;border-radius:50%;background:var(--ink-faint)}
+.sleep-left{color:var(--gold);white-space:nowrap}.sleep-left::before{content:"·";margin-inline-end:.6vw;color:var(--ink-faint)}
 .status[data-s="live"] .dot{background:var(--live);box-shadow:0 0 0 0 rgba(95,211,141,.6);animation:pulse 2s infinite}
 .status[data-s="wait"] .dot{background:var(--warn)}
 @keyframes pulse{70%{box-shadow:0 0 0 .8vw rgba(95,211,141,0)}100%{box-shadow:0 0 0 0 rgba(95,211,141,0)}}
@@ -406,7 +407,7 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
       <div class="from" data-i18n="tagline">قرآن · أذان · أذكار</div>
       <div class="now-row"><button class="now" id="nowBtn" type="button"><span class="now-k" data-i18n="now">الآن</span><b id="nowName">إذاعة القرآن الكريم · القاهرة</b><i class="chip" id="nowChip" data-i18n="chipStation">تغيير<span class="chip-x"> المحطة</span> ▾</i><em class="new-badge" id="nowNew" hidden data-i18n="newBadge">جديد</em></button><button class="stop-btn" id="stopBtn" type="button" hidden aria-label="إيقاف البث" data-i18n-attr="aria-label:stopAria"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>إيقاف</button></div>
       <div class="status-row">
-  <div class="status" id="status" data-s="idle"><span class="dot"></span><span id="statusText">جاهز للتشغيل</span></div>
+  <div class="status" id="status" data-s="idle"><span class="dot"></span><span id="statusText">جاهز للتشغيل</span><span class="sleep-left" id="sleepLeft" hidden></span></div>
         
       </div>
       <div class="dbg" id="dbg" hidden></div>
@@ -969,6 +970,8 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
       choose: b => { toggleAdhan(); b.textContent = adhanLabel(); } },
       { id: 'adhkar', label: adhkarLabel(), cur: false, keep: true,
       choose: b => { toggleAdhkar(); b.textContent = adhkarLabel(); } },
+      { id: 'sleep', label: sleepLabel(), cur: false, keep: true,
+      choose: b => { cycleSleep(); b.textContent = sleepLabel(); } },
       { id: 'photos', label: photosLabel(), cur: false, keep: true,
       choose: () => openPicker('photos') },
       { id: 'qibla', label: t('qiblaItem'), cur: false, keep: true,
@@ -1649,11 +1652,53 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
     syncPlayBtn();
     if (NATIVE) { try { NATIVE.stop(); } catch (e) {} }
     else { audio.pause(); audio.removeAttribute('src'); audio.load(); }
+    cancelSleep();
     setStatus('idle', () => tk('st', 'paused'));
     if (!NATIVE) return;                       // the website keeps the page open; the button shows play again
     gatePaused = true; showGateText();
     $('gate').classList.remove('hide');
     $('play').focus();
+  }
+  /* ---------- Sleep timer: off / 15 / 30 / 60 / 90 minutes, chosen in Settings. The radio fades out over the last
+     10 seconds and stops. Stopping the radio by hand cancels it; a prayer chime or a station change does not.
+     Not kept after a reload. ---------- */
+  const SLEEP_STEPS = [0, 15, 30, 60, 90], FADE_MS = 10000;
+  let sleepMin = 0, sleepEnd = 0, sleepTick = 0, sleepFading = false;
+  function sleepLabel() { return t('sleepItem', sleepMin ? num(sleepMin) : 0); }
+  function setVol(v) {
+    if (NATIVE) { try { if (typeof NATIVE.setVolume === 'function') NATIVE.setVolume(v); } catch (e) {} }
+    else { try { audio.volume = v; } catch (e) {} }
+  }
+  function showSleepLeft() {
+    const el = $('sleepLeft');
+    if (!sleepMin) { el.hidden = true; return; }
+    const s = Math.max(0, Math.ceil((sleepEnd - Date.now()) / 1000));
+    el.textContent = t('sleepLeft', num(Math.floor(s / 60)) + ':' + num(s % 60, 2));
+    el.hidden = false;
+  }
+  function cancelSleep() {
+    clearInterval(sleepTick); sleepTick = 0; sleepMin = 0; sleepEnd = 0;
+    if (sleepFading) { sleepFading = false; setVol(1); }
+    showSleepLeft();
+  }
+  function sleepStep() {
+    const left = sleepEnd - Date.now();
+    if (left <= 0) {
+      resumeAfterAdhan = false;                  // ended during a prayer chime: stay off afterwards
+      if (wantPlay) pause(); else cancelSleep();
+      return;
+    }
+    if (left <= FADE_MS && wantPlay) { sleepFading = true; setVol(left / FADE_MS); }
+    showSleepLeft();
+  }
+  function cycleSleep() {
+    const next = SLEEP_STEPS[(SLEEP_STEPS.indexOf(sleepMin) + 1) % SLEEP_STEPS.length];
+    cancelSleep();
+    if (!next) return;
+    sleepMin = next; sleepEnd = Date.now() + next * 60000;
+    sleepTick = setInterval(sleepStep, 250);
+    showSleepLeft();
+    if (!wantPlay && !chimePlaying) start();     // a sleep timer means "play, then stop"
   }
   $('play').addEventListener('click', () => (wantPlay ? pause() : start()));
   $('stopBtn').addEventListener('click', () => (wantPlay ? pause() : start()));
