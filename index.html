@@ -253,6 +253,17 @@ body.has-adhkar .follow{bottom:27vh}
 .share-link span{flex:1;text-align:left;font-size:15px;color:var(--ink-soft);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .share-link button{all:unset;cursor:pointer;padding:7px 14px;border-radius:9px;font-size:14px;background:var(--gold);color:#1a1405;font-weight:600}
 .share-close{all:unset;cursor:pointer;margin-top:14px;font-size:14px;color:var(--ink-faint);padding:6px 14px;border-radius:8px}
+/* Qibla compass */
+.qibla-dial{position:relative;width:min(64vw,260px);aspect-ratio:1;margin:14px auto 6px}
+.qibla-dial svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.qibla-rose,.qibla-needle{transition:transform .25s ease-out;transform-origin:50% 50%}
+.qibla-rose text{font-size:13px;fill:var(--ink-soft);font-family:var(--f-body,inherit);text-anchor:middle;dominant-baseline:central}
+.qibla-needle .arm{fill:var(--gold)}.qibla-dial.on .qibla-needle .arm{fill:#5fd08a}
+.qibla-deg{font-size:28px;font-weight:700}.qibla-note{margin:8px 0 4px!important;font-size:13px!important;line-height:1.7}
+.qibla-btns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+.qibla-btns button{all:unset;cursor:pointer;padding:9px 16px;border-radius:10px;font-size:14px;background:rgba(253,246,233,.08);border:1px solid var(--edge)}
+.qibla-btns button.main{background:var(--gold);color:#1a1405;font-weight:600;border-color:transparent}
+.qibla-btns button:focus-visible,.qibla-card .share-close:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .share-close:hover,.share-close:focus-visible{color:var(--ink)}
 @media (max-width:700px){.gate-share{font-size:3.6vw;padding:1vh 4vw}.share-btn{font-size:3.2vw;padding:.6vh 2.6vw;gap:1.4vw}.share-btn svg{width:3.2vw;height:3.2vw}}
 .steps{margin:0;padding:0 1.4em 0 0;text-align:right;display:flex;flex-direction:column;gap:10px;font-size:15px;line-height:1.7;color:var(--ink)}
@@ -470,6 +481,37 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
     <p data-i18n="contactIntro">لاقتراح قارئ أو مدينة، أو لو واجهتك أي مشكلة، يسعدنا نسمع منك.</p>
     <div class="share-link"><span id="contactAddr"></span><button type="button" id="contactCopy" data-i18n="contactCopy">نسخ</button></div>
     <a class="mail-go" id="contactSend" href="#" data-i18n="contactSend">أرسل رسالة</a>
+    <button class="share-close" type="button" data-close data-i18n="close">إغلاق</button>
+  </div>
+</div>
+
+<div class="share info" id="qiblaPanel" hidden role="dialog" aria-modal="true" aria-labelledby="qiblaTitle">
+  <div class="share-card qibla-card">
+    <h2 id="qiblaTitle" data-i18n="qiblaTitle">اتجاه القبلة</h2>
+    <p id="qiblaPlace"></p>
+    <div class="qibla-dial" id="qiblaDial">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <g class="qibla-rose" id="qiblaRose">
+          <circle cx="100" cy="100" r="92" fill="rgba(253,246,233,.04)" stroke="rgba(232,194,122,.45)" stroke-width="1.5"/>
+          <g stroke="rgba(253,246,233,.35)" stroke-width="1.2" id="qiblaTicks"></g>
+          <text x="100" y="22" id="qN"></text><text x="178" y="100" id="qE"></text><text x="100" y="178" id="qS"></text><text x="22" y="100" id="qW"></text>
+          <path d="M100 30 L95 40 L105 40 Z" fill="#e07a6a"/>
+        </g>
+        <g class="qibla-needle" id="qiblaNeedle">
+          <path class="arm" d="M100 100 L94 98 L100 34 L106 98 Z"/>
+          <rect x="91" y="18" width="18" height="18" rx="2" fill="#141414" stroke="var(--gold)" stroke-width="1.5"/>
+          <rect x="91" y="22" width="18" height="3" fill="var(--gold)"/>
+          <circle cx="100" cy="100" r="6" fill="var(--gold)"/>
+        </g>
+      </svg>
+    </div>
+    <div class="qibla-deg" id="qiblaDeg"></div>
+    <p class="qibla-note" id="qiblaDist"></p>
+    <p class="qibla-note" id="qiblaNote"></p>
+    <div class="qibla-btns">
+      <button type="button" class="main" id="qiblaLive" hidden data-i18n="qiblaLive">تفعيل البوصلة</button>
+      <button type="button" id="qiblaGps" hidden data-i18n="qiblaGps">حدّد موقعي بدقة</button>
+    </div>
     <button class="share-close" type="button" data-close data-i18n="close">إغلاق</button>
   </div>
 </div>
@@ -906,6 +948,8 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
       choose: b => { toggleAdhkar(); b.textContent = adhkarLabel(); } },
       { id: 'photos', label: photosLabel(), cur: false, keep: true,
       choose: () => openPicker('photos') },
+      { id: 'qibla', label: t('qiblaItem'), cur: false, keep: true,
+      choose: () => { closePicker(); openQibla(); } },
       { id: 'lang', label: langLabel(), cur: false, keep: true,
       choose: () => { setLang(nextLang()); } }] });
     return out;
@@ -1792,6 +1836,84 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
     el.addEventListener('click', e => { if (e.target === el || e.target.hasAttribute('data-close')) closeInfo(); });
   });
   $('tvBtn').addEventListener('click', () => openInfo('tvPanel'));
+
+  /* ---------- Qibla compass: bearing from true north for the selected city (or the phone's own position);
+     on phones with a compass the dial turns with the phone ---------- */
+  const KAABA = [21.4225241, 39.8261818];
+  let qPos = null, qHeading = null, qListening = false, qBearing = 0, qTimer = null;
+  (function () {                                   // the compass ticks, drawn once
+    let h = '';
+    for (let a = 0; a < 360; a += 15) {
+      const r1 = a % 90 ? 84 : 80, rad = a * Math.PI / 180;
+      h += '<line x1="' + (100 + r1 * Math.sin(rad)).toFixed(1) + '" y1="' + (100 - r1 * Math.cos(rad)).toFixed(1) +
+        '" x2="' + (100 + 90 * Math.sin(rad)).toFixed(1) + '" y2="' + (100 - 90 * Math.cos(rad)).toFixed(1) + '"/>';
+    }
+    $('qiblaTicks').innerHTML = h;
+  })();
+  function qiblaDraw() {
+    const turn = qHeading == null ? 0 : qHeading;
+    $('qiblaRose').style.transform = 'rotate(' + (-turn) + 'deg)';
+    const rel = ((qBearing - turn) % 360 + 360) % 360;
+    $('qiblaNeedle').style.transform = 'rotate(' + rel + 'deg)';
+    const facing = qHeading != null && (rel < 5 || rel > 355);
+    $('qiblaDial').classList.toggle('on', facing);
+    if (qHeading != null) $('qiblaNote').textContent = facing ? t('qiblaOn') : t('qiblaTurn');
+  }
+  function qiblaFill() {
+    const p = qPos || { lat: CITY.lat, lng: CITY.lng };
+    qBearing = adhan.Qibla(new adhan.Coordinates(p.lat, p.lng));
+    const deg = Math.round(qBearing) % 360, dirs = t('qiblaDirs') || [];
+    $('qiblaPlace').textContent = qPos ? t('qiblaMine') : t('qiblaFrom', cityName(CITY));
+    $('qiblaDeg').textContent = t('qiblaDeg', num(deg), dirs[Math.round(deg / 45) % 8] || '');
+    $('qiblaDist').textContent = t('qiblaDist', num(Math.round(distKm(p.lat, p.lng, KAABA[0], KAABA[1]))));
+    ['N', 'E', 'S', 'W'].forEach((k, i) => { $('q' + k).textContent = (t('qiblaCardinal') || 'NESW')[i]; });
+    if (qHeading == null) $('qiblaNote').textContent = TOUCH ? t('qiblaHint') : t('qiblaStatic');
+    qiblaDraw();
+  }
+  function onOrient(e) {
+    let h = null;
+    if (typeof e.webkitCompassHeading === 'number') h = e.webkitCompassHeading;          // iPhone
+    else if (e.absolute && typeof e.alpha === 'number') h = 360 - e.alpha;                 // Android
+    if (h == null || isNaN(h)) return;
+    const sa = (screen.orientation && screen.orientation.angle) || window.orientation || 0;
+    qHeading = ((h + sa) % 360 + 360) % 360;
+    clearTimeout(qTimer); $('qiblaLive').hidden = true;
+    qiblaDraw();
+  }
+  function qiblaListen() {
+    if (qListening) return;
+    qListening = true;
+    window.addEventListener('deviceorientationabsolute', onOrient);
+    window.addEventListener('deviceorientation', onOrient);
+    clearTimeout(qTimer);
+    qTimer = setTimeout(() => { if (qHeading == null) $('qiblaNote').textContent = t('qiblaNoSensor'); }, 2500);
+  }
+  function qiblaStop() {
+    qListening = false; qHeading = null; clearTimeout(qTimer);
+    window.removeEventListener('deviceorientationabsolute', onOrient);
+    window.removeEventListener('deviceorientation', onOrient);
+  }
+  function openQibla() {
+    qHeading = null;
+    const iosAsk = TOUCH && window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === 'function';
+    $('qiblaLive').hidden = !iosAsk;
+    $('qiblaGps').hidden = !(TOUCH && !NATIVE && navigator.geolocation);
+    qiblaFill();
+    openInfo('qiblaPanel');
+    if (TOUCH && window.DeviceOrientationEvent) qiblaListen();   // Android sends headings at once; iPhone after the button grants access
+    trackEvent('qibla', 'اتجاه القبلة');
+  }
+  $('qiblaLive').addEventListener('click', () => {
+    DeviceOrientationEvent.requestPermission().then(r => { if (r === 'granted') qiblaListen(); else $('qiblaNote').textContent = t('qiblaNoSensor'); })
+      .catch(() => { $('qiblaNote').textContent = t('qiblaNoSensor'); });
+  });
+  $('qiblaGps').addEventListener('click', () => {
+    $('qiblaNote').textContent = t('qiblaLocating');
+    navigator.geolocation.getCurrentPosition(pos => { qPos = { lat: pos.coords.latitude, lng: pos.coords.longitude }; $('qiblaGps').hidden = true; qiblaFill(); },
+      () => { $('qiblaNote').textContent = t('qiblaNoGps'); }, { enableHighAccuracy: true, timeout: 15000, maximumAge: 60000 });
+  });
+  // stop listening when the panel closes
+  new MutationObserver(() => { if ($('qiblaPanel').hidden) qiblaStop(); }).observe($('qiblaPanel'), { attributes: true, attributeFilter: ['hidden'] });
 
   /* ---------- Home-screen app (add to home screen) ---------- */
   const STANDALONE = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
