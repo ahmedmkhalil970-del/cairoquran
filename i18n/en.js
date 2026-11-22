@@ -101,6 +101,7 @@
     adhkarItem: function (on) { return on ? 'Adhkar ticker: shown ✓' : 'Adhkar ticker: hidden'; },
     photosItem: function (name) { return 'Background photos: ' + name; },
     pickerPhotos: 'Photos by country',
+    qiblaChip: 'Qibla',
     qiblaItem: 'Qibla direction', qiblaTitle: 'Qibla direction',
     qiblaFrom: function (name) { return 'From ' + name; },
     qiblaMine: 'From your current position',

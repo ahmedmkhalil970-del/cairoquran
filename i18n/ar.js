@@ -50,6 +50,7 @@
     adhkarItem: function (on) { return on ? 'شريط الأذكار: ظاهر ✓' : 'شريط الأذكار: مخفي'; },
     photosItem: function (name) { return 'صور الخلفية: ' + name; },
     pickerPhotos: 'صور البلدان',
+    qiblaChip: 'القبلة',
     qiblaItem: 'اتجاه القبلة', qiblaTitle: 'اتجاه القبلة',
     qiblaFrom: function (name) { return 'من ' + name; },
     qiblaMine: 'من موقعك الحالي',
