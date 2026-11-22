@@ -105,6 +105,7 @@
     adhkarItem: function (on) { return on ? 'Adhkar ticker: shown ✓' : 'Adhkar ticker: hidden'; },
     sleepItem: function (n) { return n ? 'Sleep timer: ' + n + ' min ✓' : 'Sleep timer: off'; },
     sleepLeft: function (s) { return 'stops in ' + s; },
+    privacyLink: 'Privacy', termsLink: 'Terms',
     sleepShort: 'Timer', sleepAria: 'Sleep timer: each press steps through 15, 30, 60 and 90 minutes, then off',
     photosItem: function (name) { return 'Background photos: ' + name; },
     pickerPhotos: 'Photos by country',

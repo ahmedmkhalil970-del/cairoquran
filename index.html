@@ -69,12 +69,14 @@ body.idle{cursor:none}
   background:linear-gradient(to bottom,rgba(3,5,14,.55) 0%,rgba(3,5,14,0) 26%,rgba(3,5,14,0) 62%,rgba(3,5,14,.7) 100%)}
 
 /* Frame */
-.frame{position:fixed;inset:0;display:grid;grid-template-rows:auto 1fr auto auto;
+.frame{position:fixed;inset:0;display:grid;grid-template-rows:auto minmax(0,1fr) auto auto;
+.verse.tight{zoom:.72}.verse.nofit{visibility:hidden}   /* a verse that would run into the adhkar or prayer times steps aside (verseFit) */
   padding:3.6vh 4.2vw 2.2vh;gap:2vh;pointer-events:none}
 .sig{justify-self:center;margin-top:-.8vh;direction:ltr;font-family:var(--f-ui);font-size:1.05vw;font-weight:300;
   letter-spacing:.12em;color:var(--ink-faint);text-shadow:0 .1vw .6vw rgba(0,0,0,.6)}
 .sig b{font-weight:400;color:var(--gold);opacity:.85}
 .sig{display:flex;align-items:baseline;gap:1.1vw}
+.legal{flex-basis:100%;text-align:center;font-size:.72vw;color:var(--ink-faint);margin-top:-.4vh}.legal a{color:inherit;text-decoration:none}.legal a:hover{color:var(--gold)}
 .sig .vsep{color:var(--ink-faint)}
 .top{display:flex;justify-content:space-between;align-items:flex-start;gap:3vw}
 .station h1{margin:0;font-family:var(--f-title);font-weight:700;font-size:3.6vw;line-height:1.15;
@@ -137,10 +139,9 @@ body.idle{cursor:none}
   /* Phones: the prayer times and the buttons always come first. The verse takes only the room left over and steps
      aside when it does not fit; on very short screens the page scrolls instead of cutting the bottom off. */
   .frame{grid-template-rows:auto minmax(0,1fr) auto auto;overflow-y:auto;overscroll-behavior:contain;pointer-events:auto}
-  .verse.nofit{visibility:hidden}
   .prayers{grid-template-columns:repeat(3,1fr)}.p-head{grid-column:1/-1;border:0;flex-direction:row;justify-content:space-between}
   .p-head b,.p-head span{font-size:3.4vw}.p .n{font-size:3vw}.p .t{font-size:4.4vw}
-  .gate-title{font-size:6vw}.gate-hint{font-size:3.4vw}.sig{font-size:3vw}
+  .gate-title{font-size:6vw}.gate-hint{font-size:3.4vw}.sig{font-size:3vw}.legal{font-size:2.5vw;margin-top:0}
 }
 /* stop button */
 .status-row{display:flex;align-items:center;gap:.8vw;flex-wrap:wrap}
@@ -440,7 +441,7 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
     <div class="p-head"><button class="city" id="cityBtn" type="button"><b id="cityLabel">مواقيت الصلاة · الكويت</b><span class="city-row"><i class="chip" id="cityChip" data-i18n="chipCity">تغيير المدينة ▾</i><em class="new-badge" id="cityNew" hidden data-i18n="newBadge">جديد</em></span></button><span id="countdown"></span><button class="qibla-chip" id="qiblaBtn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 4.5l2.6 7.5L12 19.5 9.4 12z" fill="currentColor"/></svg><span data-i18n="qiblaChip">القبلة</span></button></div>
   </footer>
   </div>
-  <div class="sig"><button class="share-btn" id="shareBtn" type="button" aria-label="شارك Cairo Quran" data-i18n-attr="aria-label:shareAria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span data-i18n="shareShort">شارك</span></button><span class="vsep web-x">·</span><button class="share-btn web-x" id="getAppBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 19h16"/></svg><span data-i18n="getApp">ثبّت التطبيق</span></button><span class="vsep web-x">·</span><button class="share-btn web-x" id="contactBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span data-i18n="contactShort">تواصل معنا</span></button><span class="vsep web-x">·</span><a class="share-btn web-x" id="studioLink" href="studio/" title="اصنع مقطع تلاوة أو صورة ذِكر" aria-label="الاستوديو: اصنع مقطع تلاوة أو صورة ذِكر" data-i18n-attr="title:studioTitle,aria-label:studioAria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="M17 10l5-3v10l-5-3"/></svg><span data-i18n="studioShort">الاستوديو</span></a><span class="vsep web-x">·</span><span class="social web-x"><a class="share-btn icon-btn" id="fbLink" href="https://www.facebook.com/cairoquran" target="_blank" rel="noopener" aria-label="Cairo Quran على فيسبوك" title="فيسبوك" data-i18n-attr="aria-label:fbAria,title:facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21z"/></svg></a><a class="share-btn icon-btn" id="igLink" href="https://www.instagram.com/cairoquran.radio" target="_blank" rel="noopener" aria-label="Cairo Quran على إنستغرام" title="إنستغرام" data-i18n-attr="aria-label:igAria,title:instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg></a></span><span class="sig-mail" id="sigMail" hidden></span></div>
+  <div class="sig"><button class="share-btn" id="shareBtn" type="button" aria-label="شارك Cairo Quran" data-i18n-attr="aria-label:shareAria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span data-i18n="shareShort">شارك</span></button><span class="vsep web-x">·</span><button class="share-btn web-x" id="getAppBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 19h16"/></svg><span data-i18n="getApp">ثبّت التطبيق</span></button><span class="vsep web-x">·</span><button class="share-btn web-x" id="contactBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span data-i18n="contactShort">تواصل معنا</span></button><span class="vsep web-x">·</span><a class="share-btn web-x" id="studioLink" href="studio/" title="اصنع مقطع تلاوة أو صورة ذِكر" aria-label="الاستوديو: اصنع مقطع تلاوة أو صورة ذِكر" data-i18n-attr="title:studioTitle,aria-label:studioAria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="M17 10l5-3v10l-5-3"/></svg><span data-i18n="studioShort">الاستوديو</span></a><span class="vsep web-x">·</span><span class="social web-x"><a class="share-btn icon-btn" id="fbLink" href="https://www.facebook.com/cairoquran" target="_blank" rel="noopener" aria-label="Cairo Quran على فيسبوك" title="فيسبوك" data-i18n-attr="aria-label:fbAria,title:facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21z"/></svg></a><a class="share-btn icon-btn" id="igLink" href="https://www.instagram.com/cairoquran.radio" target="_blank" rel="noopener" aria-label="Cairo Quran على إنستغرام" title="إنستغرام" data-i18n-attr="aria-label:igAria,title:instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg></a></span><span class="sig-mail" id="sigMail" hidden></span><span class="legal web-x" dir="rtl"><a href="privacy.html" data-i18n="privacyLink">الخصوصية</a> · <a href="terms.html" data-i18n="termsLink">الشروط</a></span></div>
 </main>
 
 <div class="picker" id="picker" hidden role="dialog" aria-modal="true" aria-labelledby="pickerTitle">
@@ -1115,12 +1116,19 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
     $('verseTr').textContent = LANG !== 'ar' && tr ? tr.t : '';
     $('verseTr').hidden = !(LANG !== 'ar' && tr);
   }
-  // Phones: hide the verse when it would run into the adhkar or the prayer times (checked whenever any of them resizes).
+  // Any screen: hide the verse when it would run into the adhkar or the prayer times (checked whenever any of them resizes),
+  // so a long verse never pushes the prayer times or the footer off the screen.
   const PHONE = window.matchMedia ? matchMedia('(max-width:700px)') : null;
+  // First try the verse a size smaller; only if even that does not fit is it hidden.
+  let fitting = false;
   function verseFit() {
     const v = $('verse'), b = document.querySelector('.frame > .bottom');
-    if (!v || !b) return;
-    v.classList.toggle('nofit', !!(PHONE && PHONE.matches) && v.getBoundingClientRect().bottom > b.getBoundingClientRect().top - 6);
+    if (!v || !b || fitting) return;
+    fitting = true;                                   // our own class changes resize the verse: ignore those callbacks
+    const over = () => v.getBoundingClientRect().bottom > b.getBoundingClientRect().top - 6;
+    v.classList.remove('tight', 'nofit');
+    if (over()) { v.classList.add('tight'); if (over()) v.classList.add('nofit'); }
+    requestAnimationFrame(() => requestAnimationFrame(() => { fitting = false; }));
   }
   // TV and wide screens: the photo caption and the follow card sit just above the adhkar and prayer times,
   // whatever their height (a long dhikr, a translation or an extra line no longer runs under the caption)
