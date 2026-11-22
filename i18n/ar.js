@@ -50,6 +50,7 @@
     adhkarItem: function (on) { return on ? 'شريط الأذكار: ظاهر ✓' : 'شريط الأذكار: مخفي'; },
     sleepItem: function (n) { return n ? 'مؤقّت الإيقاف: ' + n + ' دقيقة ✓' : 'مؤقّت الإيقاف: متوقف'; },
     sleepLeft: function (s) { return 'يتوقف بعد ' + s; },
+    sleepShort: 'مؤقت', sleepAria: 'مؤقت الإيقاف: كل ضغطة تنقل بين ١٥ و٣٠ و٦٠ و٩٠ دقيقة ثم الإلغاء',
     photosItem: function (name) { return 'صور الخلفية: ' + name; },
     pickerPhotos: 'صور البلدان',
     qiblaChip: 'القبلة',

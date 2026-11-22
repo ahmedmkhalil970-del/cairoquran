@@ -190,6 +190,7 @@ body.has-adhkar .follow{bottom:27vh}
 .now{align-items:center}
 .now-row{display:flex;align-items:center;flex-wrap:wrap;gap:.8vw;margin-top:1.2vh;pointer-events:auto}
 .now-row .now{margin-top:0}
+.sleep-btn{background:var(--glass);border-color:var(--edge);color:var(--ink-soft)}.sleep-btn.on{color:var(--gold);border-color:rgba(232,194,122,.55)}.sleep-btn #sleepBtnText{font-variant-numeric:tabular-nums}
 .stop-btn.is-idle{background:var(--gold);color:#1b1206;border-color:var(--gold);font-weight:600;animation:fresh 2.6s ease-in-out infinite}
 .stop-btn.is-idle:hover,.stop-btn.is-idle:focus-visible{background:#f0d293;transform:scale(1.04)}
 @media (prefers-reduced-motion:reduce){.stop-btn.is-idle,.now.fresh{animation:none}}
@@ -405,7 +406,7 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
     <div class="station">
       <h1 class="brand"><span>Cairo</span> Quran</h1>
       <div class="from" data-i18n="tagline">قرآن · أذان · أذكار</div>
-      <div class="now-row"><button class="now" id="nowBtn" type="button"><span class="now-k" data-i18n="now">الآن</span><b id="nowName">إذاعة القرآن الكريم · القاهرة</b><i class="chip" id="nowChip" data-i18n="chipStation">تغيير<span class="chip-x"> المحطة</span> ▾</i><em class="new-badge" id="nowNew" hidden data-i18n="newBadge">جديد</em></button><button class="stop-btn" id="stopBtn" type="button" hidden aria-label="إيقاف البث" data-i18n-attr="aria-label:stopAria"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>إيقاف</button></div>
+      <div class="now-row"><button class="now" id="nowBtn" type="button"><span class="now-k" data-i18n="now">الآن</span><b id="nowName">إذاعة القرآن الكريم · القاهرة</b><i class="chip" id="nowChip" data-i18n="chipStation">تغيير<span class="chip-x"> المحطة</span> ▾</i><em class="new-badge" id="nowNew" hidden data-i18n="newBadge">جديد</em></button><button class="stop-btn" id="stopBtn" type="button" hidden aria-label="إيقاف البث" data-i18n-attr="aria-label:stopAria"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>إيقاف</button><button class="stop-btn sleep-btn web-x" id="sleepBtn" type="button" aria-label="مؤقت الإيقاف" data-i18n-attr="aria-label:sleepAria"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><span id="sleepBtnText">مؤقت</span></button></div>
       <div class="status-row">
   <div class="status" id="status" data-s="idle"><span class="dot"></span><span id="statusText">جاهز للتشغيل</span><span class="sleep-left" id="sleepLeft" hidden></span></div>
         
@@ -1669,13 +1670,19 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
     if (NATIVE) { try { if (typeof NATIVE.setVolume === 'function') NATIVE.setVolume(v); } catch (e) {} }
     else { try { audio.volume = v; } catch (e) {} }
   }
+  // Website: the moon button beside play/stop shows the time left. TV app: the time left follows the stream status.
   function showSleepLeft() {
-    const el = $('sleepLeft');
-    if (!sleepMin) { el.hidden = true; return; }
-    const s = Math.max(0, Math.ceil((sleepEnd - Date.now()) / 1000));
-    el.textContent = t('sleepLeft', num(Math.floor(s / 60)) + ':' + num(s % 60, 2));
+    const el = $('sleepLeft'), b = $('sleepBtn');
+    const s = sleepMin ? Math.max(0, Math.ceil((sleepEnd - Date.now()) / 1000)) : 0;
+    const mmss = num(Math.floor(s / 60)) + ':' + num(s % 60, 2);
+    b.classList.toggle('on', !!sleepMin);
+    $('sleepBtnText').textContent = sleepMin ? mmss : t('sleepShort');
+    if (!sleepMin || !NATIVE) { el.hidden = true; return; }
+    el.textContent = t('sleepLeft', mmss);
     el.hidden = false;
   }
+  $('sleepBtn').addEventListener('click', cycleSleep);
+  showSleepLeft();
   function cancelSleep() {
     clearInterval(sleepTick); sleepTick = 0; sleepMin = 0; sleepEnd = 0;
     if (sleepFading) { sleepFading = false; setVol(1); }
@@ -2181,7 +2188,7 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
     applyStatic(); showLangBtn(); tvChips(); showGateText();
     if (TOUCH && !gatePaused) $('gateHint').textContent = t('gateHintTouch');
     buildDateFormats(); todayKey = ''; occKey = ''; tick();
-    showStation(); syncPlayBtn(); renderWeather();
+    showStation(); syncPlayBtn(); showSleepLeft(); renderWeather();
     if (statusNow) setStatus(statusNow[0], statusNow[1]);
     if (adhanActive) { $('adhanName').textContent = t('prayerOf', pname(adhanKey)); $('adhanHint').textContent = NATIVE ? t('adhanHintTv') : t('adhanHintWeb'); }
     setVerse();
