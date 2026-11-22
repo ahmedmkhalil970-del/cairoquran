@@ -28,6 +28,10 @@ body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 var(--f-ui);
 header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 h1{margin:0;font:700 30px var(--f-title);direction:ltr;white-space:nowrap}
 h1 span{color:var(--gold)} h1 small{font:700 20px var(--f-title);color:var(--ink-soft);margin-left:10px}
+/* Back to the main page: the installed app (computer or iPhone) has no browser back button */
+.head-start{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.home{color:var(--ink-soft);text-decoration:none;background:var(--panel);border:1px solid var(--edge);padding:7px 14px;border-radius:12px;font-size:15px;white-space:nowrap}
+.home:hover{color:var(--gold);border-color:var(--gold)}.home:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 nav.tabs{display:flex;gap:6px;flex-wrap:wrap;background:var(--panel);border:1px solid var(--edge);padding:5px;border-radius:14px}
 nav.tabs a{color:var(--ink-soft);text-decoration:none;padding:8px 16px;border-radius:10px;font-size:15px}
 nav.tabs a[aria-current="page"]{background:var(--gold);color:var(--gold-ink);font-weight:600}
@@ -88,7 +92,10 @@ footer.rights b{color:var(--gold);font-weight:400;direction:ltr;display:inline-b
 <body>
 <div class="wrap">
   <header>
-    <h1><span>Cairo</span> Quran <small>الاستوديو</small></h1>
+    <div class="head-start">
+      <a class="home" href="/" title="العودة إلى الصفحة الرئيسية">→ الرئيسية</a>
+      <h1><span>Cairo</span> Quran <small>الاستوديو</small></h1>
+    </div>
     <nav class="tabs" aria-label="أقسام الاستوديو">
       <a href="#images" data-tab="images">الصور</a>
       <a href="#recite" data-tab="recite">فيديو التلاوة</a>
