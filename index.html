@@ -11,7 +11,9 @@
   if (s && LANGS.indexOf(s) >= 0) L = s;
   else if (!(typeof window.QuranTV === 'object' && window.QuranTV)) { var n = String(navigator.language || '').toLowerCase().slice(0, 2); if (n !== 'ar' && LANGS.indexOf(n) >= 0) L = n; }
   window.QLANG = L; window.QLANGS = LANGS;
-  var h = document.documentElement; h.lang = L; h.dir = L === 'ar' ? 'rtl' : 'ltr';
+  var h = document.documentElement;
+  h.lang = L; h.dir = L === 'ar' ? 'rtl' : 'ltr';
+  if (typeof window.QuranTV === 'object' && window.QuranTV) h.classList.add('tv');   // the TV app: no Qibla, lighter menus
   if (L !== 'ar') h.className += ' i18n-wait';
   setTimeout(function () { h.className = h.className.replace(' i18n-wait', ''); }, 4000);   // never stay hidden
 })();
@@ -313,6 +315,11 @@ button.mail-go{all:unset;box-sizing:border-box;display:block;width:100%;margin-t
 .cbtn:focus-visible,.cbtn.focus{outline:none;background:rgba(232,194,122,.28);box-shadow:inset 0 0 0 2px var(--gold);transform:scale(1.04)}
 .cbtn.cur{color:var(--gold);font-weight:600}
 .picker-hint{margin-top:2vh;font-size:.95vw;color:var(--ink-faint);text-align:center}
+/* TV: no Qibla (a TV does not turn); menus without a live blur so the remote moves at once */
+html.tv .qibla-chip{display:none}
+html.tv .picker{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(3,5,14,.9)}
+html.tv .cbtn{transition:none}
+body.picker-open .ph.show,body.picker-open .scene{animation-play-state:paused}
 @media (max-width:700px){.city b{font-size:3.4vw}.city i{font-size:2.6vw}.picker-card{width:92vw;padding:2.5vh 4vw}.picker-top{flex-direction:column}
   .picker-top h2{font-size:6vw}.picker-top span,.pg h3{font-size:3.2vw}.pg-list{grid-template-columns:repeat(3,1fr);gap:2vw}.cbtn{font-size:3.6vw;padding:1.4vh 1vw}.picker-hint{display:none}}
 
@@ -975,8 +982,8 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
       choose: b => { cycleSleep(); b.textContent = sleepLabel(); } },
       { id: 'photos', label: photosLabel(), cur: false, keep: true,
       choose: () => openPicker('photos') },
-      { id: 'qibla', label: t('qiblaItem'), cur: false, keep: true,
-      choose: () => { closePicker(); openQibla(); } },
+      ...(document.documentElement.classList.contains('tv') ? [] : [{ id: 'qibla', label: t('qiblaItem'), cur: false, keep: true,
+      choose: () => { closePicker(); openQibla(); } }]),
       { id: 'lang', label: langLabel(), cur: false, keep: true,
       choose: () => { setLang(nextLang()); } }] });
     return out;
@@ -988,7 +995,7 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
   function buildPicker(mode) {
     pickerMode = mode;
     const groups = $('pickerGroups');
-    groups.innerHTML = ''; pickerButtons = [];
+    groups.innerHTML = ''; pickerButtons = []; pickerPos = null; pickerFocus = 0;
     groups.scrollTop = 0; groups.parentNode.scrollTop = 0;   // a new list starts at its title
     groups.classList.toggle('wide', mode !== 'city');
     $('pickerTitle').textContent = mode === 'station' ? t('pickerStation') : mode === 'photos' ? t('pickerPhotos') : t('pickerCity');
@@ -1008,10 +1015,13 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
       groups.appendChild(g);
     });
   }
+  let pickerPos = null;                            // button centres in list coordinates, measured once per list
   function focusItem(i) {
+    const prev = pickerButtons[pickerFocus];
     pickerFocus = Math.max(0, Math.min(pickerButtons.length - 1, i));
-    pickerButtons.forEach((b, k) => b.classList.toggle('focus', k === pickerFocus));
-    const b = pickerButtons[pickerFocus]; b.focus({ preventScroll: true }); b.scrollIntoView({ block: 'nearest' });
+    const b = pickerButtons[pickerFocus]; if (!b) return;
+    if (prev && prev !== b) prev.classList.remove('focus');
+    b.classList.add('focus'); b.focus({ preventScroll: true }); b.scrollIntoView({ block: 'nearest' });
   }
   // "new" badges: shown until the person opens each menu once
   const seenMenus = (() => { try { return JSON.parse(localStorage.getItem('qtv-seen') || '{}') || {}; } catch (e) { return {}; } })();
@@ -1025,10 +1035,10 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
     mode = mode || 'city';
     if (!seenMenus[mode]) { seenMenus[mode] = 1; try { localStorage.setItem('qtv-seen', JSON.stringify(seenMenus)); } catch (e) {} showMenuBadges(); }
     buildPicker(mode);
-    pickerOpen = true; $('picker').hidden = false;
+    pickerOpen = true; $('picker').hidden = false; document.body.classList.add('picker-open');
     focusItem(Math.max(0, pickerButtons.findIndex(b => b.classList.contains('cur'))));
   }
-  function closePicker() { pickerOpen = false; $('picker').hidden = true; pickerButtons.forEach(b => b.classList.remove('focus')); }
+  function closePicker() { pickerOpen = false; $('picker').hidden = true; document.body.classList.remove('picker-open'); pickerButtons.forEach(b => b.classList.remove('focus')); }
   function choosePickerItem() { const b = pickerButtons[pickerFocus]; if (b) b.click(); }
   function chooseCity(id) {
     const c = byId(id); if (!c) return;
@@ -1051,16 +1061,20 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
     showWeather();
   }
   // move focus on the grid: rows follow the visual layout (right-to-left)
+  function measurePicker() {
+    const card = $('picker').querySelector('.picker-card'), st = card.scrollTop;
+    pickerPos = pickerButtons.map(b => { const r = b.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + st + r.height / 2, h: r.height }; });
+  }
   function moveFocus(key) {
-    const cur = pickerButtons[pickerFocus].getBoundingClientRect();
-    const cx = cur.left + cur.width / 2, cy = cur.top + cur.height / 2;
+    if (!pickerPos || pickerPos.length !== pickerButtons.length) measurePicker();
+    const cur = pickerPos[pickerFocus]; if (!cur) return;
+    const cx = cur.x, cy = cur.y;
     let best = -1, bestScore = Infinity;
-    pickerButtons.forEach((b, i) => {
+    pickerPos.forEach((r, i) => {
       if (i === pickerFocus) return;
-      const r = b.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
-      const dx = x - cx, dy = y - cy;
-      const ok = key === 'ArrowLeft' ? dx < -5 && Math.abs(dy) < r.height / 2 :
-                 key === 'ArrowRight' ? dx > 5 && Math.abs(dy) < r.height / 2 :
+      const dx = r.x - cx, dy = r.y - cy;
+      const ok = key === 'ArrowLeft' ? dx < -5 && Math.abs(dy) < r.h / 2 :
+                 key === 'ArrowRight' ? dx > 5 && Math.abs(dy) < r.h / 2 :
                  key === 'ArrowUp' ? dy < -5 : dy > 5;
       if (!ok) return;
       const score = (key === 'ArrowUp' || key === 'ArrowDown') ? Math.abs(dy) * 3 + Math.abs(dx) : Math.abs(dx);
@@ -1108,11 +1122,21 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
     if (!v || !b) return;
     v.classList.toggle('nofit', !!(PHONE && PHONE.matches) && v.getBoundingClientRect().bottom > b.getBoundingClientRect().top - 6);
   }
+  // TV and wide screens: the photo caption and the follow card sit just above the adhkar and prayer times,
+  // whatever their height (a long dhikr, a translation or an extra line no longer runs under the caption)
+  function cardsAbove() {
+    const b = document.querySelector('.frame > .bottom'), wide = !(PHONE && PHONE.matches);
+    const y = b && wide ? Math.round(innerHeight - b.getBoundingClientRect().top + innerHeight * 0.016) + 'px' : '';
+    ['place', 'follow'].forEach(id => { const el = $(id); if (el && el.style.bottom !== y) el.style.bottom = y; });
+  }
+  function layoutFit() { verseFit(); cardsAbove(); }
+  addEventListener('resize', () => { layoutFit(); pickerPos = null; });
   if (window.ResizeObserver) {
-    const ro = new ResizeObserver(verseFit);
+    const ro = new ResizeObserver(layoutFit);
     ['verse', 'verseText', 'verseTr'].forEach(id => $(id) && ro.observe($(id)));
     ['.frame', '.frame > .bottom', '.frame > .sig'].forEach(q => { const el = document.querySelector(q); if (el) ro.observe(el); });
-  }
+  } else setInterval(cardsAbove, 2000);
+  cardsAbove();
   function nextVerse() {
     const v = $('verse');
     if (v.classList.contains('off')) return;   // hidden behind the photos: keep the adhkar where they were
