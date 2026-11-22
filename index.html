@@ -12,7 +12,8 @@
   else if (!(typeof window.QuranTV === 'object' && window.QuranTV)) { var n = String(navigator.language || '').toLowerCase().slice(0, 2); if (n !== 'ar' && LANGS.indexOf(n) >= 0) L = n; }
   window.QLANG = L; window.QLANGS = LANGS;
   var h = document.documentElement;
-  if (typeof window.QuranTV === 'object' && window.QuranTV) h.classList.add('tv');   // the TV app: no Qibla, lighter menus h.lang = L; h.dir = L === 'ar' ? 'rtl' : 'ltr';
+  h.lang = L; h.dir = L === 'ar' ? 'rtl' : 'ltr';
+  if (typeof window.QuranTV === 'object' && window.QuranTV) h.classList.add('tv');   // the TV app: no Qibla, lighter menus
   if (L !== 'ar') h.className += ' i18n-wait';
   setTimeout(function () { h.className = h.className.replace(' i18n-wait', ''); }, 4000);   // never stay hidden
 })();
