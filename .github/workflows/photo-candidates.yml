@@ -1,0 +1,35 @@
+# Candidate photos for the slideshow, gathered on GitHub so the daily photo work needs no one's computer.
+# Push a new .github/photos/request.tsv (on any branch) and this run searches Wikimedia Commons for every line,
+# then keeps the results as the artifact "photo-candidates": numbered contact sheets (24 candidates each) and
+# candidates.json. It runs on push because a manual run needs the workflow on main first.
+name: photo-candidates
+on:
+  push:
+    paths:
+      - '.github/photos/request.tsv'
+      - '.github/photos/candidates.py'
+      - '.github/workflows/photo-candidates.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: photo-candidates-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  search:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pillow==11.0.0
+      - name: Search Commons and draw the contact sheets
+        run: python .github/photos/candidates.py .github/photos/request.tsv
+      - name: Keep the sheets and the list
+        uses: actions/upload-artifact@v4
+        with:
+          name: photo-candidates
+          path: out/
+          retention-days: 14
