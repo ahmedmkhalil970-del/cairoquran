@@ -88,6 +88,11 @@ def main():
         c, k, q = r[0], r[1], r[2]
         try: cands = search(q)
         except Exception as e: print('search failed', i, q, e); cands = []
+        if len(cands) < 3 and k.lower() != q.lower():          # a narrow query found little: try the place name alone
+            try:
+                seen = {x['title'] for x in cands}
+                cands += [x for x in search(k) if x['title'] not in seen][:PER_PLACE - len(cands)]
+            except Exception as e: print('search failed', i, k, e)
         print('%3d %-3s %-40s %d' % (i, c, q[:40], len(cands)))
         places.append({'row': i, 'c': c, 'k': k, 'q': q, 'candidates': cands})
         time.sleep(0.5)
