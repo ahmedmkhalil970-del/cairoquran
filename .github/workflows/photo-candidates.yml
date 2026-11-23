@@ -1,6 +1,6 @@
 # Candidate photos for the slideshow, gathered on GitHub so the daily photo work needs no one's computer.
 # Push a new .github/photos/request.tsv (on any branch) and this run searches Wikimedia Commons for every line,
-# then keeps the results as the artifact "photo-candidates": numbered contact sheets (24 candidates each) and
+# then keeps the results as the artifact and the pre-release "photo-candidates": numbered contact sheets (24 candidates each) and
 # candidates.json. It runs on push because a manual run needs the workflow on main first.
 name: photo-candidates
 on:
@@ -11,7 +11,7 @@ on:
       - '.github/workflows/photo-candidates.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 concurrency:
   group: photo-candidates-${{ github.ref }}
   cancel-in-progress: true
@@ -33,3 +33,12 @@ jobs:
           name: photo-candidates
           path: out/
           retention-days: 14
+      # the same files as the pre-release "photo-candidates", whose files download like any release file
+      # (artifacts are served from a storage host that some tools cannot reach)
+      - name: Publish the sheets as the release photo-candidates
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete photo-candidates -y --cleanup-tag -R "$GITHUB_REPOSITORY" || true
+          gh release create photo-candidates out/* -R "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --prerelease \
+            --title "Photo candidates (${GITHUB_REF_NAME})" --notes "Contact sheets and candidates.json from run ${GITHUB_RUN_ID}. Replaced on every run."
