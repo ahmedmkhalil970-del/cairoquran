@@ -1,0 +1,20 @@
+# Checks that the photos added on a branch (compared with main) load from Wikimedia, before the big merge.
+name: photo-check
+on:
+  push:
+    paths:
+      - 'data/places.js'
+      - '.github/photos/check.py'
+      - '.github/workflows/photo-check.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: python3 .github/photos/check.py
