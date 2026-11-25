@@ -14,6 +14,7 @@
   var h = document.documentElement;
   h.lang = L; h.dir = L === 'ar' ? 'rtl' : 'ltr';
   if (typeof window.QuranTV === 'object' && window.QuranTV) h.classList.add('tv');   // the TV app: no Qibla, lighter menus
+  try { (localStorage.getItem('qtv-hide') || '').split(',').forEach(function (k) { if (/^(prayers|wx|hijri|rcd|place)$/.test(k)) h.classList.add('hide-' + k); }); } catch (e) {}   // what the visitor hid from the screen (side menu)
   if (L !== 'ar') h.className += ' i18n-wait';
   setTimeout(function () { h.className = h.className.replace(' i18n-wait', ''); }, 4000);   // never stay hidden
 })();
@@ -386,6 +387,55 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
   body.has-adhkar .place{bottom:47vh}
   html:not([lang="ar"]) body.has-adhkar .place{bottom:44vh}
 }
+
+/* Side menu (website). It opens from the side where reading starts; the TV keeps its own buttons for now. */
+.brand-row{display:flex;align-items:center;gap:1vw}
+.menu-btn{all:unset;box-sizing:border-box;position:relative;flex-shrink:0;pointer-events:auto;cursor:pointer;width:2.9vw;height:2.9vw;
+  min-width:40px;min-height:40px;border-radius:.8vw;display:flex;align-items:center;justify-content:center;color:var(--ink);
+  background:var(--glass);border:1px solid var(--edge);backdrop-filter:blur(6px)}
+.menu-btn svg{width:52%;height:52%;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.menu-btn:hover,.menu-btn:focus-visible{color:var(--gold);border-color:rgba(232,194,122,.7)}
+.menu-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.menu-btn .new-badge{position:absolute;top:-1vh;inset-inline-end:-1.4vw}
+html.tv .menu-btn{display:none}
+.side-scrim{position:fixed;inset:0;z-index:18;background:rgba(3,5,14,.45)}
+.side-menu{position:fixed;top:0;bottom:0;inset-inline-start:0;z-index:19;width:23vw;min-width:320px;max-width:92vw;box-sizing:border-box;
+  padding:3.2vh 1.6vw;overflow-y:auto;display:flex;flex-direction:column;gap:1vh;font-size:clamp(15px,1.1vw,24px);color:var(--ink);
+  background:rgba(10,12,28,.96);border-inline-end:1px solid var(--edge);box-shadow:0 0 3vw rgba(0,0,0,.5)}
+.side-scrim[hidden],.side-menu[hidden]{display:none}
+.sm-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6vh}
+.sm-head h2{margin:0;font-size:1.45em;font-weight:600}
+.sm-close{all:unset;box-sizing:border-box;cursor:pointer;width:2.3em;height:2.3em;border-radius:.6em;border:1px solid var(--edge);
+  display:flex;align-items:center;justify-content:center}
+.sm-close svg{width:1.1em;height:1.1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.sm-close:hover,.sm-close:focus-visible{color:var(--gold);border-color:rgba(232,194,122,.7)}
+.sm-group{font-size:.78em;color:var(--gold);margin-top:.8vh}
+.sm-list{display:flex;flex-direction:column;gap:.5vh}
+.sm-item{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:.7em;min-height:2.7em;padding:0 .8em;
+  border-radius:.7em;background:rgba(253,246,233,.06)}
+.sm-item:hover,.sm-item:focus-visible{background:rgba(232,194,122,.16)}
+.sm-item:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.sm-item svg{width:1.1em;height:1.1em;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sm-item>span{flex:1}
+.sm-item b{font-weight:400;font-size:.9em;color:var(--ink-soft);white-space:nowrap}
+.sm-item b::after{content:"‹";margin-inline-start:.5em}
+html[dir="ltr"] .sm-item b::after{content:"›"}
+.sm-list.show .sm-item{background:none;min-height:2.3em}
+.sw{flex-shrink:0;position:relative;width:2.2em;height:1.25em;border-radius:99px;background:rgba(253,246,233,.22);transition:background .2s}
+.sw::after{content:"";position:absolute;top:.15em;inset-inline-start:.15em;width:.95em;height:.95em;border-radius:50%;background:var(--ink);
+  transition:inset-inline-start .2s}
+.sm-item[aria-checked="true"] .sw{background:var(--gold)}
+.sm-item[aria-checked="true"] .sw::after{inset-inline-start:1.1em;background:#1a1410}
+.sm-note{margin:auto 0 0;padding-top:1vh;font-size:.75em;color:var(--ink-faint);text-align:center}
+/* What the visitor hid from the screen, and the buttons the menu replaces on the website */
+html.hide-prayers #prayers,html.hide-wx #wx,html.hide-hijri #hijri,html.hide-rcd #ramadanCd,html.hide-place #place{display:none!important}
+html:not(.tv) #langBtn,html:not(.tv) .p-tools,html:not(.tv) #sleepBtn:not(.on){display:none!important}
+@media (max-width:700px){
+  .brand-row{gap:2.4vw}
+  .menu-btn{width:9.5vw;height:9.5vw;border-radius:2.6vw}
+  .menu-btn .new-badge{top:-1vh;inset-inline-end:-3.5vw}
+  .side-menu{width:84vw;min-width:0;padding:2.6vh 4.4vw;font-size:4vw}
+}
 </style>
 </head>
 <body>
@@ -411,7 +461,7 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
 <main class="frame">
   <header class="top">
     <div class="station">
-      <h1 class="brand"><span>Cairo</span> Quran</h1>
+      <div class="brand-row"><button class="menu-btn" id="menuBtn" type="button" aria-label="القائمة" data-i18n-attr="aria-label:menuTitle" aria-expanded="false" aria-controls="sideMenu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><em class="new-badge" id="menuNew" hidden data-i18n="newBadge">جديد</em></button><h1 class="brand"><span>Cairo</span> Quran</h1></div>
       <div class="from" data-i18n="tagline">قرآن · أذان · أذكار</div>
       <div class="now-row"><button class="now" id="nowBtn" type="button"><span class="now-k" data-i18n="now">الآن</span><b id="nowName">إذاعة القرآن الكريم · القاهرة</b><i class="chip" id="nowChip" data-i18n="chipStation">تغيير<span class="chip-x"> المحطة</span> ▾</i><em class="new-badge" id="nowNew" hidden data-i18n="newBadge">جديد</em></button><button class="stop-btn" id="stopBtn" type="button" hidden aria-label="إيقاف البث" data-i18n-attr="aria-label:stopAria"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>إيقاف</button><button class="stop-btn sleep-btn web-x" id="sleepBtn" type="button" aria-label="مؤقت الإيقاف" data-i18n-attr="aria-label:sleepAria"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z"/></svg><span id="sleepBtnText">المؤقت</span></button></div>
       <div class="status-row">
@@ -442,6 +492,30 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
   </div>
   <div class="sig"><button class="share-btn" id="shareBtn" type="button" aria-label="شارك Cairo Quran" data-i18n-attr="aria-label:shareAria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span data-i18n="shareShort">شارك</span></button><span class="vsep web-x">·</span><a class="share-btn web-x" id="privacyLink" href="privacy.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"/></svg><span data-i18n="privacyLink">الخصوصية</span></a><span class="vsep web-x">·</span><button class="share-btn web-x" id="getAppBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 19h16"/></svg><span data-i18n="getApp">ثبّت التطبيق</span></button><span class="vsep web-x">·</span><button class="share-btn web-x" id="contactBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span data-i18n="contactShort">تواصل معنا</span></button><span class="vsep web-x">·</span><a class="share-btn web-x" id="studioLink" href="studio/" title="اصنع مقطع تلاوة أو صورة ذِكر" aria-label="الاستوديو: اصنع مقطع تلاوة أو صورة ذِكر" data-i18n-attr="title:studioTitle,aria-label:studioAria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="M17 10l5-3v10l-5-3"/></svg><span data-i18n="studioShort">الاستوديو</span></a><span class="vsep web-x">·</span><span class="social web-x"><a class="share-btn icon-btn" id="fbLink" href="https://www.facebook.com/cairoquran" target="_blank" rel="noopener" aria-label="Cairo Quran على فيسبوك" title="فيسبوك" data-i18n-attr="aria-label:fbAria,title:facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21z"/></svg></a><a class="share-btn icon-btn" id="igLink" href="https://www.instagram.com/cairoquran.radio" target="_blank" rel="noopener" aria-label="Cairo Quran على إنستغرام" title="إنستغرام" data-i18n-attr="aria-label:igAria,title:instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg></a></span><span class="sig-mail" id="sigMail" hidden></span></div>
 </main>
+
+<div class="side-scrim" id="sideScrim" hidden></div>
+<nav class="side-menu" id="sideMenu" hidden aria-labelledby="sideTitle">
+  <div class="sm-head"><h2 id="sideTitle" data-i18n="menuTitle">القائمة</h2><button class="sm-close" id="sideClose" type="button" aria-label="إغلاق القائمة" data-i18n-attr="aria-label:menuClose"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="sm-group" data-i18n="settings">الإعدادات</div>
+  <div class="sm-list">
+    <button class="sm-item" id="smCity" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span data-i18n="mCity">المدينة</span><b id="smCityVal"></b></button>
+    <button class="sm-item" id="smQibla" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M14.8 9.2l-1.6 4-4 1.6 1.6-4z"/></svg><span data-i18n="mQibla">القبلة</span><b></b></button>
+    <button class="sm-item" id="smPhotos" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/></svg><span data-i18n="mPhotos">مكتبة الصور</span><b id="smPhotosVal"></b></button>
+    <button class="sm-item" id="smAdhan" type="button" role="switch" aria-checked="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg><span data-i18n="mAdhan">الأذان</span><i class="sw" aria-hidden="true"></i></button>
+    <button class="sm-item" id="smSleep" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><span data-i18n="mSleep">المؤقّت</span><b id="smSleepVal"></b></button>
+    <button class="sm-item" id="smLang" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/></svg><span data-i18n="mLang">اللغة</span><b id="smLangVal"></b></button>
+  </div>
+  <div class="sm-group" data-i18n="menuShow">الظاهر على الشاشة</div>
+  <div class="sm-list show">
+    <button class="sm-item" type="button" role="switch" aria-checked="true" data-show="prayers"><span data-i18n="sPrayers">مواقيت الصلاة</span><i class="sw" aria-hidden="true"></i></button>
+    <button class="sm-item" type="button" role="switch" aria-checked="true" data-show="wx"><span data-i18n="sWeather">الطقس</span><i class="sw" aria-hidden="true"></i></button>
+    <button class="sm-item" type="button" role="switch" aria-checked="true" data-show="hijri"><span data-i18n="sHijri">التاريخ الهجري</span><i class="sw" aria-hidden="true"></i></button>
+    <button class="sm-item" type="button" role="switch" aria-checked="true" data-show="rcd"><span data-i18n="sRamadan">عدّاد رمضان</span><i class="sw" aria-hidden="true"></i></button>
+    <button class="sm-item" type="button" role="switch" aria-checked="true" id="smAdhkar"><span data-i18n="sAdhkar">الأذكار</span><i class="sw" aria-hidden="true"></i></button>
+    <button class="sm-item" type="button" role="switch" aria-checked="true" data-show="place"><span data-i18n="sCaption">نبذة الصورة</span><i class="sw" aria-hidden="true"></i></button>
+  </div>
+  <p class="sm-note" data-i18n="menuSaved">تُحفظ اختياراتك على هذا الجهاز</p>
+</nav>
 
 <div class="picker" id="picker" hidden role="dialog" aria-modal="true" aria-labelledby="pickerTitle">
   <div class="picker-card">
@@ -581,8 +655,8 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
 </div>
 
 <audio id="radio" preload="none"></audio>
-<script src="i18n/ar.js?v=2"></script>
-<script src="i18n/en.js?v=2"></script>
+<script src="i18n/ar.js?v=3"></script>
+<script src="i18n/en.js?v=3"></script>
 <script src="data/places.js?v=2"></script>
 
 <script>/* adhan-js 4.4.3 · MIT License · github.com/batoulapps/adhan-js */
@@ -974,7 +1048,7 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
     const out = [{ title: t('autoGroup'), items: [{ id: 'auto', label: t('autoCity'), cur: !cityPicked, choose: () => useAutoCity() }] }]
       .concat(countries.map(country => ({ title: countryName(country), items: CITIES.filter(c => c.country === country).map(c => ({
       id: c.id, label: cityName(c), cur: cityPicked && c.id === CITY.id, choose: () => chooseCity(c.id) })) })));
-    out.push({ title: t('settings'), items: [{ id: 'adhan', label: adhanLabel(), cur: false, keep: true,
+    if (document.documentElement.classList.contains('tv')) out.push({ title: t('settings'), items: [{ id: 'adhan', label: adhanLabel(), cur: false, keep: true,
       choose: b => { toggleAdhan(); b.textContent = adhanLabel(); } },
       { id: 'adhkar', label: adhkarLabel(), cur: false, keep: true,
       choose: b => { toggleAdhkar(); b.textContent = adhkarLabel(); } },
@@ -1028,6 +1102,7 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
   function showMenuBadges() {
     $('nowNew').hidden = !!seenMenus.station; $('nowBtn').classList.toggle('fresh', !seenMenus.station);
     $('cityNew').hidden = !!seenMenus.city;
+    $('menuNew').hidden = !!seenMenus.menu;
   }
   function tvChips() { if (typeof window.QuranTV === 'object' && window.QuranTV) { $('nowChip').textContent = t('tvChipStation'); $('cityChip').textContent = t('tvChipCity'); } }
   showMenuBadges();
@@ -1038,7 +1113,7 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
     pickerOpen = true; $('picker').hidden = false; document.body.classList.add('picker-open');
     focusItem(Math.max(0, pickerButtons.findIndex(b => b.classList.contains('cur'))));
   }
-  function closePicker() { pickerOpen = false; $('picker').hidden = true; document.body.classList.remove('picker-open'); pickerButtons.forEach(b => b.classList.remove('focus')); }
+  function closePicker() { pickerOpen = false; $('picker').hidden = true; document.body.classList.remove('picker-open'); pickerButtons.forEach(b => b.classList.remove('focus')); syncMenu(); if (menuOpen && pickerFrom) pickerFrom.focus(); pickerFrom = null; }
   function choosePickerItem() { const b = pickerButtons[pickerFocus]; if (b) b.click(); }
   function chooseCity(id) {
     const c = byId(id); if (!c) return;
@@ -1376,10 +1451,11 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
   try { (localStorage.getItem('qtv-photos') || '').split(',').forEach(c => { if (countryCount[c] && COUNTRIES[c]) PHOTO_SET.add(c); }); } catch (e) {}
   const countryLabel = c => (COUNTRIES[c] && (COUNTRIES[c][LANG] || COUNTRIES[c].en)) || c;
   function activePlaces() { return PHOTO_SET.size ? PLACES.filter(x => PHOTO_SET.has(x.c)) : PLACES; }
-  function photosLabel() {
+  function photosValue() {
     const n = PHOTO_SET.size;
-    return t('photosItem', !n ? t('allCountries') : n === 1 ? countryLabel([...PHOTO_SET][0]) : t('nCountries', n, num(n)));
+    return !n ? t('allCountries') : n === 1 ? countryLabel([...PHOTO_SET][0]) : t('nCountries', n, num(n));
   }
+  function photosLabel() { return t('photosItem', photosValue()); }
   const countryText = c => (PHOTO_SET.has(c) ? '✓ ' : '') + t('countryItem', countryLabel(c), num(countryCount[c]));
   function photoSections() {
     const out = [{ title: t('allGroup'), items: [
@@ -1770,6 +1846,10 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
       if (k === 'ArrowUp' || k === 'ArrowDown' || k === 'ArrowLeft' || k === 'ArrowRight') { e.preventDefault(); moveFocus(k); }
       else if (k === 'Enter' || k === ' ') { e.preventDefault(); choosePickerItem(); }
       else if (k === 'Escape' || k === 'Backspace' || k === 'GoBack') { e.preventDefault(); closePicker(); }
+      return;
+    }
+    if (menuOpen) {
+      if (k === 'Escape' || k === 'Backspace' || k === 'GoBack') { e.preventDefault(); closeMenu(); }
       return;
     }
     if (k === 'ArrowUp' || k === 'ContextMenu') { e.preventDefault(); openPicker('station'); return; }
@@ -2226,9 +2306,56 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
     setVerse();
     if (curPlace && photoMode) showCaption(curPlace);
     if (adhkarMode) { const m = adhkarMode; adhkarMode = null; setAdhkarMode(m); }
+    syncMenu();
     if (pickerOpen) { const f = pickerButtons[pickerFocus] && pickerButtons[pickerFocus].dataset.id; buildPicker(pickerMode); focusItem(Math.max(0, pickerButtons.findIndex(b => b.dataset.id === f))); }
   }
   $('langBtn').addEventListener('click', () => setLang(nextLang()));
+
+  /* ---------- Side menu (website) ----------
+     One place for the settings, plus switches for what shows on the screen. Lists it opens (cities, photos, Qibla)
+     open above it and come back to it. What the visitor hides is saved on the device and applied before the first
+     paint (<head>). The menu button itself can never be hidden. The TV keeps its own buttons for now. */
+  var menuOpen = false, pickerFrom = null;      // pickerFrom: the menu item that opened a list, focused again when it closes
+  const SHOW_KEYS = ['prayers', 'wx', 'hijri', 'rcd', 'place'];
+  const screenHidden = new Set(SHOW_KEYS.filter(k => document.documentElement.classList.contains('hide-' + k)));
+  function setSwitch(b, on) { if (b) b.setAttribute('aria-checked', on ? 'true' : 'false'); }
+  function syncMenu() {
+    if (!menuOpen) return;
+    $('smCityVal').textContent = cityName(CITY);
+    $('smPhotosVal').textContent = photosValue();
+    $('smSleepVal').textContent = sleepMin ? t('mMinutes', num(sleepMin)) : t('mOff');
+    $('smLangVal').textContent = (I18N[nextLang()] || {}).name || '';
+    $('smLang').hidden = nextLang() === LANG;
+    setSwitch($('smAdhan'), ADHAN_ON); setSwitch($('smAdhkar'), ADHKAR_ON);
+    document.querySelectorAll('#sideMenu [data-show]').forEach(b => setSwitch(b, !screenHidden.has(b.dataset.show)));
+  }
+  function openMenu() {
+    if (!seenMenus.menu) { seenMenus.menu = 1; try { localStorage.setItem('qtv-seen', JSON.stringify(seenMenus)); } catch (e) {} showMenuBadges(); }
+    menuOpen = true; $('sideMenu').hidden = false; $('sideScrim').hidden = false;
+    $('menuBtn').setAttribute('aria-expanded', 'true');
+    syncMenu(); $('smCity').focus();
+  }
+  function closeMenu() {
+    menuOpen = false; $('sideMenu').hidden = true; $('sideScrim').hidden = true;
+    $('menuBtn').setAttribute('aria-expanded', 'false'); $('menuBtn').focus();
+  }
+  $('menuBtn').addEventListener('click', () => (menuOpen ? closeMenu() : openMenu()));
+  $('sideClose').addEventListener('click', closeMenu);
+  $('sideScrim').addEventListener('click', closeMenu);
+  $('smCity').addEventListener('click', () => { pickerFrom = $('smCity'); openPicker('city'); });
+  $('smPhotos').addEventListener('click', () => { pickerFrom = $('smPhotos'); openPicker('photos'); });
+  $('smQibla').addEventListener('click', openQibla);
+  $('smAdhan').addEventListener('click', () => { toggleAdhan(); syncMenu(); });
+  $('smSleep').addEventListener('click', () => { cycleSleep(); syncMenu(); });
+  $('smLang').addEventListener('click', () => setLang(nextLang()));
+  $('smAdhkar').addEventListener('click', () => { toggleAdhkar(); syncMenu(); });
+  document.querySelectorAll('#sideMenu [data-show]').forEach(b => b.addEventListener('click', () => {
+    const k = b.dataset.show, hide = !screenHidden.has(k);
+    if (hide) screenHidden.add(k); else screenHidden.delete(k);
+    document.documentElement.classList.toggle('hide-' + k, hide);
+    try { screenHidden.size ? localStorage.setItem('qtv-hide', [...screenHidden].join(',')) : localStorage.removeItem('qtv-hide'); } catch (e) {}
+    syncMenu();
+  }));
 
   /* ---------- Boot ---------- */
   applyStatic(); showLangBtn(); tvChips(); showGateText(); setStatus('idle', () => tk('st', 'ready'));
