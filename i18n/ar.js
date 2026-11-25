@@ -46,6 +46,11 @@
     pickerCity: 'اختر مدينتك',
     pickerCitySub: 'تُحدَّد مدينتك تلقائيًا من موقعك، ويمكنك اختيار غيرها',
     settings: 'الإعدادات',
+    // side menu (website)
+    menuTitle: 'القائمة', menuClose: 'إغلاق القائمة', menuShow: 'الظاهر على الشاشة', menuSaved: 'تُحفظ اختياراتك على هذا الجهاز',
+    mCity: 'المدينة', mQibla: 'القبلة', mPhotos: 'مكتبة الصور', mAdhan: 'الأذان', mSleep: 'المؤقّت', mLang: 'اللغة',
+    mOff: 'متوقف', mMinutes: function (n) { return n + ' دقيقة'; },
+    sPrayers: 'مواقيت الصلاة', sWeather: 'الطقس', sHijri: 'التاريخ الهجري', sRamadan: 'عدّاد رمضان', sAdhkar: 'الأذكار', sCaption: 'نبذة الصورة',
     adhanItem: function (on) { return on ? 'تنبيه الصلاة: مفعّل ✓' : 'تنبيه الصلاة: متوقف'; },
     adhkarItem: function (on) { return on ? 'شريط الأذكار: ظاهر ✓' : 'شريط الأذكار: مخفي'; },
     sleepItem: function (n) { return n ? 'مؤقّت الإيقاف: ' + n + ' دقيقة ✓' : 'مؤقّت الإيقاف: متوقف'; },

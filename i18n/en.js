@@ -101,6 +101,11 @@
     pickerCity: 'Choose your city',
     pickerCitySub: 'Your city is set automatically from your location; you can pick another',
     settings: 'Settings',
+    // side menu (website)
+    menuTitle: 'Menu', menuClose: 'Close menu', menuShow: 'Show on screen', menuSaved: 'Your choices are saved on this device',
+    mCity: 'City', mQibla: 'Qibla', mPhotos: 'Photo library', mAdhan: 'Adhan', mSleep: 'Sleep timer', mLang: 'Language',
+    mOff: 'Off', mMinutes: function (n) { return n + ' min'; },
+    sPrayers: 'Prayer times', sWeather: 'Weather', sHijri: 'Hijri date', sRamadan: 'Ramadan countdown', sAdhkar: 'Adhkar', sCaption: 'Photo caption',
     adhanItem: function (on) { return on ? 'Prayer alert: on ✓' : 'Prayer alert: off'; },
     adhkarItem: function (on) { return on ? 'Adhkar ticker: shown ✓' : 'Adhkar ticker: hidden'; },
     sleepItem: function (n) { return n ? 'Sleep timer: ' + n + ' min ✓' : 'Sleep timer: off'; },
