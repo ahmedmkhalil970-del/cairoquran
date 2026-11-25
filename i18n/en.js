@@ -105,6 +105,7 @@
     menuTitle: 'Menu', menuClose: 'Close menu', menuShow: 'Show on screen', menuSaved: 'Your choices are saved on this device',
     mCity: 'City', mQibla: 'Qibla', mPhotos: 'Photo library', mAdhan: 'Adhan', mSleep: 'Sleep timer', mLang: 'Language',
     mOff: 'Off', mMinutes: function (n) { return n + ' min'; },
+    mPause: 'Pause', mPlay: 'Play', menuHintTv: '▲ ▼ to move · OK to select · Back to close',
     sPrayers: 'Prayer times', sWeather: 'Weather', sHijri: 'Hijri date', sRamadan: 'Ramadan countdown', sAdhkar: 'Adhkar', sCaption: 'Photo caption',
     adhanItem: function (on) { return on ? 'Prayer alert: on ✓' : 'Prayer alert: off'; },
     adhkarItem: function (on) { return on ? 'Adhkar ticker: shown ✓' : 'Adhkar ticker: hidden'; },
