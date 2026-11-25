@@ -388,7 +388,7 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
   html:not([lang="ar"]) body.has-adhkar .place{bottom:44vh}
 }
 
-/* Side menu (website). It opens from the side where reading starts; the TV keeps its own buttons for now. */
+/* Side menu (website and TV). It opens from the side where reading starts. On the TV, OK opens it. */
 .brand-row{display:flex;align-items:center;gap:1vw}
 .menu-btn{all:unset;box-sizing:border-box;position:relative;flex-shrink:0;pointer-events:auto;cursor:pointer;width:2.9vw;height:2.9vw;
   min-width:40px;min-height:40px;border-radius:.8vw;display:flex;align-items:center;justify-content:center;color:var(--ink);
@@ -397,7 +397,11 @@ html[dir="ltr"] .steps{padding:0 0 0 1.4em;text-align:left}
 .menu-btn:hover,.menu-btn:focus-visible{color:var(--gold);border-color:rgba(232,194,122,.7)}
 .menu-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .menu-btn .new-badge{position:absolute;top:-1vh;inset-inline-end:-1.4vw}
-html.tv .menu-btn{display:none}
+html.tv .menu-btn{backdrop-filter:none}
+html.tv .side-menu{width:25vw;font-size:1.15vw;padding:2.6vh 1.6vw}
+html.tv .sm-item:focus{outline:3px solid var(--gold);outline-offset:2px;background:rgba(232,194,122,.16)}
+html:not(.tv) .tv-only,html.tv #smQibla{display:none}
+.sm-hint{margin:0;padding-top:1vh;border-top:1px solid var(--edge);font-size:.8em;color:var(--ink-soft);text-align:center}
 .side-scrim{position:fixed;inset:0;z-index:18;background:rgba(3,5,14,.45)}
 .side-menu{position:fixed;top:0;bottom:0;inset-inline-start:0;z-index:19;width:23vw;min-width:320px;max-width:92vw;box-sizing:border-box;
   padding:3.2vh 1.6vw;overflow-y:auto;display:flex;flex-direction:column;gap:1vh;font-size:clamp(15px,1.1vw,24px);color:var(--ink);
@@ -429,7 +433,7 @@ html[dir="ltr"] .sm-item b::after{content:"›"}
 .sm-note{margin:auto 0 0;padding-top:1vh;font-size:.75em;color:var(--ink-faint);text-align:center}
 /* What the visitor hid from the screen, and the buttons the menu replaces on the website */
 html.hide-prayers #prayers,html.hide-wx #wx,html.hide-hijri #hijri,html.hide-rcd #ramadanCd,html.hide-place #place{display:none!important}
-html:not(.tv) #langBtn,html:not(.tv) .p-tools,html:not(.tv) #sleepBtn:not(.on){display:none!important}
+#langBtn,.p-tools,html:not(.tv) #sleepBtn:not(.on){display:none!important}
 @media (max-width:700px){
   .brand-row{gap:2.4vw}
   .menu-btn{width:9.5vw;height:9.5vw;border-radius:2.6vw}
@@ -498,6 +502,7 @@ html:not(.tv) #langBtn,html:not(.tv) .p-tools,html:not(.tv) #sleepBtn:not(.on){d
   <div class="sm-head"><h2 id="sideTitle" data-i18n="menuTitle">القائمة</h2><button class="sm-close" id="sideClose" type="button" aria-label="إغلاق القائمة" data-i18n-attr="aria-label:menuClose"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
   <div class="sm-group" data-i18n="settings">الإعدادات</div>
   <div class="sm-list">
+    <button class="sm-item tv-only" id="smPlay" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg><span id="smPlayText">إيقاف مؤقت</span></button>
     <button class="sm-item" id="smCity" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span data-i18n="mCity">المدينة</span><b id="smCityVal"></b></button>
     <button class="sm-item" id="smQibla" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M14.8 9.2l-1.6 4-4 1.6 1.6-4z"/></svg><span data-i18n="mQibla">القبلة</span><b></b></button>
     <button class="sm-item" id="smPhotos" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/></svg><span data-i18n="mPhotos">مكتبة الصور</span><b id="smPhotosVal"></b></button>
@@ -515,6 +520,7 @@ html:not(.tv) #langBtn,html:not(.tv) .p-tools,html:not(.tv) #sleepBtn:not(.on){d
     <button class="sm-item" type="button" role="switch" aria-checked="true" data-show="place"><span data-i18n="sCaption">نبذة الصورة</span><i class="sw" aria-hidden="true"></i></button>
   </div>
   <p class="sm-note" data-i18n="menuSaved">تُحفظ اختياراتك على هذا الجهاز</p>
+  <p class="sm-hint tv-only" data-i18n="menuHintTv">▲ ▼ للتنقل · OK للاختيار · Back للإغلاق</p>
 </nav>
 
 <div class="picker" id="picker" hidden role="dialog" aria-modal="true" aria-labelledby="pickerTitle">
@@ -655,8 +661,8 @@ html:not(.tv) #langBtn,html:not(.tv) .p-tools,html:not(.tv) #sleepBtn:not(.on){d
 </div>
 
 <audio id="radio" preload="none"></audio>
-<script src="i18n/ar.js?v=3"></script>
-<script src="i18n/en.js?v=3"></script>
+<script src="i18n/ar.js?v=4"></script>
+<script src="i18n/en.js?v=4"></script>
 <script src="data/places.js?v=2"></script>
 
 <script>/* adhan-js 4.4.3 · MIT License · github.com/batoulapps/adhan-js */
@@ -1048,18 +1054,7 @@ html:not(.tv) #langBtn,html:not(.tv) .p-tools,html:not(.tv) #sleepBtn:not(.on){d
     const out = [{ title: t('autoGroup'), items: [{ id: 'auto', label: t('autoCity'), cur: !cityPicked, choose: () => useAutoCity() }] }]
       .concat(countries.map(country => ({ title: countryName(country), items: CITIES.filter(c => c.country === country).map(c => ({
       id: c.id, label: cityName(c), cur: cityPicked && c.id === CITY.id, choose: () => chooseCity(c.id) })) })));
-    if (document.documentElement.classList.contains('tv')) out.push({ title: t('settings'), items: [{ id: 'adhan', label: adhanLabel(), cur: false, keep: true,
-      choose: b => { toggleAdhan(); b.textContent = adhanLabel(); } },
-      { id: 'adhkar', label: adhkarLabel(), cur: false, keep: true,
-      choose: b => { toggleAdhkar(); b.textContent = adhkarLabel(); } },
-      { id: 'sleep', label: sleepLabel(), cur: false, keep: true,
-      choose: b => { cycleSleep(); b.textContent = sleepLabel(); } },
-      { id: 'photos', label: photosLabel(), cur: false, keep: true,
-      choose: () => openPicker('photos') },
-      ...(document.documentElement.classList.contains('tv') ? [] : [{ id: 'qibla', label: t('qiblaItem'), cur: false, keep: true,
-      choose: () => { closePicker(); openQibla(); } }]),
-      { id: 'lang', label: langLabel(), cur: false, keep: true,
-      choose: () => { setLang(nextLang()); } }] });
+    // the settings that used to close this list now live in the side menu
     return out;
   }
   function stationSections() {
@@ -1230,7 +1225,6 @@ html:not(.tv) #langBtn,html:not(.tv) .p-tools,html:not(.tv) #sleepBtn:not(.on){d
   const DHIKR_MS = 20000, HOLD_MS = 4000;   // 20 s per dhikr, so children can read it calmly
   let ADHKAR_ON = true, adhkarTimer = 0;
   try { ADHKAR_ON = localStorage.getItem('qtv-adhkar') !== '0'; } catch (e) {}
-  function adhkarLabel() { return t('adhkarItem', ADHKAR_ON); }
   function toggleAdhkar() {
     ADHKAR_ON = !ADHKAR_ON; try { localStorage.setItem('qtv-adhkar', ADHKAR_ON ? '1' : '0'); } catch (e) {}
     const m = adhkarMode; adhkarMode = null; setAdhkarMode(m);
@@ -1455,7 +1449,6 @@ html:not(.tv) #langBtn,html:not(.tv) .p-tools,html:not(.tv) #sleepBtn:not(.on){d
     const n = PHOTO_SET.size;
     return !n ? t('allCountries') : n === 1 ? countryLabel([...PHOTO_SET][0]) : t('nCountries', n, num(n));
   }
-  function photosLabel() { return t('photosItem', photosValue()); }
   const countryText = c => (PHOTO_SET.has(c) ? '✓ ' : '') + t('countryItem', countryLabel(c), num(countryCount[c]));
   function photoSections() {
     const out = [{ title: t('allGroup'), items: [
@@ -1678,7 +1671,6 @@ html:not(.tv) #langBtn,html:not(.tv) .p-tools,html:not(.tv) #sleepBtn:not(.on){d
   const ALERT_MS = 40000;                      // how long the notice stays on screen
   let ADHAN_ON = true;
   try { ADHAN_ON = localStorage.getItem('qtv-adhan') !== '0'; } catch (e) {}
-  function adhanLabel() { return t('adhanItem', ADHAN_ON); }
   function toggleAdhan() { ADHAN_ON = !ADHAN_ON; try { localStorage.setItem('qtv-adhan', ADHAN_ON ? '1' : '0'); } catch (e) {} if (!ADHAN_ON && adhanActive) endAdhan(); }
   const adhanAudio = new Audio(); adhanAudio.preload = 'auto';
   let adhanKey = '', adhanActive = false, chimePlaying = false, resumeAfterAdhan = false, adhanFailsafe = 0, chimeFailsafe = 0, adhanDone = '', adhanReturn = null;
@@ -1773,7 +1765,6 @@ html:not(.tv) #langBtn,html:not(.tv) .p-tools,html:not(.tv) #sleepBtn:not(.on){d
      Not kept after a reload. ---------- */
   const SLEEP_STEPS = [0, 15, 30, 60, 90], FADE_MS = 10000;
   let sleepMin = 0, sleepEnd = 0, sleepTick = 0, sleepFading = false;
-  function sleepLabel() { return t('sleepItem', sleepMin ? num(sleepMin) : 0); }
   function setVol(v) {
     if (NATIVE) { try { if (typeof NATIVE.setVolume === 'function') NATIVE.setVolume(v); } catch (e) {} }
     else { try { audio.volume = v; } catch (e) {} }
@@ -1850,13 +1841,17 @@ html:not(.tv) #langBtn,html:not(.tv) .p-tools,html:not(.tv) #sleepBtn:not(.on){d
     }
     if (menuOpen) {
       if (k === 'Escape' || k === 'Backspace' || k === 'GoBack') { e.preventDefault(); closeMenu(); }
+      else if (k === 'ArrowUp' || k === 'ArrowDown') { e.preventDefault(); moveMenu(k === 'ArrowDown' ? 1 : -1); }
+      else if ((k === 'Enter' || k === ' ') && $('sideMenu').contains(document.activeElement)) { e.preventDefault(); document.activeElement.click(); }
       return;
     }
     if (k === 'ArrowUp' || k === 'ContextMenu') { e.preventDefault(); openPicker('station'); return; }
     if (k === 'ArrowDown') { e.preventDefault(); openPicker('city'); return; }
     if (k === 'Enter' || k === ' ' || k === 'MediaPlayPause' || k === 'MediaPlay' || k === 'MediaPause') {
       if (document.activeElement === $('cityBtn') || document.activeElement === $('nowBtn')) return;    // let the button open the picker
-      e.preventDefault(); wantPlay ? pause() : start();
+      e.preventDefault();
+      if (NATIVE && (k === 'Enter' || k === ' ') && $('gate').classList.contains('hide')) { openMenu(); return; }   // TV: OK opens the menu; the start screen still starts the stream
+      wantPlay ? pause() : start();
     }
   });
 
@@ -2283,7 +2278,6 @@ html:not(.tv) #langBtn,html:not(.tv) .p-tools,html:not(.tv) #sleepBtn:not(.on){d
     const all = (window.QLANGS || ['ar', 'en']).filter(c => I18N[c]);
     return all[(all.indexOf(LANG) + 1) % all.length] || 'ar';
   }
-  function langLabel() { return t('langItem', (I18N[nextLang()] || {}).name || ''); }
   function showLangBtn() {
     const b = $('langBtn'), nx = I18N[nextLang()] || {};
     b.textContent = nx.name || ''; b.lang = nextLang(); b.setAttribute('aria-label', t('langAria'));
@@ -2314,7 +2308,8 @@ html:not(.tv) #langBtn,html:not(.tv) .p-tools,html:not(.tv) #sleepBtn:not(.on){d
   /* ---------- Side menu (website) ----------
      One place for the settings, plus switches for what shows on the screen. Lists it opens (cities, photos, Qibla)
      open above it and come back to it. What the visitor hides is saved on the device and applied before the first
-     paint (<head>). The menu button itself can never be hidden. The TV keeps its own buttons for now. */
+     paint (<head>). The menu button itself can never be hidden. TV: OK opens it, ▲▼ move, OK chooses, Back closes;
+     its first item pauses the stream, since OK no longer does. */
   var menuOpen = false, pickerFrom = null;      // pickerFrom: the menu item that opened a list, focused again when it closes
   const SHOW_KEYS = ['prayers', 'wx', 'hijri', 'rcd', 'place'];
   const screenHidden = new Set(SHOW_KEYS.filter(k => document.documentElement.classList.contains('hide-' + k)));
@@ -2326,6 +2321,7 @@ html:not(.tv) #langBtn,html:not(.tv) .p-tools,html:not(.tv) #sleepBtn:not(.on){d
     $('smSleepVal').textContent = sleepMin ? t('mMinutes', num(sleepMin)) : t('mOff');
     $('smLangVal').textContent = (I18N[nextLang()] || {}).name || '';
     $('smLang').hidden = nextLang() === LANG;
+    $('smPlayText').textContent = wantPlay ? t('mPause') : t('mPlay');
     setSwitch($('smAdhan'), ADHAN_ON); setSwitch($('smAdhkar'), ADHKAR_ON);
     document.querySelectorAll('#sideMenu [data-show]').forEach(b => setSwitch(b, !screenHidden.has(b.dataset.show)));
   }
@@ -2333,7 +2329,13 @@ html:not(.tv) #langBtn,html:not(.tv) .p-tools,html:not(.tv) #sleepBtn:not(.on){d
     if (!seenMenus.menu) { seenMenus.menu = 1; try { localStorage.setItem('qtv-seen', JSON.stringify(seenMenus)); } catch (e) {} showMenuBadges(); }
     menuOpen = true; $('sideMenu').hidden = false; $('sideScrim').hidden = false;
     $('menuBtn').setAttribute('aria-expanded', 'true');
-    syncMenu(); $('smCity').focus();
+    syncMenu(); menuItems()[0].focus();
+  }
+  function menuItems() { return [...document.querySelectorAll('#sideMenu .sm-item')].filter(b => !b.hidden && b.getClientRects().length); }
+  function moveMenu(step) {
+    const items = menuItems(), i = items.indexOf(document.activeElement);
+    const next = items[Math.min(items.length - 1, Math.max(0, i < 0 ? 0 : i + step))];
+    if (next) { next.focus(); next.scrollIntoView({ block: 'nearest' }); }
   }
   function closeMenu() {
     menuOpen = false; $('sideMenu').hidden = true; $('sideScrim').hidden = true;
@@ -2342,6 +2344,7 @@ html:not(.tv) #langBtn,html:not(.tv) .p-tools,html:not(.tv) #sleepBtn:not(.on){d
   $('menuBtn').addEventListener('click', () => (menuOpen ? closeMenu() : openMenu()));
   $('sideClose').addEventListener('click', closeMenu);
   $('sideScrim').addEventListener('click', closeMenu);
+  $('smPlay').addEventListener('click', () => { const on = wantPlay; closeMenu(); on ? pause() : start(); });
   $('smCity').addEventListener('click', () => { pickerFrom = $('smCity'); openPicker('city'); });
   $('smPhotos').addEventListener('click', () => { pickerFrom = $('smPhotos'); openPicker('photos'); });
   $('smQibla').addEventListener('click', openQibla);

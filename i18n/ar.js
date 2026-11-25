@@ -50,6 +50,7 @@
     menuTitle: 'القائمة', menuClose: 'إغلاق القائمة', menuShow: 'الظاهر على الشاشة', menuSaved: 'تُحفظ اختياراتك على هذا الجهاز',
     mCity: 'المدينة', mQibla: 'القبلة', mPhotos: 'مكتبة الصور', mAdhan: 'الأذان', mSleep: 'المؤقّت', mLang: 'اللغة',
     mOff: 'متوقف', mMinutes: function (n) { return n + ' دقيقة'; },
+    mPause: 'إيقاف مؤقت', mPlay: 'تشغيل', menuHintTv: '▲ ▼ للتنقل · OK للاختيار · Back للإغلاق',
     sPrayers: 'مواقيت الصلاة', sWeather: 'الطقس', sHijri: 'التاريخ الهجري', sRamadan: 'عدّاد رمضان', sAdhkar: 'الأذكار', sCaption: 'نبذة الصورة',
     adhanItem: function (on) { return on ? 'تنبيه الصلاة: مفعّل ✓' : 'تنبيه الصلاة: متوقف'; },
     adhkarItem: function (on) { return on ? 'شريط الأذكار: ظاهر ✓' : 'شريط الأذكار: مخفي'; },
